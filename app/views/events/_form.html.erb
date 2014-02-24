@@ -1,0 +1,35 @@
+<%= form_for(@event) do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% @event.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+   <%= f.label :title %>
+   <%= f.text_field :title %>
+   <br>
+ <!--   <%= f.label :day %>
+   <%= select_date Date.today %>
+   <br>
+   <%= f.label :time %>
+   <%= select_time Time.now %> -->
+   <br>
+   <%= f.label :waiver_text %>
+   <%= f.text_area :waiver, :cols => "50", :rows => "3" %>
+   <br>
+   <%= f.label :description %>
+   <%= f.text_area :description, :cols => "50", :rows => "5" %>
+   <br><br>
+
+
+  <div class="actions">
+    <%= f.submit "Create Event", :class => "btn" %>
+  </div>
+<% end %>
