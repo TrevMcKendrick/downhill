@@ -42,6 +42,16 @@ class EventsController < ApplicationController
         )
     end
 
+    @fee_names = fee_params[:fee][:name]
+    @fee_amounts = fee_params[:fee][:amount]
+
+    (0...(@fee_names.count - 1)).each do |index|
+      @event.fees.build(
+        :name => @fee_names[index],
+        :amount => @fee_amounts[index]
+        )
+    end
+
     
     respond_to do |format|
       if @event.save
@@ -89,5 +99,9 @@ class EventsController < ApplicationController
 
     def ticket_params
       params.require(:event).permit(ticket: [{:name => [], :price => [], :for_sale_begin => [], :for_sale_end => [] }])
+    end
+
+    def fee_params
+      params.require(:event).permit(fee: [{:name => [], :amount => [] }])
     end
 end

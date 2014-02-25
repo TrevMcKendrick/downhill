@@ -18,12 +18,20 @@
      <%= button_tag "Add ticket", :id => "add_ticket", :type => "button" %>
    <br><br>
 
+   <h4>Create fees<h4>
+     <%= render "fee/form", :f => f %> 
+     <%= button_tag "Add fee", :id => "add_fee", :type => "button" %>
+   <br><br>
+
   <div class="actions">
     <%= f.submit "Create Event", :class => "btn" %>
   </div>
 
   <div class="hide" id="new_ticket_form">
     <%= render "ticket/form", :f => f %> 
+  </div>
+  <div class="hide" id="new_fee_form">
+    <%= render "fee/form", :f => f %> 
   </div>
 
 <% end %>

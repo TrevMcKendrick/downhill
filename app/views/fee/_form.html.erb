@@ -1,0 +1,10 @@
+<div id="fee-group">
+    <%= f.fields_for :fee do |builder| %>
+      <%= builder.label :name, "Fee name" %>
+      <%= builder.text_field :name, :placeholder => "Fee name", :name => "event[fee][name][]" %>
+    <br>
+      <%= builder.label :amount, "Fee amount" %>
+      <%= builder.text_field :price, :placeholder => "0.00", :name => "event[fee][amount][]" %>
+    <br><br>
+     <% end %>
+</div>
