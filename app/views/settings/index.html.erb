@@ -1,0 +1,22 @@
+<h1>Settings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @settings.each do |setting| %>
+      <tr>
+        <td><%= setting.subdomain %></td>
+        <td><%= link_to 'Edit', edit_setting_path(setting) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
