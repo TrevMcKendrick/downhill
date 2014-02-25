@@ -26,15 +26,29 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-  @event = Event.new(event_params)
+    @event = Event.new(event_params)
+
+    @ticket_names = ticket_params[:ticket][:name]
+    @ticket_prices = ticket_params[:ticket][:price]
+    @ticket_for_sale_begins = ticket_params[:ticket][:for_sale_begin]
+    @ticket_for_sale_ends = ticket_params[:ticket][:for_sale_end]
+
+    (0...(@ticket_names.count - 1)).each do |index|
+      @event.tickets.build(
+        :name => @ticket_names[index],
+        :price => @ticket_prices[index],
+        :for_sale_begin => @ticket_for_sale_begins[index],
+        :for_sale_end => @ticket_for_sale_ends[index]
+        )
+    end
+
+    
     respond_to do |format|
       if @event.save
         @event.users << current_user
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @event }
+        format.html { redirect_to @event, alert: 'Event was successfully created.' }
       else
         format.html { render action: 'new' }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -44,11 +58,9 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
-        format.json { head :no_content }
+        format.html { redirect_to @event }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -72,6 +84,10 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:title, :waiver, :description)
+      params.require(:event).permit(:title, :waiver, :description, :time)
+    end
+
+    def ticket_params
+      params.require(:event).permit(ticket: [{:name => [], :price => [], :for_sale_begin => [], :for_sale_end => [] }])
     end
 end

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  for_sale_begin: 2014-02-24
+  for_sale_end: 2014-02-24
+  quantity: 1
+
+two:
+  name: MyString
+  for_sale_begin: 2014-02-24
+  for_sale_end: 2014-02-24
+  quantity: 1

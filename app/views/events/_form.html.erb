@@ -11,25 +11,19 @@
     </div>
   <% end %>
 
+   <%= render 'event_details', :f => f %>
 
-   <%= f.label :title %>
-   <%= f.text_field :title %>
-   <br>
- <!--   <%= f.label :day %>
-   <%= select_date Date.today %>
-   <br>
-   <%= f.label :time %>
-   <%= select_time Time.now %> -->
-   <br>
-   <%= f.label :waiver_text %>
-   <%= f.text_area :waiver, :cols => "50", :rows => "3" %>
-   <br>
-   <%= f.label :description %>
-   <%= f.text_area :description, :cols => "50", :rows => "5" %>
+   <h4>Create tickets<h4>
+     <%= render "ticket/form", :f => f %> 
+     <%= button_tag "Add ticket", :id => "add_ticket", :type => "button" %>
    <br><br>
-
 
   <div class="actions">
     <%= f.submit "Create Event", :class => "btn" %>
   </div>
+
+  <div class="hide" id="new_ticket_form">
+    <%= render "ticket/form", :f => f %> 
+  </div>
+
 <% end %>

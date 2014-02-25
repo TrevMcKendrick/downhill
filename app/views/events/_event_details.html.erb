@@ -1,0 +1,17 @@
+<%= f.label :title %>
+   <%= f.text_field :title, :placeholder => "Event name" %>
+   <br>
+     <div class="input-append time-select">
+       <%= f.label :time, "Date" %>
+       <%= f.text_field :time, :format => "yyyy-MM-dd" %>
+       <span class="add-on">
+         <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+       </span>
+     </div>
+   <br>
+     <%= f.label :description %>
+     <%= f.text_area :description, :cols => "50", :rows => "5", :placeholder => "Event description" %>
+   <br>
+     <%= f.label :waiver_text %>
+     <%= f.text_area :waiver, :cols => "50", :rows => "3", :placeholder => "Text so you don't get sued" %>
+   <br><br>
