@@ -6,21 +6,11 @@
       <%= builder.label :price, "Ticket price" %>
       <%= builder.text_field :price, :placeholder => "0.00", :name => "event[ticket][price][]" %>
     <br>
-    <div class="input-append time-select">
        <%= builder.label :for_sale_begin, "Start date" %>
-       <%= builder.text_field :for_sale_begin, :format => "yyyy-MM-dd", :name => "event[ticket][for_sale_begin][]" %>
-    <span class="add-on">
-      <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-    </span>
-    </div>
+       <%= builder.date_field :for_sale_begin, :format => "yyyy-MM-dd", :name => "event[ticket][for_sale_begin][]" %>
     <br>
-    <div class="input-append time-select">
       <%= builder.label :for_sale_end, "End date" %>
-      <%= builder.text_field :for_sale_end, :format => "yyyy-MM-dd", :name => "event[ticket][for_sale_end][]" %>
-    <span class="add-on">
-        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-    </span>
-    </div>
+      <%= builder.date_field :for_sale_end, :format => "yyyy-MM-dd", :name => "event[ticket][for_sale_end][]" %>
     <br><br>
      <% end %>
 </div>

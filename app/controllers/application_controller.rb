@@ -10,13 +10,12 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if resource.subdomain == subdomain(request.url)
-      "#{root_url}profile" 
-       # returns http://trevor.lvh.me:3000/profile
+      profile_path
     else
       if Rails.application.config.force_ssl == true
-        "https://#{resource.subdomain}." + host(request.url) + ":3000/profile" 
+        "https://#{resource.subdomain}." + host(request.url) + ":3000#{profile_path}" 
         else
-        "http://#{resource.subdomain}." + host(request.url) + ":3000/profile" 
+        "http://#{resource.subdomain}." + host(request.url) + ":3000#{profile_path}" 
       end
     end
   end

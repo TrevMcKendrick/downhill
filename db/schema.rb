@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140226070318) do
+ActiveRecord::Schema.define(version: 20140227034252) do
 
   create_table "events", force: true do |t|
     t.datetime "created_at"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20140226070318) do
     t.string   "waiver"
     t.string   "description"
     t.decimal  "fee",         precision: 8, scale: 2
+    t.string   "path"
+    t.boolean  "live"
   end
 
   create_table "fees", force: true do |t|

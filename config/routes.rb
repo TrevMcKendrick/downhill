@@ -1,7 +1,6 @@
 Downhill::Application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
-  # devise_for :users, :controllers => { :registrations => "registrations" }
 
   get 'new_user' => "users#new"
 
@@ -10,9 +9,12 @@ Downhill::Application.routes.draw do
   end
   
   constraints(Subdomain) do
-    get '/profile' => 'profiles#show'
     
-    resources :events 
+    get '/profile' => 'profiles#show', :path => "/dashboard"
+
+    get '/sales/:path' => 'sales#show'
+
+    resources :events
     post 'update' => "settings#update"
     resources :settings 
     resources :users
@@ -20,10 +22,6 @@ Downhill::Application.routes.draw do
   end
   
   root 'home#index'
-  
-
-  
-  
   
 
   # The priority is based upon order of creation: first created -> highest priority.
