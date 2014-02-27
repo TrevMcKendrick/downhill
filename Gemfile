@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+gem 'domainatrix'
+
+gem 'omniauth-stripe-connect'
+
 gem 'bootstrap-datetimepicker-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

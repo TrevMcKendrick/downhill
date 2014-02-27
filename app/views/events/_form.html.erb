@@ -15,16 +15,16 @@
 
    <h4>Create tickets<h4>
      <%= render "ticket/form", :f => f %> 
-     <%= button_tag "Add ticket", :id => "add_ticket", :type => "button" %>
+     <%= button_tag "Add ticket", :id => "add_ticket", :type => "button", :class => "btn btn-info" %>
    <br><br>
 
    <h4>Create fees<h4>
      <%= render "fee/form", :f => f %> 
-     <%= button_tag "Add fee", :id => "add_fee", :type => "button" %>
+     <%= button_tag "Add fee", :id => "add_fee", :type => "button", :class => "btn btn-info" %>
    <br><br>
 
   <div class="actions">
-    <%= f.submit "Create Event", :class => "btn" %>
+    <%= f.submit "Create Event", :class => "btn btn-primary" %>
   </div>
 
   <div class="hide" id="new_ticket_form">

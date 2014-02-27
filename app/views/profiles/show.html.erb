@@ -1,0 +1,5 @@
+<h3>Your events</h3>
+
+<%e= @user.events.each do |event| %>
+  <%= link_to event.title, event_url(:subdomain => @user.subdomain, :id => event.id) %>
+<% end %>

@@ -1,12 +1,30 @@
 Downhill::Application.routes.draw do
 
-  resources :events
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  # devise_for :users, :controllers => { :registrations => "registrations" }
 
-  devise_for :users
-  get 'user' => "users#show"
-  resources :users
+  get 'new_user' => "users#new"
 
+  namespace :users do
+    root :to => "events#index"
+  end
+  
+  constraints(Subdomain) do
+    get '/profile' => 'profiles#show'
+    
+    resources :events 
+    post 'update' => "settings#update"
+    resources :settings 
+    resources :users
+    get 'user' => "users#show", constraints: {subdomain: /.+/}
+  end
+  
   root 'home#index'
+  
+
+  
+  
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

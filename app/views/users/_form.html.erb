@@ -12,13 +12,16 @@
   <% end %>
 
    <%= f.label :email %>
-   <%= f.text_field :email %>
+   <%= f.text_field :email, :autofocus => true %>
    <br>
    <%= f.label :password %>
    <%= f.password_field :password %>
+
+   <%= f.label :subdomain %>
+   <%= f.text_field :subdomain %>
    <br><br>
    
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Sign up", :class => "btn-primary btn" %>
   </div>
 <% end %>

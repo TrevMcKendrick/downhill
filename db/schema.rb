@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140225161907) do
+ActiveRecord::Schema.define(version: 20140226070318) do
 
   create_table "events", force: true do |t|
     t.datetime "created_at"
@@ -30,6 +30,17 @@ ActiveRecord::Schema.define(version: 20140225161907) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "settings", force: true do |t|
+    t.string   "var",         null: false
+    t.text     "value"
+    t.integer  "target_id",   null: false
+    t.string   "target_type", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "settings", ["target_type", "target_id", "var"], name: "index_settings_on_target_type_and_target_id_and_var", unique: true
 
   create_table "tickets", force: true do |t|
     t.string   "name"
@@ -68,6 +79,10 @@ ActiveRecord::Schema.define(version: 20140225161907) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "stripe_user_id"
+    t.string   "stripe_publishable_key"
+    t.string   "stripe_token"
+    t.string   "subdomain"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
