@@ -1,9 +1,0 @@
-<p id="notice"><%= notice %></p>
-
-<h2>Your events</h2>
-  
-<% @events.each do |event| %>
-  <li>
-    <%= link_to event.title, event_path(event) %>
-  </li>
-<% end %>

@@ -1,0 +1,8 @@
+
+   <%= f.label :subdomain %>
+   <%= f.text_field :subdomain, :value => @user.settings(:subdomain).text %>
+   
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
