@@ -9,8 +9,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def after_sign_in_path_for(resource)
-    subdomain_with_https_or_http(request.domain + ":3000") if !env_is_production?
-    subdomain_with_https_or_http(request.domain) if env_is_production?
+    subdomain_with_https_or_http(DOMAIN_NAME)
   end
 
   def subdomain(url)
@@ -33,7 +32,6 @@ class ApplicationController < ActionController::Base
     else
       separator = "."
     end
-
     if Rails.application.config.force_ssl == true
         "https://#{subdomain}" + separator + url + path
       else

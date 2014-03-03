@@ -9,5 +9,5 @@ elsif Rails.env.production?
   STRIPE_PUBLIC_KEY = "pk_live_Oc672B1KrZ4OWytLidJ1ro94"
   STRIPE_CLIENT_ID = "ca_3Z5rPvHhlZx5VcTBQwIWt1lJahZ69iGH"
   ROOT_DOMAIN_NAME = ""
-  DOMAIN_NAME = ""
+  DOMAIN_NAME = "http://107.170.227.182/"
 end
