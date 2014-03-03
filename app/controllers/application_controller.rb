@@ -9,7 +9,8 @@ class ApplicationController < ActionController::Base
   protected
 
   def after_sign_in_path_for(resource)
-    subdomain_with_https_or_http(request.domain + ":3000")
+    subdomain_with_https_or_http(request.domain + ":3000") if !env_is_production?
+    subdomain_with_https_or_http(request.domain) if env_is_production?
   end
 
   def subdomain(url)
