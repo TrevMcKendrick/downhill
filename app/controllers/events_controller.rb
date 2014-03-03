@@ -1,6 +1,8 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!
+  before_action :set_event, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:show]
+  before_action :set_public_event, only: [:show]
+
 
   # GET /events
   # GET /events.json
@@ -11,6 +13,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @participant = Participant.new
   end
 
   # GET /events/new
@@ -27,14 +30,14 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
 
-    @ticket_names = ticket_params[:ticket][:name]
+    @ticket_types = ticket_params[:ticket][:ticket_type]
     @ticket_prices = ticket_params[:ticket][:price]
     @ticket_for_sale_begins = ticket_params[:ticket][:for_sale_begin]
     @ticket_for_sale_ends = ticket_params[:ticket][:for_sale_end]
 
-    (0...(@ticket_names.count - 1)).each do |index|
+    (0...(@ticket_types.count - 1)).each do |index|
       @event.tickets.build(
-        :name => @ticket_names[index],
+        :ticket_type => @ticket_types[index],
         :price => @ticket_prices[index],
         :for_sale_begin => @ticket_for_sale_begins[index],
         :for_sale_end => @ticket_for_sale_ends[index]
@@ -55,7 +58,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.save
         @event.users << current_user
-        format.html { redirect_to @event, alert: 'Event was successfully created.' }
+        format.html { redirect_to profile_path, alert: 'Event was successfully created.' }
       else
         format.html { render action: 'new' }
       end
@@ -67,7 +70,7 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to @event }
+        format.html { redirect_to profile_path, alert: 'Event was successfully created.' }
       else
         format.html { render action: 'edit' }
       end
@@ -79,8 +82,7 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     respond_to do |format|
-      format.html { redirect_to events_url }
-      format.json { head :no_content }
+      format.html { redirect_to profile_url }
     end
   end
 
@@ -91,16 +93,28 @@ class EventsController < ApplicationController
       @event = current_user.events.find(params[:id])
     end
 
+    def set_public_event
+      @user = find_user
+      events = @user.events
+      @event = events.where(:path => params[:path]).first
+    end
+
+    def find_user
+      User.where(:subdomain => request.subdomain).first
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:title, :waiver, :description, :time)
+      params.require(:event).permit(:title, :waiver, :description, :time, :path, :id)
     end
 
     def ticket_params
-      params.require(:event).permit(ticket: [{:name => [], :price => [], :for_sale_begin => [], :for_sale_end => [] }])
+      params.require(:event).permit(ticket: [{:ticket_type => [], :price => [], :for_sale_begin => [], :for_sale_end => [] }])
     end
 
     def fee_params
       params.require(:event).permit(fee: [{:name => [], :amount => [] }])
     end
+
+
 end

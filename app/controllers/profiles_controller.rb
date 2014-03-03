@@ -1,6 +1,8 @@
 class ProfilesController < ApplicationController
-   def show 
-    @user = User.where(:subdomain => request.subdomain).first || not_found
+  before_action :authenticate_user!
+
+  def show 
+    @user = current_user
   end
 
   def not_found

@@ -3,9 +3,9 @@
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(function() {
-  $('.time-select').datetimepicker({
-    pickTime: false
-  });
+  // $('.time-select').datetimepicker({
+  //   pickTime: false
+  // });
 
   $("#add_ticket").on("click",function(){
     $('#ticket-group').append($("#new_ticket_form").html());

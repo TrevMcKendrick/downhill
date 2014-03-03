@@ -1,14 +1,31 @@
-<p id="notice"><%= notice %></p>
+<%= render 'stripe_publishable_key' %>
 
-<h4>Title</h4>
-<h4><%= @event.title %></h4>
+<h2><%= @event.title %></h2>
+
+<%= form_for @participant, :html => { :id => "participant_signup_form" } do |f| %>
+<div><%= f.submit "Make Payment!", :class => "btn-primary btn" if Rails.env.development? %></div>
+<h4>Sign up here!</h4><br>
+
+  <div><%= f.label :email %>
+  <%= f.email_field :email, :autofocus => true, :value => "#{rand}@gmail.com" if Rails.env.development? %></div>
+
+  <div><%= f.label :password %>
+  <%= f.password_field :password, :value => "test" if Rails.env.development? %></div><br>
+
+    <h5><%= "How many tickets?" %></h5>
+    <% @event.tickets.each do |ticket| %>
+      <%= "#{ticket.ticket_type} – $ #{ticket.price}" %><br>
+      <%= select_tag "event[#{ticket.ticket_type}]", options_for_select(ticket_collection(12)) %>
+      <br>
+    <% end %>
+
 <br>
-<h5>Description</h5>
-<h5><%= @event.description %></h5>
+<%= f.check_box :first_name %>
+Click to agree to waiver
+<p><%= @event.waiver %></p>
 <br>
-<h5>Waiver</h5>
-<h5><%= @event.waiver %></h5>
+<%= render 'payment_info' %>
 
+<div><%= f.submit "Make Payment!", :class => "btn-primary btn" %></div>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<% end %>

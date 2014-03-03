@@ -5,3 +5,32 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+events = Event.create([
+  { 
+    title: "Tough Mudder Denver 2014",
+    time: 1,
+    path: "tough-mudder-denver-2014"
+  },
+  { 
+    title: "Tough Mudder Denver 2014",
+    time: 1,
+    path: "tough-mudder-denver-2014"
+  },
+  { 
+    title: "Tough Mudder Denver 2014",
+    time: 1,
+    path: "tough-mudder-denver-2014"
+  },
+  { 
+    title: "Tough Mudder Denver 2014",
+    time: 1,
+    path: "tough-mudder-denver-2014"
+  },
+  { 
+    title: "Tough Mudder Denver 2014",
+    time: 1,
+    path: "tough-mudder-denver-2014"
+  }
+])

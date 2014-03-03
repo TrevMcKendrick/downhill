@@ -1,17 +1,20 @@
-class OmniauthCallbacksController < Devise::OmniauthCallbacksController
+class OmniauthCallbacksController < ApplicationController
 
-  def stripe_connect
-    stripe_attributes = request.env['omniauth.auth']
+  def authorize_stripe
+    code = params[:code]
+    user = ActiveSupport::JSON.decode(`curl -X POST https://connect.stripe.com/oauth/token -d client_secret=#{Stripe.api_key} -d code=#{code} -d grant_type=authorization_code`)
+    set_user_stripe_attributes(user)
 
-    give_user_stripe(stripe_attributes)
-    
-    redirect_to settings_url
+    redirect_to subdomain_with_https_or_http(DOMAIN_NAME, current_user.subdomain, settings_path)
   end
 
-  def give_user_stripe(stripe_attributes)
-    current_user.stripe_user_id = stripe_attributes[:uid]
-    current_user.stripe_publishable_key = stripe_attributes[:info][:stripe_publishable_key]
-    current_user.stripe_token = stripe_attributes[:credentials][:token]
+  private
+
+  def set_user_stripe_attributes(user_attributes_hash)
+    current_user.stripe_user_id = user_attributes_hash["stripe_user_id"]
+    current_user.stripe_publishable_key = user_attributes_hash["stripe_publishable_key"]
+    current_user.stripe_access_token = user_attributes_hash["access_token"]
+    current_user.stripe_refresh_token = user_attributes_hash["refresh_token"]
     current_user.save
   end
 

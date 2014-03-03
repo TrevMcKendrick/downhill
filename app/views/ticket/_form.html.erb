@@ -1,7 +1,7 @@
 <div id="ticket-group">
     <%= f.fields_for :ticket do |builder| %>
       <%= builder.label :name, "Ticket name" %>
-      <%= builder.text_field :name, :placeholder => "Ticket name", :name => "event[ticket][name][]" %>
+      <%= builder.text_field :name, :placeholder => "Ticket name", :name => "event[ticket][ticket_type][]" %>
     <br>
       <%= builder.label :price, "Ticket price" %>
       <%= builder.text_field :price, :placeholder => "0.00", :name => "event[ticket][price][]" %>

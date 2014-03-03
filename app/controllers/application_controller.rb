@@ -9,15 +9,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def after_sign_in_path_for(resource)
-    if resource.subdomain == subdomain(request.url)
-      profile_path
-    else
-      if Rails.application.config.force_ssl == true
-        "https://#{resource.subdomain}." + host(request.url) + ":3000#{profile_path}" 
-        else
-        "http://#{resource.subdomain}." + host(request.url) + ":3000#{profile_path}" 
-      end
-    end
+    subdomain_with_https_or_http(request.domain + ":3000")
   end
 
   def subdomain(url)
@@ -26,6 +18,30 @@ class ApplicationController < ActionController::Base
 
   def host(url)
     Domainatrix.parse(url).host
+  end
+
+  def path(url)
+    string = Domainatrix.parse(url).path
+    string[0] = ""
+    string
+  end
+
+  def subdomain_with_https_or_http(url, subdomain="", path="")
+    if subdomain == ""
+      separator = ""
+    else
+      separator = "."
+    end
+
+    if Rails.application.config.force_ssl == true
+        "https://#{subdomain}" + separator + url + path
+      else
+        "http://#{subdomain}" + separator + url + path 
+    end
+  end
+
+  def env_is_production?
+    Rails.env == "production"
   end
 
   def configure_devise_permitted_parameters

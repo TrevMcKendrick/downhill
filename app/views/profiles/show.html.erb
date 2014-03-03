@@ -1,11 +1,12 @@
 <h3>Your events</h3>
 
-<%e= @user.events.each do |event| %>
-  <%= link_to event.title, event_url(:subdomain => @user.subdomain, :id => event.id) %> |
+<% @user.events.each do |event| %>
+  <strong><%= event.title %></strong> |
+  <%= link_to "See live", public_event_url(:subdomain => @user.subdomain, :path => event.path) %>
   <%= link_to "Edit", edit_event_url(:subdomain => @user.subdomain, :id => event.id), :class => "item"  %>
-  <%= link_to "Delete", event_url(:subdomain => @user.subdomain, :id => event.id), method: :delete, data: { confirm: 'Are you sure?' }, :class => "item" %>
+  <%= link_to "Delete", event, method: :delete, data: { confirm: 'Are you sure?' }, :class => "item" %>
   <br>
 <% end %>
 
-<br><br><br><br><br>
+<br><br><br>
 <%= button_to "Create New Event", new_event_path, :class => "btn btn-primary", :method => "get" %>
