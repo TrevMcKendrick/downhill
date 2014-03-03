@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby "1.9.3"
+
 gem 'pg', group: :production
 
 gem 'capistrano'
@@ -18,7 +20,7 @@ gem 'rails', '4.0.1'
 gem 'pry', group: :development
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', group: :development
+gem 'sqlite3', :group => :development
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

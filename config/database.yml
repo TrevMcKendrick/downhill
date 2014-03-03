@@ -20,8 +20,8 @@ test:
 
 production:
   adapter: postgresql
-  database: production
+  database: swift_production
   pool: 5
   timeout: 5000
-  username: CREATEUSERNAME
-  password: CREATEPASSWORD
+  username: trevor
+  password: Jello2you
