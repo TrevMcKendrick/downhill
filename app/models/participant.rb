@@ -18,10 +18,6 @@ class Participant < User
     )
   end
 
-  def stripe_price(price)
-      price * 100
-  end
-
   def self.create_charge(amount, currency, customer, description, fee, user_access_token)
     begin
       charge = Stripe::Charge.create(
@@ -38,6 +34,10 @@ class Participant < User
       # The card has been declined
       binding.pry
     end
+  end
+
+  def stripe_price(price)
+      price * 100
   end
 
 end

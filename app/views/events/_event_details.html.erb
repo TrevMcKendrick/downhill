@@ -10,6 +10,22 @@
 <%= f.label :description %>
 <%= f.text_area :description, :cols => "50", :rows => "5", :placeholder => "Event description" %>
   <br>
-<%= f.label :waiver_text %>
+<%= f.label :waiver, "Waiver text" %>
 <%= f.text_area :waiver, :cols => "50", :rows => "3", :placeholder => "Text so you don't get sued" %>
-  <br><br>
+  <br>
+
+<%= f.label :street_address_one, "Street Address" %>
+<%= f.text_field :street_address_one, :placeholder => "123 Parkway" %>
+  <br>
+<%= f.label :street_address_two, "Street Address" %>
+<%= f.text_field :street_address_two %>
+  <br>
+<%= f.label :city %>
+<%= f.text_field :city, :placeholder => "Mountain View" %>
+  <br>
+<%= f.label :state %>
+<%= f.text_field :state, :placeholder => "CA" %>
+  <br>
+<%= f.label :zipcode %>
+<%= f.text_field :zipcode, :placeholder => "94806" %>
+  <br>
