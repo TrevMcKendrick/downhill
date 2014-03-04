@@ -1,16 +1,26 @@
 <div id="ticket-group">
+  <br>
     <%= f.fields_for :ticket do |builder| %>
-      <%= builder.label :name, "Ticket name" %>
-      <%= builder.text_field :name, :placeholder => "Ticket name", :name => "event[ticket][ticket_type][]" %>
-    <br>
-      <%= builder.label :price, "Ticket price" %>
-      <%= builder.text_field :price, :placeholder => "0.00", :name => "event[ticket][price][]" %>
-    <br>
-       <%= builder.label :for_sale_begin, "Start date" %>
-       <%= builder.date_field :for_sale_begin, :format => "yyyy-MM-dd", :name => "event[ticket][for_sale_begin][]" %>
-    <br>
-      <%= builder.label :for_sale_end, "End date" %>
-      <%= builder.date_field :for_sale_end, :format => "yyyy-MM-dd", :name => "event[ticket][for_sale_end][]" %>
-    <br><br>
+    <div class="form-group">
+      <%= builder.label :type, "Ticket type", :class => "tlabel" %>
+      <%= builder.text_field :type, :placeholder => "Wave 1", :name => "event[ticket][ticket_type][]", :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= builder.label :price, "Ticket price", :class => "tlabel" %>
+      <%= builder.text_field :price, :placeholder => "0.00", :name => "event[ticket][price][]", :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+       <%= builder.label :for_sale_begin, "Start date", :class => "tlabel" %>
+       <%= builder.date_field :for_sale_begin, :format => "yyyy-MM-dd", :name => "event[ticket][for_sale_begin][]", :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= builder.label :for_sale_end, "End date", :class => "tlabel" %>
+      <%= builder.date_field :for_sale_end, :format => "yyyy-MM-dd", :name => "event[ticket][for_sale_end][]", :class => "form-control" %>
+    </div>
+
+    
      <% end %>
 </div>

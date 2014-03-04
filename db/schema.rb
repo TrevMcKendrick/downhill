@@ -11,16 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140303195036) do
+ActiveRecord::Schema.define(version: 20140304072710) do
 
   create_table "events", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "title"
-    t.date     "time"
     t.string   "waiver"
     t.string   "description"
-    t.decimal  "fee",                precision: 8, scale: 2
+    t.decimal  "fee",                         precision: 8, scale: 2
     t.string   "path"
     t.boolean  "live"
     t.string   "street_address_one"
@@ -28,6 +27,15 @@ ActiveRecord::Schema.define(version: 20140303195036) do
     t.string   "city"
     t.string   "state"
     t.string   "zipcode"
+    t.string   "timezone"
+    t.date     "date"
+    t.time     "time"
+    t.string   "volunteer_coordinator_email"
+    t.string   "support_email"
+    t.string   "google_maps_iframe"
+    t.string   "receipt_html"
+    t.text     "race_day_info_html"
+    t.text     "packet_pickup_info_html"
   end
 
   create_table "fees", force: true do |t|

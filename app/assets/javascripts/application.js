@@ -10,9 +10,13 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
-//= require twitter/bootstrap
+//= require jquery-1.11.0.min
+
+//= require bootstrap.min
 //= require bootstrap-datetimepicker
-//= require turbolinks
-//= require_tree .
+//= require bootstrap-wysihtml5
+//= require bootstrap-wysihtml5/locales
+
+//= require events
+//= require participants
+

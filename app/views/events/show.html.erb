@@ -3,20 +3,24 @@
 <h2><%= @event.title %></h2>
 
 <%= form_for @participant, :html => { :id => "participant_signup_form" } do |f| %>
-<div><%= f.submit "Make Payment!", :class => "btn-primary btn" if Rails.env.development? %></div>
-<h4>Sign up here!</h4><br>
+<div>
+  <%= f.submit "Make Payment!", :class => "btn-primary btn" if Rails.env.development? %>
+</div><br>
 
-  <div><%= f.label :email %>
-  <%= f.email_field :email, :autofocus => true, :value => "#{rand}@gmail.com" if Rails.env.development? %></div>
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.email_field :email, :autofocus => true, :class => "form-control", :value => "#{rand}@gmail.com" if Rails.env.development? %>
+  </div>
 
-  <div><%= f.label :password %>
-  <%= f.password_field :password, :value => "test" if Rails.env.development? %></div><br>
+  <div class="form-group">
+    <%= f.label :password %>
+    <%= f.password_field :password, :class => "form-control", :value => "test" if Rails.env.development? %>
+  </div>
 
     <h5><%= "How many tickets?" %></h5>
     <% @event.tickets.each do |ticket| %>
-      <%= "#{ticket.ticket_type} – $ #{ticket.price}" %><br>
-      <%= select_tag "event[#{ticket.ticket_type}]", options_for_select(ticket_collection(12)) %>
-      <br>
+      <%= label_tag "#{ticket.ticket_type} – $#{ticket.price}" %><br>
+      <%= select_tag "event[#{ticket.ticket_type}]", options_for_select(ticket_collection(12)), :class => "form-control" %>
     <% end %>
 
 <br>

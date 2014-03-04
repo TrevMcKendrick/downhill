@@ -14,4 +14,5 @@ module EventsHelper
       Date.today.year
     end
   end
+
 end
