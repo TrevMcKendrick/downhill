@@ -11,27 +11,14 @@
     </div>
   <% end %>
 
-   <%= render 'event_details', :f => f %>
+  <%= render 'event_details', :f => f %>
 
-   <h4>Create tickets<h4>
-     <%= render "ticket/form", :f => f %> 
-     <%= button_tag "Add ticket", :id => "add_ticket", :type => "button", :class => "btn btn-info" %>
-   <br><br>
+  <%= render 'modules', :f => f %>
 
-   <h4>Create fees<h4>
-     <%= render "fee/form", :f => f %> 
-     <%= button_tag "Add fee", :id => "add_fee", :type => "button", :class => "btn btn-info" %>
-   <br><br>
+  <%= render 'hidden_modules', :f => f %>
 
   <div class="actions">
     <%= f.submit "Save Event", :class => "btn btn-primary" %>
-  </div>
-
-  <div class="hide" id="new_ticket_form">
-    <%= render "ticket/form", :f => f %> 
-  </div>
-  <div class="hide" id="new_fee_form">
-    <%= render "fee/form", :f => f %> 
   </div>
 
 <% end %>

@@ -1,0 +1,21 @@
+<div id="wave-group">
+  <br>
+    <%= f.fields_for :wave do |builder| %>
+
+    <div class="form-group">
+      <%= builder.label :start_time, :class => "wlabel" %>
+      <%= builder.time_field :start_time, :format => "yyyy-MM-dd", :name => "event[wave][start_time][]", :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= builder.label :quantity, "Number of people in wave", :class => "wlabel" %>
+      <%= builder.text_field :quantity, :placeholder => "700", :name => "event[wave][quantity][]", :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+       <%= builder.label :title, "Title", :class => "wlabel" %>
+       <%= builder.text_field :title, :format => "yyyy-MM-dd", :name => "event[wave][title][]", :class => "form-control" %>
+    </div>
+
+     <% end %>
+</div>

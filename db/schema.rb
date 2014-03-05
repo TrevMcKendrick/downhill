@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140304072710) do
+ActiveRecord::Schema.define(version: 20140305090501) do
 
   create_table "events", force: true do |t|
     t.datetime "created_at"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20140304072710) do
     t.string   "title"
     t.string   "waiver"
     t.string   "description"
-    t.decimal  "fee",                         precision: 8, scale: 2
     t.string   "path"
     t.boolean  "live"
     t.string   "street_address_one"
@@ -33,9 +32,10 @@ ActiveRecord::Schema.define(version: 20140304072710) do
     t.string   "volunteer_coordinator_email"
     t.string   "support_email"
     t.string   "google_maps_iframe"
-    t.string   "receipt_html"
+    t.text     "receipt_html"
     t.text     "race_day_info_html"
     t.text     "packet_pickup_info_html"
+    t.boolean  "published"
   end
 
   create_table "fees", force: true do |t|
@@ -66,11 +66,25 @@ ActiveRecord::Schema.define(version: 20140304072710) do
     t.decimal  "price",          precision: 8, scale: 2
     t.integer  "event_id"
     t.string   "ticket_type"
+    t.boolean  "published"
   end
 
   create_table "user_events", force: true do |t|
     t.integer  "user_id"
     t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "waiver_signed"
+  end
+
+  create_table "user_tickets", force: true do |t|
+    t.integer "user_id"
+    t.integer "ticket_id"
+  end
+
+  create_table "user_waves", force: true do |t|
+    t.integer  "wave_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -105,5 +119,14 @@ ActiveRecord::Schema.define(version: 20140304072710) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "waves", force: true do |t|
+    t.time     "start_time"
+    t.integer  "quantity"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "event_id"
+  end
 
 end

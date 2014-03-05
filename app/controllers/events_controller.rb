@@ -3,7 +3,6 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
   before_action :set_public_event, only: [:show]
 
-
   # GET /events
   # GET /events.json
   def index
@@ -51,6 +50,18 @@ class EventsController < ApplicationController
       @event.fees.build(
         :name => @fee_names[index],
         :amount => @fee_amounts[index]
+        )
+    end
+
+    @wave_start_times = wave_params[:wave][:start_time]
+    @wave_titles = wave_params[:wave][:title]
+    @wave_quantities = wave_params[:wave][:quantity]
+
+    (0...(@wave_start_times.count - 1)).each do |index|
+      @event.waves.build(
+        :start_time => @wave_start_times[index],
+        :title => @wave_titles[index],
+        :quantity => @wave_quantities[index],
         )
     end
 
@@ -123,12 +134,17 @@ class EventsController < ApplicationController
         :google_maps_iframe, 
         :receipt_html,
         :packet_pickup_info_html,
-        :race_day_info_html
+        :race_day_info_html,
+        :published
         )
     end
 
     def ticket_params
       params.require(:event).permit(ticket: [{:ticket_type => [], :price => [], :for_sale_begin => [], :for_sale_end => [] }])
+    end
+
+    def wave_params
+      params.require(:event).permit(wave: [{:start_time => [], :title => [], :quantity => [] }])
     end
 
     def fee_params

@@ -11,6 +11,10 @@ $(document).ready(function() {
     $('#fee-group').append($("#new_fee_form").html());
   });
 
+   $("#add_wave").on("click",function(){
+    $('#wave-group').append($("#new_wave_form").html());
+  });
+
   $('.editor').wysihtml5({
     "font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
     "emphasis": true, //Italics, bold, etc. Default true

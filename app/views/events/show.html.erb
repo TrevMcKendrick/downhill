@@ -1,35 +1,39 @@
-<%= render 'stripe_publishable_key' %>
+<% if @event.published %>
+  <%= render 'stripe_publishable_key' %>
 
-<h2><%= @event.title %></h2>
+  <h2><%= @event.title %></h2>
 
-<%= form_for @participant, :html => { :id => "participant_signup_form" } do |f| %>
-<div>
-  <%= f.submit "Make Payment!", :class => "btn-primary btn" if Rails.env.development? %>
-</div><br>
+  <%= form_for @participant, :html => { :id => "participant_signup_form" } do |f| %>
+  <div>
+    <%= f.submit "Make Payment!", :class => "btn-primary btn" if Rails.env.development? %>
+  </div><br>
 
-  <div class="form-group">
-    <%= f.label :email %>
-    <%= f.email_field :email, :autofocus => true, :class => "form-control", :value => "#{rand}@gmail.com" if Rails.env.development? %>
-  </div>
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.email_field :email, :autofocus => true, :class => "form-control", :value => "#{rand}@gmail.com" if Rails.env.development? %>
+    </div>
 
-  <div class="form-group">
-    <%= f.label :password %>
-    <%= f.password_field :password, :class => "form-control", :value => "test" if Rails.env.development? %>
-  </div>
+    <div class="form-group">
+      <%= f.label :password %>
+      <%= f.password_field :password, :class => "form-control", :value => "test" if Rails.env.development? %>
+    </div>
 
-    <h5><%= "How many tickets?" %></h5>
-    <% @event.tickets.each do |ticket| %>
-      <%= label_tag "#{ticket.ticket_type} – $#{ticket.price}" %><br>
-      <%= select_tag "event[#{ticket.ticket_type}]", options_for_select(ticket_collection(12)), :class => "form-control" %>
-    <% end %>
+      <h5>What kind of ticket?</h5>
+      <%= select_tag "ticket", options_for_select(ticket_titles), :class => "form-control" %>
 
-<br>
-<%= f.check_box :first_name %>
-Click to agree to waiver
-<p><%= @event.waiver %></p>
-<br>
-<%= render 'payment_info' %>
+      <h5>Which wave?</h5>
+        <%= select_tag "wave", options_for_select(wave_titles), :class => "form-control" %>
 
-<div><%= f.submit "Make Payment!", :class => "btn-primary btn" %></div>
+  <br>
+  <%= f.check_box :first_name %>
+  Click to agree to waiver
+  <p><%= @event.waiver %></p>
+  <br>
+  <%= render 'payment_info' %>
 
+  <div><%= f.submit "Make Payment!", :class => "btn-primary btn" %></div>
+
+  <% end %>
+  <% else %>
+    <%= page_not_found %>
 <% end %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_time: 2014-03-04 14:58:39
+  quantity: 1
+  title: MyString
+
+two:
+  start_time: 2014-03-04 14:58:39
+  quantity: 1
+  title: MyString

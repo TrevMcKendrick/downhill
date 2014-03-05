@@ -1,6 +1,5 @@
 Downhill::Application.routes.draw do
   
-  
   match '/users/auth/:action/callback' => 'omniauth_callbacks#authorize_stripe', via: [:get, :post]
 
   devise_for :users

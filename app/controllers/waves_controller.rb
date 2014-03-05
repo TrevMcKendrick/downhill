@@ -1,0 +1,2 @@
+class WavesController < ApplicationController
+end
