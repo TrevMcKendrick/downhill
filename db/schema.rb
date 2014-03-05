@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20140305090501) do
     t.datetime "updated_at"
     t.string   "title"
     t.string   "waiver"
-    t.string   "description"
+    t.text     "description"
     t.string   "path"
     t.boolean  "live"
     t.string   "street_address_one"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20140305090501) do
     t.time     "time"
     t.string   "volunteer_coordinator_email"
     t.string   "support_email"
-    t.string   "google_maps_iframe"
+    t.text     "google_maps_iframe"
     t.text     "receipt_html"
     t.text     "race_day_info_html"
     t.text     "packet_pickup_info_html"
@@ -78,8 +78,10 @@ ActiveRecord::Schema.define(version: 20140305090501) do
   end
 
   create_table "user_tickets", force: true do |t|
-    t.integer "user_id"
-    t.integer "ticket_id"
+    t.integer  "user_id"
+    t.integer  "ticket_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "user_waves", force: true do |t|
