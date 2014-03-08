@@ -16,7 +16,7 @@
 //= require bootstrap-datetimepicker
 //= require bootstrap-wysihtml5
 //= require bootstrap-wysihtml5/locales
-
+//= require jquery_ujs
 //= require events
 //= require participants
 

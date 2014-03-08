@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 ruby "1.9.3"
 
+gem 'jquery-rails', '~> 2.1'
+
 gem 'bootstrap-wysihtml5-rails'
 
 gem 'pg', group: :production
