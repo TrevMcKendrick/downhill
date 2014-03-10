@@ -1,0 +1,76 @@
+
+<div class="modal fade in" id="ticketModal" tabindex="-1" role="dialog" style="display: none;" aria-hidden="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          ×
+        </button>
+        <h4 class="modal-title">
+          Create Ticket
+        </h4>
+      </div>
+      <div class="modal-body no-padding">
+
+          <%= form_for @ticket, :url => { :action => :create }, html: {:class => "smart-form"} do |f| %>
+              <fieldset>
+          
+                <section>
+                  <div class="row">
+                    <%= f.label :ticket_type, "Ticket name", :class => "label col col-2" %>
+                    <div class="col col-10">
+                      <label class="input"> <i class="icon-append fa fa-ticket"></i>
+                        <%= f.text_field :ticket_type, :placeholder => "E.g. VIP" %>
+                      </label>
+                    </div>
+                  </div>
+                </section>
+
+                <section>
+                  <div class="row">
+                    <%= f.label :price, :class => "label col col-2" %>
+                    <div class="col col-10">
+                      <label class="input"> <i class="icon-append fa fa-money"></i>
+                        <%= f.text_field :price, :placeholder => "45.95" %>
+                      </label>
+                    </div>
+                  </div>
+                </section>
+
+                <section>
+                  <div class="row">
+                    <%= f.label :for_sale_begin, "Start date", :class => "label col col-2" %>
+                    <div class="col col-10">
+                      <label class="input"> <i class="icon-append fa fa-calendar-o"></i>
+                        <%= f.date_field :for_sale_begin, :format => "yyyy-MM-dd", :placeholder => "45.95" %>
+                      </label>
+                    </div>
+                  </div>
+                </section>
+
+                 <section>
+                  <div class="row">
+                    <%= f.label :for_sale_end, "End date", :class => "label col col-2" %>
+                    <div class="col col-10">
+                      <label class="input"> <i class="icon-append fa fa-calendar-o"></i>
+                        <%= f.date_field :for_sale_end, :format => "yyyy-MM-dd", :placeholder => "45.95" %>
+                      </label>
+                    </div>
+                  </div>
+                </section>
+
+
+              </fieldset>
+              
+              <footer>
+                <%= f.submit "Create Ticket", :class => "btn btn-primary" %>
+              </footer>
+              <% end %>
+            </form>           
+            
+
+      </div>
+
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>

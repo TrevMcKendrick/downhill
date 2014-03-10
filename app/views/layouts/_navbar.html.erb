@@ -1,30 +1,80 @@
-<div class="navbar navbar-default">
+<header id="header">
+      <div id="logo-group">
 
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="<%= root_url %>">Swift</a>
+        <!-- PLACE YOUR LOGO HERE -->
+        <span id="logo"><%= image_tag "smart-admin/logo.png" %></span>
+
+        <!-- END LOGO PLACEHOLDER -->
+
+        <!-- Note: The activity badge color changes when clicked and resets the number to 0
+        Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->
+        
+
+        <!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
+        
+        <!-- END AJAX-DROPDOWN -->
       </div>
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-              <% if user_signed_in? %>
-        <li><%= link_to 'Dashboard', profile_path %></li>
-        <li><%= link_to "Settings", settings_path %></li>
-        <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-        <li><%= link_to "Logged in as #{current_user.email}", profile_path %></li>
-              <% else %>
-        <li><%= link_to "Home", "http://#{DOMAIN_NAME}" %></li>            
-        <li><%= link_to "Login", new_user_session_path  %></li>
-        <li><%= button_to "Sign up",  new_user_registration_path, :class => "btn btn-default navbar-btn", :method => "get" %></li>
+      <!-- projects dropdown -->
+   
+      <!-- end projects dropdown -->
+
+      <!-- pulled right: nav area -->
+      <div class="pull-right">
+
+        <!-- collapse menu button -->
+        <div id="hide-menu" class="btn-header pull-right">
+          <span> <a href="javascript:void(0);" title="Collapse Menu"><i class="fa fa-bars"></i></a> </span>
+        </div>
+        <!-- end collapse menu -->
+
+        <!-- logout button -->
+        <div id="logout" class="btn-header transparent pull-right">
+          <span>
+            <%= link_to destroy_user_session_path, :method => :delete do %>
+             <i class="fa fa-sign-out"></i>
             <% end %>
-        </ul>
-      </div>
-    </div>
+          </span>
+        </div>
+        <!-- end logout button -->
 
-</div>
+        <!-- search mobile button (this is hidden till mobile view port) -->
+        <div id="search-mobile" class="btn-header transparent pull-right">
+          <span> <a href="javascript:void(0)" title="Search"><i class="fa fa-search"></i></a> </span>
+        </div>
+        <!-- end search mobile button -->
+
+        <!-- input: search field -->
+        <form action="#search.html" class="header-search pull-right">
+          <input type="text" placeholder="Find reports and more" id="search-fld">
+          <button type="submit">
+            <i class="fa fa-search"></i>
+          </button>
+          <a href="javascript:void(0);" id="cancel-search-js" title="Cancel Search"><i class="fa fa-times"></i></a>
+        </form>
+        <!-- end input: search field -->
+
+        <!-- multiple lang dropdown : find all flags in the image folder -->
+        <ul class="header-dropdown-list hidden-xs">
+          <li>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+              <%= image_tag "smart-admin/flags/us.png" %><span> US </span> <i class="fa fa-angle-down"></i> </a>
+            <ul class="dropdown-menu pull-right">
+              <li class="active">
+                <a href="javascript:void(0);"><%= image_tag "smart-admin/flags/us.png" %> US </a>
+              </li>
+              <!-- <li> 
+                <a href="javascript:void(0);"><img alt="" src="img/flags/es.png"> Spanish</a>
+              </li>
+              <li>
+                <a href="javascript:void(0);"><img alt="" src="img/flags/de.png"> German</a>
+              </li> -->
+            </ul>
+          </li>
+        </ul>
+        <!-- end multiple lang -->
+
+      </div>
+      <!-- end pulled right: nav area -->
+
+    </header>

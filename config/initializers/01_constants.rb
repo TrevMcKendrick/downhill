@@ -4,6 +4,7 @@ if Rails.env.development? or Rails.env.test?
   STRIPE_CLIENT_ID = "ca_3Z5r7GyNyisAgSS23x7STf4gaVYlIQ8Z"
   ROOT_DOMAIN_NAME = "lvh.me"
   DOMAIN_NAME = "#{ROOT_DOMAIN_NAME}:3000"
+  # DOMAIN_NAME = "http://49645611.ngrok.com"
   SWIFT_FEE = 2.95
 elsif Rails.env.production?
   Stripe.api_key = "sk_live_EpiTQiYsFlvKQA3T1rs3EiHg"

@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:edit, :update, :destroy]
+  before_action :set_event, only: [:edit, :update, :destroy, :registration]
   before_action :authenticate_user!, except: [:show]
   before_action :set_public_event, only: [:show]
 
@@ -7,6 +7,9 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = current_user.events
+  end
+
+  def registration
   end
 
   # GET /events/1
@@ -79,12 +82,10 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
-    respond_to do |format|
-      if @event.update(event_params)
-        format.html { redirect_to profile_path, alert: 'Event was successfully created.' }
-      else
-        format.html { render action: 'edit' }
-      end
+    if @event.update(event_params)
+      redirect_to :back
+    else
+      redirect_to "Google.com"
     end
   end
 

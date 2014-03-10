@@ -57,4 +57,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  private
+
+  def get_event_from_params
+    @event = Event.find_by id: params[:event_id]
+  end
+
 end

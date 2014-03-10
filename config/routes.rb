@@ -10,11 +10,45 @@ Downhill::Application.routes.draw do
   resources :users
   resources :participants
 
+
+  get '/:event_id/fee' => "fee#index", :as => "fees"
+  post '/fee/:event_id' => "fee#create", :as => "/"
+  get '/fee/new' => "fee#new", :as => "new_fee"
+  get '/edit/:id/fee' => "fee#edit", :as => "edit_fee"
+  get '/fee/:id' => "fee#show", :as => "fee"
+  put '/fee/:id' => "fee#update"
+  patch '/fee/:id' => "fee#update"
+  delete '/fee/:id' => "fee#destroy"
+
+  get '/:event_id/ticket' => "ticket#index", :as => "tickets"
+  post '/ticket/:event_id' => "ticket#create", :as => "/"
+  get '/ticket/new' => "ticket#new", :as => "new_ticket"
+  get '/edit/:id/ticket' => "ticket#edit", :as => "edit_ticket"
+  get '/ticket/:id' => "ticket#show", :as => "ticket"
+  put '/ticket/:id' => "ticket#update"
+  patch '/ticket/:id' => "ticket#update"
+  delete '/ticket/:id' => "ticket#destroy"
+
+  get '/:event_id/waves' => "waves#index", :as => "waves"
+  post '/waves/:event_id' => "waves#create", :as => "/"
+  get '/waves/new' => "waves#new", :as => "new_wave"
+  get '/edit/:id/waves' => "waves#edit", :as => "edit_wave"
+  get '/waves/:id' => "waves#show", :as => "wave"
+  put '/waves/:id' => "waves#update"
+  patch '/waves/:id' => "waves#update"
+  delete '/waves/:id' => "waves#destroy"
+
+
+
   get '/profile' => 'profiles#show', :path => "/dashboard"
   
-  get ':path' => 'events#show', :as => "public_event"
+  get '/events/:id/registration' => "events#edit", :as => "registration"
+  get '/events/:id/publish' => "events#edit", :as => "publish"
+  get '/events/:id/other_info' => "events#edit", :as => "other_info"
 
   resources :events
+
+  get ':path' => 'events#show', :as => "public_event"
   
   root 'home#index'  
 

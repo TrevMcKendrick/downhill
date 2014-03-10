@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+    <h1 class="page-title txt-color-blueDark">
+      <i class="fa-fw fa fa-calendar"></i>
+      <% if @event.title %>
+        <%= @event.title %>
+      <% else %>
+        <%= "New Event" %>
+      <% end %>
+    </h1>
+
+  </div>
+
+  <div class="actions">
+    <% if @event.title %>
+      <%= f.submit "Save Changes", :class => "btn btn-primary pull-right save" %>
+    <% else %>
+      <%= f.submit "Create Event", :class => "btn btn-primary pull-right save" %>
+    <% end %>
+  </div>
+</div>

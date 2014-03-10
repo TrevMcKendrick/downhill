@@ -1,0 +1,82 @@
+<!-- Left panel : Navigation area -->
+    <!-- Note: This width of the aside area can be adjusted through LESS variables -->
+    <aside id="left-panel">
+
+      <!-- User info -->
+      <div class="login-info">
+        <span> <!-- User image size is adjusted inside CSS, it should stay as it --> 
+
+          <a href="#" id="show-shortcut">
+            <!-- <img src="img/avatars/sunny.png" alt="me" class="online" />  -->
+            <span>
+              <%= current_user.email if current_user %>
+            </span>
+            <!-- <i class="fa fa-angle-down"></i> -->
+          </a> 
+
+        </span>
+      </div>
+      <!-- end user info -->
+
+      <!-- NAVIGATION : This navigation is also responsive
+
+      To make this navigation dynamic please make sure to link the node
+      (the reference to the nav > ul) after page load. Or the navigation
+      will not initialize.
+      -->
+
+
+      <nav>
+        <ul>
+
+          <li>
+            <%= link_to profile_path do %>
+               <i class="fa fa-lg fa-fw fa-home"></i>
+               <span class="menu-item-parent">Dashboard</span>
+            <% end %>
+          </li>
+
+          <li>
+            <a href="#"><i class="fa fa-lg fa-fw fa-calendar"></i> <span class="menu-item-parent">Events</span></a>
+            <ul>
+              <li>
+                <%= link_to "All Events", events_path %>
+              </li>
+              <li>
+                <%= link_to "Create New Event", new_event_path %>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+           <%= link_to "#" do %>
+               <i class="fa fa-lg fa-fw fa-users"></i>
+               <span class="menu-item-parent">Customers</span>
+           <% end %>
+          </li>
+
+           <li>
+           <%= link_to "#" do %>
+               <i class="fa fa-lg fa-fw fa-bar-chart-o"></i>
+               <span class="menu-item-parent">Reports</span>
+           <% end %>
+          </li>
+
+          <li>
+             <%= link_to "#" do %>
+               <i class="fa fa-lg fa-fw fa-cog"></i>
+               <span class="menu-item-parent">Settings</span>
+             <% end %>
+            <ul>
+              <li>
+                <%= link_to "Payments", settings_path %>
+              </li>
+            </ul>
+          </li>
+
+   
+        </ul>
+      </nav>
+      <span class="minifyme"> <i class="fa fa-arrow-circle-left hit"></i> </span>
+
+    </aside>

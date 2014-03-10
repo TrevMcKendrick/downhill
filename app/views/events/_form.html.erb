@@ -1,24 +1,13 @@
+<%= render "layouts/event_header"  %>
+
 <%= form_for(@event) do |f| %>
-  <% if @event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
 
-      <ul>
-      <% @event.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'errors', :f => f %>
+  <%= render 'event_details', :f => f if last_path(request.path) == "edit" %>
+  <%= render 'registration', :f => f if last_path(request.path) == "registration" %>
+  <%= render 'publish', :f => f if last_path(request.path) == "publish" %>
+  <%= render 'other_info', :f => f if last_path(request.path) == "other_info" %>
 
-  <%= render 'event_details', :f => f %>
-
-  <%= render 'modules', :f => f %>
-
-  <%= render 'hidden_modules', :f => f %>
-
-  <div class="actions">
-    <%= f.submit "Save Event", :class => "btn btn-primary" %>
-  </div>
+  <%= f.submit :class => "btn btn-primary" %>
 
 <% end %>

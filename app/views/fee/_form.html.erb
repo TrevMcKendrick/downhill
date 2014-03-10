@@ -1,14 +1,15 @@
-<div id="fee-group">
-  <br>
-    <%= f.fields_for :fee do |builder| %>
-    <div class="form-group">
-      <%= builder.label :name, "Fee name", :class => "flabel" %>
-      <%= builder.text_field :name, :placeholder => "Fee name", :name => "event[fee][name][]", :class => "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= builder.label :amount, "Fee amount", :class => "flabel" %>
-      <%= builder.text_field :price, :placeholder => "0.00", :name => "event[fee][amount][]", :class => "form-control" %>
-    </div>
+<%= render "layouts/event_header" %>
 
-     <% end %>
-</div>
+<%= form_for @fee do |f| %>
+  <div class="form-group">
+    <%= f.label :name, "Fee name", :class => "flabel" %>
+    <%= f.text_field :name, :placeholder => "Fee name", :name => "fee[name]", :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :amount, "Fee amount", :class => "flabel" %>
+    <%= f.text_field :amount, :placeholder => "0.00", :name => "fee[amount]", :class => "form-control" %>
+  </div>
+
+  <%= f.submit "Save Changes", :class => "btn btn-primary" %>
+
+<% end %>

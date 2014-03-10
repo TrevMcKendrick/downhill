@@ -1,14 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <%= render "layouts/header" %>
+<body class="">
 <%= render "layouts/navbar" %>
+<%= render "layouts/left_panel" %>
 
-<body>
-  <div class="container-fluid body">
-    <div class="row">
-        <%= yield %>
+  <div id="main" role="main">
+    <%= render "layouts/ribbon" %>
+    <div id="content">
+      <%= yield %>
+      <%#= render "layouts/modals" %>
     </div>
   </div>
+  
+  
+<%= render 'layouts/javascript' %>
 </body>
 </html>

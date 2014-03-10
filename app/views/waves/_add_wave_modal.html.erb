@@ -1,0 +1,65 @@
+
+<div class="modal fade in" id="waveModal" tabindex="-1" role="dialog" style="display: none;" aria-hidden="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          ×
+        </button>
+        <h4 class="modal-title">
+          Create Wave
+        </h4>
+      </div>
+      <div class="modal-body no-padding">
+
+          <%= form_for @wave, :url => { :action => :create }, html: {:class => "smart-form"} do |f| %>
+          
+              <fieldset>
+          
+                <section>
+                  <div class="row">
+                    <%= f.label :title, "Wave name", :class => "label col col-2" %>
+                    <div class="col col-10">
+                      <label class="input"> <i class="icon-append fa fa-ticket"></i>
+                        <%= f.text_field :title, :placeholder => "E.g. 1st Wave" %>
+                      </label>
+                    </div>
+                  </div>
+                </section>
+
+                <section>
+                  <div class="row">
+                    <%= f.label :quantity, :class => "label col col-2" %>
+                    <div class="col col-10">
+                      <label class="input"> <i class="icon-append fa fa-money"></i>
+                        <%= f.text_field :quantity, :placeholder => "750" %>
+                      </label>
+                    </div>
+                  </div>
+                </section>
+
+                <section>
+                  <div class="row">
+                    <%= f.label :start_time, "Start date", :class => "label col col-2" %>
+                    <div class="col col-10">
+                      <label class="input"> <i class="icon-append fa fa-calendar-o"></i>
+                        <%= f.date_field :start_time, :format => "yyyy-MM-dd", :placeholder => "3:30 pm" %>
+                      </label>
+                    </div>
+                  </div>
+                </section>
+
+              </fieldset>
+              
+              <footer>
+                <%= f.submit "Create Wave", :class => "btn btn-primary" %>
+              </footer>
+              <% end %>
+            </form>           
+            
+
+      </div>
+
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>

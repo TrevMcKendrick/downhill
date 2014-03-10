@@ -1,0 +1,80 @@
+<%= render "layouts/event_header"  %>
+<%= render "add_ticket_modal"  %>
+
+<section id="widget-grid" class="">
+        
+          <!-- row -->
+          <div class="row">
+        
+            <!-- NEW WIDGET START -->
+            <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
+        
+            <div class="jarviswidget jarviswidget-sortable jarviswidget-color-blueLight" id="wid-id-0" data-widget-fullscreenbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-colorbutton="false"  data-widget-editbutton="false" role="widget" style="" data-widget-attstyle="jarviswidget-color-green">
+
+              <header role="heading">
+                  <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                  
+              </header>
+        
+                <!-- widget div-->
+                <div role="content">
+  
+                  <!-- widget content -->
+                  <div class="widget-body no-padding">
+
+                    
+                    <!-- drop down filter -->
+
+                      <!-- end search filter box -->
+
+                     
+                    <div class="dt-wrapper">
+                      <table id="dt_basic" class="table table-striped table-bordered table-hover dataTable" aria-describedby="dt_basic_info">
+                      <thead>
+                        <tr role="row">
+                          <th class="sorting" role="columnheader" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 150px;">Type</th>
+                          <th class="sorting" role="columnheader" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Phone: activate to sort column ascending" style="width: 126px;">Price</th>
+                          <th class="sorting" role="columnheader" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 150px;">Quantity</th>
+                          <th class="sorting" role="columnheader" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Company: activate to sort column ascending" style="width: 110px;">Sale Begins</th>
+                          <th class="sorting" role="columnheader" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Zip: activate to sort column ascending" style="width: 83px;">Sale Ends</th>
+                        </tr>
+                      </thead>
+                      <tbody role="alert" aria-live="polite" aria-relevant="all">
+                      <% @tickets.each do |ticket| %> 
+                          <tr class="<%= cycle("odd", "even") -%>">
+                            <td class=" "><%= link_to ticket.ticket_type, edit_ticket_path(ticket) %></td>
+                            <td class=" "><%= "$ #{ticket.price}" %></td>
+                            <td class=" "><%= "#{ticket.quantity - ticket.users.count}/#{ticket.quantity}" %></td>
+                            <td class=" "><%= ticket.for_sale_begin %></td>
+                            <td class=" "><%= ticket.for_sale_begin %></td>
+                          </tr>
+                      <% end %>
+                      </tbody>
+                    </table>
+
+                  </div>
+                
+              
+
+                    </div>
+
+                  </div>
+                  <a data-toggle="modal" href="#ticketModal" class="btn btn-success btn-lg pull-left header-btn hidden-mobile"><i class="fa fa-circle-arrow-up fa-lg"></i>Add Ticket</a>
+        
+                  </div>
+                  <!-- end widget content -->
+        
+                </div>
+                <!-- end widget div -->
+        
+              </div>
+            </article>
+            <!-- WIDGET END -->
+        
+          </div>
+        
+          <!-- end row -->
+        
+        </section>
+
+

@@ -10,13 +10,16 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery-1.11.0.min
 
+// require bootstrap-wysihtml5/locales/
+
+
+//= require jquery-2.1.0
+//= require jquery_ujs
 //= require bootstrap.min
 //= require bootstrap-datetimepicker
 //= require bootstrap-wysihtml5
-//= require bootstrap-wysihtml5/locales
-//= require jquery_ujs
 //= require events
 //= require participants
+//= require smart-admin/app
 
