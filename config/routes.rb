@@ -38,6 +38,14 @@ Downhill::Application.routes.draw do
   patch '/waves/:id' => "waves#update"
   delete '/waves/:id' => "waves#destroy"
 
+  get '/:event_id/promo_codes' => "referral_codes#index", :as => "referral_codes"
+  post '/promo_codes/:event_id' => "referral_codes#create", :as => "/"
+  get '/promo_codes/new' => "referral_codes#new", :as => "new_referral_code"
+  get '/edit/:id/promo_codes' => "referral_codes#edit", :as => "edit_referral_code"
+  get '/promo_codes/:id' => "referral_codes#show", :as => "referral_code"
+  put '/promo_codes/:id' => "referral_codes#update"
+  patch '/promo_codes/:id' => "referral_codes#update"
+  delete '/promo_codes/:id' => "referral_codes#destroy"
 
 
   get '/profile' => 'profiles#show', :path => "/dashboard"

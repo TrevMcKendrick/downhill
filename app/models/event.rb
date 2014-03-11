@@ -6,4 +6,6 @@ class Event < ActiveRecord::Base
   has_many :fees
   has_many :waves
 
+  has_many :referral_codes, :as => :codeable
+
 end

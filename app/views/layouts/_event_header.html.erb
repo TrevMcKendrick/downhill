@@ -43,6 +43,20 @@
         <% end %>
       <% end %>
 
+      <%= content_tag(:li, nil, :class => tab_active?("promo_codes")) do %>
+        <%= link_to referral_codes_path(@event) do %>
+          <i class="fa fa-envelope-o"></i>
+          <span class="hidden-mobile hidden-tablet">Promo Codes</span>
+        <% end %>
+      <% end %>
+
+      <%= content_tag(:li, nil, :class => tab_active?("affiliates")) do %>
+        <%= link_to referral_codes_path(@event) do %>
+          <i class="fa fa-envelope-o"></i>
+          <span class="hidden-mobile hidden-tablet">Affiliates</span>
+        <% end %>
+      <% end %>
+
       <%= content_tag(:li, nil, :class => tab_active?("publish")) do %>
         <%= link_to publish_path(@event) do %>
           <i class="fa fa-play"></i>

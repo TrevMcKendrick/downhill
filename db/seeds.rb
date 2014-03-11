@@ -324,34 +324,75 @@ user_wave = UserWave.create([
 user_ticket = UserTicket.create([
   {
     ticket_id: 1,
-    user_id: 1
+    user_id: 1,
+    referral_code_id:1
   },
   {
     ticket_id: 1,
-    user_id: 2
+    user_id: 2,
+    referral_code_id:2
   },
   {
     ticket_id: 1,
-    user_id: 3
+    user_id: 3,
+    referral_code_id:1
   },
   {
     ticket_id: 1,
-    user_id: 4
+    user_id: 4,
+    referral_code_id:1
   },
    {
     ticket_id: 2,
-    user_id: 1
+    user_id: 1,
+    referral_code_id:3
   },
   {
     ticket_id: 2,
-    user_id: 2
+    user_id: 2,
+    referral_code_id:3
   },
   {
     ticket_id: 2,
-    user_id: 3
+    user_id: 3,
+    referral_code_id:3
   },
   {
     ticket_id: 2,
-    user_id: 4
+    user_id: 4,
+    referral_code_id:3
+  }
+  ])
+
+referral_code = ReferralCode.create([
+  {
+  name: "50% Facebook July 2013",
+  code: "fb50july",
+  amount: 50,
+  discount_type: "percent",
+  codeable_id: 1, 
+  codeable_type: "Event",
+  published: true,
+  quantity: 100
+  },
+  {
+  name: "$10 Twitter back to school",
+  code: "twitterbts10",
+  amount: 10,
+  discount_type: "flat_rate",
+  codeable_id: 1, 
+  codeable_type: "Event",
+  published: true,
+  quantity: 50
+  },
+  {
+  name: "Email 20%",
+  code: "20please",
+  amount: 20,
+  discount_type: "percent",
+  codeable_id: 2, 
+  codeable_type: "Event",
+  published: true,
+  quantity: 275
   }
   ])

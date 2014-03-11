@@ -1,0 +1,4 @@
+<% unless stripe_set_up? %>
+  <%= link_to image_tag("stripe.png"), "https://connect.stripe.com/oauth/authorize?response_type=code&client_id=#{STRIPE_CLIENT_ID}&scope=read_write&state=1234" %><br><br>
+<% end %>
+<%= "Your stripe account is all set up!" if stripe_set_up? %>

@@ -1,4 +1,5 @@
 class Participant < User
+  has_one :referral_code, :as => :codeable
 
   def participant?
     true

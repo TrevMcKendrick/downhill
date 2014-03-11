@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140305090501) do
+ActiveRecord::Schema.define(version: 20140311065428) do
 
   create_table "events", force: true do |t|
     t.datetime "created_at"
@@ -44,6 +44,19 @@ ActiveRecord::Schema.define(version: 20140305090501) do
     t.decimal  "amount",     precision: 8, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "referral_codes", force: true do |t|
+    t.string   "name"
+    t.string   "code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "discount_type"
+    t.decimal  "amount",        precision: 8, scale: 2
+    t.integer  "codeable_id"
+    t.string   "codeable_type"
+    t.boolean  "published"
+    t.integer  "quantity"
   end
 
   create_table "settings", force: true do |t|
@@ -82,6 +95,7 @@ ActiveRecord::Schema.define(version: 20140305090501) do
     t.integer  "ticket_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "referral_code_id"
   end
 
   create_table "user_waves", force: true do |t|
