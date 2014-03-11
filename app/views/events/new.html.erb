@@ -1,1 +1,8 @@
-<%= render 'form' %>
+<%#= render "layouts/event_header"  %>
+
+<h2>Let's start with the basics...</h2>
+<%= form_for(@event) do |f| %>
+  <%= render 'new_event_details', :f => f %>
+<%= f.submit :class => "btn btn-primary" %>
+
+<% end %>

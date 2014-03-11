@@ -1,15 +1,11 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:edit, :update, :destroy, :registration]
+  before_action :set_event, only: [:edit, :update, :destroy, :show]
   before_action :authenticate_user!, except: [:show]
-  before_action :set_public_event, only: [:show]
 
   # GET /events
   # GET /events.json
   def index
     @events = current_user.events
-  end
-
-  def registration
   end
 
   # GET /events/1
@@ -31,52 +27,14 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
-
-    @ticket_types = ticket_params[:ticket][:ticket_type]
-    @ticket_prices = ticket_params[:ticket][:price]
-    @ticket_for_sale_begins = ticket_params[:ticket][:for_sale_begin]
-    @ticket_for_sale_ends = ticket_params[:ticket][:for_sale_end]
-
-    (0...(@ticket_types.count - 1)).each do |index|
-      @event.tickets.build(
-        :ticket_type => @ticket_types[index],
-        :price => @ticket_prices[index],
-        :for_sale_begin => @ticket_for_sale_begins[index],
-        :for_sale_end => @ticket_for_sale_ends[index]
-        )
-    end
-
-    @fee_names = fee_params[:fee][:name]
-    @fee_amounts = fee_params[:fee][:amount]
-
-    (0...(@fee_names.count - 1)).each do |index|
-      @event.fees.build(
-        :name => @fee_names[index],
-        :amount => @fee_amounts[index]
-        )
-    end
-
-    @wave_start_times = wave_params[:wave][:start_time]
-    @wave_titles = wave_params[:wave][:title]
-    @wave_quantities = wave_params[:wave][:quantity]
-
-    (0...(@wave_start_times.count - 1)).each do |index|
-      @event.waves.build(
-        :start_time => @wave_start_times[index],
-        :title => @wave_titles[index],
-        :quantity => @wave_quantities[index],
-        )
-    end
-
     
-    respond_to do |format|
       if @event.save
         @event.users << current_user
-        format.html { redirect_to profile_path, alert: 'Event was successfully created.' }
+        redirect_to edit_event_url(@event)
       else
-        format.html { render action: 'new' }
+        redirect_to root_url
       end
-    end
+
   end
 
   # PATCH/PUT /events/1
@@ -103,12 +61,6 @@ class EventsController < ApplicationController
 
     def set_event
       @event = current_user.events.find(params[:id])
-    end
-
-    def set_public_event
-      @user = find_user
-      events = @user.events
-      @event = events.where(:path => params[:path]).first
     end
 
     def find_user
