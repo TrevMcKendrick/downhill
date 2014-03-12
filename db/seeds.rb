@@ -396,3 +396,18 @@ referral_code = ReferralCode.create([
   quantity: 275
   }
   ])
+
+affiliate_setting = AffiliateSetting.create([
+  {
+    discount_type: "flat_rate",
+    reward_type: "both",
+    event_id: 1,
+    enabled: true
+  },
+  {
+    discount_type: "percent",
+    reward_type: "affiliate",
+    event_id: 2,
+    enabled: true
+  }
+  ])

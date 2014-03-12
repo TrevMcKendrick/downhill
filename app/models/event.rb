@@ -8,4 +8,6 @@ class Event < ActiveRecord::Base
 
   has_many :referral_codes, :as => :codeable
 
+  has_one :affiliate_setting
+
 end

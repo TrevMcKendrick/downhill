@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140311065428) do
+ActiveRecord::Schema.define(version: 20140312042729) do
+
+  create_table "affiliate_settings", force: true do |t|
+    t.string  "discount_type"
+    t.string  "reward_type"
+    t.integer "event_id"
+    t.boolean "enabled"
+  end
 
   create_table "events", force: true do |t|
     t.datetime "created_at"

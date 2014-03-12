@@ -1,6 +1,6 @@
 class TicketController < ApplicationController
-  before_action :get_event_from_params, :only => [:create, :index]
   before_action :authenticate_user!
+  before_action :get_event_from_params, :only => [:create, :index]
   before_action :find_ticket, :only => [:edit, :update]
 
   def create

@@ -1,4 +1,4 @@
 require 'test_helper'
 
-class AffiliatesHelperTest < ActionView::TestCase
+class AffiliateSettingsHelperTest < ActionView::TestCase
 end

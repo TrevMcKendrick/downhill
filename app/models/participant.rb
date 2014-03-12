@@ -1,8 +1,15 @@
 class Participant < User
   has_one :referral_code, :as => :codeable
+  before_save :make_affiliate_code
 
   def participant?
     true
+  end
+
+   def make_affiliate_code
+    referral_code = ReferralCode.new
+    referral_code.code = SecureRandom.hex(4)
+    self.referral_code = referral_code
   end
 
   def active_for_authentication?

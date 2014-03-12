@@ -47,6 +47,15 @@ Downhill::Application.routes.draw do
   patch '/promo_codes/:id' => "referral_codes#update"
   delete '/promo_codes/:id' => "referral_codes#destroy"
 
+  get '/:event_id/affiliate_settings' => "affiliate_settings#index", :as => "affiliate_settings"
+  post '/affiliate_settings/:event_id' => "affiliate_settings#create", :as => "/"
+  get '/affiliate_settings/new' => "affiliate_settings#new", :as => "new_affiliate_settings"
+  get '/edit/:id/affiliate_settings' => "affiliate_settings#edit", :as => "edit_affiliate_settings"
+  get '/affiliate_settings/:id' => "affiliate_settings#show", :as => "affiliate_setting"
+  put '/affiliate_settings/:id' => "affiliate_settings#update"
+  patch '/affiliate_settings/:id' => "affiliate_settings#update"
+  delete '/affiliate_settings/:id' => "affiliate_settings#destroy"
+
 
   get '/profile' => 'profiles#show', :path => "/dashboard"
   
