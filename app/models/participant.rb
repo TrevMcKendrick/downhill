@@ -6,7 +6,7 @@ class Participant < User
     true
   end
 
-   def make_affiliate_code
+  def make_affiliate_code
     referral_code = ReferralCode.new
     referral_code.code = SecureRandom.hex(4)
     self.referral_code = referral_code

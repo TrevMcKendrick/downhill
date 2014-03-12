@@ -1,4 +1,7 @@
 class Event < ActiveRecord::Base
+
+  before_save :make_affiliate_setting
+
   has_many :user_events
   has_many :users, :through => :user_events
 
@@ -9,5 +12,10 @@ class Event < ActiveRecord::Base
   has_many :referral_codes, :as => :codeable
 
   has_one :affiliate_setting
+
+  def make_affiliate_setting
+    affiliate_setting = AffiliateSetting.new
+    self.affiliate_setting = affiliate_setting
+  end
 
 end
