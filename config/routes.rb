@@ -56,6 +56,15 @@ Downhill::Application.routes.draw do
   patch '/affiliate_settings/:id' => "affiliate_settings#update"
   delete '/affiliate_settings/:id' => "affiliate_settings#destroy"
 
+  get '/:event_id/teams' => "teams#index", :as => "teams"
+  post '/teams/:event_id' => "teams#create", :as => "/"
+  get '/teams/new' => "teams#new", :as => "new_team"
+  get '/edit/:id/teams' => "teams#edit", :as => "edit_team"
+  get '/teams/:id' => "teams#show", :as => "team"
+  put '/teams/:id' => "teams#update"
+  patch '/teams/:id' => "teams#update"
+  delete '/teams/:id' => "teams#destroy"
+
 
   get '/profile' => 'profiles#show', :path => "/dashboard"
   

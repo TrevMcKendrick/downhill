@@ -8,6 +8,7 @@ class Event < ActiveRecord::Base
   has_many :tickets
   has_many :fees
   has_many :waves
+  has_many :teams
 
   has_many :referral_codes, :as => :codeable
 

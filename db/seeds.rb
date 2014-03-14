@@ -411,3 +411,49 @@ affiliate_setting = AffiliateSetting.create([
     enabled: true
   }
   ])
+
+teams = Team.create([
+  {
+    name: "Awesome Possums",
+    event_id: 1
+  },
+  {
+    name: "The Amazing Racers",
+    event_id: 2
+  }
+  ])
+
+user_ticket = UserTeam.create([
+  {
+    team_id: 1,
+    user_id: 1
+  },
+   {
+    team_id: 1,
+    user_id: 2
+  },
+   {
+    team_id: 1,
+    user_id: 3
+  },
+   {
+    team_id: 1,
+    user_id: 4
+  },
+   {
+    team_id: 2,
+    user_id: 1
+  },
+   {
+    team_id: 2,
+    user_id: 1
+  },
+   {
+    team_id: 2,
+    user_id: 1
+  },
+   {
+    team_id: 2,
+    user_id: 1
+  }
+  ])
