@@ -1,6 +1,6 @@
 class Participant < User
   has_one :referral_code, :as => :codeable
-  before_save :make_affiliate_code
+  before_create :make_affiliate_code
 
   def participant?
     true

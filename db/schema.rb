@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140314205903) do
+ActiveRecord::Schema.define(version: 20140316022900) do
 
   create_table "affiliate_settings", force: true do |t|
     t.string  "discount_type"
@@ -51,6 +51,12 @@ ActiveRecord::Schema.define(version: 20140314205903) do
     t.decimal  "amount",     precision: 8, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "orders", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "referral_code_id"
   end
 
   create_table "referral_codes", force: true do |t|
@@ -112,7 +118,7 @@ ActiveRecord::Schema.define(version: 20140314205903) do
     t.integer  "ticket_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "referral_code_id"
+    t.integer  "order_id"
   end
 
   create_table "user_waves", force: true do |t|

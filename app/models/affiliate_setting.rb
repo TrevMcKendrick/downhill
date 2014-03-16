@@ -1,5 +1,5 @@
 class AffiliateSetting < ActiveRecord::Base
-  before_save :default_values
+  before_create :default_values
   
   belongs_to :event
 

@@ -325,42 +325,42 @@ user_ticket = UserTicket.create([
   {
     ticket_id: 1,
     user_id: 1,
-    referral_code_id:1
+    order_id:1
   },
   {
     ticket_id: 1,
     user_id: 2,
-    referral_code_id:2
+    order_id:2
   },
   {
     ticket_id: 1,
     user_id: 3,
-    referral_code_id:1
+    order_id:1
   },
   {
     ticket_id: 1,
     user_id: 4,
-    referral_code_id:1
+    order_id:1
   },
    {
     ticket_id: 2,
     user_id: 1,
-    referral_code_id:3
+    order_id:3
   },
   {
     ticket_id: 2,
     user_id: 2,
-    referral_code_id:3
+    order_id:3
   },
   {
     ticket_id: 2,
     user_id: 3,
-    referral_code_id:3
+    order_id:3
   },
   {
     ticket_id: 2,
     user_id: 4,
-    referral_code_id:3
+    order_id:3
   }
   ])
 
@@ -394,6 +394,24 @@ referral_code = ReferralCode.create([
   codeable_type: "Event",
   published: true,
   quantity: 275
+  }
+  ])
+
+orders = Order.create([
+  {
+    referral_code_id: 1
+  },
+  {
+    referral_code_id: 2
+  },
+  {
+    referral_code_id: 3
+  },
+  {
+
+  },
+  {
+
   }
   ])
 
