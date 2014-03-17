@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  layout "event_public"
+  layout "event_public", only: [:show]
   before_action :set_event, only: [:edit, :update, :destroy, :show]
   before_action :authenticate_user!, except: [:show]
 
