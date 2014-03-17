@@ -146,10 +146,10 @@ user5 = User.new(
     email: "trevor@gmail.com",
     password: "test",
     subdomain: "trevor",
-    stripe_user_id: "acct_103bl42399tuinsm",
-    stripe_publishable_key: "pk_test_ttZ19Tol5oWtR4EyYBDHymCA",
-    stripe_access_token: "sk_test_TfOHWKflKfkxXTv7BILlDLCE",
-    stripe_refresh_token: "rt_3bl4Qk5P2wQpI0af4K17JmB3FndEjz8jRYjuNikqF6LlUIg1"
+    stripe_user_id: "acct_103gWr2sIUiMQYE0",
+    stripe_publishable_key: "pk_test_gN63WMHZMqklRs22NlJh3TV6",
+    stripe_access_token: "sk_test_np5fVHQs61y2pJE1tyjYmjG0",
+    stripe_refresh_token: "rt_3gWrsbsB9czlgbELvPsA2yvAuIHcNEJwgKhs4UInkZX4pbei"
     )
 
 user6 = User.new(
@@ -157,11 +157,7 @@ user6 = User.new(
     last_name: "McKendrick",
     email: "test@test.com",
     password: "test",
-    subdomain: "test",
-    stripe_user_id: "acct_103bl42399tuinsm",
-    stripe_publishable_key: "pk_test_ttZ19Tol5oWtR4EyYBDHymCA",
-    stripe_access_token: "sk_test_TfOHWKflKfkxXTv7BILlDLCE",
-    stripe_refresh_token: "rt_3bl4Qk5P2wQpI0af4K17JmB3FndEjz8jRYjuNikqF6LlUIg1"
+    subdomain: "test"
     )
 
 user1.save!(:validate => false)
