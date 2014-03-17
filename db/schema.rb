@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140312042729) do
+ActiveRecord::Schema.define(version: 20140317080428) do
 
   create_table "affiliate_settings", force: true do |t|
     t.string  "discount_type"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20140312042729) do
     t.text     "race_day_info_html"
     t.text     "packet_pickup_info_html"
     t.boolean  "published"
+    t.boolean  "on_sale"
   end
 
   create_table "fees", force: true do |t|
@@ -51,6 +52,13 @@ ActiveRecord::Schema.define(version: 20140312042729) do
     t.decimal  "amount",     precision: 8, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "orders", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "referral_code_id"
+    t.decimal  "total_charge",     precision: 8, scale: 2
   end
 
   create_table "referral_codes", force: true do |t|
@@ -77,6 +85,17 @@ ActiveRecord::Schema.define(version: 20140312042729) do
 
   add_index "settings", ["target_type", "target_id", "var"], name: "index_settings_on_target_type_and_target_id_and_var", unique: true
 
+  create_table "shirts", force: true do |t|
+    t.string   "size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "teams", force: true do |t|
+    t.string  "name"
+    t.integer "event_id"
+  end
+
   create_table "tickets", force: true do |t|
     t.date     "for_sale_begin"
     t.date     "for_sale_end"
@@ -97,12 +116,17 @@ ActiveRecord::Schema.define(version: 20140312042729) do
     t.boolean  "waiver_signed"
   end
 
+  create_table "user_teams", force: true do |t|
+    t.integer "user_id"
+    t.integer "team_id"
+  end
+
   create_table "user_tickets", force: true do |t|
     t.integer  "user_id"
     t.integer  "ticket_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "referral_code_id"
+    t.integer  "order_id"
   end
 
   create_table "user_waves", force: true do |t|
@@ -138,6 +162,7 @@ ActiveRecord::Schema.define(version: 20140312042729) do
     t.string   "type"
     t.string   "stripe_participant_id"
     t.string   "stripe_refresh_token"
+    t.string   "phone"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

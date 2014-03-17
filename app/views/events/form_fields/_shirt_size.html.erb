@@ -1,0 +1,2 @@
+<%= label_tag "Shirt size" %>
+<%= select_tag "#{ticket}[]" + 'shirtsize[]', options_from_collection_for_select(Shirt::SIZES, :to_s, :to_s), :class => "form-control" %>

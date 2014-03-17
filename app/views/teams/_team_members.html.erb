@@ -1,0 +1,14 @@
+<br>
+<h3>Team Members</h3>
+<table>
+
+  <tbody>
+    <% @team.users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

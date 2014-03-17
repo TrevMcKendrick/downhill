@@ -1,0 +1,2 @@
+<%= label_tag :email %>
+<%= email_field_tag "#{ticket}[]" + 'email[]', nil, :class => "form-control", :value => "#{rand}@gmail.com" if Rails.env.development? %>

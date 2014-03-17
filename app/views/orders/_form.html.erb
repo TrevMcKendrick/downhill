@@ -1,0 +1,24 @@
+<%= render 'events/stripe_publishable_key' %>
+
+<% if @event.on_sale %>
+  <%= form_tag url_for(:controller => "orders", :action => "create", :event_id => @event), :method => "post", :id => "order_form" %>
+  
+    <% @tickets.each do |ticket| %>
+      <%= ticket[1].to_i.times do |i| %>
+        <h2><%= ticket[0] %></h2>
+        <%= render 'events/form_fields/default_fields', :ticket => ticket[0] %>
+        <%= render 'events/form_fields/shirt_size', :ticket => ticket[0] %>
+        <%= render 'events/form_fields/phone', :ticket => ticket[0] %>
+        <%= render 'events/form_fields/gender', :ticket => ticket[0] %>
+      <% end %>
+    <% end %>
+
+  <br>
+  <%= render 'events/form_fields/referral_code' %>
+  <%= render 'events/payment_info' %>
+  <%= submit_tag %>
+
+<% else %>
+  <%= page_not_found %>
+<% end %>
+
