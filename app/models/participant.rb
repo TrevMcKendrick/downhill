@@ -1,7 +1,14 @@
 class Participant < User
+
   has_one :referral_code, :as => :codeable
+  has_one :shirt
   before_create :make_affiliate_code
 
+
+  def password_required?
+    false
+  end
+  
   def participant?
     true
   end

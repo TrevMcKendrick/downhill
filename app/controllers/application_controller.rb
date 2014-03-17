@@ -63,4 +63,8 @@ class ApplicationController < ActionController::Base
     @event = Event.find_by id: params[:event_id]
   end
 
+  def find_user
+    @user = User.where(:subdomain => request.subdomain).first
+  end
+
 end

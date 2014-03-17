@@ -28,7 +28,8 @@ events = Event.create([
     receipt_html: "<strong>Thanks for joining us!</strong>",
     race_day_info_html: "<emphasis>Get colored while you run</emphasis>",
     packet_pickup_info_html: "Pick up your packet on race day! Duh.",
-    published: true
+    published: true,
+    on_sale: true
   },
   { 
     title: "Color Me Rad Salt Lake City 2014",
@@ -50,7 +51,8 @@ events = Event.create([
     receipt_html: "<strong>Thanks for joining us!</strong>",
     race_day_info_html: "<emphasis>Get colored while you run</emphasis>",
     packet_pickup_info_html: "Pick up your packet on race day! Duh.",
-    published: true
+    published: true,
+    on_sale: true
   }
 ])
 

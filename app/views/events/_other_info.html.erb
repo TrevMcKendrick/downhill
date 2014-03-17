@@ -1,4 +1,19 @@
 <div class="form-group">
+  <%= f.label :path, "URL Extension" %>
+  <%= f.text_field :path, :placeholder => "e.g. denver-july-2013", :class => "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :description %>
+  <%= f.text_area :description, :cols => "50", :rows => "5", :placeholder => "Event description", :class => "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :waiver, "Waiver text" %>
+  <%= f.text_area :waiver, :cols => "50", :rows => "3", :placeholder => "Text so you don't get sued", :class => "form-control" %>
+</div>
+
+<div class="form-group">
   <%= f.label :receipt_html, "Receipt sent after signups" %>
   <%= f.text_area :receipt_html, :class => "form-control editor", :rows => "5" %>
   <br><br><br>
@@ -14,3 +29,4 @@
   <%= f.label :race_day_info_html, "Race day info" %>
   <%= f.text_area :race_day_info_html, :class => "form-control editor", :rows => "5" %>
 </div>
+

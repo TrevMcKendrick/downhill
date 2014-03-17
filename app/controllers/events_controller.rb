@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:edit, :update, :destroy, :show]
   before_action :authenticate_user!, except: [:show]
+  layout "event_public", only: [:show]
 
   # GET /events
   # GET /events.json
@@ -61,10 +62,6 @@ class EventsController < ApplicationController
 
     def set_event
       @event = current_user.events.find(params[:id])
-    end
-
-    def find_user
-      User.where(:subdomain => request.subdomain).first
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

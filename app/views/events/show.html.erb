@@ -1,39 +1,20 @@
 <% if @event.published %>
-  <%= render 'stripe_publishable_key' %>
 
   <h2><%= @event.title %></h2>
 
-  <%= form_for @participant, :html => { :id => "participant_signup_form" } do |f| %>
-  <div>
-    <%= f.submit "Make Payment!", :class => "btn-primary btn" if Rails.env.development? %>
-  </div><br>
+  <% if @event.on_sale %>
 
-    <div class="form-group">
-      <%= f.label :email %>
-      <%= f.email_field :email, :autofocus => true, :class => "form-control", :value => "#{rand}@gmail.com" if Rails.env.development? %>
-    </div>
+      <%= form_tag url_for(:controller => "orders", :action => "new", :event_id => @event), :method => "get" %>
+        <% @event.tickets.each do |ticket| %>
+          <%= label_tag ticket.ticket_type, nil, :class => "col-sm-3 control-label" %>
+          <%= select_tag "ticket", options_for_select([0,1,2,3,4,5,6,7,8,9,10],ticket.ticket_type), :name => "tickets[#{ticket.ticket_type}]", :class => "form-control"  %>
+        <% end %>
+      <%= submit_tag "Start Order", :class => "btn btn-primary" %>
 
-    <div class="form-group">
-      <%= f.label :password %>
-      <%= f.password_field :password, :class => "form-control", :value => "test" if Rails.env.development? %>
-    </div>
-
-      <h5>What kind of ticket?</h5>
-      <%= select_tag "ticket", options_for_select(ticket_titles), :class => "form-control" %>
-
-      <h5>Which wave?</h5>
-        <%= select_tag "wave", options_for_select(wave_titles), :class => "form-control" %>
-
-  <br>
-  <%= f.check_box :first_name %>
-  Click to agree to waiver
-  <p><%= @event.waiver %></p>
-  <br>
-  <%= render 'payment_info' %>
-
-  <div><%= f.submit "Make Payment!", :class => "btn-primary btn" %></div>
-
+    <% else %>
+    <h3>Registration opening soon!</h3>
   <% end %>
+
   <% else %>
     <%= page_not_found %>
 <% end %>

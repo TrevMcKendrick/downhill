@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140316022900) do
+ActiveRecord::Schema.define(version: 20140317000009) do
 
   create_table "affiliate_settings", force: true do |t|
     t.string  "discount_type"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20140316022900) do
     t.text     "race_day_info_html"
     t.text     "packet_pickup_info_html"
     t.boolean  "published"
+    t.boolean  "on_sale"
   end
 
   create_table "fees", force: true do |t|
@@ -82,6 +83,12 @@ ActiveRecord::Schema.define(version: 20140316022900) do
   end
 
   add_index "settings", ["target_type", "target_id", "var"], name: "index_settings_on_target_type_and_target_id_and_var", unique: true
+
+  create_table "shirts", force: true do |t|
+    t.string   "size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "teams", force: true do |t|
     t.string  "name"
