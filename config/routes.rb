@@ -65,6 +65,7 @@ Downhill::Application.routes.draw do
   get '/events/:id/registration' => "events#edit", :as => "registration"
   get '/events/:id/publish' => "events#edit", :as => "publish"
   get '/events/:id/other_info' => "events#edit", :as => "other_info"
+  get '/events/:id/waiver' => "events#waiver", :as => "event_waiver"
 
   resources :events
 

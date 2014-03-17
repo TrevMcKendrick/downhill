@@ -1,10 +1,14 @@
 class EventsController < ApplicationController
-  layout "event_public", only: [:show]
-  before_action :set_event, only: [:edit, :update, :destroy, :show]
+  layout "event_public", only: [:show, :waiver]
+  before_action :set_event, only: [:edit, :update, :destroy, :show, :waiver]
   before_action :authenticate_user!, except: [:show]
 
   # GET /events
   # GET /events.json
+
+  def waiver
+  end
+
   def index
     @events = current_user.events
   end
