@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-$('#participant_signup_form').submit(function(e) {
+$('#order_form').submit(function(e) {
         var $form = $(this);
  
         // Disable the submit button to prevent repeated clicks
@@ -16,7 +16,7 @@ $('#participant_signup_form').submit(function(e) {
 
 // BEGIN STRIPE //
     var stripeResponseHandler = function(status, response) {
-      var $form = $('#participant_signup_form');
+      var $form = $('#order_form');
         if (response.error) {
         // Show the errors on the form
         $form.find('.payment-errors').text(response.error.message);

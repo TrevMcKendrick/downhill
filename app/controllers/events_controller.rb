@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  layout "event_public"
   before_action :set_event, only: [:edit, :update, :destroy, :show]
   before_action :authenticate_user!, except: [:show]
 
@@ -60,11 +61,8 @@ class EventsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
 
     def set_event
-      @event = current_user.events.find(params[:id])
-    end
-
-    def find_user
-      User.where(:subdomain => request.subdomain).first
+      find_user
+      @event = @user.events.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -88,7 +86,8 @@ class EventsController < ApplicationController
         :receipt_html,
         :packet_pickup_info_html,
         :race_day_info_html,
-        :published
+        :published,
+        :on_sale
         )
     end
 

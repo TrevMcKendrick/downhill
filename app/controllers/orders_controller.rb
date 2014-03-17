@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
             )
           @event.users << @participant
           @participant.save
-          UserTicket.create(:user => @participant, :ticket => ticket, :order => @order)
+          UserTicket.create(:user => @participant, :ticket => ticket, :order_id => @order)
 
           setup_buyer if buyer_created? == false
         end
