@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
             )
           @event.users << @participant
           @participant.save
-          UserTicket.create(:user => @participant, :ticket => ticket, :order_id => @order)
+          UserTicket.create(:user => @participant, :ticket => ticket, :order => @order)
 
           setup_buyer if buyer_created? == false
         end
@@ -51,7 +51,6 @@ class OrdersController < ApplicationController
 
   def setup_buyer
     @buyer = @participant
-    binding.pry
     @stripe_user = Participant.create_stripe_user(params[:stripeToken], @buyer.email, @user.stripe_access_token)
     @buyer.stripe_participant_id = @stripe_user.id
     @order.stripe_user_created = true

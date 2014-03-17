@@ -1,6 +1,6 @@
 class Participant < User
   has_one :referral_code, :as => :codeable
-  before_save :make_affiliate_code
+  before_create :make_affiliate_code
 
   def password_required?
     false
@@ -28,28 +28,6 @@ class Participant < User
       },
       user_access_token
     )
-  end
-
-  def self.create_charge(amount, currency, customer, description, fee, user_access_token)
-    begin
-      charge = Stripe::Charge.create(
-      {
-        :amount => amount,
-        :currency => currency,
-        :customer => customer,
-        :description => description,
-        :application_fee => fee
-      },
-       user_access_token
-      )
-    rescue Stripe::CardError => e
-      # The card has been declined
-      binding.pry
-    end
-  end
-
-  def stripe_price(price)
-      (price * 100).to_i
   end
 
 end
