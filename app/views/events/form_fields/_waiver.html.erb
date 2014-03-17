@@ -1,0 +1,3 @@
+<%= label_tag :waiver, "Waiver Release" %>
+<%= text_field_tag :waiver, nil, :class => "form-control"  %>
+Please enter your full name to electronically sign the <%= link_to "release waiver. Click here to view.", event_waiver_path(@event), :target => "_blank" %>
