@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140317080428) do
+ActiveRecord::Schema.define(version: 20140317232731) do
 
   create_table "affiliate_settings", force: true do |t|
     t.string  "discount_type"
@@ -113,7 +113,7 @@ ActiveRecord::Schema.define(version: 20140317080428) do
     t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "waiver_signed"
+    t.string   "waiver_signature"
   end
 
   create_table "user_teams", force: true do |t|

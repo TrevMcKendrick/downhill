@@ -11,33 +11,32 @@ class OrdersController < ApplicationController
   def create
     @buyer = nil
     @ticket_count = 0
-    @order = Order.create(
-      :total_charge => 0
-      )
+    @order = Order.new
 
     @event.tickets.each do |ticket|
       if params[ticket.ticket_type] != nil 
         params[ticket.ticket_type].first[:email].count.times do |i|
-
-          increase_charge(ticket.price)
-          @ticket_count += 1 if ticket.price > 0
           @participant = Participant.create(
             :email => params[ticket.ticket_type].first[:email][i],
             :first_name => params[ticket.ticket_type].first[:name][i],
             :shirtsize => params[ticket.ticket_type].first[:shirtsize][i],
             :phone => params[ticket.ticket_type].first[:phone][i]
             )
-          @event.users << @participant
-          @participant.save
-          UserTicket.create(:user => @participant, :ticket => ticket, :order => @order)
 
-          setup_buyer if buyer_created? == false
-        end
-          
+          @order.total_charge += ticket.price
+          @ticket_count += 1 if ticket.price > 0
+          @event.users << @participant
+          ticket.users << @participant
+          ticket.add_order(@order, @participant)
+
+          setup_buyer unless buyer_created?
         end
       end
-  create_charge
-  redirect_to :back
+    end
+
+    @buyer.add_waiver_signature(params[:waiver_signature], @event)
+    create_charge unless @order.free?
+    redirect_to :back
   end
 
   private
@@ -57,10 +56,6 @@ class OrdersController < ApplicationController
     @buyer.save
   end
 
-  def increase_charge(amount)
-    @order.total_charge += amount
-  end
-
   def create_charge
     Order.create_charge(
       Order.stripe_price(@order.total_charge.to_i),
@@ -72,5 +67,7 @@ class OrdersController < ApplicationController
       )
     @order.save
   end
+
+
 
 end

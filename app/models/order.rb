@@ -1,6 +1,7 @@
 class Order < ActiveRecord::Base
 
   attr_accessor :stripe_user_created
+  before_create :set_total_charge
 
   has_many :user_tickets
   belongs_to :referral_code
@@ -29,5 +30,13 @@ class Order < ActiveRecord::Base
 
   def stripe_user_created
     @stripe_user_created || false
+  end
+
+  def free?
+    self.total_charge == 0
+  end
+
+  def set_total_charge
+    self.total_charge = 0
   end
 end

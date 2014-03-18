@@ -30,4 +30,10 @@ class Participant < User
     )
   end
 
+  def add_waiver_signature(waiver_signature, event)
+    user_event = event.user_events.find_by user_id: self
+    user_event.waiver_signature = waiver_signature
+    user_event.save
+  end
+
 end
