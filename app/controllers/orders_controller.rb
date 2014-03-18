@@ -9,12 +9,10 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @buyer = nil
-    @ticket_count = 0
-    @order = Order.new
+    @order = Order.new(:event => @event)
 
     @event.tickets.each do |ticket|
-      if params[ticket.ticket_type] != nil 
+      if at_least_one(ticket)
         params[ticket.ticket_type].first[:email].count.times do |i|
           @participant = Participant.create(
             :email => params[ticket.ticket_type].first[:email][i],
@@ -24,16 +22,15 @@ class OrdersController < ApplicationController
             )
 
           @order.total_charge += ticket.price
-          @ticket_count += 1 if ticket.price > 0
           @event.users << @participant
           ticket.users << @participant
           ticket.add_order(@order, @participant)
-
-          setup_buyer unless buyer_created?
+          setup_buyer unless @order.buyer_exists?
         end
       end
     end
-
+    
+    @order.save
     @buyer.add_waiver_signature(params[:waiver_signature], @event)
     create_charge unless @order.free?
     redirect_to :back
@@ -41,11 +38,8 @@ class OrdersController < ApplicationController
 
   private
 
-  def order_params
-  end
-
-  def buyer_created?
-    @order.total_charge > 0 && @order.stripe_user_created == true
+  def at_least_one(ticket)
+    params[ticket.ticket_type] != nil
   end
 
   def setup_buyer
@@ -62,12 +56,9 @@ class OrdersController < ApplicationController
       "usd", 
       @stripe_user, 
       @buyer.email,
-      Order.stripe_price(SWIFT_FEE * @ticket_count),
+      Order.stripe_price(SWIFT_FEE * @order.paid_ticket_count),
       @user.stripe_access_token
       )
-    @order.save
   end
-
-
 
 end

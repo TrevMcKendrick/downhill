@@ -8,7 +8,10 @@ class Ticket < ActiveRecord::Base
     user_ticket = participant.user_tickets.find_by ticket_id: self
     user_ticket.order = order
     user_ticket.save
-    binding.pry
+  end
+
+  def free?
+    self.price == 0
   end
   
 end

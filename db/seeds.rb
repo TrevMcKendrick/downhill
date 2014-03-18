@@ -412,13 +412,16 @@ affiliate_setting = AffiliateSetting.create([
 
 orders = Order.create([
   {
-    referral_code_id: 1
+    referral_code_id: 1,
+    event_id: 1
   },
   {
-    referral_code_id: 2
+    referral_code_id: 2,
+    event_id: 1
   },
   {
-    referral_code_id: 3
+    referral_code_id: 3,
+    event_id: 1
   }
   ])
 

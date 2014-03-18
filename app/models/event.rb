@@ -13,6 +13,8 @@ class Event < ActiveRecord::Base
 
   has_one :affiliate_setting
 
+  has_many :orders
+
   def make_affiliate_setting
     affiliate_setting = AffiliateSetting.new
     self.affiliate_setting = affiliate_setting

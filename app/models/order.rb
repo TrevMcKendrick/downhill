@@ -1,10 +1,42 @@
 class Order < ActiveRecord::Base
 
   attr_accessor :stripe_user_created
-  before_create :set_total_charge
+  after_initialize :set_total_charge
 
   has_many :user_tickets
   belongs_to :referral_code
+  belongs_to :event
+
+  def self.stripe_price(price)
+      (price * 100).to_i
+  end
+
+  def free?
+    self.total_charge == 0
+  end
+
+  def set_total_charge
+    self.total_charge = 0
+  end
+
+  def buyer_exists?
+    self.paid_order && self.stripe_user_created
+  end
+
+  def paid_order
+    self.total_charge > 0
+  end
+
+  def stripe_user_created
+    @stripe_user_created || false
+  end
+
+  def paid_ticket_count
+    tickets = self.user_tickets.collect do |user_ticket|
+      user_ticket.ticket.free?
+    end
+    tickets.grep(false).size
+  end
 
   def self.create_charge(amount, currency, customer, description, fee, user_access_token)
     begin
@@ -23,20 +55,5 @@ class Order < ActiveRecord::Base
       binding.pry
     end
   end
-
-  def self.stripe_price(price)
-      (price * 100).to_i
-  end
-
-  def stripe_user_created
-    @stripe_user_created || false
-  end
-
-  def free?
-    self.total_charge == 0
-  end
-
-  def set_total_charge
-    self.total_charge = 0
-  end
+  
 end

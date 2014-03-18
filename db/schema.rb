@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140317232731) do
+ActiveRecord::Schema.define(version: 20140318023742) do
 
   create_table "affiliate_settings", force: true do |t|
     t.string  "discount_type"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20140317232731) do
     t.datetime "updated_at"
     t.integer  "referral_code_id"
     t.decimal  "total_charge",     precision: 8, scale: 2
+    t.integer  "event_id"
   end
 
   create_table "referral_codes", force: true do |t|
