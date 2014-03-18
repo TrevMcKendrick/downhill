@@ -22,4 +22,5 @@
 //= require events
 //= require participants
 //= require smart-admin/app
+//= require select2
 

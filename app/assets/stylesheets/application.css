@@ -28,5 +28,7 @@
  *= require smart-admin/smartadmin-production_unminified
  *= require smart-admin/smartadmin-rtl
  *= require smart-admin/smartadmin-skins
+
+ *= require select2-bootstrap
  
  */

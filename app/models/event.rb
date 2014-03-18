@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
 
-  before_save :make_affiliate_setting
+  before_create :make_affiliate_setting
 
   has_many :user_events
   has_many :users, :through => :user_events

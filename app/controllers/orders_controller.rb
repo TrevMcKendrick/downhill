@@ -9,7 +9,11 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(:event => @event)
+
+    # ReferralCode.is_valid?(params[:referral_code], @event)
+
+    @order = Order.new(:event => @event) #, :referral_code => @referral_code)
+    @wave = Wave.find_by id: params[:wave]
 
     @event.tickets.each do |ticket|
       if at_least_one(ticket)
@@ -21,16 +25,18 @@ class OrdersController < ApplicationController
             :phone => params[ticket.ticket_type].first[:phone][i]
             )
 
-          @order.total_charge += ticket.price
+          @order.save
           @event.users << @participant
+          @wave.users << @participant
           ticket.users << @participant
+
           ticket.add_order(@order, @participant)
           setup_buyer unless @order.buyer_exists?
         end
       end
     end
-    
-    @order.save
+
+    binding.pry
     @buyer.add_waiver_signature(params[:waiver_signature], @event)
     create_charge unless @order.free?
     redirect_to :back

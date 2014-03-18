@@ -1,0 +1,4 @@
+<div class="control-group">
+  <%= label_tag "Please Select a Wave Time" %>
+  <%= select_tag "wave", options_from_collection_for_select(@event.waves, "id", :select_name) %>
+</div>
