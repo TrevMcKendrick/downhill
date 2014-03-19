@@ -7,7 +7,6 @@ class Order < ActiveRecord::Base
   belongs_to :event
 
   def total_price
-    binding.pry
     array = self.user_tickets.collect do |user_ticket|
       user_ticket.ticket.price
     end

@@ -9,6 +9,7 @@ Downhill::Application.routes.draw do
   resources :settings
   resources :users
   resources :participants
+  resources :teams
 
 
   get '/:event_id/fee' => "fee#index", :as => "fees"

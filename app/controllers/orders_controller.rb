@@ -30,13 +30,18 @@ class OrdersController < ApplicationController
           @wave.users << @participant
           ticket.users << @participant
 
+          binding.pry
+          @team = @event.teams.find_or_create_by(name: params[:join_team]) if join_or_create_team == "join"
+          @team = @event.teams.find_or_create_by(name: params[:create_team_name]) if join_or_create_team == "create"
+
+          @participant.teams << @team if @team
+
           ticket.add_order(@order, @participant)
           setup_buyer unless @order.buyer_exists?
         end
       end
     end
 
-    binding.pry
     @buyer.add_waiver_signature(params[:waiver_signature], @event)
     create_charge unless @order.free?
     redirect_to :back
@@ -65,6 +70,17 @@ class OrdersController < ApplicationController
       Order.stripe_price(SWIFT_FEE * @order.paid_ticket_count),
       @user.stripe_access_token
       )
+  end
+
+  def join_or_create_team
+    
+    if params[:team] == "Join Team"
+      return "join"
+    end
+
+    if params[:team] == "Create Team" 
+      return "create"
+    end
   end
 
 end

@@ -5,8 +5,12 @@ class TeamsController < ApplicationController
 
   def create
     @team = @event.teams.build(team_params)
-    @team.save
-    redirect_to teams_path
+    respond_to do |format|
+      if @team.save
+        format.html { redirect_to teams_path }
+        format.json
+      end
+    end
   end
 
   def new

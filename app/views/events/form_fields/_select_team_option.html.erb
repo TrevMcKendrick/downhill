@@ -1,15 +1,18 @@
 <div class="control-group">
   <%= label_tag "Please select a team option" %>
   <div class="control-group">
-    <%= radio_button_tag(:team, "No Team") %>
+    <%= radio_button_tag(:team, "No Team", true) %>
     <%= label_tag(:team, "No Team") %>
   </div>
   <div class="control-group">
     <%= radio_button_tag(:team, "Join Team") %>
     <%= label_tag(:team, "Join Team") %>
+    <%= render 'events/form_fields/join_team' %>  
   </div>
   <div class="control-group">
     <%= radio_button_tag(:team, "Create Team") %>
     <%= label_tag(:team, "Create Team") %>
+    <%= render 'events/form_fields/create_team' %>  
   </div>
 </div>
+

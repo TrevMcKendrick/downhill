@@ -1,0 +1,1 @@
+<%= select_tag "Select a team", options_from_collection_for_select( @event.teams, 'name','name', ), :data => {:remote => true}, :name => "join_team", :id => "join_team", :style => "display:none" %>

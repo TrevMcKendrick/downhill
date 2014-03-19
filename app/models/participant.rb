@@ -3,7 +3,7 @@ class Participant < User
   before_create :make_affiliate_code
 
   def password_required?
-    false
+    false if Rails.env.development?
   end
 
   def participant?

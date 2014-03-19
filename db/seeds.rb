@@ -19,7 +19,7 @@ events = Event.create([
     city: "San Francisco",
     state: "CA",
     zipcode: "84106",
-    timezone: "PST",
+    timezone: "Pacific Time (US & Canada)",
     date: "2014-06-13",
     time: "2014-06-13 09:30:00",
     volunteer_coordinator_email: "help_volunteer@toughmudder.com",
@@ -42,7 +42,7 @@ events = Event.create([
     city: "Salt Lake City",
     state: "UT",
     zipcode: "84106",
-    timezone: "MST",
+    timezone: "Mountain Time (US & Canada)",
     date: "2014-12-13",
     time: "2014-12-13 11:30:00",
     volunteer_coordinator_email: "help_volunteer@colormerad.com",
@@ -429,6 +429,22 @@ teams = Team.create([
   {
     name: "Awesome Possums",
     event_id: 1
+  },
+  {
+    name: "We go fast",
+    event_id: 1
+  },
+  {
+    name: "Love to run",
+    event_id: 1
+  },
+  {
+    name: "The Bosses",
+    event_id: 1
+  },
+  {
+    name: "Waaazzzzup",
+    event_id: 2
   },
   {
     name: "The Amazing Racers",

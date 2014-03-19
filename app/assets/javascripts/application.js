@@ -23,4 +23,5 @@
 //= require participants
 //= require smart-admin/app
 //= require select2
+//= require orders
 
