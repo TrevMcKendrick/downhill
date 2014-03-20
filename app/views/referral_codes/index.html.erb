@@ -27,8 +27,6 @@
                         <tr role="row">
                           <th class="sorting" role="columnheader" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 150px;">Name</th>
                           <th class="sorting" role="columnheader" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Phone: activate to sort column ascending" style="width: 126px;">Code</th>
-                          <th class="sorting" role="columnheader" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Phone: activate to sort column ascending" style="width: 126px;">Type</th>
-                          <th class="sorting" role="columnheader" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 150px;">Discount Amount</th>
                           <th class="sorting" role="columnheader" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" 
                           aria-label="Name: activate to sort column ascending" style="width: 150px;">Live?</th>
                         </tr>
@@ -38,8 +36,6 @@
                           <tr class="<%= cycle("odd", "even") -%>">
                             <td class=" "><%= link_to referral_code.name, edit_referral_code_path(referral_code) %></td>
                             <td class=" "><%= referral_code.code %></td>
-                            <td class=" "><%= referral_code.discount_type.capitalize %></td>
-                            <td class=" "><%= symbolify(referral_code.discount_type, referral_code.amount) %></td>
                             <td class=" "><%= englishify(referral_code.published) %></td>
                           </tr>
                       <% end %>

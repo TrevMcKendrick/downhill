@@ -384,18 +384,6 @@ referral_code = ReferralCode.create([
   quantity: 50
   },
   {
-  codeable_id: 4, 
-  codeable_type: "User",
-  quantity: 50,
-  affiliate_setting_id: 1
-  },
-  {
-  codeable_id: 5, 
-  codeable_type: "User",
-  quantity: 50,
-  affiliate_setting_id: 1
-  },
-  {
   name: "Email 20%",
   code: "20please",
   amount: 20,
@@ -412,13 +400,15 @@ affiliate_setting = AffiliateSetting.create([
     discount_type: "flat_rate",
     reward_type: "both",
     event_id: 1,
-    enabled: true
+    enabled: true,
+    amount: 20
   },
   {
     discount_type: "percent",
     reward_type: "affiliate",
     event_id: 2,
-    enabled: true
+    enabled: true,
+    amount: 10
   }
   ])
 
