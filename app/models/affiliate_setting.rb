@@ -1,8 +1,8 @@
 class AffiliateSetting < ActiveRecord::Base
-  before_save :default_values
-  
   belongs_to :event
+  has_many :referral_codes, :as => :codeable
 
+  before_save :default_values
 
   private
 

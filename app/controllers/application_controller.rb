@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
   def valid_referral_code?(code, current_event)
     code = referral_code_exists?(code)
     return false if code == nil
+    return false unless code.affiliate_setting.enabled
 
     if code.codeable_type == "Event"
       if code.codeable == current_event 

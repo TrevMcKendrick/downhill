@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140320045525) do
+ActiveRecord::Schema.define(version: 20140320052009) do
 
   create_table "affiliate_settings", force: true do |t|
     t.string  "discount_type"
@@ -69,11 +69,12 @@ ActiveRecord::Schema.define(version: 20140320045525) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "discount_type"
-    t.decimal  "amount",        precision: 8, scale: 2
+    t.decimal  "amount",               precision: 8, scale: 2
     t.integer  "codeable_id"
     t.string   "codeable_type"
     t.boolean  "published"
     t.integer  "quantity"
+    t.integer  "affiliate_setting_id"
   end
 
   create_table "settings", force: true do |t|

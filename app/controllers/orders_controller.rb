@@ -16,29 +16,28 @@ class OrdersController < ApplicationController
       code = nil
     end
 
-    @order = Order.new(:event => @event, :referral_code => code) #, :referral_code => @referral_code)
+    @order = Order.new(:event => @event, :referral_code => code)
     @wave = Wave.find_by id: params[:wave]
 
     @event.tickets.each do |ticket|
       if at_least_one(ticket)
         params[ticket.ticket_type].first[:email].count.times do |i|
-          @participant = Participant.create(
+          @participant = @event.users.create(
             :email => params[ticket.ticket_type].first[:email][i],
             :first_name => params[ticket.ticket_type].first[:name][i],
             :shirtsize => params[ticket.ticket_type].first[:shirtsize][i],
-            :phone => params[ticket.ticket_type].first[:phone][i]
+            :phone => params[ticket.ticket_type].first[:phone][i],
+            :type => "Participant"
             )
-
-          
-          @event.users << @participant
-          @wave.users << @participant
-          ticket.users << @participant
-
 
           @team = @event.teams.find_or_create_by(name: params[:join_team]) if join_or_create_team == "join"
           @team = @event.teams.find_or_create_by(name: params[:create_team_name]) if join_or_create_team == "create"
 
           @participant.teams << @team if @team
+          @wave.users << @participant
+          ticket.users << @participant
+          @participant.referral_code.affiliate_setting = @participant.events.last.affiliate_setting
+          @participant.referral_code.save
 
           ticket.add_order(@order, @participant)
           setup_buyer unless @order.buyer_exists?

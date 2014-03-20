@@ -1,7 +1,6 @@
 class Participant < User
   has_one :referral_code, :as => :codeable
   before_create :make_affiliate_code
-  after_create :set_affiliate_type_and_amount
 
   def password_required?
     false if Rails.env.development?
@@ -13,10 +12,6 @@ class Participant < User
 
   def make_affiliate_code
     self.referral_code = ReferralCode.new
-  end
-
-  def set_affiliate_type_and_amount
-    binding.pry
   end
 
   def active_for_authentication?

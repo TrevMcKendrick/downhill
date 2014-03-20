@@ -23,8 +23,7 @@ class Order < ActiveRecord::Base
 
   def price_after_discount_before_fees
     if referral_code_submitted?
-      return flat_rate_discount if referral_code_type == "flat_rate"
-      return percent_discount if referral_code_type == "percent"
+      self.referral_code.price_after_discount(price_before_fees_and_discounts)
     else
       price_before_fees_and_discounts
     end
@@ -32,14 +31,6 @@ class Order < ActiveRecord::Base
 
   def total_charge
     price_after_discount_before_fees + total_fees
-  end
-
-  def percent_discount
-    (price_before_fees_and_discounts * (1 - self.referral_code.amount / 100))
-  end
-
-  def flat_rate_discount
-    (price_before_fees_and_discounts - self.referral_code.amount)
   end
 
   def self.stripe_price(price)

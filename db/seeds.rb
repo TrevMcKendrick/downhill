@@ -384,6 +384,18 @@ referral_code = ReferralCode.create([
   quantity: 50
   },
   {
+  codeable_id: 4, 
+  codeable_type: "User",
+  quantity: 50,
+  affiliate_setting_id: 1
+  },
+  {
+  codeable_id: 5, 
+  codeable_type: "User",
+  quantity: 50,
+  affiliate_setting_id: 1
+  },
+  {
   name: "Email 20%",
   code: "20please",
   amount: 20,
