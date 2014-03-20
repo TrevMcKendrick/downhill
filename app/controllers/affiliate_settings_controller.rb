@@ -21,7 +21,8 @@ class AffiliateSettingsController < ApplicationController
     params.require(:affiliate_setting).permit(
       :enabled,
       :discount_type,
-      :reward_type
+      :reward_type,
+      :amount
       )
   end
 

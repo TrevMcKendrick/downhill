@@ -10,6 +10,11 @@
 </div>
 
 <div class="form-group">
+   <%= f.label :amount %>
+   <%= f.text_field :amount, :name => "affiliate_setting[amount]", :class => "form-control" %>
+</div>
+
+<div class="form-group">
   <%= f.label :reward_type %>
   <%= f.select :reward_type, [["Pay Both","both"], ["Pay Only Affiliate", "affiliate"]], :class => "form-control editor"  %>
 </div>

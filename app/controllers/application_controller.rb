@@ -8,6 +8,32 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def referral_code_exists?(code)
+    ReferralCode.find_by code: code
+  end
+
+  def valid_referral_code?(code, current_event)
+    code = referral_code_exists?(code)
+    return false if code == nil
+
+    if code.codeable_type == "Event"
+      if code.codeable == current_event 
+        return true
+      else
+        return false
+      end
+    end
+
+    if code.codeable_type == "User"
+      if code.codeable.events.include?(current_event) 
+        return true
+      else
+        return false
+      end
+    end
+
+  end
+
   def after_sign_in_path_for(resource)
     subdomain_with_https_or_http(DOMAIN_NAME)
   end

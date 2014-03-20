@@ -1,12 +1,9 @@
 class ReferralCode < ActiveRecord::Base
   belongs_to :codeable, polymorphic: true
   has_many :orders
+  before_create :create_code
 
-  def has_code?
-    self.code != nil
-  end
-
-  def self.is_valid?(code, event)
-    
+  def create_code
+    self.code = SecureRandom.hex(4)
   end
 end

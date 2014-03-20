@@ -2,7 +2,8 @@
 
 <% if @event.on_sale %>
   <%= form_tag url_for(:controller => "orders", :action => "create", :event_id => @event), :method => "post", :id => "order_form" %>
-  
+    <%= submit_tag "Place order" %>
+    
     <% @tickets.each do |ticket| %>
       <%= ticket[1].to_i.times do |i| %>
         <h2><%= ticket[0] %></h2>

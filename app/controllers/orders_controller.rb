@@ -10,9 +10,13 @@ class OrdersController < ApplicationController
 
   def create
 
-    # ReferralCode.is_valid?(params[:referral_code], @event)
+    if valid_referral_code?(params[:referral_code], @event)
+      code = ReferralCode.find_by code: params[:referral_code]
+    else
+      code = nil
+    end
 
-    @order = Order.new(:event => @event) #, :referral_code => @referral_code)
+    @order = Order.new(:event => @event, :referral_code => code) #, :referral_code => @referral_code)
     @wave = Wave.find_by id: params[:wave]
 
     @event.tickets.each do |ticket|
@@ -25,12 +29,12 @@ class OrdersController < ApplicationController
             :phone => params[ticket.ticket_type].first[:phone][i]
             )
 
-          @order.save
+          
           @event.users << @participant
           @wave.users << @participant
           ticket.users << @participant
 
-          binding.pry
+
           @team = @event.teams.find_or_create_by(name: params[:join_team]) if join_or_create_team == "join"
           @team = @event.teams.find_or_create_by(name: params[:create_team_name]) if join_or_create_team == "create"
 
@@ -41,8 +45,12 @@ class OrdersController < ApplicationController
         end
       end
     end
+    
+    @order.final_charge = @order.total_charge
+    @order.save
 
     @buyer.add_waiver_signature(params[:waiver_signature], @event)
+
     create_charge unless @order.free?
     redirect_to :back
   end
@@ -63,7 +71,7 @@ class OrdersController < ApplicationController
 
   def create_charge
     Order.create_charge(
-      Order.stripe_price(@order.total_charge.to_i),
+      Order.stripe_price(@order.final_charge.to_i),
       "usd", 
       @stripe_user, 
       @buyer.email,

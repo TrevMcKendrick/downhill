@@ -6,28 +6,40 @@ class Order < ActiveRecord::Base
   belongs_to :referral_code
   belongs_to :event
 
-  def total_price
+  def price_before_fees_and_discounts
     array = self.user_tickets.collect do |user_ticket|
       user_ticket.ticket.price
     end
     array.inject(:+) unless array.size == 0
   end
 
-  def total_charge
+  def total_fees
+    fees = self.event.fees.collect do |fee|
+      fee.amount
+    end
+    fee_per_ticket = fees.inject(:+) unless fees.size == 0
+    fee_per_ticket * paid_ticket_count
+  end
+
+  def price_after_discount_before_fees
     if referral_code_submitted?
-      flat_rate_discount if referral_code_type == "flat_rate"
-      percent_discount if referral_code_type == "percent"
+      return flat_rate_discount if referral_code_type == "flat_rate"
+      return percent_discount if referral_code_type == "percent"
     else
-      total_price
+      price_before_fees_and_discounts
     end
   end
 
+  def total_charge
+    price_after_discount_before_fees + total_fees
+  end
+
   def percent_discount
-    total_price * (1 - self.referral_code.amount / 100)
+    (price_before_fees_and_discounts * (1 - self.referral_code.amount / 100))
   end
 
   def flat_rate_discount
-    total_price - self.referral_code.amount
+    (price_before_fees_and_discounts - self.referral_code.amount)
   end
 
   def self.stripe_price(price)
@@ -35,7 +47,7 @@ class Order < ActiveRecord::Base
   end
 
   def free?
-    self.total_price == 0
+    self.price_before_fees_and_discounts == 0
   end
 
   def buyer_exists?
@@ -43,7 +55,7 @@ class Order < ActiveRecord::Base
   end
 
   def paid_order
-    self.total_charge == nil || self.total_charge > 0
+    self.price_after_discount_before_fees == nil || self.price_after_discount_before_fees.to_i > 0
   end
 
   def stripe_user_created
