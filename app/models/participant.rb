@@ -5,7 +5,7 @@ class Participant < User
   def password_required?
     false if Rails.env.development?
   end
-
+  
   def participant?
     true
   end

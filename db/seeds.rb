@@ -369,30 +369,30 @@ referral_code = ReferralCode.create([
   amount: 50,
   discount_type: "percent",
   codeable_id: 1, 
-  codeable_type: "Event",
+  # codeable_type: "Event", 
   published: true,
   quantity: 100
-  },
-  {
-  name: "$10 Twitter back to school",
-  code: "twitterbts10",
-  amount: 10,
-  discount_type: "flat_rate",
-  codeable_id: 1, 
-  codeable_type: "Event",
-  published: true,
-  quantity: 50
-  },
-  {
-  name: "Email 20%",
-  code: "20please",
-  amount: 20,
-  discount_type: "percent",
-  codeable_id: 2, 
-  codeable_type: "Event",
-  published: true,
-  quantity: 275
   }
+#   {
+#   name: "$10 Twitter back to school",
+#   code: "twitterbts10",
+#   amount: 10,
+#   discount_type: "flat_rate",
+#   codeable_id: 1, 
+#   codeable_type: "Event",
+#   published: true,
+#   quantity: 50
+#   },
+#   {
+#   name: "Email 20%",
+#   code: "20please",
+#   amount: 20,
+#   discount_type: "percent",
+#   codeable_id: 2, 
+#   codeable_type: "Event",
+#   published: true,
+#   quantity: 275
+#   }
   ])
 
 affiliate_setting = AffiliateSetting.create([
@@ -454,7 +454,7 @@ teams = Team.create([
   }
   ])
 
-user_ticket = UserTeam.create([
+user_team = UserTeam.create([
   {
     team_id: 1,
     user_id: 1
