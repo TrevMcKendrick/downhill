@@ -10,7 +10,8 @@ class Event < ActiveRecord::Base
   has_many :waves
   has_many :teams
   has_many :orders
-  has_many :referral_codes
+  has_many :promo_codes
+  has_many :affiliate_codes
 
   has_one :affiliate_setting
 

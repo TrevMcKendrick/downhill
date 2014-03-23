@@ -10,7 +10,7 @@ class Participant < User
   end
 
   def assign_affiliate_code(event)
-    event.referral_codes.build(:code => AffiliateCode.new, :participant => self, :type => "AffiliateCode")
+    event.affiliate_codes.build(:code => AffiliateCode.new, :participant => self)
   end
 
   def active_for_authentication?
