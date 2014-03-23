@@ -1,5 +1,5 @@
 <%= render "layouts/event_header"  %>
-<%= render "add_referral_code_modal"  %>
+<%= render "add_promo_code_modal"  %>
 
 <section id="widget-grid" class="">
         
@@ -32,11 +32,11 @@
                         </tr>
                       </thead>
                       <tbody role="alert" aria-live="polite" aria-relevant="all">
-                      <% @referral_codes.each do |referral_code| %> 
+                      <% @promo_codes.each do |promo_code| %> 
                           <tr class="<%= cycle("odd", "even") -%>">
-                            <td class=" "><%= link_to referral_code.name, edit_referral_code_path(referral_code) %></td>
-                            <td class=" "><%= referral_code.code %></td>
-                            <td class=" "><%= englishify(referral_code.published) %></td>
+                            <td class=" "><%= link_to promo_code.name, edit_promo_code_path(promo_code) %></td>
+                            <td class=" "><%= promo_code.code %></td>
+                            <td class=" "><%= englishify(promo_code.published) %></td>
                           </tr>
                       <% end %>
                       </tbody>
@@ -48,7 +48,7 @@
                     </div>
                   </div>
                   
-                  <a data-toggle="modal" href="#referralcodeModal" class="btn btn-success btn-lg pull-left header-btn hidden-mobile"><i class="fa fa-circle-arrow-up fa-lg"></i>Create a new code</a>
+                  <a data-toggle="modal" href="#promocodeModal" class="btn btn-success btn-lg pull-left header-btn hidden-mobile"><i class="fa fa-circle-arrow-up fa-lg"></i>Create a new code</a>
 
                   </div>
                   <!-- end widget content -->

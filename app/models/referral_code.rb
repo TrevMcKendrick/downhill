@@ -1,38 +1,27 @@
 class ReferralCode < ActiveRecord::Base
-  belongs_to :codeable, polymorphic: true
-  belongs_to :affiliate_setting
   has_many :orders
+  belongs_to :event
 
-  before_create :create_code
-
-  def create_code
-    self.code = SecureRandom.hex(4)
+  def promo_code?
+    self.type == "PromoCode" ? true : false
   end
 
-  def event_code?
-    self.codeable_type == "Event" ? true : false
+  def affiliate_code?
+    self.type == "AffiliateCode" ? true : false
   end
 
-  def user_code?
-    self.codeable_type == "User" ? true : false
-  end
-
-  def discount_type
-    return self.discount_type if self.event_code?
-    return self.affiliate_setting.discount_type if self.user_code?
+  def discount_version
+    return self.discount_type if self.promo_code?
+    return self.affiliate_setting.discount_type if self.affiliate_code?
   end
 
   def discount_quantity
-    return self.amount if self.event_code?
-    return self.affiliate_setting.amount if self.user_code?
+    return self.amount if self.promo_code?
+    return self.affiliate_setting.amount if self.affiliate_code?
   end
 
-  def total_discount(price_before_fees)
-    return price_before_fees - discount_quantity if self.discount_type == "flat_rate"
-    return price_before_fees * discount_quantity / 100 if self.discount_type == "percent"
+  def self.valid?(code)
+    ReferralCode.find_by code: code
   end
 
-  def price_after_discount(price_before_fees)
-    price_before_fees - total_discount(price_before_fees)
-  end
 end

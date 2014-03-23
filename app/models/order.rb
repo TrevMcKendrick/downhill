@@ -21,6 +21,15 @@ class Order < ActiveRecord::Base
     fee_per_ticket * paid_ticket_count
   end
 
+  def price_after_discount(price_before_fees)
+    price_before_fees - self.referral_code.total_discount(price_before_fees)
+  end
+
+  def total_discount(price_before_fees)
+    return price_before_fees - self.referral_code.discount_version if self.referral_code.discount_version == "flat_rate"
+    return price_before_fees * self.referral_code.discount_version / 100 if self.referral_code.discount_version == "percent"
+  end
+
   def price_after_discount_before_fees
     if referral_code_submitted?
       self.referral_code.price_after_discount(price_before_fees_and_discounts)
@@ -34,7 +43,7 @@ class Order < ActiveRecord::Base
   end
 
   def self.stripe_price(price)
-      (price * 100).to_i
+    (price * 100).to_i
   end
 
   def free?
@@ -65,7 +74,7 @@ class Order < ActiveRecord::Base
   end
 
   def referral_code_type
-    self.referral_code.discount_type
+    self.referral_code.discount_version
   end
 
   def self.create_charge(amount, currency, customer, description, fee, user_access_token)

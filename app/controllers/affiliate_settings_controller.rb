@@ -18,15 +18,22 @@ class AffiliateSettingsController < ApplicationController
   private 
 
   def affiliate_setting_params
-    params.require(:affiliate_setting).permit(
-      :enabled,
-      :discount_type,
-      :reward_type,
-      :amount
-      )
+    params.require(:affiliate_setting).permit(:enabled, :discount_type, :reward_type, :amount)
   end
 
   def find_affiliate_setting
     @affiliate_setting = AffiliateSetting.find_by id: params[:id]
   end
 end
+
+
+
+{"enabled"=>"true",
+ "discount_type"=>"percent",
+ "reward_type"=>"affiliate",
+ "amount"=>"40"}
+
+ {"enabled"=>"false",
+ "discount_type"=>"percent",
+ "reward_type"=>"affiliate",
+ "amount"=>"40"}

@@ -1,6 +1,5 @@
 class Participant < User
-  has_one :referral_code, :as => :codeable
-  before_create :make_affiliate_code
+  has_one :affiliate_code
 
   def password_required?
     false if Rails.env.development?
@@ -10,8 +9,8 @@ class Participant < User
     true
   end
 
-  def make_affiliate_code
-    self.referral_code = ReferralCode.new
+  def assign_affiliate_code(event)
+    event.referral_codes.build(:code => AffiliateCode.new, :participant => self, :type => "AffiliateCode")
   end
 
   def active_for_authentication?

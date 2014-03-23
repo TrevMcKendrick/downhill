@@ -8,29 +8,16 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def referral_code_exists?(code)
-    ReferralCode.find_by code: code
-  end
+  def valid_referral_code?(string, current_event)
+    code = ReferralCode.valid?(string)
+    return nil if code == nil
 
-  def valid_referral_code?(code, current_event)
-    code = referral_code_exists?(code)
-    return false if code == nil
-    return false unless code.affiliate_setting.enabled
-
-    if code.codeable_type == "Event"
-      if code.codeable == current_event 
-        return true
-      else
-        return false
-      end
+    if code.promo_code?
+      code.event == current_event ? code : nil
     end
 
-    if code.codeable_type == "User"
-      if code.codeable.events.include?(current_event) 
-        return true
-      else
-        return false
-      end
+    if code.affiliate_code
+      code.participant.events.include?(current_event) && code.affiliate_setting.enabled ? code : nil
     end
 
   end

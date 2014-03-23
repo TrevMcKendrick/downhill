@@ -9,12 +9,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-
-    if valid_referral_code?(params[:referral_code], @event)
-      code = ReferralCode.find_by code: params[:referral_code]
-    else
-      code = nil
-    end
+    code = valid_referral_code?(params[:referral_code], @event)
 
     @order = Order.new(:event => @event, :referral_code => code)
     @wave = Wave.find_by id: params[:wave]
@@ -36,8 +31,9 @@ class OrdersController < ApplicationController
           @participant.teams << @team if @team
           @wave.users << @participant
           ticket.users << @participant
-          @participant.referral_code.affiliate_setting = @participant.events.last.affiliate_setting
-          @participant.referral_code.save
+          @participant.assign_affiliate_code(@event)
+          # @participant.referral_code.affiliate_setting = @participant.events.last.affiliate_setting
+          # @participant.referral_code.save
 
           ticket.add_order(@order, @participant)
           setup_buyer unless @order.buyer_exists?
