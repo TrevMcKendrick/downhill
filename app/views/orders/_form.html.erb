@@ -7,7 +7,9 @@
     <% @tickets.each do |ticket| %>
       <%= ticket[1].to_i.times do |i| %>
         <h2><%= ticket[0] %></h2>
-        <%= render 'events/form_fields/default_fields', :ticket => ticket[0] %>
+        <%= render 'events/form_fields/email', :ticket => ticket[0] %>
+        <%= render 'events/form_fields/password', :ticket => ticket[0] %>
+        <%= render 'events/form_fields/name', :ticket => ticket[0] %>
         <%= render 'events/form_fields/shirt_size', :ticket => ticket[0] %>
         <%= render 'events/form_fields/phone', :ticket => ticket[0] %>
         <%= render 'events/form_fields/gender', :ticket => ticket[0] %>

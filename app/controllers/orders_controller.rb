@@ -2,6 +2,10 @@ class OrdersController < ApplicationController
   layout "order"
   before_action :get_event_from_params, :find_user
 
+  def complete
+
+  end
+
   def new
     @tickets = params[:tickets].to_a
     @order = Order.new
@@ -22,7 +26,8 @@ class OrdersController < ApplicationController
             :first_name => params[ticket.ticket_type].first[:name][i],
             :shirtsize => params[ticket.ticket_type].first[:shirtsize][i],
             :phone => params[ticket.ticket_type].first[:phone][i],
-            :type => "Participant"
+            :type => "Participant",
+            :password => params[ticket.ticket_type].first[:password][i]
             )
 
           @team = @event.teams.find_or_create_by(name: params[:join_team]) if join_or_create_team == "join"
@@ -32,8 +37,6 @@ class OrdersController < ApplicationController
           @wave.users << @participant
           ticket.users << @participant
           @participant.assign_affiliate_code(@event)
-          # @participant.referral_code.affiliate_setting = @participant.events.last.affiliate_setting
-          # @participant.referral_code.save
 
           ticket.add_order(@order, @participant)
           setup_buyer unless @order.buyer_exists?
@@ -47,7 +50,9 @@ class OrdersController < ApplicationController
     @buyer.add_waiver_signature(params[:waiver_signature], @event)
 
     create_charge unless @order.free?
-    redirect_to :back
+    # redirect_to :back
+    sign_in(@buyer)
+    redirect_to profile_path(@buyer)
   end
 
   private

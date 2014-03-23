@@ -1,12 +1,7 @@
-<h3>Your events</h3>
+<h3>What you've signed up for</h3>
 
 <% @user.events.each do |event| %>
-  <strong><%= event.title %></strong> |
-  <%= link_to "See live", public_event_url(:subdomain => @user.subdomain, :path => event.path) %>
-  <%= link_to "Edit", edit_event_url(:subdomain => @user.subdomain, :id => event.id), :class => "item"  %>
-  <%= link_to "Delete", event, method: :delete, data: { confirm: 'Are you sure?' }, :class => "item" %>
+  <strong><%= event.title %></strong>
+  <%#= link_to "See live", public_event_url(:subdomain => @user.subdomain, :path => event.path) %>
   <br>
 <% end %>
-
-<br><br><br>
-<%= button_to "Create New Event", new_event_path, :class => "btn btn-primary", :method => "get" %>
