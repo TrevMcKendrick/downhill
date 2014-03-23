@@ -1,0 +1,6 @@
+<% @tickets.each do |ticket| %>
+  <%= ticket_type(ticket) %><br>
+  <%= @order.ticket_count(ticket) %> tickets @ $<%= ticket_price(ticket) %> <br> 
+  Total: $<%= @order.total_cost_by_ticket(ticket, @event) %><br><br>
+  <%= render 'fees', :ticket => ticket %>
+<% end %>

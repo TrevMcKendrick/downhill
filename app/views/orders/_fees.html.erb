@@ -1,0 +1,4 @@
+  <% @event.fees do |fee| %>
+    <% next if ticket_free?(ticket) %>
+    <%= fee.price %> per ticket<br>
+  <% end %>

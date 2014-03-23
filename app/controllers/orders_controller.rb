@@ -38,7 +38,8 @@ class OrdersController < ApplicationController
           ticket.users << @participant
           @participant.assign_affiliate_code(@event)
 
-          ticket.add_order(@order, @participant)
+          @order.add_ticket(ticket, @participant)
+
           setup_buyer unless @order.buyer_exists?
         end
       end

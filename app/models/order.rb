@@ -6,6 +6,21 @@ class Order < ActiveRecord::Base
   belongs_to :referral_code
   belongs_to :event
 
+  def total_cost_by_ticket(ticket_array,event)
+    ticket = event.tickets.find_by ticket_type: ticket_array.first
+    ticket_count(ticket_array) * ticket.price
+  end
+
+  def ticket_count(ticket_array)
+    ticket_array.last.to_i
+  end
+
+  def add_ticket(ticket, participant)
+    user_ticket = participant.user_tickets.find_by ticket_id: ticket
+    user_ticket.order = self
+    user_ticket.save
+  end
+
   def price_before_fees_and_discounts
     array = self.user_tickets.collect do |user_ticket|
       user_ticket.ticket.price
