@@ -1,2 +1,6 @@
-<%= label_tag :name %>
-<%= text_field_tag "#{ticket}[]" + 'name[]', nil, :class => "form-control", :value => "Mike Perley" if Rails.env.development?  %>
+<div class="form-group">
+  <%= label_tag :name, nil, :class => "col-md-3 control-label" %>
+  <div class="col-md-4">
+    <%= text_field_tag "#{ticket}[]" + 'name[]', nil, :class => "form-control", :value => "Mike Perley" if Rails.env.development?  %>
+  </div>
+</div>

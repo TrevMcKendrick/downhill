@@ -1,4 +1,8 @@
-<%= label_tag :waiver_signature, "Waiver Release" %>
-<%= text_field_tag :waiver_signature, nil, :class => "form-control"  %>
-Please enter your full name to electronically sign the <%= link_to "release waiver. Click here to view.", event_waiver_path(@event), :target => "_blank" %>
-<br>
+<div class="form-group">
+  <%= label_tag :waiver_signature, "Waiver Release", :class => "col-md-3 control-label" %>
+    <div class="col-md-4">
+    <%= text_field_tag :waiver_signature, nil, :class => "form-control"  %>
+    Please enter your full name to electronically sign the release waiver. <%= link_to "Click here to view.", event_waiver_path(@event), :target => "_blank" %>
+    <br>
+    </div>
+</div>

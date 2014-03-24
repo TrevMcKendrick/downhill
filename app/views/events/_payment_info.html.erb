@@ -1,15 +1,22 @@
+<h4>Payment details</h4>
 <div class="form-group">
-  <%= label_tag :card_number %>
-  <%= text_field_tag :card_number, nil, :class => "valid payment-form", name: nil, :placeholder => "Card Number", :data => {:stripe => 'number' }, :tabindex => 1, :autofocus => true, :class => "form-control", :value => "4242424242424242" if Rails.env.development? %>
+  <%= label_tag :card_number, nil, :class => "col-md-3 control-label" %>
+  <div class="col-md-4">
+    <%= text_field_tag :card_number, nil, :class => "valid payment-form", name: nil, :placeholder => "Card Number", :data => {:stripe => 'number' }, :tabindex => 1, :autofocus => true, :class => "form-control", :value => "4242424242424242" if Rails.env.development? %>
+  </div>
 </div>
 
 <div class="form-group">
-  <%= label_tag :card_code, "CVC code" %>
-  <%= text_field_tag :card_code, nil,:class => "valid payment-form" , name: nil, :placeholder => "3 or 4 digits", :data => {:stripe => 'cvc' }, :tabindex => 2, :class => "form-control", :value => "4242" if Rails.env.development?  %>
+  <%= label_tag :card_code, "CVC code", :class => "col-md-3 control-label" %>
+  <div class="col-md-4">
+    <%= text_field_tag :card_code, nil,:class => "valid payment-form" , name: nil, :placeholder => "3 or 4 digits", :data => {:stripe => 'cvc' }, :tabindex => 2, :class => "form-control", :value => "4242" if Rails.env.development?  %>
+  </div>
 </div>
 
 <div class="form-group">
-  <%= label_tag "Expiration date" %>
-  <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", :class => "form-control", :data => {:stripe => 'exp-month' } } %>
-  <%= select_year nil, {start_year: card_expiration_year, end_year: Date.today.year+15}, {name: nil, id: "card_year", :class => "form-control", :data => {:stripe => 'exp-year' } } %>
+  <%= label_tag "Expiration date", nil, :class => "col-md-3 control-label" %>
+  <div class="col-md-4">
+    <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", :class => "form-control", :data => {:stripe => 'exp-month' } } %>
+    <%= select_year nil, {start_year: card_expiration_year, end_year: Date.today.year+15}, {name: nil, id: "card_year", :class => "form-control", :data => {:stripe => 'exp-year' } } %>
+  </div>
 </div>
