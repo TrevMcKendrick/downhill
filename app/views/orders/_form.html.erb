@@ -1,13 +1,13 @@
 <%= render 'events/stripe_publishable_key' %>
-<%= render 'orders/header', :user => @user %>
+
 <div class="checkout">
   <div class="container">
-
+    <%= render 'orders/header', :user => @user %>
     <% if @event.on_sale %>
       <%= form_tag url_for(:controller => "orders", :action => "create", :event_id => @event), :method => "post", :id => "order_form", :class => "form-horizontal", :role => "form" %>
         
         <% @tickets.each do |ticket| %>
-          <%= ticket[1].to_i.times do |i| %>
+          <% ticket[1].to_i.times do |i| %>
             <h4><%= "#{ticket[0]} ##{i+1}" %></h4>
             <%= render 'events/form_fields/name', :ticket => ticket[0] %>
             <%= render 'events/form_fields/email', :ticket => ticket[0] %>
@@ -27,10 +27,10 @@
       <%= render 'events/payment_info' %>
       <%= render 'summary' %>
       <%= submit_tag "Place order", :class => "btn btn-warning" %>
-
     <% else %>
       <%= page_not_found %>
     <% end %>
+    
   </div>
+
 </div>
-<%#= render 'footer', @user => @user %>
