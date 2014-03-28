@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140327201938) do
+ActiveRecord::Schema.define(version: 20140328173158) do
+
+  create_table "accounts", force: true do |t|
+    t.text     "header"
+    t.text     "footer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "affiliate_settings", force: true do |t|
     t.string  "discount_type"
@@ -176,6 +183,7 @@ ActiveRecord::Schema.define(version: 20140327201938) do
     t.string   "stripe_participant_id"
     t.string   "stripe_refresh_token"
     t.string   "phone"
+    t.integer  "account_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -150,7 +150,8 @@ user5 = User.new(
     stripe_publishable_key: "pk_test_gN63WMHZMqklRs22NlJh3TV6",
     stripe_access_token: "sk_test_np5fVHQs61y2pJE1tyjYmjG0",
     stripe_refresh_token: "rt_3gWrsbsB9czlgbELvPsA2yvAuIHcNEJwgKhs4UInkZX4pbei",
-    type: "User"
+    type: "User",
+    account_id: 1
     )
 
 user6 = User.new(
@@ -159,7 +160,8 @@ user6 = User.new(
     email: "test@test.com",
     password: "test",
     subdomain: "test",
-    type: "User"
+    type: "User",
+    account_id: 2
     )
 
 user1.save!(:validate => false)

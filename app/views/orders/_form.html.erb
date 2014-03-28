@@ -1,5 +1,5 @@
 <%= render 'events/stripe_publishable_key' %>
-
+<%= render 'orders/header', :user => @user %>
 <div class="checkout">
   <div class="container">
 
@@ -33,3 +33,4 @@
     <% end %>
   </div>
 </div>
+<%#= render 'footer', @user => @user %>
