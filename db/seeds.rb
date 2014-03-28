@@ -327,7 +327,11 @@ user_ticket = UserTicket.create([
   {
     ticket_id: 1,
     user_id: 1,
+<<<<<<< HEAD
     order_id: 1
+=======
+    order_id:1
+>>>>>>> c3ad34dae9994bfd1fdcf2ee562b67ac99b1d568
   },
   {
     ticket_id: 1,
@@ -399,6 +403,24 @@ referral_code = ReferralCode.create([
   }
   ])
 
+orders = Order.create([
+  {
+    referral_code_id: 1
+  },
+  {
+    referral_code_id: 2
+  },
+  {
+    referral_code_id: 3
+  },
+  {
+
+  },
+  {
+
+  }
+  ])
+
 affiliate_setting = AffiliateSetting.create([
   {
     discount_type: "flat_rate",
@@ -459,6 +481,52 @@ teams = Team.create([
   ])
 
 user_team = UserTeam.create([
+  {
+    team_id: 1,
+    user_id: 1
+  },
+   {
+    team_id: 1,
+    user_id: 2
+  },
+   {
+    team_id: 1,
+    user_id: 3
+  },
+   {
+    team_id: 1,
+    user_id: 4
+  },
+   {
+    team_id: 2,
+    user_id: 1
+  },
+   {
+    team_id: 2,
+    user_id: 1
+  },
+   {
+    team_id: 2,
+    user_id: 1
+  },
+   {
+    team_id: 2,
+    user_id: 1
+  }
+  ])
+
+teams = Team.create([
+  {
+    name: "Awesome Possums",
+    event_id: 1
+  },
+  {
+    name: "The Amazing Racers",
+    event_id: 2
+  }
+  ])
+
+user_ticket = UserTeam.create([
   {
     team_id: 1,
     user_id: 1

@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20140328173158) do
 
   create_table "accounts", force: true do |t|
@@ -19,6 +20,9 @@ ActiveRecord::Schema.define(version: 20140328173158) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+=======
+ActiveRecord::Schema.define(version: 20140317000009) do
+>>>>>>> c3ad34dae9994bfd1fdcf2ee562b67ac99b1d568
 
   create_table "affiliate_settings", force: true do |t|
     t.string  "discount_type"
@@ -66,8 +70,11 @@ ActiveRecord::Schema.define(version: 20140328173158) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "referral_code_id"
+<<<<<<< HEAD
     t.integer  "event_id"
     t.decimal  "final_charge",     precision: 8, scale: 2
+=======
+>>>>>>> c3ad34dae9994bfd1fdcf2ee562b67ac99b1d568
   end
 
   create_table "referral_codes", force: true do |t|
@@ -134,6 +141,11 @@ ActiveRecord::Schema.define(version: 20140328173158) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "waiver_signature"
+  end
+
+  create_table "user_teams", force: true do |t|
+    t.integer "user_id"
+    t.integer "team_id"
   end
 
   create_table "user_teams", force: true do |t|

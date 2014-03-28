@@ -2,6 +2,7 @@ class EventsController < ApplicationController
   layout "event_public", only: [:show, :waiver]
   before_action :set_event, only: [:edit, :update, :destroy, :show, :waiver]
   before_action :authenticate_user!, except: [:show]
+  layout "event_public", only: [:show]
 
   # GET /events
   # GET /events.json
@@ -66,7 +67,11 @@ class EventsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
 
     def set_event
+<<<<<<< HEAD
       find_user
+=======
+      @user = find_user
+>>>>>>> c3ad34dae9994bfd1fdcf2ee562b67ac99b1d568
       @event = @user.events.find(params[:id])
     end
 

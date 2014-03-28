@@ -1,4 +1,5 @@
 class ReferralCode < ActiveRecord::Base
+<<<<<<< HEAD
   has_many :orders
   belongs_to :event
 
@@ -24,4 +25,8 @@ class ReferralCode < ActiveRecord::Base
     ReferralCode.find_by code: code
   end
 
+=======
+  belongs_to :codeable, polymorphic: true
+  has_many :orders
+>>>>>>> c3ad34dae9994bfd1fdcf2ee562b67ac99b1d568
 end

@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 <div class="form-group">
   <%= label_tag :email, nil, :class => "col-md-3 control-label" %>
   <div class="col-md-4">
     <%= email_field_tag "#{ticket}[]" + 'email[]', nil, :class => "form-control ", :value => "#{rand}@gmail.com" if Rails.env.development? %>
   </div>
 </div>
+=======
+<%= label_tag :email %>
+<%= email_field_tag "#{ticket}[]" + 'email[]', nil, :class => "form-control" %>
+>>>>>>> c3ad34dae9994bfd1fdcf2ee562b67ac99b1d568

@@ -27,16 +27,30 @@
                         <tr role="row">
                           <th class="sorting" role="columnheader" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 150px;">Name</th>
                           <th class="sorting" role="columnheader" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Phone: activate to sort column ascending" style="width: 126px;">Code</th>
+<<<<<<< HEAD:app/views/promo_codes/index.html.erb
                           <th class="sorting" role="columnheader" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" 
                           aria-label="Name: activate to sort column ascending" style="width: 150px;">Live?</th>
+=======
+                          <th class="sorting" role="columnheader" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Phone: activate to sort column ascending" style="width: 126px;">Type</th>
+                          <th class="sorting" role="columnheader" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 150px;">Discount Amount</th>
+                          <th class="sorting" role="columnheader" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 150px;">Live?</th>
+>>>>>>> c3ad34dae9994bfd1fdcf2ee562b67ac99b1d568:app/views/referral_codes/index.html.erb
                         </tr>
                       </thead>
                       <tbody role="alert" aria-live="polite" aria-relevant="all">
                       <% @promo_codes.each do |promo_code| %> 
                           <tr class="<%= cycle("odd", "even") -%>">
+<<<<<<< HEAD:app/views/promo_codes/index.html.erb
                             <td class=" "><%= link_to promo_code.name, edit_promo_code_path(promo_code) %></td>
                             <td class=" "><%= promo_code.code %></td>
                             <td class=" "><%= englishify(promo_code.published) %></td>
+=======
+                            <td class=" "><%= link_to referral_code.name, edit_referral_code_path(referral_code) %></td>
+                            <td class=" "><%= referral_code.code %></td>
+                            <td class=" "><%= referral_code.discount_type.capitalize %></td>
+                            <td class=" "><%= symbolify(referral_code.discount_type, referral_code.amount) %></td>
+                            <td class=" "><%= englishify(referral_code.published) %></td>
+>>>>>>> c3ad34dae9994bfd1fdcf2ee562b67ac99b1d568:app/views/referral_codes/index.html.erb
                           </tr>
                       <% end %>
                       </tbody>

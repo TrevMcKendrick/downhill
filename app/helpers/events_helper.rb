@@ -32,7 +32,7 @@ module EventsHelper
   def ticket_titles
     array = Array.new
     @event.tickets.each do |ticket|
-      array.push(["#{ticket.ticket_type}" + " - " + "#{tickets_remaining(ticket)} remaining!",ticket.id])
+      array.push(["#{ticket.ticket_type}",ticket.id])
     end
     array
   end
