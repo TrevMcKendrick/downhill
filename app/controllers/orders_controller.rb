@@ -2,12 +2,14 @@ class OrdersController < ApplicationController
   layout "order"
   before_action :get_event_from_params, :find_user
 
-  def complete
-
+  def success
+    @participant = session[:participant]
+    @user = @event.users.where type: "User"
   end
 
   def new
     @tickets = params[:tickets].to_a
+    @referral_code = session[:referral_code]
     @order = Order.new
     @participant = Participant.new
   end
@@ -36,7 +38,7 @@ class OrdersController < ApplicationController
           @participant.teams << @team if @team
           @wave.users << @participant
           ticket.users << @participant
-          @participant.assign_affiliate_code(@event)
+          @participant.assign_affiliate_code(@event).save
 
           @order.add_ticket(ticket, @participant)
 
@@ -53,7 +55,8 @@ class OrdersController < ApplicationController
     create_charge unless @order.free?
     # redirect_to :back
     sign_in(@buyer)
-    redirect_to profile_path(@buyer)
+    session[:participant] = @buyer
+    redirect_to success_order_path(@event)
   end
 
   private

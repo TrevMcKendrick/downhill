@@ -16,8 +16,8 @@ class ApplicationController < ActionController::Base
       code.event == current_event ? code : nil
     end
 
-    if code.affiliate_code
-      code.participant.events.include?(current_event) && code.affiliate_setting.enabled ? code : nil
+    if code.affiliate_code?
+      code.participant.events.include?(current_event) && current_event.affiliate_setting.enabled ? code : nil
     end
 
   end

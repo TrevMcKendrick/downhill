@@ -11,6 +11,9 @@ class Order < ActiveRecord::Base
     ticket_count(ticket_array) * ticket.price
   end
 
+  def fees
+  end
+
   def ticket_count(ticket_array)
     ticket_array.last.to_i
   end
@@ -22,10 +25,11 @@ class Order < ActiveRecord::Base
   end
 
   def price_before_fees_and_discounts
-    array = self.user_tickets.collect do |user_ticket|
-      user_ticket.ticket.price
+    tickets = UserTicket.find_all_by_order_id self
+    array = tickets.collect do |ticket|
+      ticket.ticket.price
     end
-    array.inject(:+) unless array.size == 0
+    a = array.inject(:+) unless array.size == 0
   end
 
   def total_fees
@@ -36,20 +40,20 @@ class Order < ActiveRecord::Base
     fee_per_ticket * paid_ticket_count
   end
 
-  def price_after_discount(price_before_fees)
-    price_before_fees - self.referral_code.total_discount(price_before_fees)
+  def price_after_discount(price)
+    price - self.total_discount(price)
   end
 
-  def total_discount(price_before_fees)
-    return price_before_fees - self.referral_code.discount_version if self.referral_code.discount_version == "flat_rate"
-    return price_before_fees * self.referral_code.discount_version / 100 if self.referral_code.discount_version == "percent"
+  def total_discount(price)
+    return self.referral_code.discount_quantity if self.referral_code.discount_version == "flat_rate"
+    return price * self.referral_code.discount_quantity / 100 if self.referral_code.discount_version == "percent"
   end
 
   def price_after_discount_before_fees
     if referral_code_submitted?
-      self.referral_code.price_after_discount(price_before_fees_and_discounts)
+      self.price_after_discount(self.price_before_fees_and_discounts)
     else
-      price_before_fees_and_discounts
+      self.price_before_fees_and_discounts
     end
   end
 

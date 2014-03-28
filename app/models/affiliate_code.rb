@@ -4,7 +4,7 @@ class AffiliateCode < ReferralCode
   before_create :create_code
 
   def create_code
-    self.code = SecureRandom.hex(4)
+    self.code = SecureRandom.hex(3)
   end
 
 end

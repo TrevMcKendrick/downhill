@@ -1,0 +1,9 @@
+<h3>Success!</h3>
+
+<h4>You're all signed up for <%= "#{@event.title}, #{@participant.first_name}" %></h4>
+<%= @participant.email %>
+
+<h3>Get $<%= @event.affiliate_setting.amount.to_s %> back for every friend you refer</h3>
+<h3>Friends that use your code will earn you referral credit. Share your referral link via Facebook, Twitter, or email.</h3>
+
+<h4><%= "#{public_event_url(@event, @event.path)}/#{@participant.affiliate_code.code}" %>

@@ -1,5 +1,5 @@
 $(document).ready(function() { 
-  $("#join_team").select2();
+  // $("#join_team").select2();
 
     $("input[name='team']").change(function(){
       if ($("#team_Join_Team").is(':checked')) 
@@ -18,3 +18,4 @@ $(document).ready(function() {
      
   });
 });
+

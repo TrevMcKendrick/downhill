@@ -59,7 +59,7 @@ Downhill::Application.routes.draw do
 
   get '/:event_id/orders/new' => "orders#new", :as => "new_order"
   post '/orders/:event_id' => "orders#create", :as => "/"
-
+  get '/:event_id/success' => "orders#success", :as => "success_order"
 
   get '/profile' => 'profiles#show', :path => "/dashboard"
   
@@ -70,7 +70,7 @@ Downhill::Application.routes.draw do
 
   resources :events
 
-  get ':id/:path' => 'events#show', :as => "public_event"
+  get ':id/:path(/:referral_code)' => 'events#show', :as => "public_event"
   
   root 'home#index'  
 

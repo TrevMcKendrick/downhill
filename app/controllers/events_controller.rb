@@ -17,6 +17,7 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @participant = Participant.new
+    session[:referral_code] = params[:referral_code]
   end
 
   # GET /events/new
