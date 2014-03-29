@@ -47,6 +47,8 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
+    @event.user.account.update(account_params)
+    
     if @event.update(event_params)
       redirect_to :back
     else
@@ -99,6 +101,13 @@ class EventsController < ApplicationController
 
     def ticket_params
       params.require(:event).permit(ticket: [{:ticket_type => [], :price => [], :for_sale_begin => [], :for_sale_end => [] }])
+    end
+
+    def account_params
+      params.require(:account).permit(
+        :header,
+        :footer
+        )
     end
 
     def wave_params

@@ -19,4 +19,8 @@ class Event < ActiveRecord::Base
     self.affiliate_setting = AffiliateSetting.new
   end
 
+  def user
+    self.users.find_by type: "User"
+  end
+
 end

@@ -30,3 +30,16 @@
   <%= f.text_area :race_day_info_html, :class => "form-control editor", :rows => "5" %>
 </div>
 
+<div class="form-group">
+  <%= fields_for @event.user.account do |builder| %>
+    <%= builder.label :header, "Custom header HTML/CSS" %>
+    <%= builder.text_area :header, :class => "form-control" %>
+  <% end %>
+</div>
+
+<div class="form-group">
+  <%= fields_for @event.user.account do |builder| %>
+    <%= builder.label :footer, "Custom footer HTML/CSS" %>
+    <%= builder.text_area :footer, :class => "form-control" %>
+  <% end %>
+</div>
