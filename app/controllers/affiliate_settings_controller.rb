@@ -25,15 +25,3 @@ class AffiliateSettingsController < ApplicationController
     @affiliate_setting = AffiliateSetting.find_by id: params[:id]
   end
 end
-
-
-
-{"enabled"=>"true",
- "discount_type"=>"percent",
- "reward_type"=>"affiliate",
- "amount"=>"40"}
-
- {"enabled"=>"false",
- "discount_type"=>"percent",
- "reward_type"=>"affiliate",
- "amount"=>"40"}

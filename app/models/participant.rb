@@ -1,19 +1,9 @@
 class Participant < User
-<<<<<<< HEAD
+
   has_one :affiliate_code
 
   def password_required?
     false if Rails.env.development?
-=======
-
-  has_one :referral_code, :as => :codeable
-  has_one :shirt
-  before_create :make_affiliate_code
-
-
-  def password_required?
-    false
->>>>>>> c3ad34dae9994bfd1fdcf2ee562b67ac99b1d568
   end
   
   def participant?

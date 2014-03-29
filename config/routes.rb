@@ -57,24 +57,12 @@ Downhill::Application.routes.draw do
   patch '/affiliate_settings/:id' => "affiliate_settings#update"
   delete '/affiliate_settings/:id' => "affiliate_settings#destroy"
 
-<<<<<<< HEAD
   get '/:event_id/orders/new' => "orders#new", :as => "new_order"
   post '/orders/:event_id' => "orders#create", :as => "/"
   get '/:event_id/success' => "orders#success", :as => "success_order"
-=======
-  get '/:event_id/teams' => "teams#index", :as => "teams"
-  post '/teams/:event_id' => "teams#create", :as => "/"
-  get '/teams/new' => "teams#new", :as => "new_team"
-  get '/edit/:id/teams' => "teams#edit", :as => "edit_team"
-  get '/teams/:id' => "teams#show", :as => "team"
-  put '/teams/:id' => "teams#update"
-  patch '/teams/:id' => "teams#update"
-  delete '/teams/:id' => "teams#destroy"
 
-  get '/:event_id/orders/new' => "orders#new", :as => "new_order"
-  post '/orders/:event_id' => "orders#create", :as => "/"
-
->>>>>>> c3ad34dae9994bfd1fdcf2ee562b67ac99b1d568
+  # get '/:event_id/teams' => "teams#index", :as => "teams"
+  # post '/teams/:event_id' => "teams#create", :as => "/"
 
   get '/profile' => 'profiles#show', :path => "/dashboard"
   
@@ -85,11 +73,7 @@ Downhill::Application.routes.draw do
 
   resources :events
 
-<<<<<<< HEAD
   get ':id/:path(/:referral_code)' => 'events#show', :as => "public_event"
-=======
-  get ':id/:path' => 'events#show', :as => "public_event"
->>>>>>> c3ad34dae9994bfd1fdcf2ee562b67ac99b1d568
   
   root 'home#index'  
 

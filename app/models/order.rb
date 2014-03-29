@@ -1,5 +1,4 @@
 class Order < ActiveRecord::Base
-<<<<<<< HEAD
 
   attr_accessor :stripe_user_created
 
@@ -115,8 +114,4 @@ class Order < ActiveRecord::Base
     end
   end
   
-=======
-  has_many :user_tickets
-  belongs_to :referral_code
->>>>>>> c3ad34dae9994bfd1fdcf2ee562b67ac99b1d568
 end

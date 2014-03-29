@@ -2,7 +2,6 @@ class OrdersController < ApplicationController
   layout "order"
   before_action :get_event_from_params, :find_user
 
-<<<<<<< HEAD
   def success
     @participant = session[:participant]
     @user = @event.users.where type: "User"
@@ -11,16 +10,11 @@ class OrdersController < ApplicationController
   def new
     @tickets = params[:tickets].to_a
     @referral_code = session[:referral_code]
-=======
-  def new
-    @tickets = params[:tickets].to_a
->>>>>>> c3ad34dae9994bfd1fdcf2ee562b67ac99b1d568
     @order = Order.new
     @participant = Participant.new
   end
 
   def create
-<<<<<<< HEAD
     code = valid_referral_code?(params[:referral_code], @event)
 
     @order = Order.new(:event => @event, :referral_code => code)
@@ -63,25 +57,10 @@ class OrdersController < ApplicationController
     sign_in(@buyer)
     session[:participant] = @buyer
     redirect_to success_order_path(@event)
-=======
-    @order = Order.create
-    @event.tickets.each do |ticket|
-      if params[ticket.ticket_type] != nil 
-        params[ticket.ticket_type].first[:email].count.times do |i|
-          @participant = Participant.create(:email => params[ticket.ticket_type].first[:email][i], :first_name => params[ticket.ticket_type].first[:name][i])
-          @event.users << @participant
-          UserTicket.create(:user => @participant, :ticket => ticket, :order => @order)
-        end
-      end
-    end
-
-  redirect_to :back
->>>>>>> c3ad34dae9994bfd1fdcf2ee562b67ac99b1d568
   end
 
   private
 
-<<<<<<< HEAD
   def at_least_one(ticket)
     params[ticket.ticket_type] != nil
   end
@@ -115,15 +94,5 @@ class OrdersController < ApplicationController
       return "create"
     end
   end
-=======
-  def order_params
-
-  end
-
-  def number_of_tickets
-    params[@event.tickets.first.ticket_type].first[:email].count
-  end
-
->>>>>>> c3ad34dae9994bfd1fdcf2ee562b67ac99b1d568
 
 end

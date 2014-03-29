@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%= render 'events/stripe_publishable_key' %>
 
 <div class="checkout">
@@ -35,27 +34,3 @@
   </div>
 
 </div>
-=======
-<% if @event.on_sale %>
-  <%= form_tag url_for(:controller => "orders", :action => "create", :event_id => @event), :method => "post" %>
-  
-    <% @tickets.each do |ticket| %>
-      <%= ticket[1].to_i.times do |i| %>
-        <h2><%= ticket[0] %></h2>
-        <%= render 'events/form_fields/default_fields', :ticket => ticket[0] %>
-      <% end %>
-    <% end %>
-
-  <br>
-  <%= render 'events/form_fields/referral_code' %>
-  <%= render 'events/form_fields/shirt_size' %>
-  <%= render 'events/form_fields/phone' %>
-  <%= render 'events/form_fields/gender' %>
-  <%= render 'events/payment_info' %>
-
-  <%= submit_tag %>
-
-<% else %>
-  <%= page_not_found %>
-<% end %>
->>>>>>> c3ad34dae9994bfd1fdcf2ee562b67ac99b1d568

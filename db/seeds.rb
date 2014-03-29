@@ -327,11 +327,7 @@ user_ticket = UserTicket.create([
   {
     ticket_id: 1,
     user_id: 1,
-<<<<<<< HEAD
     order_id: 1
-=======
-    order_id:1
->>>>>>> c3ad34dae9994bfd1fdcf2ee562b67ac99b1d568
   },
   {
     ticket_id: 1,

@@ -2,6 +2,5 @@
 
 <% @user.events.each do |event| %>
   <strong><%= event.title %></strong>
-  <%#= link_to "See live", public_event_url(:subdomain => @user.subdomain, :path => event.path) %>
   <br>
 <% end %>
