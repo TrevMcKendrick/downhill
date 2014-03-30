@@ -28,7 +28,7 @@
     <main role="main">
       <div id="intro-wrap">
         <div id="intro" class="preload darken" data-autoplay="5000" data-navigation="true" data-pagination="true" data-transition="fadeUp">         
-          <div class="intro-item" style="background-image: url(http://placehold.it/1800x600/ddd/fff&text=Beetle%20image);">
+          <div class="intro-item" style="background-image: url(<%= image_path 'desktop.jpg' %>);">  
             <div class="caption">
               <h2>The Best Way to Organize Themed Races</h2>
               <p>Ticketing, Waves, Affiliate marketing all built</p>
@@ -39,127 +39,77 @@
       </div><!-- intro-wrap -->
 
       <div id="main">
- 
-
-        <section class="row section text-light" style="background-color:#4FC1E9;">
-          <div class="row-content buffer even clear-after">
-            <div class="section-title"><h2>Built specifically them the Tough Mudders and Color Runs</h2></div>
-          </div>
-        </section>
-
-        <section class="row section call-to-action">
-          <div class="row-content buffer even">
-            <p>Have you fallen in love with Beetle?</p>
-            <a class="button red" href="#">Buy it now!</a>
-          </div>
-        </section>
-
-        <section class="row section">
+         <section class="row section text-light greyish" style="background-color: #FC6E51">
           <div class="row-content buffer even clear-after">
             <div class="column four centertxt">
               <div class="big-icon red"><i class="icon icon-tablet"></i></div>
                 <div class="big-icon-text clear-after">
                   <h4>Affiliate Marketing</h4>
                     <p class="text-s">Incentivize your customers to market for you. When they get their friends to purchase event tickets, they get a small cut (amount determined by you if you turn affiliates on).</p>
-                      <!-- <a class="button transparent aqua" href="#">Read more</a> -->
                 </div>
             </div>
             <div class="column four centertxt">
-              <div class="big-icon red"><i class="icon icon-pocket"></i></div>
+              <div class="big-icon green"><i class="icon icon-pocket"></i></div>
                 <div class="big-icon-text clear-after">
                   <h4>Ticket and Wave Times</h4>
                   <p class="text-s">Want multiple waves for every ticket? Volunteer tickets? We have all that, built in from the ground up.</p>
-                  <!-- <a class="button transparent aqua" href="#">Read more</a> -->
                 </div>
             </div>            
             <div class="column four last centertxt">
-              <div class="big-icon red"><i class="icon icon-heart"></i></div>
+              <div class="big-icon green"><i class="icon icon-heart"></i></div>
                 <div class="big-icon-text clear-after">
                   <h4>Get Paid Fast</h4>
                   <p class="text-s">Unlike Active, we don't hold your money hostage. Get paid on every ticket on a two day rolling basis.</p>
-                  <!-- <a class="button transparent aqua" href="#">Read more</a> -->
                 </div>
             </div>
           </div>
         </section>  
 
-        <section class="row section">
-          <div class="row-content buffer even clear-after">         
-            <div class="section-title"><h3>Latest News</h3></div>
-            <div class="grid-items blog-section masonry-style preload">
-              <article class="item column six">
-                <a href="#">
-                  <figure><img src="http://placehold.it/800x600/ddd/fff&text=Beetle%20image" alt=""><span class="blog-overlay"><i class="icon icon-doc"></i></span></figure>
-                  <div class="blog-excerpt">
-                    <div class="blog-excerpt-inner">
-                      <h5 class="meta-post">Interior design</h5>
-                      <h2>A confortable desk</h2>
-                    </div><!-- blog-excerpt -->
-                  </div><!-- blog-excerpt-inner --> 
-                </a>
-              </article>    
-              <article class="item column three">
-                <a href="#">
-                  <figure><img src="http://placehold.it/800x600/ddd/fff&text=Beetle%20image" alt=""><span class="blog-overlay"><i class="icon icon-doc"></i></span></figure>
-                  <div class="blog-excerpt">
-                    <div class="blog-excerpt-inner">
-                      <h5 class="meta-post">Relax, Hobbies</h5>
-                      <h2>How I spend my time</h2>
-                      <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div><!-- blog-excerpt-inner -->   
-                  </div><!-- blog-excerpt -->               
-                </a>
-              </article>                      
-              <article class="item column three">
-                <a href="#">
-                  <figure><img src="http://placehold.it/800x600/ddd/fff&text=Beetle%20image" alt=""><span class="blog-overlay"><i class="icon icon-doc"></i></span></figure>
-                  <div class="blog-excerpt">
-                    <div class="blog-excerpt-inner">
-                      <h5 class="meta-post">Holidays</h5>
-                      <h2>Snow &amp; silence</h2>
-                      <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div><!-- blog-excerpt --> 
-                  </div><!-- blog-excerpt-inner -->
-                </a>
+
+
+        <section class="row section text-light greyish" style="background-color:#4FC1E9;">
+          <div class="row-content buffer even clear-after" style="padding-top:30px;">         
+            <div class="section-title" style="padding-bottom:30px"><h2>Increase Your Revenue per Customer</h2></div>
+            <div class="blog-section masonry-style preload">
+
+               <article class="test clearfix">
+                      <%= image_tag "img3.png", :class => "left" %>
+                      <div class="right">
+                        <h3 class="column">Mobile Checkout</h3>
+                        <ul>
+                          <li>Event pages optimized for smartphones</li>
+                          <li>Easy mobile checkout</li>
+                          <li>Upsells </li>
+                        </ul>
+                      </div>
+              </article>                    
+           
+              <article class="test clearfix">
+                      <%= image_tag "img3.png", :class => "right" %>
+                      <div class="left">
+                        <h3 class="column">Sell More Merchandise</h3>
+                        <ul>
+                          <li>Add upsells to checkout</li>
+                          <li>Analyze what sells best</li>
+                          <li>Included automatically for all events</li>
+                        </ul>
+                      </div>
+              </article> 
+
+              <article class="test clearfix">
+                      <%= image_tag "img3.png", :class => "left" %>
+                      <div class="right">
+                        <h3 class="column">Flexible Reporting</h3>
+                        <ul>
+                          <li>Custom date ranges</li>
+                          <li>Issue refunds yourself</li>
+                          <li>Filter by Event</li>
+                        </ul>
+                      </div>
               </article>
-              <article class="item column three">
-                <a href="#">
-                  <figure><img src="http://placehold.it/800x600/ddd/fff&text=Beetle%20image" alt=""><span class="blog-overlay"><i class="icon icon-doc"></i></span></figure>
-                  <div class="blog-excerpt">
-                    <div class="blog-excerpt-inner">
-                      <h5 class="meta-post">Music, Headphones</h5>
-                      <h2>5 Hi-Fi headphones</h2>
-                      <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div><!-- blog-excerpt --> 
-                  </div><!-- blog-excerpt-inner -->             
-                </a>
-              </article>  
-              <article class="item column three">
-                <a href="#">
-                  <figure><img src="http://placehold.it/800x600/ddd/fff&text=Beetle%20image" alt=""><span class="blog-overlay"><i class="icon icon-doc"></i></span></figure>
-                  <div class="blog-excerpt">
-                    <div class="blog-excerpt-inner">
-                      <h5 class="meta-post">Web Design</h5>
-                      <h2>Build awesome layouts</h2>
-                      <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div><!-- blog-excerpt --> 
-                  </div><!-- blog-excerpt-inner -->             
-                </a>
-              </article>  
-              <article class="item column six">
-                <a href="#">
-                  <figure><img src="http://placehold.it/800x600/ddd/fff&text=Beetle%20image" alt=""><span class="blog-overlay"><i class="icon icon-doc"></i></span></figure>
-                  <div class="blog-excerpt">
-                    <div class="blog-excerpt-inner">
-                      <h5 class="meta-post">Photography, Instagram</h5>
-                      <h2>We are all made of stars</h2>
-                    </div><!-- blog-excerpt --> 
-                  </div><!-- blog-excerpt-inner -->             
-                </a>
-              </article>                                    
+                                   
               <div class="shuffle-sizer three"></div>
             </div><!-- grid-items -->
-            <div class="more-btn"><a class="button transparent aqua" href="#">Read all News</a></div>           
           </div>  
         </section>  
 
@@ -186,39 +136,7 @@
             </div>            
           </div>  
         </section>                    
-
-        <section class="row section">
-          <div class="row-content buffer even clear-after">
-            <div class="section-title"><h3>Skills</h3></div>
-            <p class="centertxt">I’m an experienced and passionate user interface designer with interaction design background.<br>My goal is to make the world wide web a better place by designing beautiful user experiences, one site at a time.</p>
-            <div class="chart" data-percent="73" data-bar-color="#fd685b" data-animate="2000">
-              <div class="chart-content">
-                <div class="percent"></div>
-                <div class="chart-title">User Interface</div>
-              </div><!-- chart-content -->
-            </div><!-- chart -->
-            <div class="chart" data-percent="85" data-bar-color="#ffce54" data-animate="2500">
-              <div class="chart-content">
-                <div class="percent"></div>
-                <div class="chart-title">Front-end</div>
-              </div><!-- chart-content -->
-            </div><!-- chart -->
-            <div class="chart" data-percent="70" data-bar-color="#a0d468" data-animate="3000">
-              <div class="chart-content">
-                <div class="percent"></div>
-                <div class="chart-title">User Experience</div>
-              </div><!-- chart-content -->
-            </div><!-- chart -->
-            <div class="chart" data-percent="95" data-bar-color="#ac92ec" data-animate="3500">
-              <div class="chart-content">
-                <div class="percent"></div>
-                <div class="chart-title">Icon Design</div>
-              </div><!-- chart-content -->
-            </div><!-- chart -->
-          </div>  
-        </section>  
-
-                 
+                
 
         <section class="row section">
           <div class="row-content buffer even clear-after">
@@ -260,18 +178,18 @@
             </div><!-- dribbble-items -->
             <div class="more-btn"><a class="button transparent white" href="http://dribbble.com/frankiefreesbie">View all Shots</a></div>           
           </div>  
-        </section>  
-
-        <section class="row section call-to-action">
-          <div class="row-content buffer even animation">
-            <p>Have you fallen in love with Beetle?</p>
-            <a class="button red" href="#">Buy it now!</a>
-          </div>
-        </section>                
+        </section>               
 
         <section class="row section">
           <div class="map" data-maplat="51.511214" data-maplon="-0.119824" data-mapzoom="15" data-color="" data-height="22.222" data-img="img/marker.png" data-info="I am based in London, UK"></div>
-        </section>                  
+        </section>     
+
+        <section class="row section call-to-action">
+          <div class="row-content buffer even">
+            <p>What are you waiting for?</p>
+            <a class="button red" href="#">Create an event for free</a>
+          </div>
+        </section>             
 
       </div><!-- id-main -->
     </main><!-- main -->
@@ -291,14 +209,14 @@
               </ul>
             </div>
             <div class="widget column three">
-              <h4>Archives</h4>
+            <!--   <h4>Archives</h4>
               <ul class="plain">
                 <li><a href="#">March 2014</a></li>
                 <li><a href="#">April 2014</a></li>
                 <li><a href="#">May 2014</a></li>
                 <li><a href="#">June 2014</a></li>
                 <li><a href="#">July 2014</a></li>
-              </ul>
+              </ul> -->
             </div>                
             <div class="widget column three">
               <h4>Widget</h4>

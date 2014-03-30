@@ -1,0 +1,50 @@
+#tm_column {
+  box-shadow: none;
+}
+
+h3.column {
+  color:#ffe5c7;
+}
+
+article.test {
+  /*border: 1px solid red;*/
+  width: 62%;
+  height: 350px;
+  margin: 0 auto;
+}
+
+img {
+  /*border: 1px solid white;*/
+  clear:none;
+  height:85%;
+}
+
+img.right {
+  float:right;
+}
+
+img.left {
+  float:left;
+}
+
+div.left {
+  margin-top: 10%;
+  /*border: 1px solid yellow;*/
+  float:left;
+  clear:none;
+}
+
+div.right {
+  margin-top: 7%;
+  /*border: 1px solid yellow;*/
+  float:right;
+  clear:none;
+}
+
+.clearfix:after { 
+   content: "."; 
+   visibility: hidden; 
+   display: block; 
+   height: 0; 
+   clear: both;
+}
