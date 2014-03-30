@@ -28,7 +28,7 @@ img.left {
 }
 
 div.left {
-  margin-top: 10%;
+  margin-top: 7%;
   /*border: 1px solid yellow;*/
   float:left;
   clear:none;
@@ -47,4 +47,17 @@ div.right {
    display: block; 
    height: 0; 
    clear: both;
+}
+
+h2.orange {
+  font-size: 35px;
+  text-align: center;
+  font-weight: 300;
+}
+
+h4.orange {
+  font-size: 16px;
+  text-align: center;
+  font-weight: 300;
+  margin-bottom: 40px;
 }
