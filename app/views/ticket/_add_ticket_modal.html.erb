@@ -39,6 +39,17 @@
 
                 <section>
                   <div class="row">
+                    <%= f.label :quantity, :class => "label col col-2" %>
+                    <div class="col col-10">
+                      <label class="input"> <i class="icon-append fa fa-money"></i>
+                        <%= f.text_field :quantity, :placeholder => "500" %>
+                      </label>
+                    </div>
+                  </div>
+                </section>
+
+                <section>
+                  <div class="row">
                     <%= f.label :for_sale_begin, "Start date", :class => "label col col-2" %>
                     <div class="col col-10">
                       <label class="input"> <i class="icon-append fa fa-calendar-o"></i>

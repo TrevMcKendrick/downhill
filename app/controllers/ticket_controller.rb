@@ -41,7 +41,8 @@ class TicketController < ApplicationController
       :ticket_type,
       :price,
       :for_sale_begin,
-      :for_sale_end
+      :for_sale_end,
+      :quantity
       )
   end
   

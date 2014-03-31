@@ -44,7 +44,13 @@
                           <tr class="<%= cycle("odd", "even") -%>">
                             <td class=" "><%= link_to ticket.ticket_type, edit_ticket_path(ticket) %></td>
                             <td class=" "><%= "$ #{ticket.price}" %></td>
-                            <td class=" "><%= "#{ticket.quantity - ticket.users.count}/#{ticket.quantity}" %></td>
+                            <td class=" ">
+                              <% if ticket.users.count > 0 %>
+                                <%= "#{ticket.quantity - ticket.users.count}/#{ticket.quantity}" %>
+                              <% else %>
+                                <%= "#{ticket.quantity}/#{ticket.quantity}" %>
+                              <% end %>
+                              </td>
                             <td class=" "><%= ticket.for_sale_begin %></td>
                             <td class=" "><%= ticket.for_sale_begin %></td>
                           </tr>
