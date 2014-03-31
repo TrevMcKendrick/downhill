@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
 
-  before_create :assign_affiliate_setting
+  before_create :defaults
 
   has_many :user_events
   has_many :users, :through => :user_events
@@ -15,8 +15,9 @@ class Event < ActiveRecord::Base
 
   has_one :affiliate_setting
 
-  def assign_affiliate_setting
-    self.affiliate_setting = AffiliateSetting.new
+  def defaults
+    self.affiliate_setting = AffiliateSetting.create
+    binding.pry
   end
 
   def user
