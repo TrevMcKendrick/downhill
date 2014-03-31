@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    subdomain_with_https_or_http(DOMAIN_NAME,request.subdomain) + "/dashboard"
+    subdomain_with_https_or_http(DOMAIN_NAME,@user.subdomain, "/dashboard")
   end
 
   def subdomain(url)
