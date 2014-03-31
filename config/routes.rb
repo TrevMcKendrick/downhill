@@ -64,7 +64,7 @@ Downhill::Application.routes.draw do
   # get '/:event_id/teams' => "teams#index", :as => "teams"
   # post '/teams/:event_id' => "teams#create", :as => "/"
 
-  get '/profile' => 'profiles#show', :path => "/dashboard"
+  get '/dashboard' => 'dashboards#show'
   
   get '/events/:id/registration' => "events#edit", :as => "registration"
   get '/events/:id/publish' => "events#edit", :as => "publish"
