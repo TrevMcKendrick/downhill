@@ -73,7 +73,7 @@ Downhill::Application.routes.draw do
 
   resources :events
 
-  get ':id/:path(/:referral_code)' => 'events#show', :as => "public_event"
+  get '/events/:id/:path(/:referral_code)' => 'events#show', :as => "public_event"
   
   root 'home#index'  
 

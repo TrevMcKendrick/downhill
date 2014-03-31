@@ -14,7 +14,7 @@
           <nav>
             <ul class="reset" role="navigation">
               <li class="menu-item">
-                <a href="<%= root_url %>">Create an Event</a>
+                <a href="<%= new_user_registration_path %>">Create an Event</a>
               </li>
               <li class="menu-item">
                 <a href="<%= root_url %>">Login</a>
@@ -32,7 +32,7 @@
             <div class="caption">
               <h2>The Best Way to Organize Themed Races</h2>
               <p>Ticketing, Waves, Affiliate marketing all built</p>
-              <a class="button white transparent" href="#">Create your event for free</a>
+              <a class="button white transparent" href="<%= new_user_registration_path %>">Create your event for free</a>
             </div><!-- caption -->           
           </div>                                                                
         </div><!-- intro -->
@@ -71,7 +71,6 @@
           <div class="row-content buffer even clear-after" style="padding-top:30px;">         
             <div class="section-title" style="padding-bottom:30px"><h2>Increase Your Revenue per Customer</h2></div>
             <div class="blog-section masonry-style preload">
-
                <article class="test clearfix">
                       <%= image_tag "img3.png", :class => "left" %>
                       <div class="right">
@@ -118,13 +117,13 @@
           <h2 class="orange">We Charge Only When You Do</h2>
           <h4 class="orange">$2.95 per ticket if paid. Free tickets are free!</h2>
 
-          <div class="more-btn"><a class="button transparent white" href="http://dribbble.com/frankiefreesbie">Create Your Event For Free</a></div>                      
+          <div class="more-btn"><a class="button transparent white" href="<%= new_user_registration_path %>">Create Your Event For Free</a></div>                      
         </section>                        
 
         <section class="row section call-to-action">
           <div class="row-content buffer even">
             <p>What are you waiting for?</p>
-            <a class="button red" href="#">Create an event for free</a>
+            <a class="button red" href="<%= new_user_registration_path %>">Create an event for free</a>
           </div>
         </section>             
 

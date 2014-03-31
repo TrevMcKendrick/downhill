@@ -1,0 +1,39 @@
+#sign_up_container {
+  width: 100%;
+  margin-top: 80px;
+  /*border: 1px solid red;*/
+}
+
+#sign_up_box {
+  width:50%;
+  margin-top: 50px;
+  /*border: 1px solid yellow;*/
+}
+
+#headline {
+  text-align: center;
+}
+
+.TMheader {
+  height:70px;
+  padding: 0 8%;
+}
+
+.login_field {
+  padding-left: 10px;
+}
+
+.login_link {
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+.centerize {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+li {
+  font-size: 100px;
+}

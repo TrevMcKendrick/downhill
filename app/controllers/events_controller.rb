@@ -2,7 +2,6 @@ class EventsController < ApplicationController
   layout "event_public", only: [:show, :waiver]
   before_action :set_event, only: [:edit, :update, :destroy, :show, :waiver]
   before_action :authenticate_user!, except: [:show]
-  layout "event_public", only: [:show]
 
   # GET /events
   # GET /events.json
