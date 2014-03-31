@@ -2,6 +2,8 @@ class Participant < User
 
   has_one :affiliate_code
 
+  before_create :defaults
+
   def password_required?
     false if Rails.env.development?
   end
@@ -32,6 +34,10 @@ class Participant < User
     user_event = event.user_events.find_by user_id: self
     user_event.waiver_signature = waiver_signature
     user_event.save
+  end
+
+  def defaults
+    self.type = "Participant"
   end
 
 end

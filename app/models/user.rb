@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
+  before_create :defaults
+
   belongs_to :account
   
   devise :database_authenticatable, :registerable,
@@ -28,6 +30,11 @@ class User < ActiveRecord::Base
 
   def participant?
     false
+  end
+
+  def defaults
+    self.type = "User"
+    self.account = Account.create
   end
 
 end
