@@ -19,10 +19,6 @@
   padding: 0 8%;
 }
 
-.login_field {
-  padding-left: 10px;
-}
-
 .login_link {
   margin-top: 10px;
   font-size: 12px;
@@ -36,4 +32,8 @@
 
 li {
   font-size: 100px;
+}
+
+#subdomain {
+
 }

@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 ruby "1.9.3"
 
+gem "strip_attributes"
+
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 
 gem "select2-rails"

@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  strip_attributes :only => [:subdomain]
 
   before_create :defaults
 
@@ -35,6 +36,10 @@ class User < ActiveRecord::Base
   def defaults
     self.type = "User"
     self.account = Account.create
+  end
+
+  def subdomain=(val)
+    write_attribute(:subdomain, val.delete(' '))
   end
 
 end
