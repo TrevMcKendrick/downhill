@@ -3,8 +3,10 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   # prepend_before_action :require_no_authentication, :only => [:after_sign_in_path_for]
   before_action :configure_devise_permitted_parameters, if: :devise_controller?
+  before_action :check_subdomain
 
   protect_from_forgery with: :exception
+
 
   protected
 
@@ -22,9 +24,35 @@ class ApplicationController < ActionController::Base
 
   end
 
-  def after_sign_in_path_for(resource)
-    subdomain_with_https_or_http(DOMAIN_NAME,@user.subdomain, "/dashboard")
+  # def after_sign_in_path_for(resource)
+  #   subdomain_with_https_or_http(DOMAIN_NAME,@user.subdomain, "/dashboard")
+  # end
+
+  def check_subdomain
+    if is_home_page? == false && current_user != nil
+      unless current_user.subdomain == request.subdomain 
+        not_found
+      end
+    end
   end
+
+  def is_home_page?
+    request.subdomain == ""
+  end
+
+  def after_sign_in_path_for(resource)
+    dashboard_url(:subdomain => current_user.subdomain)
+  end
+
+  # def after_sign_out_path_for(resource)
+  #   # new_user_session_url
+  #   root_url
+  # end
+
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
+
 
   def subdomain(url)
     Domainatrix.parse(url).subdomain

@@ -17,7 +17,6 @@ class Event < ActiveRecord::Base
 
   def defaults
     self.affiliate_setting = AffiliateSetting.create
-    binding.pry
   end
 
   def user
