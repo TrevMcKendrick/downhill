@@ -21,12 +21,7 @@ class ApplicationController < ActionController::Base
     if code.affiliate_code?
       code.participant.events.include?(current_event) && current_event.affiliate_setting.enabled ? code : nil
     end
-
   end
-
-  # def after_sign_in_path_for(resource)
-  #   subdomain_with_https_or_http(DOMAIN_NAME,@user.subdomain, "/dashboard")
-  # end
 
   def check_subdomain
     if is_home_page? == false && current_user != nil
@@ -44,10 +39,9 @@ class ApplicationController < ActionController::Base
     dashboard_url(:subdomain => current_user.subdomain)
   end
 
-  # def after_sign_out_path_for(resource)
-  #   # new_user_session_url
-  #   root_url
-  # end
+  def after_sign_out_path_for(resource)
+    root_url
+  end
 
   def not_found
     raise ActionController::RoutingError.new('Not Found')

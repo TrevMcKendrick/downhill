@@ -31,9 +31,8 @@
         <!-- logout button -->
         <div id="logout" class="btn-header transparent pull-right">
           <span>
-            <%= link_to destroy_user_session_path, :method => :delete do %>
-             <i class="fa fa-sign-out"></i>
-            <% end %>
+            <%= link_to "Sign out", destroy_user_session_path, :method => :delete, :class => "btn btn-primary" %>
+           
           </span>
         </div>
         <!-- end logout button -->
