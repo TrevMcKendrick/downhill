@@ -104,10 +104,7 @@ class EventsController < ApplicationController
     end
 
     def account_params
-      params.require(:account).permit(
-        :header,
-        :footer
-        )
+      params.require(:event).permit(account:[:header,:footer])
     end
 
     def wave_params

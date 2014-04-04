@@ -56,6 +56,7 @@
                       <thead>
                         <tr role="row">
                           <th class="sorting" role="columnheader" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 150px;">Event</th>
+                          <th class="sorting" role="columnheader" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 150px;">Even link</th>
                           <th class="sorting" role="columnheader" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Phone: activate to sort column ascending" style="width: 126px;">Date</th>
                           <th class="sorting" role="columnheader" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Company: activate to sort column ascending" style="width: 110px;">Tickets Sold</th>
                           <th class="sorting" role="columnheader" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Zip: activate to sort column ascending" style="width: 83px;">Published</th>
@@ -66,6 +67,7 @@
                       <% @events.each do |event| %> 
                           <tr class="<%= cycle("odd", "even") -%>">
                             <td class=" "><%= link_to event.title, edit_event_path(event) %></td>
+                            <td class=" "><%= link_to "Visit Page", event_path(event) %></td>
                             <td class=" "><%= event.date %></td>
                             <td class=" "><%= event.users.count %></td>
                             <td class=" "><%= event.published %></td>

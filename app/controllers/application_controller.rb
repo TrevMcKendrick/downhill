@@ -25,9 +25,13 @@ class ApplicationController < ActionController::Base
 
   def check_subdomain
     if is_home_page? == false && current_user != nil
-      unless current_user.subdomain == request.subdomain 
-        not_found
+      unless current_user.subdomain == request.subdomain
+        log_in_from_your_domain
       end
+    end
+
+    if is_home_page? && current_user
+      redirect_to dashboard
     end
   end
 
@@ -36,6 +40,10 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
+    dashboard
+  end
+
+  def dashboard
     dashboard_url(:subdomain => current_user.subdomain)
   end
 
@@ -43,8 +51,8 @@ class ApplicationController < ActionController::Base
     root_url
   end
 
-  def not_found
-    raise ActionController::RoutingError.new('Not Found')
+  def log_in_from_your_domain
+    raise ActionController::RoutingError.new('Log in from your subdomain!')
   end
 
 

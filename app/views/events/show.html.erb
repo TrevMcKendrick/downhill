@@ -2,7 +2,7 @@
 
   <h2><%= @event.title %></h2>
 
-  <% if @event.on_sale %>
+  <%# if @event.on_sale %>
 
       <%= form_tag url_for(:controller => "orders", :action => "new", :event_id => @event), :method => "get" %>
         <% @event.tickets.each do |ticket| %>
@@ -11,9 +11,9 @@
         <% end %>
       <%= submit_tag "Start Order", :class => "btn btn-primary" %>
 
-    <% else %>
-    <h3>Registration opening soon!</h3>
-  <% end %>
+    <%# else %>
+    <!-- <h3>Registration opening soon!</h3> -->
+  <%# end %>
 
   <% else %>
     <%= page_not_found %>

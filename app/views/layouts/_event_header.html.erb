@@ -45,14 +45,14 @@
 
       <%= content_tag(:li, nil, :class => tab_active?("promo_codes")) do %>
         <%= link_to promo_codes_path(@event) do %>
-          <i class="fa fa-envelope-o"></i>
+          <i class="fa fa-flag-checkered"></i>
           <span class="hidden-mobile hidden-tablet">Promo Codes</span>
         <% end %>
       <% end %>
 
       <%= content_tag(:li, nil, :class => tab_active?("affiliate_settings")) do %>
         <%= link_to affiliate_settings_path(@event) do %>
-          <i class="fa fa-envelope-o"></i>
+          <i class="fa fa-gears"></i>
           <span class="hidden-mobile hidden-tablet">Affiliate Settings</span>
         <% end %>
       <% end %>
@@ -66,7 +66,7 @@
 
       <%= content_tag(:li, nil, :class => tab_active?("teams")) do %>
         <%= link_to teams_path(@event) do %>
-          <i class="fa fa-play"></i>
+          <i class="fa fa-group"></i>
           <span class="hidden-mobile hidden-tablet">Teams</span>
         <% end %>
       <% end %>

@@ -1,3 +1,4 @@
 <div class="form-group">
-  <%= f.select :published, [["Not published",false], ["Published",true]], :class => "form-control editor" %>
+  <%= label_tag "Let people see the event page?" %><br>
+  <%= f.select :published, [["No",false], ["Yes, make the event public",true]], :class => "form-control editor" %>
 </div>
