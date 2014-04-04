@@ -4,7 +4,7 @@
   <div class="container">
     <%= render 'orders/header', :user => @user %>
     <% if @event.on_sale %>
-      <%= form_tag url_for(:controller => "orders", :action => "create", :event_id => @event), :method => "post", :id => "order_form", :class => "form-horizontal", :role => "form" %>
+      <%= form_tag url_for(:controller => "orders", :action => "create", :event_id => @event), :method => "post", :id => "order_form", :class => "form-horizontal", :role => "form", :authenticity_token => true %>
         
         <% @tickets.each do |ticket| %>
           <% ticket[1].to_i.times do |i| %>
