@@ -1,1 +1,3 @@
-<%= @user.account.header.html_safe %>
+<% if @user.account.header %>
+  <%= @user.account.header.html_safe %>
+<% end %>

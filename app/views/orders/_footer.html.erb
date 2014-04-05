@@ -1,1 +1,3 @@
-<%= @user.account.footer.html_safe %>
+<% if @user.account.footer %>
+  <%= @user.account.footer.html_safe %>
+<% end %>
