@@ -23,6 +23,7 @@
  *= require other
  *= require waves
  *= require orders
+ *= require registration
 
 
  *= require smart-admin/smartadmin-production_unminified
