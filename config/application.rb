@@ -9,6 +9,16 @@ Bundler.require(:default, Rails.env)
 module Downhill
   class Application < Rails::Application
     config.autoload_paths += %W(#{config.root}/lib)
+    
+    config.assets.paths << Rails.root.join("vendor", "assets", "stylesheets", "beetle")
+    config.assets.paths << Rails.root.join("vendor", "assets", "stylesheets", "olsonkart")
+    config.assets.paths << Rails.root.join("vendor", "assets", "stylesheets", "smart-admin")
+
+    config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "beetle")
+    config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "olsonkart")
+    config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "smart-admin")
+
+    config.assets.paths << Rails.root.join("vendor", "assets", "fonts", "beetle")
     config.assets.paths << Rails.root.join("vendor", "assets", "fonts", "smart-admin")
 
     config.assets.precompile += %w(vendor/assets/stylesheets/beetle/*.css)

@@ -81,17 +81,4 @@ Downhill::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-  
-  config.assets.precompile += %w(vendor/assets/stylesheets/beetle/*.css)
-  config.assets.precompile += %w(vendor/assets/stylesheets/olsonkart/*.css)
-  config.assets.precompile += %w(vendor/assets/stylesheets/smart-admin/*.css)
-
-
-  config.assets.precompile += %w(vendor/assets/javascripts/beetle/*.js)
-  config.assets.precompile += %w(vendor/assets/javascripts/olsonkart/*.js)
-  config.assets.precompile += %w(vendor/assets/javascripts/smart-admin/*.js)
-
-
-  config.assets.precompile += %w(vendor/assets/fonts/beetle/*)
-  config.assets.precompile += %w(vendor/assets/fonts/smart-admin/*)
 end
