@@ -11,6 +11,19 @@ module Downhill
     config.autoload_paths += %W(#{config.root}/lib)
     config.assets.paths << Rails.root.join("vendor", "assets", "fonts", "smart-admin")
 
+    config.assets.precompile += %w(vendor/assets/stylesheets/beetle/*.css)
+    config.assets.precompile += %w(vendor/assets/stylesheets/olsonkart/*.css)
+    config.assets.precompile += %w(vendor/assets/stylesheets/smart-admin/*.css)
+
+
+    config.assets.precompile += %w(vendor/assets/javascripts/beetle/*.js)
+    config.assets.precompile += %w(vendor/assets/javascripts/olsonkart/*.js)
+    config.assets.precompile += %w(vendor/assets/javascripts/smart-admin/*.js)
+
+
+    config.assets.precompile += %w(vendor/assets/fonts/beetle/*)
+    config.assets.precompile += %w(vendor/assets/fonts/smart-admin/*)
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
