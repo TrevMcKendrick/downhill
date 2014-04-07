@@ -11,17 +11,15 @@ module Downhill
     config.autoload_paths += %W(#{config.root}/lib)
     
     config.assets.paths << Rails.root.join("vendor", "assets", "stylesheets", "beetle")
-    config.assets.paths << Rails.root.join("vendor", "assets", "stylesheets", "olsonkart")
-    config.assets.paths << Rails.root.join("vendor", "assets", "stylesheets", "smart-admin")
+    # config.assets.paths << Rails.root.join("vendor", "assets", "stylesheets", "olsonkart")
 
-    config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "beetle")
-    config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "olsonkart")
-    config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "smart-admin")
+    # config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "beetle")
+    # config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "olsonkart")
 
-    config.assets.paths << Rails.root.join("vendor", "assets", "fonts", "beetle")
-    config.assets.paths << Rails.root.join("vendor", "assets", "fonts", "smart-admin")
+    # config.assets.paths << Rails.root.join("vendor", "assets", "fonts", "beetle")
 
-    config.assets.precompile += %w(style.css.scss)
+    config.assets.precompile += %w(beetle/style.css)
+    config.assets.precompile += %w(beetle/layers.min.css)
 
     config.assets.precompile += %w(registration.css)
     config.assets.precompile += %w(home.css)
