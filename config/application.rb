@@ -32,7 +32,10 @@ module Downhill
 
 
     config.assets.precompile += %w(vendor/assets/fonts/beetle/*)
-    config.assets.precompile += %w(vendor/assets/fonts/smart-admin/*)
+    config.assets.precompile += %w(style.css.scss)
+
+    config.assets.precompile += %w(registration.css)
+    config.assets.precompile += %w(home.css)
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
