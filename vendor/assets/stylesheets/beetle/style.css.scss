@@ -2910,7 +2910,6 @@ src:url(font_path("beetle/lineicon.woff")) format("woff"),
     url(font_path("beetle/lineicon.svg")) format("svg");
 }
 
-
 [data-icon]:before {
     content: attr(data-icon);
     text-transform: none !important;
