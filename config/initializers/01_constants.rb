@@ -10,8 +10,8 @@ elsif Rails.env.production?
   Stripe.api_key = "sk_live_VhYCleaZwuUBGSFYFc7WUboz"
   STRIPE_PUBLIC_KEY = "pk_live_8sCPFZoLtW5pXuVHGrRKrROs"
   STRIPE_CLIENT_ID = "ca_3Z5rPvHhlZx5VcTBQwIWt1lJahZ69iGH"
-  ROOT_DOMAIN_NAME = ""
-  DOMAIN_NAME = "107.170.227.182"
+  ROOT_DOMAIN_NAME = "ticketscience.com"
+  DOMAIN_NAME = ROOT_DOMAIN_NAME
   TICKET_SCIENCE_FEE = 2.95
   COOKIE_DOMAIN = ".#{DOMAIN_NAME}"
 end
