@@ -2,7 +2,8 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   # prepend_before_action :require_no_authentication, :only => [:after_sign_in_path_for]
-  protect_from_forgery with: :exception
+  # protect_from_forgery with: :exception
+  protect_from_forgery with: :null_session
 
   before_action :configure_devise_permitted_parameters, if: :devise_controller?
   before_action :check_subdomain
