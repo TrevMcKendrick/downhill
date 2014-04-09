@@ -11,7 +11,7 @@
     @stripe_user = Participant.create_stripe_user(params[:stripeToken], @participant.email, @user.stripe_access_token)
     @participant.stripe_participant_id = @stripe_user.id
 
-    Participant.create_charge(@participant.stripe_price(@ticket.price), "usd", @stripe_user, @participant.email, @participant.stripe_price(SWIFT_FEE), @user.stripe_access_token)
+    Participant.create_charge(@participant.stripe_price(@ticket.price), "usd", @stripe_user, @participant.email, @participant.stripe_price(TICKET_SCIENCE_FEE), @user.stripe_access_token)
 
     respond_to do |format|
       if @participant.save

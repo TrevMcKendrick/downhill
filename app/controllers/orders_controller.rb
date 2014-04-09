@@ -79,7 +79,7 @@ class OrdersController < ApplicationController
       "usd", 
       @stripe_user, 
       @buyer.email,
-      Order.stripe_price(SWIFT_FEE * @order.paid_ticket_count),
+      Order.stripe_price(TICKET_SCIENCE_FEE * @order.paid_ticket_count),
       @user.stripe_access_token
       )
   end
