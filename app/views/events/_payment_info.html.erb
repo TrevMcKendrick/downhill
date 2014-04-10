@@ -2,14 +2,14 @@
 <div class="form-group">
   <%= label_tag :card_number, nil, :class => "col-md-3 control-label" %>
   <div class="col-md-4">
-    <%= text_field_tag :card_number, nil, :class => "valid payment-form", name: nil, :placeholder => "Card Number", :data => {:stripe => 'number' }, :tabindex => 1, :autofocus => true, :class => "form-control", :value => "4242424242424242" if Rails.env.development? %>
+    <%= card_number_field %>
   </div>
 </div>
 
 <div class="form-group">
   <%= label_tag :card_code, "CVC code", :class => "col-md-3 control-label" %>
   <div class="col-md-4">
-    <%= text_field_tag :card_code, nil,:class => "valid payment-form" , name: nil, :placeholder => "3 or 4 digits", :data => {:stripe => 'cvc' }, :tabindex => 2, :class => "form-control", :value => "4242" if Rails.env.development?  %>
+    <%= card_code_field  %>
   </div>
 </div>
 

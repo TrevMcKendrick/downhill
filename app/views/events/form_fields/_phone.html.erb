@@ -1,6 +1,6 @@
 <div class="form-group">
   <%= label_tag "Phone number", nil, :class => "col-md-3 control-label" %>
   <div class="col-md-4">
-    <%= phone_field_tag "#{ticket}[]" + 'phone[]', nil, :class => "form-control", :value => "6262444636" if Rails.env.development? %>
+    <%= phone_field(ticket) %>
   </div>
 </div>
