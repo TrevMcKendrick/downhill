@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   layout "order"
   before_action :get_event_from_params, :find_user
+  skip_before_action :check_subdomain, :only => [:success, :new, :create]
 
   def success
     @participant = session[:participant]

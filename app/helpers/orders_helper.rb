@@ -14,4 +14,13 @@ module OrdersHelper
   def ticket_free?(ticket_array)
      ticket(ticket_array).free?
   end
+
+  def name_field(ticket)
+    if Rails.env.development?
+      field = text_field_tag "#{ticket}[]" + 'name[]', nil, :class => "form-control", :value => "Mike Perley"
+    else
+      field = text_field_tag "#{ticket}[]" + 'name[]', nil, :class => "form-control"
+    end
+    field.html_safe
+  end
 end

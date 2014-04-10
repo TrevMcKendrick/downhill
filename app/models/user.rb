@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   end
 
   def subdomain=(val)
-    write_attribute(:subdomain, val.delete(' '))
+    write_attribute(:subdomain, val.delete(' ')) if val
   end
 
 end
