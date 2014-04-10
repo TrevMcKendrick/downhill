@@ -11,7 +11,7 @@ module Downhill
     config.autoload_paths += %W(#{config.root}/lib)
     
     config.assets.paths << Rails.root.join("vendor", "assets", "stylesheets", "beetle")
-    # config.assets.paths << Rails.root.join("vendor", "assets", "stylesheets", "olsonkart")
+    config.assets.paths << Rails.root.join("vendor", "assets", "stylesheets", "olsonkart")
 
     # config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "beetle")
     # config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "olsonkart")
@@ -21,8 +21,13 @@ module Downhill
     config.assets.precompile += %w(beetle/style.css)
     config.assets.precompile += %w(beetle/layers.min.css)
 
+    config.assets.precompile += %w(olsonkart/olsonkart_style.css)
+
     config.assets.precompile += %w(registration.css)
     config.assets.precompile += %w(home.css)
+    config.assets.precompile += %w(orders.css)
+
+
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
