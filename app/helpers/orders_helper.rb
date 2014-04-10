@@ -24,7 +24,7 @@ module OrdersHelper
      field.html_safe
   end
 
-  def email_field(ticket)
+  def email_address(ticket)
     if Rails.env.development?
       field = email_field_tag "#{ticket}[]" + 'email[]', nil, :class => "form-control ", :value => "#{rand}@gmail.com"
     else
@@ -42,7 +42,7 @@ module OrdersHelper
       field.html_safe
   end
 
-  def password_field(ticket)
+  def password(ticket)
     if Rails.env.development?
       field = text_field_tag "#{ticket}[]" + 'password[]', nil, :class => "form-control", :value => "password_test"
     else
