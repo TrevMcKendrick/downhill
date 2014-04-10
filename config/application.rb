@@ -26,6 +26,7 @@ module Downhill
     config.assets.precompile += %w(registration.css)
     config.assets.precompile += %w(home.css)
     config.assets.precompile += %w(orders.css)
+    config.assets.precompile += %w(bootstrap.min)
 
 
 
