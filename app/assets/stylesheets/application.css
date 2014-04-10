@@ -17,8 +17,6 @@
  *= require bootstrap.min
  *= require bootstrap-wysihtml5
 
- 
-
  *= require events
  *= require users
  *= require home
@@ -27,9 +25,9 @@
  *= require other
  *= require waves
  *= require orders
- *= require registration
 
-
+ *= require smart-admin/invoice
+ *= require smart-admin/lockscreen
  *= require smart-admin/smartadmin-production_unminified 
  *= require smart-admin/smartadmin-rtl
  *= require smart-admin/smartadmin-skins
