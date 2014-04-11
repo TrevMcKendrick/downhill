@@ -4,7 +4,6 @@ class OmniauthCallbacksController < ApplicationController
     logger.debug "authorize_stripe called"
     code = params[:code]
     user = ActiveSupport::JSON.decode(`curl -X POST https://connect.stripe.com/oauth/token -d client_secret=#{Stripe.api_key} -d code=#{code} -d grant_type=authorization_code`)
-    binding.pry
     set_user_stripe_attributes(user)
 
     redirect_to subdomain_with_https_or_http(DOMAIN_NAME, current_user.subdomain, settings_path)
