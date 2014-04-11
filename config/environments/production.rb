@@ -2,7 +2,7 @@ Downhill::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   #devise needs this
-  config.action_mailer.default_url_options = { :host => 'ACTUALHOSTNAME' }
+  config.action_mailer.default_url_options = { :host => 'ticketscience.com' }
 
   # Code is not reloaded between requests.
   config.cache_classes = true
