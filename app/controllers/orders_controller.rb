@@ -43,20 +43,25 @@ class OrdersController < ApplicationController
 
           @order.add_ticket(ticket, @participant)
 
-          setup_buyer unless @order.buyer_exists?
+          setup_buyer unless @order.buyer
         end
       end
     end
     
-    @order.final_charge = @order.total_charge
-    @order.save
+    @order.ticket_science_fee = TICKET_SCIENCE_FEE * @order.paid_ticket_count
+    @order.amount = @order.total_charge
+    
+    
+    if @order.save && @order.free? == false
+      # @order.create_charge(@stripe_user, @user.stripe_access_token)
+      StripeCharger.perform_async(@order.guid, @stripe_user.id, @user.stripe_access_token)
+    end
 
-    @buyer.add_waiver_signature(params[:waiver_signature], @event)
+    @order.buyer.add_waiver_signature(params[:waiver_signature], @event)
 
-    create_charge unless @order.free?
     # redirect_to :back
-    sign_in(@buyer)
-    session[:participant] = @buyer
+    sign_in(@order.buyer)
+    session[:participant] = @order.buyer
     redirect_to success_order_path(@event)
   end
 
@@ -67,26 +72,13 @@ class OrdersController < ApplicationController
   end
 
   def setup_buyer
-    @buyer = @participant
-    @stripe_user = Participant.create_stripe_user(params[:stripeToken], @buyer.email, @user.stripe_access_token)
-    @buyer.stripe_participant_id = @stripe_user.id
-    @order.stripe_user_created = true
-    @buyer.save
-  end
-
-  def create_charge
-    Order.create_charge(
-      Order.stripe_price(@order.final_charge.to_i),
-      "usd", 
-      @stripe_user, 
-      @buyer.email,
-      Order.stripe_price(TICKET_SCIENCE_FEE * @order.paid_ticket_count),
-      @user.stripe_access_token
-      )
+    @stripe_user = Participant.create_stripe_user(params[:stripeToken], @participant.email, @user.stripe_access_token)
+    @participant.stripe_participant_id = @stripe_user.id
+    @order.buyer = @participant
+    @order.save
   end
 
   def join_or_create_team
-    
     if params[:team] == "Join Team"
       return "join"
     end

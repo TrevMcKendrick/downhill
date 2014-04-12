@@ -61,7 +61,7 @@ tickets = Ticket.create([
     for_sale_begin: "2014-04-13",
     for_sale_end: "2014-06-13",
     quantity: 700,
-    price: 45.00,
+    price: 4500,
     event_id: 1,
     ticket_type: "5k Registration",
     published: true
@@ -79,7 +79,7 @@ tickets = Ticket.create([
     for_sale_begin: "2014-04-13",
     for_sale_end: "2014-06-13",
     quantity: 700,
-    price: 45.00,
+    price: 4500,
     event_id: 2,
     ticket_type: "VIP",
     published: true
@@ -175,22 +175,22 @@ fees = Fee.create([
   {
     name: "Insurance fee",
     event_id: 1,
-    amount: 2.00
+    amount: 200
   },
   {
     name: "Convenience fee",
     event_id: 1,
-    amount: 1.50
+    amount: 150
   },
    {
     name: "Insurance fee",
     event_id: 2,
-    amount: 3.00
+    amount: 300
   },
   {
     name: "Convenience fee",
     event_id: 2,
-    amount: 2.50
+    amount: 250
   }
   ])
 

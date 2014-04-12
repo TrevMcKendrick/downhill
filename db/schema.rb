@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140328173158) do
+ActiveRecord::Schema.define(version: 20140412035105) do
 
   create_table "accounts", force: true do |t|
     t.text     "header"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20140328173158) do
   create_table "fees", force: true do |t|
     t.string   "name"
     t.integer  "event_id"
-    t.decimal  "amount",     precision: 8, scale: 2
+    t.integer  "amount",     limit: 8
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -67,7 +67,12 @@ ActiveRecord::Schema.define(version: 20140328173158) do
     t.datetime "updated_at"
     t.integer  "referral_code_id"
     t.integer  "event_id"
-    t.decimal  "final_charge",     precision: 8, scale: 2
+    t.integer  "amount"
+    t.string   "guid"
+    t.integer  "buyer_id"
+    t.integer  "ticket_science_fee"
+    t.string   "stripe_charge_id"
+    t.string   "stripe_balance_transaction_id"
   end
 
   create_table "referral_codes", force: true do |t|
@@ -122,7 +127,7 @@ ActiveRecord::Schema.define(version: 20140328173158) do
     t.integer  "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "price",          precision: 8, scale: 2
+    t.integer  "price",          limit: 8
     t.integer  "event_id"
     t.string   "ticket_type"
     t.boolean  "published"
@@ -188,6 +193,18 @@ ActiveRecord::Schema.define(version: 20140328173158) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "versions", force: true do |t|
+    t.string   "item_type",      null: false
+    t.integer  "item_id",        null: false
+    t.string   "event",          null: false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+    t.text     "object_changes"
+  end
+
+  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
 
   create_table "waves", force: true do |t|
     t.time     "start_time"

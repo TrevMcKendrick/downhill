@@ -5,13 +5,13 @@ if Rails.env.development? or Rails.env.test?
   ROOT_DOMAIN_NAME = "lvh.me"
   DOMAIN_NAME = "#{ROOT_DOMAIN_NAME}:3000"
   COOKIE_DOMAIN = ".lvh.me"
-  TICKET_SCIENCE_FEE = 2.95
+  TICKET_SCIENCE_FEE = 295
 elsif Rails.env.production?
   Stripe.api_key = "sk_live_EpiTQiYsFlvKQA3T1rs3EiHg"
   STRIPE_PUBLIC_KEY = "pk_live_Oc672B1KrZ4OWytLidJ1ro94"
   STRIPE_CLIENT_ID = "ca_3Z5rPvHhlZx5VcTBQwIWt1lJahZ69iGH"
   ROOT_DOMAIN_NAME = "ticketscience.com"
   DOMAIN_NAME = ROOT_DOMAIN_NAME
-  TICKET_SCIENCE_FEE = 2.95
+  TICKET_SCIENCE_FEE = 295
   COOKIE_DOMAIN = ".#{DOMAIN_NAME}"
 end

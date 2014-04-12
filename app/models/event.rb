@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
-
+  has_paper_trail
+  
   before_create :defaults
 
   has_many :user_events

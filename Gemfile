@@ -2,6 +2,12 @@ source 'https://rubygems.org'
 
 ruby "1.9.3"
 
+gem 'sinatra', '>= 1.3.0', :require => nil
+
+gem 'sidekiq'
+
+gem 'paper_trail', '~> 3.0'
+
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 
 gem "select2-rails"

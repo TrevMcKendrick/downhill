@@ -1,5 +1,5 @@
 <h4>Order Summary</h4>
 <% @tickets.each do |ticket| %>
-  <%= label_tag :summary, "#{@order.ticket_count(ticket)} #{ticket_type(ticket)} ticket(s) @ $#{ticket_price(ticket)} = $#{@order.total_cost_by_ticket(ticket, @event)}" %><br>
+  <%= label_tag :summary, "#{@order.ticket_count(ticket)} #{ticket_type(ticket)} ticket(s) @ $#{ticket_price(ticket)/100} = $#{@order.total_cost_by_ticket(ticket, @event)/100}" %><br>
   <%= render 'fees', :ticket => ticket %>
 <% end %>

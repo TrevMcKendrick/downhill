@@ -1,6 +1,7 @@
 class Participant < User
 
   has_one :affiliate_code
+  has_many :orders, :foreign_key => "buyer_id"
 
   before_create :defaults
 

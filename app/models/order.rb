@@ -1,17 +1,49 @@
 class Order < ActiveRecord::Base
-
-  attr_accessor :stripe_user_created
+  has_paper_trail
 
   has_many :user_tickets
   belongs_to :referral_code
   belongs_to :event
+  belongs_to :buyer, :class_name => "Participant", :foreign_key => "buyer_id"
+
+  before_create :populate_guid
+
+  def amount=(val)
+    write_attribute(:amount, val) if val
+  end
+
+  def ticket_science_fee=(val)
+    write_attribute(:ticket_science_fee, val) if val
+  end
+
+  def create_charge(stripe_user_id, user_access_token)
+    begin
+      charge = Stripe::Charge.create(
+      {
+        :amount => self.amount,
+        :currency => "usd",
+        :customer => stripe_user_id,
+        :description => self.buyer.email,
+        :application_fee => self.ticket_science_fee
+      },
+       user_access_token
+      )
+    rescue Stripe::CardError => e
+      # The card has been declined
+      binding.pry
+    end
+    # self.stripe_charge_id = charge.id
+    # self.stripe_balance_transaction_id = charge.balance_transaction
+    # self.save
+  end
+
+  def save_stripe_data(charge)
+    
+  end
 
   def total_cost_by_ticket(ticket_array,event)
     ticket = event.tickets.find_by ticket_type: ticket_array.first
     ticket_count(ticket_array) * ticket.price
-  end
-
-  def fees
   end
 
   def ticket_count(ticket_array)
@@ -58,27 +90,15 @@ class Order < ActiveRecord::Base
   end
 
   def total_charge
-    price_after_discount_before_fees + total_fees
-  end
-
-  def self.stripe_price(price)
-    (price * 100).to_i
+    price_after_discount_before_fees + total_fees + ticket_science_fee
   end
 
   def free?
     self.price_before_fees_and_discounts == 0
   end
 
-  def buyer_exists?
-    self.paid_order && self.stripe_user_created
-  end
-
   def paid_order
     self.price_after_discount_before_fees == nil || self.price_after_discount_before_fees.to_i > 0
-  end
-
-  def stripe_user_created
-    @stripe_user_created || false
   end
 
   def paid_ticket_count
@@ -96,22 +116,10 @@ class Order < ActiveRecord::Base
     self.referral_code.discount_version
   end
 
-  def self.create_charge(amount, currency, customer, description, fee, user_access_token)
-    begin
-      charge = Stripe::Charge.create(
-      {
-        :amount => amount,
-        :currency => currency,
-        :customer => customer,
-        :description => description,
-        :application_fee => fee
-      },
-       user_access_token
-      )
-    rescue Stripe::CardError => e
-      # The card has been declined
-      binding.pry
-    end
+  private
+  def populate_guid
+    t = Time.now
+    self.guid = SecureRandom.hex(2) + t.month.to_s + t.day.to_s + t.year.to_s[-2,2]
   end
   
 end

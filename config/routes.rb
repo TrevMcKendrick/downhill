@@ -1,4 +1,7 @@
 Downhill::Application.routes.draw do
+
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
   
   match '/users/auth/:action/callback' => 'omniauth_callbacks#authorize_stripe', via: [:get, :post]
 
