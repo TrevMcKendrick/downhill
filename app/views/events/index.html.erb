@@ -67,7 +67,7 @@
                       <% @events.each do |event| %> 
                           <tr class="<%= cycle("odd", "even") -%>">
                             <td class=" "><%= link_to event.title, edit_event_path(event) %></td>
-                            <td class=" "><%= link_to "Visit Page", event_path(event) %></td>
+                            <td class=" "><%= link_to "Visit Page", event_path(event), :target => '_blank' %></td>
                             <td class=" "><%= event.date %></td>
                             <td class=" "><%= event.users.count %></td>
                             <td class=" "><%= event.published %></td>
