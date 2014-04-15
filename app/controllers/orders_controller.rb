@@ -53,8 +53,8 @@ class OrdersController < ApplicationController
     
     
     if @order.save && @order.free? == false
-      # @order.create_charge(@stripe_user, @user.stripe_access_token)
-      StripeCharger.perform_async(@order.guid, @stripe_user.id, @user.stripe_access_token)
+      @order.create_charge(@stripe_user, @user.stripe_access_token)
+      # StripeCharger.perform_async(@order.guid, @stripe_user.id, @user.stripe_access_token)
     end
 
     @order.buyer.add_waiver_signature(params[:waiver_signature], @event)

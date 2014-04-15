@@ -32,9 +32,9 @@ class Order < ActiveRecord::Base
       # The card has been declined
       binding.pry
     end
-    # self.stripe_charge_id = charge.id
-    # self.stripe_balance_transaction_id = charge.balance_transaction
-    # self.save
+    self.stripe_charge_id = charge.id
+    self.stripe_balance_transaction_id = charge.balance_transaction
+    self.save
   end
 
   def save_stripe_data(charge)
