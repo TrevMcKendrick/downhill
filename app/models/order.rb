@@ -34,6 +34,7 @@ class Order < ActiveRecord::Base
     end
     self.stripe_charge_id = charge.id
     self.stripe_balance_transaction_id = charge.balance_transaction
+    self.paid = true
     self.save
   end
 

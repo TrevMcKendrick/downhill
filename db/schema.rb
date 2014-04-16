@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140412035105) do
+ActiveRecord::Schema.define(version: 20140416000822) do
 
   create_table "accounts", force: true do |t|
     t.text     "header"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20140412035105) do
     t.integer  "ticket_science_fee"
     t.string   "stripe_charge_id"
     t.string   "stripe_balance_transaction_id"
+    t.boolean  "paid"
   end
 
   create_table "referral_codes", force: true do |t|
