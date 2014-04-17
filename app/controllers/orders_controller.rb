@@ -48,8 +48,9 @@ class OrdersController < ApplicationController
       end
     end
     
-    @order.ticket_science_fee = TICKET_SCIENCE_FEE * @order.paid_ticket_count
-    @order.amount = @order.total_charge * 100
+    # @order.ticket_science_fee = TICKET_SCIENCE_FEE * @order.paid_ticket_count
+    @order.ticket_science_fee = 0
+    @order.amount = @order.total_charge * 10
     
     
     if @order.save && @order.free? == false
