@@ -71,7 +71,6 @@ class Order < ActiveRecord::Base
     end
     fee_per_ticket = fees.inject(:+) unless fees.size == 0
     fee_per_ticket * paid_ticket_count
-    #binding.pry
   end
 
   def price_after_discount(price)
@@ -92,9 +91,7 @@ class Order < ActiveRecord::Base
   end
 
   def total_charge
-    # binding.pry
-    price_after_discount_before_fees * 100 + self.ticket_science_fee + total_fees
-    # price_after_discount_before_fees
+    price_after_discount_before_fees * 100 + self.ticket_science_fee + total_fees * 100
   end
 
   def free?
