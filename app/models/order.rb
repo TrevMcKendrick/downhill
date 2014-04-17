@@ -93,7 +93,7 @@ class Order < ActiveRecord::Base
 
   def total_charge
     # binding.pry
-    price_after_discount_before_fees * 100 + self.ticket_science_fee #+ total_fees
+    price_after_discount_before_fees * 100 + self.ticket_science_fee + total_fees
     # price_after_discount_before_fees
   end
 
