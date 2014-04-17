@@ -91,7 +91,8 @@ class Order < ActiveRecord::Base
   end
 
   def total_charge
-    price_after_discount_before_fees + total_fees + ticket_science_fee
+    # price_after_discount_before_fees + total_fees + ticket_science_fee
+    price_after_discount_before_fees
   end
 
   def free?
