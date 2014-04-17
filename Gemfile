@@ -37,8 +37,6 @@ gem 'rails', '4.0.1'
 
 gem 'pry', group: :development
 
-gem 'thin', group: :development
-
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', :group => :development
 
