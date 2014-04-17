@@ -2,5 +2,4 @@
 <% @tickets.each do |ticket| %>
   <%= label_tag :summary, "#{@order.ticket_count(ticket)} #{ticket_type(ticket)} ticket(s) @ $#{ticket_price(ticket)} = $#{@order.total_cost_by_ticket(ticket, @event)}" %><br>
   <%= render 'fees', :ticket => ticket %>
-  <%= debug ticket %>
 <% end %>
