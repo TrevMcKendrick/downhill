@@ -18,6 +18,7 @@ class Event < ActiveRecord::Base
 
   def defaults
     self.affiliate_setting = AffiliateSetting.create
+    self.path = self.title.parameterize
   end
 
   def user
