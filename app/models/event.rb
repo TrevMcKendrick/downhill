@@ -25,4 +25,12 @@ class Event < ActiveRecord::Base
     self.users.find_by type: "User"
   end
 
+  def add_participant(participant, team, wave, signature, ticket)
+    participant.teams << team if team
+    wave.users << participant
+    ticket.users << participant
+    participant.assign_affiliate_code(self).save
+    # participant.add_waiver_signature(signature, self)
+  end
+
 end

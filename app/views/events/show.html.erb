@@ -6,8 +6,9 @@
 
       <%= form_tag url_for(:controller => "orders", :action => "new", :event_id => @event), :method => "get" %>
         <% @event.tickets.each do |ticket| %>
-          <%= label_tag ticket.ticket_type, nil, :class => "col-sm-3 control-label" %>
-          <%= select_tag "ticket", options_for_select([0,1,2,3,4,5,6,7,8,9,10],ticket.ticket_type), :name => "tickets[#{ticket.ticket_type}]", :class => "form-control"  %>
+          <%= label_tag ticket.ticket_type, nil %>
+          <%= radio_button_tag :ticket, ticket.ticket_type %>
+          <br>
         <% end %>
       <%= submit_tag "Start Order", :class => "btn btn-primary" %>
 

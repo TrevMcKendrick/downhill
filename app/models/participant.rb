@@ -1,7 +1,7 @@
 class Participant < User
 
   has_one :affiliate_code
-  has_many :orders, :foreign_key => "buyer_id"
+  has_many :orders
 
   before_create :defaults
 
@@ -21,24 +21,14 @@ class Participant < User
     true
   end
 
-  def self.create_stripe_user(stripe_token, description, user_access_token)
-    customer = Stripe::Customer.create(
-      {
-      :card => stripe_token,
-      :description => description 
-      },
-      user_access_token
-    )
+  def defaults
+    self.type = "Participant"
   end
 
   def add_waiver_signature(waiver_signature, event)
     user_event = event.user_events.find_by user_id: self
     user_event.waiver_signature = waiver_signature
     user_event.save
-  end
-
-  def defaults
-    self.type = "Participant"
   end
 
 end

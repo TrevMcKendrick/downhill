@@ -15,38 +15,38 @@ module OrdersHelper
      ticket(ticket_array).free?
   end
 
-  def name_field(ticket)
+  def name_field
     if Rails.env.development?
-      field = text_field_tag "#{ticket}[]" + 'name[]', nil, :class => "form-control", :value => "Mike Perley"
+      field = text_field_tag "participant[first_name]", nil, :class => "form-control", :value => "Mike"
     else
-      field = text_field_tag "#{ticket}[]" + 'name[]', nil, :class => "form-control"
+      field = text_field_tag "participant[first_name]", nil, :class => "form-control"
     end
      field.html_safe
   end
 
-  def email_address(ticket)
+  def email_address
     if Rails.env.development?
-      field = email_field_tag "#{ticket}[]" + 'email[]', nil, :class => "form-control ", :value => "#{rand}@gmail.com"
+      field = email_field_tag "participant[email]", nil, :class => "form-control ", :value => "#{rand}@gmail.com"
     else
-      field = email_field_tag "#{ticket}[]" + 'email[]', nil, :class => "form-control "
+      field = email_field_tag "participant[email]", nil, :class => "form-control "
     end
       field.html_safe
   end
 
-  def phone_field(ticket)
+  def phone_field
     if Rails.env.development?
-      field = phone_field_tag "#{ticket}[]" + 'phone[]', nil, :class => "form-control", :value => "6262444636"
+      field = phone_field_tag "participant[phone]", nil, :class => "form-control", :value => "6262444636"
     else
-      field = phone_field_tag "#{ticket}[]" + 'phone[]', nil, :class => "form-control"
+      field = phone_field_tag "participant[phone]", nil, :class => "form-control"
     end
       field.html_safe
   end
 
-  def password(ticket)
+  def password
     if Rails.env.development?
-      field = text_field_tag "#{ticket}[]" + 'password[]', nil, :class => "form-control", :value => "password_test"
+      field = password_field_tag "participant[password]", nil, :class => "form-control", :value => "password_test"
     else
-      field = text_field_tag "#{ticket}[]" + 'password[]', nil, :class => "form-control"
+      field = password_field_tag "participant[password]", nil, :class => "form-control"
     end
       field.html_safe
   end

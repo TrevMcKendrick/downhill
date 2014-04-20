@@ -6,26 +6,25 @@
     <% if @event.published %>
       <%= form_tag url_for(:controller => "orders", :action => "create", :event_id => @event), :method => "post", :id => "order_form", :class => "form-horizontal" %>
         
-        <% @tickets.each do |ticket| %>
-          <% ticket[1].to_i.times do |i| %>
-            <h4><%= "#{ticket[0]} ##{i+1}" %></h4>
-            <%= render 'events/form_fields/name', :ticket => ticket[0] %>
-            <%= render 'events/form_fields/email', :ticket => ticket[0] %>
-            <%= render 'events/form_fields/shirt_size', :ticket => ticket[0] %>
-            <%= render 'events/form_fields/phone', :ticket => ticket[0] %>
-            <%= render 'events/form_fields/gender', :ticket => ticket[0] %>
-            <%= render 'events/form_fields/password', :ticket => ticket[0], :i => i %>
-          <% end %>
-        <% end %>
+      <h4><%= "#{@ticket.ticket_type}" %></h4>
 
+      <%= render 'events/form_fields/participant', :ticket => @ticket %>
+      <%= render 'events/form_fields/ticket', :ticket => @ticket %>
+      <%= render 'events/form_fields/name', :ticket => @ticket.ticket_type %>
+      <%= render 'events/form_fields/email', :ticket => @ticket %>
+      <%= render 'events/form_fields/shirt_size', :ticket => @ticket %>
+      <%= render 'events/form_fields/phone', :ticket => @ticket %>
+      <%= render 'events/form_fields/gender', :ticket => @ticket %>
+      <%= render 'events/form_fields/password', :ticket => @ticket %>
       <br>
       <%= render 'events/form_fields/waiver' %>
       <%= render 'events/form_fields/select_team_option' %>
       <%= render 'events/form_fields/select_wave' %>
-
-      <%= render 'events/form_fields/referral_code' %>
+      <br>
       <%= render 'events/payment_info' %>
+      <%= render 'events/form_fields/referral_code' %>
       <%= render 'summary' %>
+
       <%= submit_tag "Place order", :class => "btn btn-warning" %>
     <% else %>
       <%= page_not_found %>

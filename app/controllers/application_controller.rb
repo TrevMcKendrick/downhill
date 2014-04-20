@@ -9,19 +9,6 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def valid_referral_code?(string, current_event)
-    code = ReferralCode.valid?(string)
-    return nil if code == nil
-
-    if code.promo_code?
-      code.event == current_event ? code : nil
-    end
-
-    if code.affiliate_code?
-      code.participant.events.include?(current_event) && current_event.affiliate_setting.enabled ? code : nil
-    end
-  end
-
   def check_subdomain
     if is_home_page? == false && current_user != nil
       unless current_user.subdomain == request.subdomain
