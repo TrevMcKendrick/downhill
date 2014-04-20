@@ -30,7 +30,11 @@ class Event < ActiveRecord::Base
     wave.users << participant
     ticket.users << participant
     participant.assign_affiliate_code(self).save
-    participant.add_waiver_signature(signature, self)
+    # participant.add_waiver_signature(signature, self)
+  end
+
+  def fee_total
+    self.fees.map(&:amount).inject(0, &:+)
   end
 
 end
