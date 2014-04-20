@@ -29,8 +29,17 @@ class Event < ActiveRecord::Base
     participant.teams << team if team
     wave.users << participant
     ticket.users << participant
+    self.users << participant
     participant.assign_affiliate_code(self).save
-    # participant.add_waiver_signature(signature, self)
+    self.add_waiver_signature(signature, participant)
+  end
+
+   def add_waiver_signature(signature, participant)
+    unless signature == ""
+      user_event = self.user_events.find_by user_id: participant
+      user_event.waiver_signature = signature
+      user_event.save
+    end
   end
 
   def fee_total

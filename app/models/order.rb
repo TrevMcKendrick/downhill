@@ -83,7 +83,6 @@ class Order < ActiveRecord::Base
 
   def set_amount
     self.amount = self.event.fee_total + self.user_ticket.ticket.price + TICKET_SCIENCE_FEE_TO_CUSTOMER
-    binding.pry
   end
 
   private
