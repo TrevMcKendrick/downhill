@@ -1,5 +1,9 @@
 <%= render 'events/stripe_publishable_key' %>
 
+<% flash.each do |key, value| %>
+  <%= content_tag :div, value, class: "flash #{key}" %>
+<% end %>
+
 <div class="checkout">
   <div class="container">
     <%= render 'orders/header', :user => @user %>
@@ -8,14 +12,14 @@
         
       <h4><%= "#{@ticket.ticket_type}" %></h4>
 
-      <%= render 'events/form_fields/participant', :ticket => @ticket %>
+      <%= render 'events/form_fields/participant' %>
       <%= render 'events/form_fields/ticket', :ticket => @ticket %>
-      <%= render 'events/form_fields/name', :ticket => @ticket.ticket_type %>
-      <%= render 'events/form_fields/email', :ticket => @ticket %>
-      <%= render 'events/form_fields/shirt_size', :ticket => @ticket %>
-      <%= render 'events/form_fields/phone', :ticket => @ticket %>
-      <%= render 'events/form_fields/gender', :ticket => @ticket %>
-      <%= render 'events/form_fields/password', :ticket => @ticket %>
+      <%= render 'events/form_fields/name' %>
+      <%= render 'events/form_fields/email' %>
+      <%= render 'events/form_fields/shirt_size' %>
+      <%= render 'events/form_fields/phone' %>
+      <%= render 'events/form_fields/gender' %>
+      <%= render 'events/form_fields/password' %>
       <br>
       <%= render 'events/form_fields/waiver' %>
       <%= render 'events/form_fields/select_team_option' %>

@@ -17,7 +17,7 @@ module OrdersHelper
 
   def name_field
     if Rails.env.development?
-      field = text_field_tag "participant[first_name]", nil, :class => "form-control", :value => "Mike"
+      field = text_field_tag "participant[first_name]", nil, :class => "form-control"#, :value => "Mike"
     else
       field = text_field_tag "participant[first_name]", nil, :class => "form-control"
     end
