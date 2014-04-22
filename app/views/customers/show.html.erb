@@ -1,0 +1,5 @@
+<h1><%= "#{@customer.first_name}  #{@customer.last_name}" %></h1>
+
+<h2>Shirt size: <%= @customer.shirtsize %></h2>
+<h2>Email: <%= @customer.email %></h2>
+<h2><%= link_to "Go to Stripe Account", "https://manage.stripe.com/customers/#{@customer.stripe_participant_id}" %></h2>

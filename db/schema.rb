@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140420085700) do
+ActiveRecord::Schema.define(version: 20140420212919) do
 
   create_table "accounts", force: true do |t|
     t.text     "header"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20140420085700) do
     t.text     "packet_pickup_info_html"
     t.boolean  "published"
     t.boolean  "on_sale"
+    t.integer  "account_id"
   end
 
   create_table "fees", force: true do |t|

@@ -29,7 +29,8 @@ events = Event.create([
     race_day_info_html: "<emphasis>Get colored while you run</emphasis>",
     packet_pickup_info_html: "Pick up your packet on race day! Duh.",
     published: true,
-    on_sale: true
+    on_sale: true,
+    account_id: 1
   },
   { 
     title: "Color Me Rad Salt Lake City 2014",

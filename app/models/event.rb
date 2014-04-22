@@ -3,6 +3,7 @@ class Event < ActiveRecord::Base
   
   before_create :defaults
 
+  belongs_to :account
   has_many :user_events
   has_many :users, :through => :user_events
 
