@@ -1,5 +1,4 @@
 require 'bundler/capistrano' # for bundler support
-require 'sidekiq/capistrano'
 
 set :application, "swift"
 set :repository,  "git@github.com:TrevMcKendrick/downhill.git"
