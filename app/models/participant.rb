@@ -29,7 +29,7 @@ class Participant < User
     if search
       where('first_name LIKE ?', "%#{search}%")
     else
-      scoped
+      all
     end
   end
 
