@@ -147,10 +147,6 @@ user5 = User.new(
     email: "trevor@gmail.com",
     password: "test",
     subdomain: "trevor",
-    stripe_user_id: "acct_103gWr2sIUiMQYE0",
-    stripe_publishable_key: "pk_test_gN63WMHZMqklRs22NlJh3TV6",
-    stripe_access_token: "sk_test_np5fVHQs61y2pJE1tyjYmjG0",
-    stripe_refresh_token: "rt_3gWrsbsB9czlgbELvPsA2yvAuIHcNEJwgKhs4UInkZX4pbei",
     type: "User",
     account_id: 1
     )
