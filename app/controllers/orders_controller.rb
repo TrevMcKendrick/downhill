@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
       @team = @event.teams.find_or_create_by(name: params[:join_team]) if join_or_create_team == "join"
       @team = @event.teams.find_or_create_by(name: params[:create_team_name]) if join_or_create_team == "create"
 
-      @wave = @event.waves.find_by id: wave_params[:id]
+      @wave = @event.waves.find_by id: wave_params[:id] if wave_params[:id]
       @ticket = @event.tickets.find_by ticket_type: params[:ticket][:ticket_type]
       @event.add_participant(@participant, @team, @wave, params[:waiver_signature], @ticket)
       @order.add_ticket(@ticket, @participant)

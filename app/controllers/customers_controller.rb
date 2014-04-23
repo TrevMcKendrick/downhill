@@ -3,10 +3,10 @@ class CustomersController < ApplicationController
 
   def index
     @account_customers = current_user.account.participants
-    logger.info "account_customers:#{@account_customers}"
+    # logger.info "account_customers:#{@account_customers}"
 
     @all_customers = Participant.search(params[:search])
-    logger.info "all_customers: #{@all_customers}"
+    # logger.info "all_customers: #{@all_customers}"
 
     customers = @all_customers.collect do |customer|
       logger.info "customer: #{customer.first_name}"
@@ -19,7 +19,7 @@ class CustomersController < ApplicationController
     @customers.each do |customer|
       logger.info "Customer name is: #{customer.first_name}"
     end
-    
+    @customers
   end
 
   def show
