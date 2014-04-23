@@ -17,7 +17,7 @@ class CustomersController < ApplicationController
     @customers = customers.compact.uniq
 
     @customers.each do |customer|
-      logger.info "Customer name is: #{customer.name}"
+      logger.info "Customer name is: #{customer.first_name}"
     end
     
   end
