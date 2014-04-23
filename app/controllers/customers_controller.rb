@@ -13,9 +13,13 @@ class CustomersController < ApplicationController
 
       customer if @account_customers.include?(customer)
     end
-    logger.info "customers: #{@customers}"
+    
     @customers = customers.compact.uniq
 
+    @customers.each do |customer|
+      logger.info "Customer name is: #{customer.name}"
+    end
+    
   end
 
   def show
