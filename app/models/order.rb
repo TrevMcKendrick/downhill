@@ -83,10 +83,10 @@ class Order < ActiveRecord::Base
   end
 
   def set_amount
-    self.amount = convert_to_stripe(self.event.fee_total) + convert_to_stripe(self.user_ticket.ticket.price) + convert_to_stripe(TICKET_SCIENCE_FEE_TO_CUSTOMER)
+    self.amount = convert_to_stripe(self.event.fee_total) + convert_to_stripe(self.user_ticket.ticket.price) + convert_to_stripe(TICKET_SCIENCE_FEE_TO_CUSTOMER).ceil
     logger.info "Fee total is = #{convert_to_stripe(self.event.fee_total)}"
     logger.info "Ticket price = #{convert_to_stripe(self.user_ticket.ticket.price)}"
-    logger.info "TICKET_SCIENCE_FEE_TO_CUSTOMER = #{convert_to_stripe(TICKET_SCIENCE_FEE_TO_CUSTOMER)}"
+    logger.info "TICKET_SCIENCE_FEE_TO_CUSTOMER = #{convert_to_stripe(TICKET_SCIENCE_FEE_TO_CUSTOMER).ceil}"
   end
 
   def convert_to_stripe(amount)
