@@ -5,8 +5,15 @@ class PromoCodesController < ApplicationController
 
   def create
     @promo_code = @event.promo_codes.build(promo_code_params)
-    @promo_code.save
-    redirect_to promo_codes_path
+
+    respond_to do |format|
+      if @promo_code.save
+        format.js { render :js => "window.location.href = '#{promo_codes_path}'" }
+      else
+        format.js
+        format.html { render 'new' }
+      end
+    end
   end
 
   def new
@@ -34,7 +41,7 @@ class PromoCodesController < ApplicationController
 
   def promo_code_params
     params.require(:promo_code).permit(
-      :name,
+      :description,
       :code,
       :discount_type,
       :amount,

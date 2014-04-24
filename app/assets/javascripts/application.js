@@ -24,3 +24,4 @@
 //= require smart-admin/app
 //= require select2
 //= require orders
+//= require waves

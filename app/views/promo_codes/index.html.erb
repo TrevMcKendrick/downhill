@@ -25,7 +25,7 @@
                       <table id="dt_basic" class="table table-striped table-bordered table-hover dataTable" aria-describedby="dt_basic_info">
                       <thead>
                         <tr role="row">
-                          <th class="sorting" role="columnheader" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 150px;">Name</th>
+                          <th class="sorting" role="columnheader" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 150px;">Description</th>
                           <th class="sorting" role="columnheader" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Phone: activate to sort column ascending" style="width: 126px;">Code</th>
                           <th class="sorting" role="columnheader" tabindex="0" aria-controls="dt_basic" rowspan="1" colspan="1" aria-label="Phone: activate to sort column ascending" style="width: 126px;">Live?</th>                         
                         </tr>
@@ -33,7 +33,7 @@
                       <tbody role="alert" aria-live="polite" aria-relevant="all">
                       <% @promo_codes.each do |promo_code| %> 
                           <tr class="<%= cycle("odd", "even") -%>">
-                            <td class=" "><%= link_to promo_code.name, edit_promo_code_path(promo_code) %></td>
+                            <td class=" "><%= link_to promo_code.description, edit_promo_code_path(promo_code) %></td>
                             <td class=" "><%= promo_code.code %></td>
                             <td class=" "><%= englishify(promo_code.published) %></td>
                           </tr>

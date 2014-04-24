@@ -9,16 +9,18 @@
         <h4 class="modal-title">
           Create Wave
         </h4>
+        <div id="wave_error_explanation" style="display:none;">
+        </div>
       </div>
       <div class="modal-body no-padding">
 
-          <%= form_for @wave, :url => { :action => :create }, html: {:class => "smart-form"} do |f| %>
+          <%= form_for @wave, :url => { :action => :create }, :remote => true, html: {:class => "smart-form" } do |f| %>
           
               <fieldset>
           
                 <section>
                   <div class="row">
-                    <%= f.label :title, "Wave name", :class => "label col col-2" %>
+                    <%= f.label :title, "Wave title", :class => "label col col-2" %>
                     <div class="col col-10">
                       <label class="input"> <i class="icon-append fa fa-ticket"></i>
                         <%= f.text_field :title, :placeholder => "E.g. 1st Wave" %>
@@ -40,10 +42,10 @@
 
                 <section>
                   <div class="row">
-                    <%= f.label :start_time, "Start date", :class => "label col col-2" %>
+                    <%= f.label :start_time, "Start time", :class => "label col col-2" %>
                     <div class="col col-10">
                       <label class="input"> <i class="icon-append fa fa-calendar-o"></i>
-                        <%= f.date_field :start_time, :format => "yyyy-MM-dd", :placeholder => "3:30 pm" %>
+                        <%= f.time_field :start_time, :placeholder => "3:30 pm" %>
                       </label>
                     </div>
                   </div>

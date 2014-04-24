@@ -9,10 +9,12 @@
         <h4 class="modal-title">
           Create Ticket
         </h4>
+        <div id="ticket_error_explanation" style="display:none;">
+        </div>
       </div>
       <div class="modal-body no-padding">
 
-          <%= form_for @ticket, :url => { :action => :create }, html: {:class => "smart-form"} do |f| %>
+          <%= form_for @ticket, :url => { :action => :create }, :remote => true, html: {:class => "smart-form"} do |f| %>
               <fieldset>
           
                 <section>

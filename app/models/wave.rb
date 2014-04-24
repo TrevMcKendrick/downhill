@@ -1,4 +1,8 @@
 class Wave < ActiveRecord::Base
+  validates :title, :presence => true
+  validates :quantity, :presence => true, :numericality => { only_integer: true, :message => "needs to be an integer" }
+  validates :start_time, :presence => true
+
   belongs_to :event
 
   has_many :user_waves

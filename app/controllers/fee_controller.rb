@@ -5,8 +5,15 @@ class FeeController < ApplicationController
 
   def create
     @fee = @event.fees.build(fee_params)
-    @fee.save
-    redirect_to fees_path
+
+    respond_to do |format|
+      if @fee.save
+        format.js { render :js => "window.location.href = '#{fees_path}'" }
+      else
+        format.js
+        format.html { render 'new' }
+      end
+    end
   end
 
   def new

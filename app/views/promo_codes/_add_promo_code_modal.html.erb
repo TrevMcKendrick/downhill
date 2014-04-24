@@ -9,19 +9,21 @@
         <h4 class="modal-title">
           Create Code
         </h4>
+        <div id="promo_code_error_explanation" style="display:none;">
+        </div>
       </div>
       <div class="modal-body no-padding">
 
-          <%= form_for @promo_code, :url => { :action => :create }, html: {:class => "smart-form"} do |f| %>
+          <%= form_for @promo_code, :url => { :action => :create }, :remote => true, html: {:class => "smart-form"} do |f| %>
           
               <fieldset>
           
                 <section>
                   <div class="row">
-                    <%= f.label :name, "Description", :class => "label col col-2" %>
+                    <%= f.label :description, "Description", :class => "label col col-2" %>
                     <div class="col col-10">
                       <label class="input"> <i class="icon-append fa fa-ticket"></i>
-                        <%= f.text_field :name, :placeholder => "E.g. Facebook page" %>
+                        <%= f.text_field :description, :placeholder => "E.g. Facebook page" %>
                       </label>
                     </div>
                   </div>
@@ -38,7 +40,7 @@
                   </div>
                 </section>
 
-                <section>
+                <!-- <section>
                   <div class="row">
                     <%= f.label :discount_type, "Discount type?", :class => "label col col-2" %>
                     <div class="col col-10">
@@ -47,14 +49,25 @@
                       </label>
                     </div>
                   </div>
+                </section> -->
+
+                <section>
+                  <div class="row">
+                    <%= f.label :amount, "Discount amount", :class => "label col col-2" %>
+                    <div class="col col-10">
+                      <label class="input"> <i class="icon-append fa fa-calendar-o"></i>
+                        <%= f.text_field :amount %>
+                      </label>
+                    </div>
+                  </div>
                 </section>
 
                 <section>
                   <div class="row">
-                    <%= f.label :amount, :class => "label col col-2" %>
+                    <%= f.label :published, "Make live?", :class => "label col col-2" %>
                     <div class="col col-10">
                       <label class="input"> <i class="icon-append fa fa-calendar-o"></i>
-                        <%= f.text_field :amount %>
+                        <%= f.select :published, [["Not published",false], ["Published",true]], :class => "form-control editor" %>
                       </label>
                     </div>
                   </div>

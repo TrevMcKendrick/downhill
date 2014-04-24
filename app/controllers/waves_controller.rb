@@ -5,8 +5,15 @@ class WavesController < ApplicationController
 
   def create
     @wave = @event.waves.build(wave_params)
-    @wave.save
-    redirect_to waves_path
+
+    respond_to do |format|
+      if @wave.save
+        format.js { render :js => "window.location.href = '#{waves_path}'" }
+      else
+        format.js
+        format.html { render 'new' }
+      end
+    end
   end
 
   def new

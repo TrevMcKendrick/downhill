@@ -23,7 +23,7 @@
       <br>
       <%= render 'events/form_fields/waiver' %>
       <%= render 'events/form_fields/select_team_option' %>
-      <%= render 'events/form_fields/select_wave' %>
+      <%= render 'events/form_fields/select_wave' if @event.waves %>
       <br>
       <%= render 'events/payment_info' %>
       <%= render 'events/form_fields/referral_code' %>

@@ -25,6 +25,7 @@
  *= require other
  *= require waves
  *= require orders
+ *= require promo_code
 
  *= require smart-admin/invoice
  *= require smart-admin/lockscreen

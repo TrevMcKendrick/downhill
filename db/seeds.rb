@@ -365,7 +365,7 @@ user_ticket = UserTicket.create([
 
 referral_code = ReferralCode.create([
   {
-  name: "50% Facebook July 2013",
+  description: "50% Facebook July 2013",
   code: "fb50july",
   amount: 50,
   discount_type: "flat_rate",
@@ -375,7 +375,7 @@ referral_code = ReferralCode.create([
   event_id: 1
   },
   {
-  name: "$10 Twitter back to school",
+  description: "$10 Twitter back to school",
   code: "twitterbts10",
   amount: 10,
   discount_type: "percent",
@@ -385,7 +385,7 @@ referral_code = ReferralCode.create([
   event_id: 1
   },
   {
-  name: "Email 20%",
+  description: "Email 20%",
   code: "20please",
   amount: 20,
   discount_type: "percent",

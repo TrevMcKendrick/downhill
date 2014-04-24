@@ -5,8 +5,15 @@ class TicketController < ApplicationController
 
   def create
     @ticket = @event.tickets.build(ticket_params)
-    @ticket.save
-    redirect_to tickets_path
+    
+    respond_to do |format|
+      if @ticket.save
+        format.js { render :js => "window.location.href = '#{tickets_path}'" }
+      else
+        format.js
+        # format.html { render 'new' }
+      end
+    end
   end
 
   def new

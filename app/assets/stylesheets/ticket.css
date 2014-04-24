@@ -1,0 +1,13 @@
+.tlabel {
+  font-size: 14px;
+}
+
+.table  {
+  margin-bottom: 0px;
+}
+
+#ticket_error_explanation {
+  padding: 1px;
+  display: table;
+  border: 2px solid red;
+}

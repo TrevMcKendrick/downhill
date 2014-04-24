@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140424052415) do
+ActiveRecord::Schema.define(version: 20140424234957) do
 
   create_table "accounts", force: true do |t|
     t.text     "header"
@@ -80,7 +80,6 @@ ActiveRecord::Schema.define(version: 20140424052415) do
   end
 
   create_table "referral_codes", force: true do |t|
-    t.string   "name"
     t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -91,6 +90,7 @@ ActiveRecord::Schema.define(version: 20140424052415) do
     t.string   "type"
     t.integer  "event_id"
     t.integer  "participant_id"
+    t.string   "description"
   end
 
   create_table "sessions", force: true do |t|
