@@ -84,9 +84,9 @@ class Order < ActiveRecord::Base
 
   def set_amount
     self.amount = convert_to_stripe(self.event.fee_total) + convert_to_stripe(self.user_ticket.ticket.price) + convert_to_stripe(TICKET_SCIENCE_FEE_TO_CUSTOMER)
-    logger.info "Fee total is = #{self.event.fee_total}"
-    logger.info "Ticket price = #{self.user_ticket.ticket.price}"
-    logger.info "TICKET_SCIENCE_FEE_TO_CUSTOMER = #{TICKET_SCIENCE_FEE_TO_CUSTOMER}"
+    logger.info "Fee total is = #{convert_to_stripe(self.event.fee_total)}"
+    logger.info "Ticket price = #{convert_to_stripe(self.user_ticket.ticket.price)}"
+    logger.info "TICKET_SCIENCE_FEE_TO_CUSTOMER = #{convert_to_stripe(TICKET_SCIENCE_FEE_TO_CUSTOMER)}"
   end
 
   def convert_to_stripe(amount)
@@ -101,7 +101,7 @@ class Order < ActiveRecord::Base
   end
 
   def add_ticket_science_fee
-    self.ticket_science_fee = TICKET_SCIENCE_FEE
+    self.ticket_science_fee = convert_to_stripe(TICKET_SCIENCE_FEE)
   end
 
   # def valid_referral_code?(string, current_event)

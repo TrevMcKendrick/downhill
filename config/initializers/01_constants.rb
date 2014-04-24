@@ -5,7 +5,7 @@ if Rails.env.development? or Rails.env.test?
   ROOT_DOMAIN_NAME = "lvh.me"
   DOMAIN_NAME = "#{ROOT_DOMAIN_NAME}:3000"
   COOKIE_DOMAIN = ".lvh.me"
-  TICKET_SCIENCE_FEE = 2.95
+  TICKET_SCIENCE_FEE = 2.95000000000
   TICKET_SCIENCE_FEE_TO_CUSTOMER = (TICKET_SCIENCE_FEE / 0.971 + 0.3).ceil
 elsif Rails.env.production?
   Stripe.api_key = "sk_live_EpiTQiYsFlvKQA3T1rs3EiHg"
@@ -14,6 +14,6 @@ elsif Rails.env.production?
   ROOT_DOMAIN_NAME = "ticketscience.com"
   DOMAIN_NAME = ROOT_DOMAIN_NAME
   COOKIE_DOMAIN = ".#{DOMAIN_NAME}"
-  TICKET_SCIENCE_FEE = 2.95
+  TICKET_SCIENCE_FEE = 2.95000000000
   TICKET_SCIENCE_FEE_TO_CUSTOMER = (TICKET_SCIENCE_FEE / 0.971 + 0.3).ceil
 end
