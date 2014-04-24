@@ -65,6 +65,7 @@ class Order < ActiveRecord::Base
       self.update_attributes(error: e.message)
       self.fail!
     end
+    logger.info "Stripe charge is: #{charge.amount}"
     self.stripe_charge_id = charge.id
     self.stripe_balance_transaction_id = charge.balance_transaction
     self.save
