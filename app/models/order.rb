@@ -65,7 +65,7 @@ class Order < ActiveRecord::Base
       self.update_attributes(error: e.message)
       self.fail!
     end
-    logger.info "Stripe charge is: #{charge.amount}"
+    logger.info "Stripe charge is = #{charge.amount}"
     self.stripe_charge_id = charge.id
     self.stripe_balance_transaction_id = charge.balance_transaction
     self.save
@@ -84,6 +84,9 @@ class Order < ActiveRecord::Base
 
   def set_amount
     self.amount = self.event.fee_total + self.user_ticket.ticket.price + TICKET_SCIENCE_FEE_TO_CUSTOMER
+    logger.info "Fee total is = #{self.event.fee_total}"
+    logger.info "Ticket price = #{self.user_ticket.ticket.price}"
+    logger.info "TICKET_SCIENCE_FEE_TO_CUSTOMER = #{TICKET_SCIENCE_FEE_TO_CUSTOMER}"
   end
 
   private
