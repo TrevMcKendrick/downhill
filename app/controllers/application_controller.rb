@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   def check_subdomain
     if is_home_page? == false && current_user != nil
       unless current_user.subdomain == request.subdomain
-        log_in_from_your_domain
+        redirect_to dashboard
       end
     end
 
