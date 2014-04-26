@@ -1,6 +1,6 @@
 class PromoCodesController < ApplicationController
-  before_action :authenticate_user!, :check_subdomain
   before_action :get_event_from_params, :only => [:create, :index]
+  before_action :authenticate_user!
   before_action :find_promo_code, :only => [:edit, :update]
 
   def create

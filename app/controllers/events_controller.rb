@@ -1,10 +1,8 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
-  before_action :check_subdomain, :except => [:show]
   layout "event_public", only: [:show, :waiver]
   before_action :set_event, only: [:edit, :update, :destroy, :show, :waiver]
-  
-  # skip_before_action :check_subdomain, :only => [:show]
+  skip_before_action :check_subdomain, :only => [:show]
 
   # GET /events
   # GET /events.json
@@ -36,23 +34,13 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
-
-    respond_to do |format|
+    
       if @event.save
         @event.users << current_user
-        format.js { render :js => "window.location.href = '#{edit_event_url(@event)}'" }
+        redirect_to edit_event_url(@event)
       else
-        format.js
-        format.html { render 'new' }
+        redirect_to root_url
       end
-    end
-    
-      # if @event.save
-      #   @event.users << current_user
-      #   redirect_to edit_event_url(@event)
-      # else
-      #   redirect_to :back
-      # end
 
   end
 

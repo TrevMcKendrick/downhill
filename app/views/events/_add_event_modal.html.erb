@@ -9,13 +9,10 @@
         <h4 class="modal-title">
           Let's start with the basics...
         </h4>
-        <div id="event_error_explanation" style="display:none;">
-        </div>
       </div>
       <div class="modal-body no-padding">
 
-          <%= form_for @event, :url => { :action => :create }, :remote => true, html: {:class => "smart-form"} do |f| %>
-
+          <%= form_for @event, :url => { :action => :create }, html: {:class => "smart-form"} do |f| %>
               <fieldset>
           
                 <section>

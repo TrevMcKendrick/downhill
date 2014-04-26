@@ -1,6 +1,6 @@
 class WavesController < ApplicationController
-  before_action :authenticate_user!, :check_subdomain
   before_action :get_event_from_params, :only => [:create, :index]
+  before_action :authenticate_user!
   before_action :find_wave, :only => [:edit, :update]
 
   def create

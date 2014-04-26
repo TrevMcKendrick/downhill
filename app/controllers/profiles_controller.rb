@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :authenticate_user!, :check_subdomain
+  before_action :authenticate_user!
   layout "profile"
 
   def show 

@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-  before_action :authenticate_user!, :check_subdomain
+  before_action :authenticate_user!
 
   def index
     @account_customers = current_user.account.participants

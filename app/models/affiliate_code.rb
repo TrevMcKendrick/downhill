@@ -5,7 +5,7 @@ class AffiliateCode < ReferralCode
 
   def defaults
     create_code
-    self.discount_type = "flat_rate"
+    self.discount_type = flat_rate
   end
 
   def create_code

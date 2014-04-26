@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
     end
 
     if @order.charged?
-      # sign_in(@order.participant)
+      sign_in(@order.participant)
       session[:participant] = @order.participant
       redirect_to success_order_path(@event)
       return false

@@ -1,11 +1,15 @@
 <%= render 'events/stripe_publishable_key' %>
 
+<% flash.each do |key, value| %>
+  <%= content_tag :div, value, class: "flash #{key}" %>
+<% end %>
+
 <div class="checkout">
   <div class="container">
     <%= render 'orders/header', :user => @user %>
     <% if @event.published %>
       <%= form_tag url_for(:controller => "orders", :action => "create", :event_id => @event), :method => "post", :id => "order_form", :class => "form-horizontal" %>
-
+        
       <h4><%= "#{@ticket.ticket_type}" %></h4>
 
       <%= render 'events/form_fields/participant' %>

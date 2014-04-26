@@ -1,8 +1,4 @@
 class Event < ActiveRecord::Base
-  validates :title, :presence => true
-  validates :date, :presence => true
-  validates :time, :presence => true
-
   has_paper_trail
   
   before_create :defaults
