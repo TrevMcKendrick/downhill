@@ -1,7 +1,7 @@
 <h1>Let's start with the basics...</h1>
 <div id="event_error_explanation" style="display:none;">
 </div>
-<%= form_for(@event) do |f| %>
+<%= form_for(@event, :remote => true) do |f| %>
   <%= render 'new_event_details', :f => f %>
   <%= f.submit :class => "btn btn-primary" %>
 <% end %>
