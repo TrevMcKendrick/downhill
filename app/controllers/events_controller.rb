@@ -1,4 +1,7 @@
 class EventsController < ApplicationController
+
+  authorize_resource
+  
   before_action :check_subdomain, :except => [:show]
   before_action :authenticate_user!, except: [:show]
   layout "event_public", only: [:show, :waiver]

@@ -1,5 +1,8 @@
 class CustomersController < ApplicationController
+  
+  authorize_resource :class => false
   before_action :authenticate_user!, :check_subdomain
+
 
   def index
     @account_customers = current_user.account.participants

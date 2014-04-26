@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   validates_exclusion_of :subdomain, in: ['www', 'mail', 'ftp'], message: "is not available"
 
   #cancan roles
-  ROLES = %w[admin]
+  ROLES = %w[admin participant]
 
   def participant?
     false

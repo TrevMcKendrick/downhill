@@ -1,4 +1,5 @@
 class DashboardsController < ApplicationController
+  authorize_resource :class => false
   before_action :authenticate_user!, :check_subdomain
 
   def show 

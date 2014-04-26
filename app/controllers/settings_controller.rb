@@ -1,6 +1,6 @@
 class SettingsController < ApplicationController
   before_action :authenticate_user!, :check_subdomain
-  
+
   def index
     @user = current_user
   end
