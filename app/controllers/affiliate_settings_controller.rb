@@ -1,5 +1,5 @@
 class AffiliateSettingsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :check_subdomain
   before_action :get_event_from_params, :only => [:index]
   before_action :find_affiliate_setting, :only => [:update]
 

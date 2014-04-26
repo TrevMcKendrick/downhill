@@ -1,5 +1,5 @@
 class DashboardsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :check_subdomain
 
   def show 
     @user = current_user
