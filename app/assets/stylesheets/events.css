@@ -10,3 +10,9 @@
   margin-right: 15px;
   margin-top: 10px;
 }
+
+#event_error_explanation {
+  padding: 1px;
+  display: table;
+  border: 2px solid red;
+}
