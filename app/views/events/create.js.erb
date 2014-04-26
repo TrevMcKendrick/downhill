@@ -1,0 +1,10 @@
+<% if @event.errors.count > 0 %>
+    $('#event_error_explanation').html("");
+  <% @event.errors.full_messages.each do |message| %>
+    $('#event_error_explanation').append("<%= message %>");
+    $('#event_error_explanation').append("<br>");    
+  <% end %>
+  document.getElementById("event_error_explanation").style.display = 'block';
+<% else %>
+  document.getElementById("event_error_explanation").style.display = 'none';
+<% end %>
