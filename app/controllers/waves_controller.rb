@@ -5,6 +5,7 @@ class WavesController < ApplicationController
 
   def create
     @wave = @event.waves.build(wave_params)
+    @wave.start_time = @wave.utc(params[:wave][:start_time])
 
     respond_to do |format|
       if @wave.save
@@ -37,7 +38,7 @@ class WavesController < ApplicationController
     end
   end
 
-  private 
+  private
 
   def find_wave
     @wave = Wave.find_by id: params[:id]

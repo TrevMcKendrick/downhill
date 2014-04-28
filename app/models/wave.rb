@@ -15,4 +15,13 @@ class Wave < ActiveRecord::Base
   def local_time(time)
     time.in_time_zone(self.event.timezone).to_s(:ordinal_time)
   end
+
+  def utc(time)
+    Time.zone = self.event.timezone
+    if Time.zone.parse(time).dst?
+     Time.zone.parse(time) + 3600
+    else
+     Time.zone.parse(time)
+    end
+  end
 end

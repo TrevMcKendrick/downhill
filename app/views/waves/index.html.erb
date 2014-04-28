@@ -35,7 +35,7 @@
                           <tr class="<%= cycle("odd", "even") -%>">
                             <td class=" "><%= link_to wave.title, edit_wave_path(wave) %></td>
                             <td class=" "><%= link_to "#{wave.quantity - wave.users.count}/#{wave.quantity}", edit_wave_path(wave) %></td>
-                            <td class=" "><%= link_to wave.start_time, edit_wave_path(wave) %></td>
+                            <td class=" "><%= link_to wave.local_time(wave.start_time), edit_wave_path(wave) %></td>
                           </tr>
                       <% end %>
                       </tbody>
