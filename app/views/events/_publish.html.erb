@@ -1,4 +1,12 @@
+<% if stripe_set_up? %>
+  <div class="form-group">
+    <%= label_tag "Let people see the event page?" %><br>
+    <%= f.select :published, [["No",false], ["Yes, make the event public",true]], :class => "form-control editor" %><br><br>
+    <%= f.submit :class => "btn btn-primary" %>
+  </div>
+<% else %>
 <div class="form-group">
-  <%= label_tag "Let people see the event page?" %><br>
-  <%= f.select :published, [["No",false], ["Yes, make the event public",true]], :class => "form-control editor" %>
+  You need to <%= link_to "link your Stripe account", settings_path %> before making your event go live and accepting payments!<br><br>
+  Go to <%= link_to "Settings", settings_path %> to get started. It takes about 60 seconds.
 </div>
+<% end %>
