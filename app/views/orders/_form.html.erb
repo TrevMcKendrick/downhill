@@ -7,7 +7,8 @@
       <%= form_tag url_for(:controller => "orders", :action => "create", :event_id => @event), :method => "post", :id => "order_form", :class => "form-horizontal" %>
 
       <h4><%= "#{@ticket.ticket_type}" %></h4>
-
+       <div id="error_field">
+       </div>
       <%= render 'events/form_fields/participant' %>
       <%= render 'events/form_fields/ticket', :ticket => @ticket %>
       <%= render 'events/form_fields/name' %>

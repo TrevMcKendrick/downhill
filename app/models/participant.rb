@@ -1,4 +1,10 @@
 class Participant < User
+  validates :first_name, :presence => true
+  validates :email, :presence => true
+  validates :phone, :presence => true
+  validates :shirtsize, :presence => true
+  validates :gender, :presence => true
+  
 
   has_one :affiliate_code
   has_many :orders

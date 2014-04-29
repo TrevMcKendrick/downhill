@@ -1,5 +1,6 @@
 class Order < ActiveRecord::Base
   # validate :valid_referral_code
+  validates_associated :participant
 
   include AASM
 

@@ -16,26 +16,34 @@ $(document).ready(function() {
       }  
     });
 
+    
+  var validator = $("#order_form").validate({
+    onfocusout: function(element) { $(element).valid(); },
+    onkeyup: false,
+    rules: {
+            "participant[email]": {
+              // remote: "/check_email_uniqueness",
+              required: true
+            },
+            "participant[first_name]": "required"
+           },
+    messages: {
+      "participant[email]": {
+        remote: "Email already taken! Please try a different email or login above!",
+        required: "Please enter your email!"
+      },
+      "participant[first_name]": "We gotta know who you are! Please enter your name."
+    },
+    errorPlacement: function(error,element) {
+      error.appendTo($("#error_field"));
+    }
+  });
+
   $('#order_form').submit(function(e) {
       var $form = $(this);
 
       // Disable the submit button to prevent repeated clicks
       $form.find('button').prop('disabled', true);
-
-      // $('input').removeClass('invalid');
-      // $('.validation').removeClass('passed failed');
-
-      // var cardType = $.payment.cardType($('.cc-number').val());
-
-      // $('.cc-number').toggleClass('invalid', !$.payment.validateCardNumber($('.cc-number').val()));
-      // $('.cc-exp').toggleClass('invalid', !$.payment.validateCardExpiry($('.cc-exp').payment('cardExpiryVal')));
-      // $('.cc-cvc').toggleClass('invalid', !$.payment.validateCardCVC($('.cc-cvc').val(), cardType));
-
-      // if ( $('input.invalid').length ) {
-      //   $('.validation').addClass('failed');
-      // } else {
-      //   $('.validation').addClass('passed');
-      // }
 
       var ccvalid = $.payment.validateCardNumber($('#card_number').val());
       var CVCvalid = $.payment.validateCardCVC($('#card_code').val());
@@ -52,6 +60,15 @@ $(document).ready(function() {
 
       Stripe.createToken($form, stripeResponseHandler);
 
+
+       var isvalidate=$("#order_form").valid();
+        if(isvalidate)
+        {
+          alert("FUCK IT");
+          e.preventDefault();
+          
+        }
+
       // Prevent the form from submitting with the default action
       return false;
     });
@@ -62,6 +79,10 @@ $(document).ready(function() {
     $('#card_code').payment('restrictNumeric');
     $('#card_code').payment('formatCardCVC');
   });
+
+  
+
+  // $('.validate').attr('style', "border-radius: 5px; border:#FF0000 1px solid;");
 
 });
 
