@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 ruby "1.9.3"
 
+gem 'newrelic_rpm'
+
 gem 'aasm'
 
 gem 'sinatra', '>= 1.3.0', :require => nil
