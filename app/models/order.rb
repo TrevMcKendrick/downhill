@@ -1,4 +1,6 @@
 class Order < ActiveRecord::Base
+  # validate :valid_referral_code
+
   include AASM
 
   has_paper_trail
@@ -9,7 +11,6 @@ class Order < ActiveRecord::Base
   belongs_to :participant
 
   before_create :populate_guid, :add_ticket_science_fee
-
 
   aasm :column => "state" do
     state :pending, initial: true
@@ -104,16 +105,20 @@ class Order < ActiveRecord::Base
     self.ticket_science_fee = convert_to_stripe(TICKET_SCIENCE_FEE)
   end
 
-  # def valid_referral_code?(string, current_event)
-  #   code = ReferralCode.valid?(string)
-  #   return nil if code == nil
+  # def valid_referral_code #(string, current_event)  
+  #   binding.pry
+  #   code = ReferralCode.valid?(self.referral_code)
+  #   if code == nil
+  #     errors.add(:referral_code, "invalid!")
+  #     return
+  #   end
 
   #   if code.promo_code?
-  #     code.event == current_event ? code : nil
+  #     code.event == self.event ? code : errors.add(:referral_code, "invalid promo code!")
   #   end
 
   #   if code.affiliate_code?
-  #     code.participant.events.include?(current_event) && current_event.affiliate_setting.enabled ? code : nil
+  #     code.participant.events.include?(self.event) && current_event.affiliate_setting.enabled ? code : errors.add(:referral_code, "invalid promo code!")
   #   end
   # end
   
