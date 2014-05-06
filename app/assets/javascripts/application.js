@@ -15,6 +15,8 @@
 
 
 //= require jquery-2.1.0
+//= require datejs/date
+//= require dashboard
 //= require jquery_ujs
 //= require bootstrap.min
 //= require bootstrap-datetimepicker
@@ -25,3 +27,5 @@
 //= require select2
 //= require orders
 //= require waves
+//= require moment
+//= require daterangepicker
