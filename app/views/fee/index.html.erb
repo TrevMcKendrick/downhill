@@ -33,7 +33,7 @@
                       <% @fees.each do |fee| %> 
                           <tr class="<%= cycle("odd", "even") -%>">
                             <td class=" "><%= link_to fee.name, edit_fee_path(fee) %></td>
-                            <td class=" "><%= fee.amount %></td>
+                            <td class=" "><%= number_to_currency(stripe_to_display(fee.amount)) %></td>
                           </tr>
                       <% end %>
                       </tbody>

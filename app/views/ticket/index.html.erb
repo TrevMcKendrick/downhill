@@ -43,7 +43,7 @@
                       <% @tickets.each do |ticket| %> 
                           <tr class="<%= cycle("odd", "even") -%>">
                             <td class=" "><%= link_to ticket.ticket_type, edit_ticket_path(ticket) %></td>
-                            <td class=" "><%= "$ #{ticket.price}" %></td>
+                            <td class=" "><%= number_to_currency(stripe_to_display(ticket.price)) %></td>
                             <td class=" ">
                               <% if ticket.users.count > 0 %>
                                 <%= "#{ticket.quantity - ticket.users.count}/#{ticket.quantity}" %>
