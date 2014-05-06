@@ -9,8 +9,8 @@ $(document).ready(function() {
     var now = new Date();
     var start_days_ago = (now - start) / 86400000;
     var end_days_ago = (now - end) / 86400000;
-    start_days_ago = start_days_ago.toFixed()
-    end_days_ago = end_days_ago.toFixed()
+    start_days_ago = start_days_ago.toFixed();
+    end_days_ago = end_days_ago.toFixed();
   }
 );
 
