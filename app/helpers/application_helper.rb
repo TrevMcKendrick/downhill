@@ -19,4 +19,8 @@ module ApplicationHelper
     current_user.stripe_user_id != nil && current_user.stripe_user_id != "" ? true : false
   end
 
+  def stripe_to_display(amount)
+    amount / 100
+  end
+
 end

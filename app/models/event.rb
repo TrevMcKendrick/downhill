@@ -51,4 +51,14 @@ class Event < ActiveRecord::Base
     self.fees.map(&:amount).inject(0, &:+)
   end
 
+  def sales(start_day = nil, end_day = nil)
+    if start_day
+      orders = self.orders.where(created_at: (Time.now.midnight - start_day.day)..(Time.now.midnight + 86400) )
+      sales = orders.collect { |order| order.amount }
+    else
+      sales = self.orders.collect { |order| order.amount }
+    end
+    sales.compact.sum
+  end
+
 end

@@ -398,19 +398,21 @@ referral_code = ReferralCode.create([
 
 orders = Order.create([
   {
-    referral_code_id: 1
+    referral_code_id: 1,
+    created_at: Time.now - 5.days,
+    event_id: 1,
+    amount: 4500
   },
   {
-    referral_code_id: 2
+    referral_code_id: 2,
+    created_at: Time.now - 25.days,
+    event_id: 1,
+    amount: 9000
   },
   {
-    referral_code_id: 3
-  },
-  {
-
-  },
-  {
-
+    referral_code_id: 3,
+    event_id: 1,
+    amount: 10000
   }
   ])
 
@@ -428,21 +430,6 @@ affiliate_setting = AffiliateSetting.create([
     event_id: 2,
     enabled: true,
     amount: 10
-  }
-  ])
-
-orders = Order.create([
-  {
-    referral_code_id: 1,
-    event_id: 1
-  },
-  {
-    referral_code_id: 2,
-    event_id: 1
-  },
-  {
-    referral_code_id: 3,
-    event_id: 1
   }
   ])
 
