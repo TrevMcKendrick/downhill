@@ -15,8 +15,12 @@
         <!-- END AJAX-DROPDOWN -->
       </div>
 
-          <div id="logout" class="btn-header transparent pull-right">
-          <%= link_to "Log out", destroy_user_session_path, :method => :delete, :class => "btn btn-danger", :style => "margin-top:8px;" %>
+          <div class="btn-header transparent pull-left">
+          <%= link_to "Create an Event", new_event_path, :class => "btn btn-primary", :style => "margin-top:18px; margin-left:200px;" %>
+          </div>
+
+           <div class="btn-header transparent pull-left">
+          <%= link_to "Lookup a Customer", customers_path, :class => "btn btn-primary", :style => "margin-top:18px; margin-left:100px;" %>
           </div>
 
 
