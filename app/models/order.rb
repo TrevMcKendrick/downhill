@@ -118,10 +118,10 @@ class Order < ActiveRecord::Base
 
   def self.total_grouped_by_day(start)
     orders = where(created_at: start.beginning_of_day..Time.zone.now)
-    logger.info "start: #{start}"
-    logger.info "start.beginning_of_day: #{start.beginning_of_day}"
-    logger.info "Time.zone: #{Time.zone}"
-    logger.info "Time.zone.now: #{Time.zone.now}"
+    # logger.info "start: #{start}"
+    # logger.info "start.beginning_of_day: #{start.beginning_of_day}"
+    # logger.info "Time.zone: #{Time.zone}"
+    # logger.info "Time.zone.now: #{Time.zone.now}"
     orders = orders.group("date(created_at)")
     orders = orders.select("created_at, sum(amount) as total_amount")
     orders = orders.group_by { |o| o.created_at.to_date }
