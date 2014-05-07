@@ -2,11 +2,20 @@
   <div class="form-group">
     <div class="controls">
       <div class="input-group">
-        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-        <input type="text" name="sales_date_range" id="sales_date_range" />
+        <!-- <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+        <input type="text" name="sales_date_range" id="sales_date_range" /> -->
+        <div id="sales_date_range" class="pull-left">
+          <i class="fa fa-calendar fa-lg"></i>
+          <span><%= "#{@start.days.ago.strftime("%m/%d/%Y")} - #{@end.days.ago.strftime("%m/%d/%Y")}" %></span> <b class="caret"></b>
+        </div>
       </div>
     </div>
   </div>
+
+
+<br>
+
+
 <section id="widget-grid" class="">        
   <%= content_tag :div, "", :style => "height: 250px; border: 1px orange solid;", id: "sales_chart", data: {sales: Order.sales_chart_data(@start.days.ago, @end.days.ago)} %>
 </section>
