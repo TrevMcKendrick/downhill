@@ -125,7 +125,6 @@ class Order < ActiveRecord::Base
     orders = orders.group("date(created_at)")
     orders = orders.select("created_at, sum(amount) as total_amount")
     orders = orders.group_by { |o| o.created_at.to_date }
-    logger.info "final orders: #{orders}"
   end
 
   # def valid_referral_code #(string, current_event)  
