@@ -28,6 +28,8 @@ module Downhill
     config.assets.precompile += %w(orders.css)
     config.assets.precompile += %w(bootstrap.min.css)
 
+    config.assets.precompile += %w(sales_chart.js)
+
 
 
     # Settings in config/environments/* take precedence over those specified here.
