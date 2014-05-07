@@ -7,6 +7,8 @@
         <div id="sales_date_range" class="pull-left">
           <i class="fa fa-calendar fa-lg"></i>
           <span><%= "#{@start.days.ago.strftime("%m/%d/%Y")} - #{@end.days.ago.strftime("%m/%d/%Y")}" %></span> <b class="caret"></b>
+          <%= logger.info "@start = #{@start}" %>
+          <%= logger.info "@end = #{@start}" %>
         </div>
       </div>
     </div>
