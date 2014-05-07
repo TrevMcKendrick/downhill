@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 ruby "1.9.3"
 
+gem 'sqlite3'
+
 gem 'newrelic_rpm'
 
 gem 'aasm'
@@ -41,8 +43,7 @@ gem 'rails', '4.0.1'
 
 gem 'pry', group: :development
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3' #, :group => :development
+ #, :group => :development
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
