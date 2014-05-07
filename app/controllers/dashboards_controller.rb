@@ -5,6 +5,8 @@ class DashboardsController < ApplicationController
   def show 
     @user = current_user
     @events = @user.events
+    @start = params[:start_day].to_i
+    @end = params[:end_day].to_i
   end
 
   def not_found

@@ -1,0 +1,48 @@
+$(document).ready(function() {
+  $('#sales_date_range').daterangepicker(
+  { 
+    ranges: {
+         'Today': [moment(), moment()],
+         'Yesterday': [moment().subtract('days', 1), moment().subtract('days', 1)],
+         'Last 7 Days': [moment().subtract('days', 6), moment()],
+         'Last 30 Days': [moment().subtract('days', 29), moment()],
+         'This Month': [moment().startOf('month'), moment().endOf('month')],
+         'Last Month': [moment().subtract('month', 1).startOf('month'), moment().subtract('month', 1).endOf('month')]
+      },
+      startDate: moment().subtract('days', 29),
+      endDate: moment()
+  },
+  function(start, end, label) {
+    var now = new Date();
+    var start_days_ago = (now - start) / 86400000;
+    var end_days_ago = (now - end) / 86400000;
+    start_days_ago = start_days_ago.toFixed();
+    end_days_ago = end_days_ago.toFixed();
+    var path = '?start_day=' + start_days_ago + '&end_day=' + end_days_ago
+    window.location = path;
+  }
+
+);
+
+});
+
+
+
+
+// $('#sales_date_range').daterangepicker(
+//     {
+//       ranges: {
+//          'Today': [moment(), moment()],
+//          'Yesterday': [moment().subtract('days', 1), moment().subtract('days', 1)],
+//          'Last 7 Days': [moment().subtract('days', 6), moment()],
+//          'Last 30 Days': [moment().subtract('days', 29), moment()],
+//          'This Month': [moment().startOf('month'), moment().endOf('month')],
+//          'Last Month': [moment().subtract('month', 1).startOf('month'), moment().subtract('month', 1).endOf('month')]
+//       },
+//       startDate: moment().subtract('days', 29),
+//       endDate: moment()
+//     },
+//     function(start, end) {
+//         $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+//     }
+// );

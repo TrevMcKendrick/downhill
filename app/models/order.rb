@@ -106,6 +106,23 @@ class Order < ActiveRecord::Base
     self.ticket_science_fee = convert_to_stripe(TICKET_SCIENCE_FEE)
   end
 
+   def self.sales_chart_data(start = 1.months.ago, finish = Date.today)
+    orders_by_day = Order.total_grouped_by_day(start)
+    (start.to_date..finish).map do |date|
+      {
+        created_at: date,
+        amount: orders_by_day[date].try(:first).try(:total_amount) || 0
+      }
+    end
+  end
+
+  def self.total_grouped_by_day(start)
+    orders = where(created_at: start.beginning_of_day..Time.zone.now)
+    orders = orders.group("date(created_at)")
+    orders = orders.select("created_at, sum(amount) as total_amount")
+    orders = orders.group_by { |o| o.created_at.to_date }
+  end
+
   # def valid_referral_code #(string, current_event)  
   #   binding.pry
   #   code = ReferralCode.valid?(self.referral_code)
