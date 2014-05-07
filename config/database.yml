@@ -19,9 +19,15 @@ test:
   timeout: 5000
 
 production:
-  adapter: postgresql
-  database: swift_production
-  pool: 25
-  timeout: 5000
-  username: trevor
-  password: Jello2you
+   adapter: sqlite3
+   database: db/production.sqlite3
+   pool: 5
+   timeout: 5000
+
+
+  # adapter: postgresql
+  # database: swift_production
+  # pool: 25
+  # timeout: 5000
+  # username: trevor
+  # password: Jello2you
