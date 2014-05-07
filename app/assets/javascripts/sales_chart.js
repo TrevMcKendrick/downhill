@@ -12,10 +12,12 @@
   // chart.
   labels: ['Revenue'],
 
+  preUnits: "$",
+
   xLabelFormat: function (date) {
-  var m_names = new Array("January", "February", "March", 
-"April", "May", "June", "July", "August", "September", 
-"October", "November", "December"); 
+  var m_names = new Array("Jan", "Feb", "Mar", 
+  "Apr", "May", "June", "July", "Aug", "Sep", 
+  "Oct", "Nov", "Dec"); 
     var curr_date = date.getDate();
     var curr_month = date.getMonth();
     var curr_year = date.getFullYear();

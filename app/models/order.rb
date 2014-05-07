@@ -111,7 +111,7 @@ class Order < ActiveRecord::Base
     (start.to_date..finish).map do |date|
       {
         created_at: date,
-        amount: orders_by_day[date].try(:first).try(:total_amount) || 0
+        amount: orders_by_day[date].try(:first).try(:total_amount).try(:div, 100) || 0
       }
     end
   end
