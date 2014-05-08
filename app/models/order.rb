@@ -123,7 +123,7 @@ class Order < ActiveRecord::Base
     # logger.info "Time.zone: #{Time.zone}"
     # logger.info "Time.zone.now: #{Time.zone.now}"
     orders = orders.group("date(created_at)")
-    orders = orders.select("created_at, sum(amount) as total_amount")
+    orders = orders.select("date(created_at) as created_at, sum(amount) as total_amount")
     orders = orders.group_by { |o| o.created_at.to_date }
   end
 
