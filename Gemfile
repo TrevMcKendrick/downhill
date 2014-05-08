@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby "1.9.3"
 
-gem 'sqlite3'
+# gem 'sqlite3'
 
 gem 'newrelic_rpm'
 
@@ -24,7 +24,7 @@ gem 'jquery-rails', '~> 2.1'
 
 gem 'bootstrap-wysihtml5-rails'
 
-# gem 'pg', group: :production
+gem 'pg'
 
 gem 'capistrano'
 
