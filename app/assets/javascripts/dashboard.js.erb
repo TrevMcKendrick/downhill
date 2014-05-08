@@ -14,10 +14,13 @@ $(document).ready(function() {
   },
   function(start, end, label) {
     var now = new Date();
-    var start_days_ago = (now - start) / 86400000;
-    var end_days_ago = (now - end) / 86400000;
-    start_days_ago = start_days_ago.toFixed() - 1;
-    end_days_ago = end_days_ago.toFixed() - 1;
+    now.setHours(0);
+    now.setMinutes(0);
+    now.setSeconds(0);
+
+    var start_days_ago = Math.floor((now - start) / 86400000);
+    var end_days_ago = Math.floor((now - end) / 86400000);
+
     var path = '?start_day=' + start_days_ago + '&end_day=' + end_days_ago
     window.location = path;
   }
