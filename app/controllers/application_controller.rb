@@ -6,8 +6,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :configure_devise_permitted_parameters, if: :devise_controller?
+  before_action :redirect_to_https
 
   protected
+
+  def redirect_to_https
+    redirect_to :protocol => "https://" unless (request.ssl? || request.local?)
+  end
 
   def check_subdomain
     if is_home_page? == false && current_user != nil
