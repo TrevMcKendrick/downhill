@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def redirect_to_https
+    logger.info "Request.ssl: #{request.ssl?}"
     redirect_to :protocol => "https://" unless (request.ssl? || request.local?)
   end
 
