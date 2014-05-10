@@ -16,6 +16,7 @@ class OrdersController < ApplicationController
   def create
     @participant = @event.users.build(participant_params)
     @order = @event.orders.build(order_params)
+    @order.referral_code = ReferralCode.find_by code: (params[:order][:referral_code]) if @event.code_is_valid?(params[:order][:referral_code])
     @order.stripe_token = params[:stripeToken]
     @order.add_buyer(@participant)
 
@@ -39,6 +40,14 @@ class OrdersController < ApplicationController
     else
       redirect_to :back, alert: @order.error
       return false
+    end
+  end
+
+  def validate_referral_code
+    test_code = params[:code]
+    response = @event.valid_codes.any? { |code| code.code == test_code }
+    respond_to do |format|
+      format.json { render :json => response }
     end
   end
 

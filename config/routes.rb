@@ -5,6 +5,10 @@ Downhill::Application.routes.draw do
   
   match '/users/auth/:action/callback' => 'omniauth_callbacks#authorize_stripe', via: [:get, :post]
 
+  get '/validate_referral_code/:code/:event_id' => "orders#validate_referral_code", :path => "/validate_referral_code/:code/:event_id"
+
+  post '/orders/:event_id' => "orders#create", :as => "/"
+
   devise_for :users
   devise_for :participants, :controllers => { :registrations => "participants" }
 
