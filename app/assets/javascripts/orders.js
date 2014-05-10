@@ -64,9 +64,7 @@ $(document).ready(function() {
        var isvalidate=$("#order_form").valid();
         if(isvalidate)
         {
-          alert("FUCK IT");
-          e.preventDefault();
-          
+          e.preventDefault(); 
         }
 
       // Prevent the form from submitting with the default action
