@@ -85,7 +85,11 @@ class Order < ActiveRecord::Base
   end
 
   def set_amount
-    self.amount = convert_to_stripe(self.event.fee_total) + convert_to_stripe(self.user_ticket.ticket.price) + convert_to_stripe(TICKET_SCIENCE_FEE_TO_CUSTOMER).ceil
+    self.amount = self.event.fee_total + self.user_ticket.ticket.price + convert_to_stripe(TICKET_SCIENCE_FEE_TO_CUSTOMER).ceil - discount
+  end
+
+  def discount
+    self.referral_code.present? ? self.referral_code.amount : 0
   end
 
   def convert_to_stripe(amount)
