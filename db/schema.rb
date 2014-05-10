@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140424234957) do
+ActiveRecord::Schema.define(version: 20140510045438) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "accounts", force: true do |t|
     t.text     "header"
@@ -84,13 +87,13 @@ ActiveRecord::Schema.define(version: 20140424234957) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "discount_type"
-    t.decimal  "amount",         precision: 8, scale: 2
     t.boolean  "published"
     t.integer  "quantity"
     t.string   "type"
     t.integer  "event_id"
     t.integer  "participant_id"
     t.string   "description"
+    t.integer  "amount"
   end
 
   create_table "sessions", force: true do |t|
@@ -100,8 +103,8 @@ ActiveRecord::Schema.define(version: 20140424234957) do
     t.datetime "updated_at"
   end
 
-  add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true
-  add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at"
+  add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
+  add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
 
   create_table "settings", force: true do |t|
     t.string   "var",         null: false
@@ -112,7 +115,7 @@ ActiveRecord::Schema.define(version: 20140424234957) do
     t.datetime "updated_at"
   end
 
-  add_index "settings", ["target_type", "target_id", "var"], name: "index_settings_on_target_type_and_target_id_and_var", unique: true
+  add_index "settings", ["target_type", "target_id", "var"], name: "index_settings_on_target_type_and_target_id_and_var", unique: true, using: :btree
 
   create_table "shirts", force: true do |t|
     t.string   "size"
@@ -195,8 +198,8 @@ ActiveRecord::Schema.define(version: 20140424234957) do
     t.integer  "account_id"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "versions", force: true do |t|
     t.string   "item_type",      null: false
@@ -208,7 +211,7 @@ ActiveRecord::Schema.define(version: 20140424234957) do
     t.text     "object_changes"
   end
 
-  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
+  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
 
   create_table "waves", force: true do |t|
     t.time     "start_time"
