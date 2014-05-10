@@ -20,8 +20,4 @@ class ReferralCode < ActiveRecord::Base
     return self.event.affiliate_setting.amount if self.affiliate_code?
   end
 
-  def self.valid?(code)
-    ReferralCode.find_by code: code
-  end
-
 end

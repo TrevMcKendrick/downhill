@@ -61,4 +61,14 @@ class Event < ActiveRecord::Base
     sales.compact.sum
   end
 
+  def code_is_valid?(string)
+    self.valid_codes.any? { |code| code.code == string }
+  end
+
+  def valid_codes
+    promo_codes = self.promo_codes.to_a
+    affiliate_codes = self.affiliate_codes.to_a
+    promo_codes + affiliate_codes
+  end
+
 end
