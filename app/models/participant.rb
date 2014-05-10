@@ -5,7 +5,6 @@ class Participant < User
   validates :shirtsize, :presence => true
   validates :gender, :presence => true
   
-
   has_one :affiliate_code
   has_many :orders
 
