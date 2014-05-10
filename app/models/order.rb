@@ -86,9 +86,6 @@ class Order < ActiveRecord::Base
 
   def set_amount
     self.amount = convert_to_stripe(self.event.fee_total) + convert_to_stripe(self.user_ticket.ticket.price) + convert_to_stripe(TICKET_SCIENCE_FEE_TO_CUSTOMER).ceil
-    logger.info "Fee total is = #{convert_to_stripe(self.event.fee_total)}"
-    logger.info "Ticket price = #{convert_to_stripe(self.user_ticket.ticket.price)}"
-    logger.info "TICKET_SCIENCE_FEE_TO_CUSTOMER = #{convert_to_stripe(TICKET_SCIENCE_FEE_TO_CUSTOMER).ceil}"
   end
 
   def convert_to_stripe(amount)
@@ -118,30 +115,9 @@ class Order < ActiveRecord::Base
 
   def self.total_grouped_by_day(start)
     orders = where(created_at: start.beginning_of_day..Time.zone.now)
-    # logger.info "start: #{start}"
-    # logger.info "start.beginning_of_day: #{start.beginning_of_day}"
-    # logger.info "Time.zone: #{Time.zone}"
-    # logger.info "Time.zone.now: #{Time.zone.now}"
     orders = orders.group("date(created_at)")
     orders = orders.select("date(created_at) as created_at, sum(amount) as total_amount")
     orders = orders.group_by { |o| o.created_at.to_date }
   end
-
-  # def valid_referral_code #(string, current_event)  
-  #   binding.pry
-  #   code = ReferralCode.valid?(self.referral_code)
-  #   if code == nil
-  #     errors.add(:referral_code, "invalid!")
-  #     return
-  #   end
-
-  #   if code.promo_code?
-  #     code.event == self.event ? code : errors.add(:referral_code, "invalid promo code!")
-  #   end
-
-  #   if code.affiliate_code?
-  #     code.participant.events.include?(self.event) && current_event.affiliate_setting.enabled ? code : errors.add(:referral_code, "invalid promo code!")
-  #   end
-  # end
   
 end
