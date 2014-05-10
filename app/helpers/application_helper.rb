@@ -16,7 +16,7 @@ module ApplicationHelper
   end
 
   def stripe_set_up?
-    current_user.stripe_user_id != nil && current_user.stripe_user_id != "" ? true : false
+    current_user.stripe_user_id.present? && current_user.stripe_user_id.present? ? true : false
   end
 
   def stripe_to_display(amount)
