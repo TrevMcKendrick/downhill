@@ -367,7 +367,7 @@ referral_code = ReferralCode.create([
   {
   description: "50% Facebook July 2013",
   code: "fb50july",
-  amount: 50,
+  amount: 500,
   discount_type: "flat_rate",
   published: true,
   quantity: 100,
@@ -377,7 +377,7 @@ referral_code = ReferralCode.create([
   {
   description: "$10 Twitter back to school",
   code: "twitterbts10",
-  amount: 10,
+  amount: 400,
   discount_type: "percent",
   published: true,
   quantity: 50,
@@ -387,7 +387,7 @@ referral_code = ReferralCode.create([
   {
   description: "Email 20%",
   code: "20please",
-  amount: 20,
+  amount: 300,
   discount_type: "percent",
   published: true,
   quantity: 275,
