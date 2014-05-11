@@ -12,7 +12,7 @@ class WavesController < ApplicationController
         format.js { render :js => "window.location.href = '#{waves_path}'" }
       else
         format.js
-        format.html { render 'new' }
+        # format.html { render 'new' }
       end
     end
   end

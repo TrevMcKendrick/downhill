@@ -17,11 +17,13 @@ class Wave < ActiveRecord::Base
   end
 
   def utc(time)
-    Time.zone = self.event.timezone
-    if Time.zone.parse(time).dst?
-     Time.zone.parse(time) + 3600
-    else
-     Time.zone.parse(time)
+    if time.present?
+      Time.zone = self.event.timezone
+      if Time.zone.parse(time).dst?
+       Time.zone.parse(time) + 3600
+      else
+       Time.zone.parse(time)
+      end
     end
   end
 end
