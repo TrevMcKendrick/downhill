@@ -13,7 +13,6 @@
  *= require_self
 
 
- *= require bootstrap-datetimepicker
  *= require bootstrap.min
  *= require bootstrap-wysihtml5
 
@@ -36,6 +35,9 @@
  *= require select2-bootstrap
 
  *= require daterangepicker-bs3
+
+ *= require datepicker/datepicker
+ *= require timepicker/jquery.timepicker
 
  *= require morris/morris
   

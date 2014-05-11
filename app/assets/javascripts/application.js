@@ -19,7 +19,6 @@
 //= require dashboard
 //= require jquery_ujs
 //= require bootstrap.min
-//= require bootstrap-datetimepicker
 //= require bootstrap-wysihtml5
 //= require events
 //= require participants
@@ -28,4 +27,6 @@
 //= require waves
 //= require moment
 //= require daterangepicker
+//= require datepicker/bootstrap-datepicker
+//= require timepicker/jquery.timepicker.min
 //= require morris/morris.min

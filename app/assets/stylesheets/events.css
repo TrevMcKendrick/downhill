@@ -16,3 +16,7 @@
   display: table;
   border: 2px solid red;
 }
+
+.dropdown-menu {
+  min-width: 250px;
+}
