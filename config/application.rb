@@ -29,6 +29,7 @@ module Downhill
     config.assets.precompile += %w(bootstrap.min.css)
 
     config.assets.precompile += %w(sales_chart.js)
+    config.assets.precompile += %w(smart-admin/app.js)
 
 
 

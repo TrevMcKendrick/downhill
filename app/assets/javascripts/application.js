@@ -29,4 +29,3 @@
 //= require moment
 //= require daterangepicker
 //= require morris/morris.min
-//= require smart-admin/app
