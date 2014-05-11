@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   belongs_to :account
   
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :marketable
 
   has_many :user_events
   has_many :events, :through => :user_events

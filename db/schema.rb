@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140510045438) do
+ActiveRecord::Schema.define(version: 20140511003011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -196,6 +196,8 @@ ActiveRecord::Schema.define(version: 20140510045438) do
     t.string   "stripe_refresh_token"
     t.string   "phone"
     t.integer  "account_id"
+    t.text     "referring_url"
+    t.text     "landing_url"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

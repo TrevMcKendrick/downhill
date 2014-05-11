@@ -68,6 +68,8 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    devise_marketable (0.0.4)
+      devise
     domainatrix (0.0.11)
       addressable
     erubis (2.7.0)
@@ -209,6 +211,7 @@ DEPENDENCIES
   capistrano
   coffee-rails (~> 4.0.0)
   devise
+  devise_marketable
   domainatrix
   jbuilder (~> 1.2)
   jquery-rails (~> 2.1)
