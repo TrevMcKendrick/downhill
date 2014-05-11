@@ -1,11 +1,6 @@
 <%= render 'new_event_details', :f => f %>
 
 <div class="form-group">
-  <%= f.label :timezone, "Time Zone" %>
-  <%= f.collection_select :timezone, ActiveSupport::TimeZone.us_zones, :name, :to_s, :class => "form-control" %>
-</div>
-
-<div class="form-group">
   <%= f.label :street_address_one, "Street Address" %>
   <%= f.text_field :street_address_one, :placeholder => "123 Parkway", :class => "form-control" %>
 </div>
