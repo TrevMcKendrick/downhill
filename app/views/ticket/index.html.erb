@@ -22,6 +22,13 @@
                   <!-- widget content -->
                   <div class="widget-body no-padding">
 
+                   <% if @tickets.blank? %>
+                    <br>
+                    <h1 style="font-size:30px; margin-left: 10px;">You haven't created any tickets yet.</h1>
+                    <h4 style="font-size:15px; margin-left: 10px;">Make your first by clicking the "Add Ticket" button below!</h4>
+                    <br>
+                  <% else %>
+
                     
                     <!-- drop down filter -->
 
@@ -60,7 +67,7 @@
 
                   </div>
                 
-              
+                <% end %>
 
                     </div>
 

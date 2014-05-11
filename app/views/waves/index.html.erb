@@ -20,6 +20,13 @@
   
                   <!-- widget content -->
                   <div class="widget-body no-padding">
+
+                  <% if @waves.blank? %>
+                    <br>
+                    <h1 style="font-size:30px; margin-left: 10px;">You haven't created any waves yet.</h1>
+                    <h4 style="font-size:15px; margin-left: 10px;">Use waves to create start times for your participants.</h4>
+                    <br>
+                  <% else %>
                      
                     <div class="dt-wrapper">
                       <table id="dt_basic" class="table table-striped table-bordered table-hover dataTable" aria-describedby="dt_basic_info">
@@ -42,9 +49,11 @@
                     </table>
                   </div>
                 
-              
+                  <% end %>
 
                     </div>
+
+                    
                   </div>
                   
                   <a data-toggle="modal" href="#waveModal" class="btn btn-success btn-lg pull-left header-btn hidden-mobile"><i class="fa fa-circle-arrow-up fa-lg"></i>Add Wave</a>
