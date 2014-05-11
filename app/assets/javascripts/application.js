@@ -23,9 +23,9 @@
 //= require bootstrap-wysihtml5
 //= require events
 //= require participants
-//= require smart-admin/app
 //= require select2
 //= require orders
 //= require waves
 //= require moment
 //= require daterangepicker
+//= require smart-admin/app
