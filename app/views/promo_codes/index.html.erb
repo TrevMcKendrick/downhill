@@ -20,6 +20,13 @@
   
                   <!-- widget content -->
                   <div class="widget-body no-padding">
+
+                    <% if @promo_codes.blank? %>
+                    <br>
+                    <h1 style="font-size:30px; margin-left: 10px;">You haven't created any promo codes yet.</h1>
+                    <h4 style="font-size:15px; margin-left: 10px;">Promo codes are simple one-off discounts that customers can enter at checkout.</h4>
+                    <br>
+                  <% else %>
                      
                     <div class="dt-wrapper">
                       <table id="dt_basic" class="table table-striped table-bordered table-hover dataTable" aria-describedby="dt_basic_info">
@@ -40,12 +47,13 @@
                       <% end %>
                       </tbody>
                     </table>
-                  </div>              
+                  </div>     
+                  <% end %>         
 
                     </div>
                   </div>
                   
-                  <a data-toggle="modal" href="#promocodeModal" class="btn btn-success btn-lg pull-left header-btn hidden-mobile"><i class="fa fa-circle-arrow-up fa-lg"></i>Create a new code</a>
+                  <a data-toggle="modal" href="#promocodeModal" class="btn btn-success btn-lg pull-left header-btn hidden-mobile"><i class="fa fa-circle-arrow-up fa-lg"></i>Create a promo code</a>
 
                   </div>
                   <!-- end widget content -->
