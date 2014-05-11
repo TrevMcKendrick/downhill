@@ -13,7 +13,7 @@ $(document).ready(function() {
     "color": true //Button to change color of font  
   });
 
-  $('.datepicker').datepicker()
+  $('.datepicker').datepicker();
 
   $('.timepicker').timepicker({ 'timeFormat': 'h:i A' });
 

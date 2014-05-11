@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
   validates :title, :presence => true
-  validates :date, :presence => true
+  # validates :date, :presence => true
   validates :time, :presence => true
 
   has_paper_trail
@@ -20,6 +20,11 @@ class Event < ActiveRecord::Base
   has_many :affiliate_codes
 
   has_one :affiliate_setting
+
+  def date=(string)
+    val = Date.strptime(string, '%m/%d/%Y')
+    write_attribute :date, val
+  end
 
   def defaults
     self.affiliate_setting = AffiliateSetting.create

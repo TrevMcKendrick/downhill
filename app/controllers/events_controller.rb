@@ -38,6 +38,7 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
+
     @event = Event.new(event_params)
 
     respond_to do |format|
@@ -67,7 +68,7 @@ class EventsController < ApplicationController
     if @event.update(event_params)
       redirect_to :back
     else
-      redirect_to "Google.com"
+      redirect_to dashboard_path
     end
   end
 
