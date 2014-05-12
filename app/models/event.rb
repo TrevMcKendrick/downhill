@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
   validates :title, :presence => true
-  # validates :date, :presence => true
+  validates :date, :presence => true
   validates :time, :presence => true
 
   has_paper_trail
@@ -22,8 +22,10 @@ class Event < ActiveRecord::Base
   has_one :affiliate_setting
 
   def date=(string)
-    val = Date.strptime(string, '%m/%d/%Y')
-    write_attribute :date, val
+    if string.present?
+      val = Date.strptime(string, '%m/%d/%Y')
+      write_attribute :date, val
+    end
   end
 
   def defaults
