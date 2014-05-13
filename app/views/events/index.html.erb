@@ -18,6 +18,14 @@
   
                   <!-- widget content -->
                   <div class="widget-body no-padding">
+
+                  <% if @events.blank? %>
+                    <br>
+                    <h1 style="font-size:30px; margin-left: 10px;">You haven't created any events yet.</h1>
+                    <h4 style="font-size:15px; margin-left: 10px;">Make your first by clicking the "Create an Event" button below!</h4>
+                    <br>
+                  <% else %>
+
                     <!-- <div class="widget-body-toolbar"></div> -->
                     
                     <!-- drop down filter -->
@@ -81,9 +89,11 @@
                   </div>
                 
               
-
+                  <% end %>
                       <!-- <div class="dt-row dt-bottom-row"><div class="row"><div class="col-sm-6"><divclass="dataTables_info" id="dt_basic_info">Showing 1 to 10 of 100 entries</div></div><div class="col-sm-6 text-right"><div class="dataTables_paginate paging_bootstrap_full"><ul class="pagination"><li class="first disabled"><a href="#">First</a></li><li class="prev disabled"><a href="#">Previous</a></li><li class="active"><a href="#">1</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li><li><a href="#">4</a></li><li><a href="#">5</a></li><li class="next"><a href="#">Next</a></li><li class="last"><a href="#">Last</a></li></ul></div></div></div> -->
                     </div></div>
+
+                    <%= button_to "Create an Event", new_event_url, :method => "get", :class => "btn btn-success btn-lg pull-left header-btn hidden-mobile" %>
         
                   </div>
                   <!-- end widget content -->

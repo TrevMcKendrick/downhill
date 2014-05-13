@@ -28,6 +28,13 @@
                 <div role="content">
                   <!-- widget content -->
                   <div class="widget-body no-padding">
+
+                  <% if @customers.blank? %>
+                    <br>
+                    <h1 style="font-size:30px; margin-left: 10px;">You don't have any customers yet!</h1>
+                    <h4 style="font-size:15px; margin-left: 10px;">As soon as someone registers for your event, they'll appear right here.</h4>
+                    <br>
+                  <% else %>
                     
                     <div class="dt-wrapper">
                       <table id="dt_basic" class="table table-striped table-bordered table-hover dataTable" aria-describedby="dt_basic_info">
@@ -51,7 +58,7 @@
                       </tbody>
                     </table>
                   </div>
-                
+                <% end %>
               
                     </div>
                     </div>
