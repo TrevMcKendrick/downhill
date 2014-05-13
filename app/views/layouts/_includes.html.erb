@@ -1,4 +1,4 @@
 <%= stylesheet_link_tag "application", :media => "all" %>
 <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
-<%= render 'layouts/groove' %>
+<%= render 'layouts/groove' unless @participant.present? %>
 <%= render 'layouts/javascript' %>
