@@ -6,15 +6,10 @@ class CustomersController < ApplicationController
 
   def index
     @account_customers = current_user.account.participants
-    # logger.info "account_customers:#{@account_customers}"
-
     @all_customers = Participant.search(params[:search])
-    # logger.info "all_customers: #{@all_customers}"
 
     customers = @all_customers.collect do |customer|
-      logger.info "customer: #{customer.first_name}"
-
-      customer if @account_customers.include?(customer)
+      customer if @account_customers.include?(customer) unless @account_customers.nil?
     end
     
     @customers = customers.compact.uniq
