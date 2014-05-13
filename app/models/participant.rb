@@ -32,7 +32,8 @@ class Participant < User
 
   def self.search(search)
     if search
-      where('first_name LIKE ?', "%#{search}%")
+      participant_table = self.arel_table
+      where(participant_table[:first_name].matches("%#{search}%"))
     else
       scoped
     end
