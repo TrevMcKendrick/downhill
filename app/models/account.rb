@@ -20,10 +20,13 @@ class Account < ActiveRecord::Base
   end
 
   def sales_grouped_by_day(start, events = self.events)
-    orders = Order.where(event_id: events)
-    orders = orders.where(created_at: start.beginning_of_day..Time.zone.now)
+    orders = self.orders.where(created_at: start.beginning_of_day..Time.zone.now)
     orders = orders.group("date(created_at)")
     orders = orders.select("date(created_at) as created_at, sum(amount) as total_amount")
     orders = orders.group_by { |o| o.created_at.to_date }
+  end
+
+  def orders
+    Order.where(event_id: self.events)
   end
 end
