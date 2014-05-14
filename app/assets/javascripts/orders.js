@@ -59,7 +59,7 @@ $(document).ready(function() {
     onkeyup: false,
     rules: {
             "participant[email]": {
-              // remote: "/check_email_uniqueness",
+              remote: "/validate_email_uniqueness",
               email: true,
               required: true
             },
@@ -81,7 +81,7 @@ $(document).ready(function() {
            },
     messages: {
       "participant[email]": {
-        // remote: "Email already taken! Please try a different email or login above!",
+        remote: "Email already taken! Please try a different email or login above!",
         email: "That's not a real email address",
         required: "Please enter your email!"
       },

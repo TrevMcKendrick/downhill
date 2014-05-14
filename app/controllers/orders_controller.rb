@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
     @order.add_buyer(@participant)
 
     if @order.buyer_added?
-      @order.save!
+      @order.save
       @team = @event.teams.find_or_create_by(name: params[:join_team]) if join_or_create_team == "join"
       @team = @event.teams.find_or_create_by(name: params[:create_team_name]) if join_or_create_team == "create"
 
@@ -48,6 +48,13 @@ class OrdersController < ApplicationController
     response = @event.valid_codes.any? { |code| code.code == test_code }
     respond_to do |format|
       format.json { render :json => response }
+    end
+  end
+
+  def validate_email_uniqueness
+    @user = User.find_by_email(params[:participant][:email])
+    respond_to do |format|
+      format.json { render :json => !@user }
     end
   end
 
