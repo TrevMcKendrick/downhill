@@ -1,7 +1,8 @@
 <div class="form-group">
   <%= label_tag :waiver_signature, "Waiver Release", :class => "col-md-3 control-label" %>
     <div class="col-md-4">
-    <%= text_field_tag :waiver_signature, nil, :class => "form-control"  %>
+    <%= text_field_tag :waiver_signature, nil, :class => "form-control", :value => "Mike" if Rails.env.development? %>
+    <%= text_field_tag :waiver_signature, nil, :class => "form-control" if Rails.env.production? %>
     Please enter your full name to electronically sign the release waiver. <%= link_to "Click here to view.", event_waiver_path(@event), :target => "_blank" %>
     <br>
     </div>
