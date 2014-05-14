@@ -39,6 +39,10 @@ $(document).ready(function() {
     });
   })  
 
+  jQuery.validator.setDefaults({
+    debug: true
+  });
+
   var validator = $("#order_form").validate({
     errorPlacement: function(error, element) {
     element.parent("div").append(error);
@@ -50,22 +54,50 @@ $(document).ready(function() {
       $(element).removeClass("validation_error").addClass("success");
     },
     onfocusout: function(element) {
-      $(element).valid(); 
+      $(element).valid();
     },
     onkeyup: false,
     rules: {
             "participant[email]": {
               // remote: "/check_email_uniqueness",
+              email: true,
               required: true
             },
-            "participant[first_name]": "required"
+            "participant[first_name]": "required",
+            "participant[phone]": {
+              required: true
+            },
+            "participant[password]": "required",
+            "waiver_signature": {
+              required: true
+            },
+            "card_number_stripe": {
+              creditcard: true,
+              required: true
+            },
+            "card_code_stripe": {
+              required: true
+            }
            },
     messages: {
       "participant[email]": {
         // remote: "Email already taken! Please try a different email or login above!",
+        email: "That's not a real email address",
         required: "Please enter your email!"
       },
-      "participant[first_name]": "We gotta know who you are! Please enter your name."
+      "participant[first_name]": "We gotta know who you are! Please enter your name.",
+      "participant[phone]": {
+        required: "Please enter your number!"
+      },
+      "waiver_signature": "Your digital signature has to match your name",
+      "participant[password]": "Please enter a password",
+      "card_number_stripe": {
+       required: "Please enter a credit card number",
+       creditcard: "Please enter a valid credit card number"
+      },
+      "card_code_stripe": {
+        required: "Please enter the CVC code from your credit card"
+      }
     }
   });
 
