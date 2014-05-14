@@ -38,8 +38,7 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-
-    @event = Event.new(event_params)
+    @event = current_user.account.events.build(event_params)
 
     respond_to do |format|
       if @event.save
@@ -50,13 +49,6 @@ class EventsController < ApplicationController
         format.html { render 'new' }
       end
     end
-    
-      # if @event.save
-      #   @event.users << current_user
-      #   redirect_to edit_event_url(@event)
-      # else
-      #   redirect_to :back
-      # end
 
   end
 
