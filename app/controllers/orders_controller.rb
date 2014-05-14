@@ -38,7 +38,8 @@ class OrdersController < ApplicationController
       redirect_to success_order_path(@event)
       return false
     else
-      redirect_to :back, alert: @order.error
+      redirect_to :back, {:flash => { :error => "Insufficient rights!" }}
+      # redirect_to :back, alert: @order.error
       return false
     end
   end
