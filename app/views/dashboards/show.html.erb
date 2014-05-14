@@ -12,6 +12,6 @@
     </div>
   </div>
 
-<%= content_tag :div, "", :style => "height: 250px; border: 1px orange solid;", id: "sales_chart", data: {sales: Order.sales_chart_data(@start.days.ago, @end.days.ago)} %>
+<%= content_tag :div, "", :style => "height: 250px; border: 1px orange solid;", id: "sales_chart", data: {sales: @account.sales_chart_data(@start.days.ago, @end.days.ago)} %>
 
 <%= javascript_include_tag "sales_chart" %>

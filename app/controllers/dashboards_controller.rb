@@ -2,9 +2,8 @@ class DashboardsController < ApplicationController
   authorize_resource :class => false
   before_action :authenticate_user!, :check_subdomain
 
-  def show 
-    @user = current_user
-    @events = @user.events
+  def show
+    @account = current_user.account
     @start = params[:start_day].to_i
     @end = params[:end_day].to_i
   end
