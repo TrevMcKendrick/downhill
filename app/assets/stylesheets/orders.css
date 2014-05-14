@@ -9,3 +9,12 @@
   margin-top: 10px;
   padding: 0px 10px;
 }
+
+
+.success {
+  border: 2px solid #38bd0d;
+}
+
+.validation_error {
+  border: 2px solid #bf0004;
+}

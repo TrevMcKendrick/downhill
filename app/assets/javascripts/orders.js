@@ -40,7 +40,18 @@ $(document).ready(function() {
   })  
 
   var validator = $("#order_form").validate({
-    onfocusout: function(element) { $(element).valid(); },
+    errorPlacement: function(error, element) {
+    element.parent("div").append(error);
+  },
+    highlight: function(element, errorClass) {
+      $(element).removeClass("success").addClass("validation_error");
+    },
+    unhighlight: function(element, errorClass) {
+      $(element).removeClass("validation_error").addClass("success");
+    },
+    onfocusout: function(element) {
+      $(element).valid(); 
+    },
     onkeyup: false,
     rules: {
             "participant[email]": {
@@ -51,17 +62,15 @@ $(document).ready(function() {
            },
     messages: {
       "participant[email]": {
-        remote: "Email already taken! Please try a different email or login above!",
+        // remote: "Email already taken! Please try a different email or login above!",
         required: "Please enter your email!"
       },
       "participant[first_name]": "We gotta know who you are! Please enter your name."
-    },
-    errorPlacement: function(error,element) {
-      error.appendTo($("#error_field"));
     }
   });
 
   $('#order_form').submit(function(e) {
+
       var $form = $(this);
 
       // Disable the submit button to prevent repeated clicks
@@ -80,14 +89,14 @@ $(document).ready(function() {
         return false;
       }
 
-      Stripe.createToken($form, stripeResponseHandler);
-
-
        var isvalidate=$("#order_form").valid();
-        if(isvalidate)
+        if(!isvalidate)
         {
-          e.preventDefault(); 
+          e.preventDefault();
+          return false;
         }
+
+      Stripe.createToken($form, stripeResponseHandler);
 
       // Prevent the form from submitting with the default action
       return false;
@@ -100,11 +109,8 @@ $(document).ready(function() {
     $('#card_code').payment('formatCardCVC');
   });
 
-  
-
-  // $('.validate').attr('style', "border-radius: 5px; border:#FF0000 1px solid;");
-
 });
+
 
    var stripeResponseHandler = function(status, response) {
       var $form = $('#order_form');
