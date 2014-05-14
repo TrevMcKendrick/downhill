@@ -2,7 +2,7 @@ module OrdersHelper
 
   def name_field
     if Rails.env.development?
-      field = text_field_tag "participant[first_name]", nil, :class => "form-control"#, :value => "Mike"
+      field = text_field_tag "participant[first_name]", nil, :class => "form-control", :value => "Mike"
     else
       field = text_field_tag "participant[first_name]", nil, :class => "form-control"
     end
@@ -38,7 +38,7 @@ module OrdersHelper
 
   def card_number_field
     if Rails.env.development?
-      field = text_field_tag :card_number, nil, :class => "valid payment-form form-control", :name => "card_number_stripe", :placeholder => "Card Number", :data => {:stripe => 'number' }, :tabindex => 1, :autofocus => true, :value => "4242424242424242"
+      field = text_field_tag :card_number, nil, :class => "valid payment-form form-control", :name => "card_number_stripe", :placeholder => "Card Number", :data => {:stripe => 'number' }, :tabindex => 1, :autofocus => true, :value => "4000000000000002"
     else
       field = text_field_tag :card_number, nil, :class => "valid payment-form form-control", :name => "card_number_stripe", :placeholder => "Card Number", :data => {:stripe => 'number' }, :tabindex => 1, :autofocus => true
     end
