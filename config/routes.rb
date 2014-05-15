@@ -70,9 +70,6 @@ Downhill::Application.routes.draw do
   post '/orders/:event_id' => "orders#create", :as => "/"
   get '/:event_id/success' => "orders#success", :as => "success_order"
 
-  # get '/:event_id/teams' => "teams#index", :as => "teams"
-  # post '/teams/:event_id' => "teams#create", :as => "/"
-
   get '/dashboard' => 'dashboards#show'
   
   get '/events/:id/registration' => "events#edit", :as => "registration"
@@ -84,7 +81,8 @@ Downhill::Application.routes.draw do
 
   get '/events/:id/:path(/:referral_code)' => 'events#show', :as => "public_event"
   
-  root 'home#index'  
+  get '/faq' => "pages#faq"
+  root 'pages#home'  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

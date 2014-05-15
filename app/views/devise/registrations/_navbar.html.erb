@@ -1,7 +1,7 @@
 <div class="TMheader">
    <header role="banner" class="light TMheader">
           <div id="brand">
-            <h1 class="reset"><a href="<%= root_url %>">Ticket Science</a></h1>
+            <h1 style="height:65px;"class="reset"><%= link_to (image_tag "logo_home.png"), root_path %></h1>
           </div><!-- brand -->
           <nav>
             <ul>
@@ -9,7 +9,7 @@
                 <a style="color:black;" href="<%= new_user_registration_path %>">Create an Event</a>
               </li>
               <li>
-                <a style="color:black;" href="<%= new_user_session_path %>">Login</a>
+                <a style="color:black;" href="<%= new_user_session_path %>">Sign in</a>
               </li>
             </ul>
           </nav>

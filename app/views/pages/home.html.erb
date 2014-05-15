@@ -8,7 +8,7 @@
       <div class="row">
         <div class="nav-inner row-content buffer-left buffer-right even clear-after">
           <div id="brand">
-            <h1 class="reset"><a href="<%= root_url %>">Ticket Science</a></h1>
+            <%= image_tag "logo_home.png" %>
           </div><!-- brand -->
           <a id="menu-toggle" href="#"><i class="fa fa-bars fa-lg"></i></a>
           <nav>
@@ -33,15 +33,23 @@
 
     <main role="main">
       <div id="intro-wrap">
-        <div id="intro" class="darken" data-autoplay="5000" data-navigation="true" data-pagination="true" data-transition="fadeUp">         
+        <div id="intro" class="darken" data-autoplay="5000" data-navigation="true" data-pagination="true" data-transition="fadeUp">
 
-          <div class="intro-item" style="background-image: url(<%= image_url 'desktop.jpg' %>);">  
+         <div class="intro-item" style="background-image: url(<%= image_url 'color_1.jpg' %>);">  
             <div class="caption" style="top: 200px;">
-              <h2>The Best Way to Organize Themed Races</h2>
-              <p>Ticketing, Waves, Affiliate marketing all built in</p>
-              <a class="button white transparent" href="<%= new_user_registration_url %>">Create your event for free</a>
+              <h2 style="font-size:40px;">Registration Software For Themed Events</h2>
+              <p>We Help You Sell More Tickets</p>
+              <a class="button white transparent" href="<%= new_user_registration_url %>">Try Ticket Science</a>
             </div><!-- caption -->           
-          </div> 
+         </div>
+
+          <div class="intro-item" style="background-image: url(<%= image_url 'mud_4.jpg' %>);">
+            <div class="caption">
+              <h2 style="font-size:40px;">Turn Your Customers into Promoters</h2>
+              <p>Award the People Who Share Your Events</p>
+              <a class="button white transparent" href="<%= new_user_registration_url %>">Try Ticket Science</a>
+            </div><!-- caption -->
+          </div>
 
         </div><!-- intro -->
       </div><!-- intro-wrap -->
@@ -53,21 +61,21 @@
               <div class="big-icon red"><i class="icon icon-graph"></i></div>
                 <div class="big-icon-text clear-after">
                   <h4>Affiliate Marketing</h4>
-                    <p class="text-s">Incentivize your customers to market for you. When they get their friends to purchase event tickets, they get a small cut (amount determined by you if you turn affiliates on).</p>
+                    <p class="text-s">Reward your customers when their friends register with you. Payments are automated, so you just have to turn it on.</p>
                 </div>
             </div>
             <div class="column four centertxt">
               <div class="big-icon red"><i class="icon icon-clock"></i></div>
                 <div class="big-icon-text clear-after">
-                  <h4>Ticket and Wave Times</h4>
-                  <p class="text-s">Want multiple waves for every ticket? Volunteer tickets? We have all that, built in from the ground up.</p>
+                  <h4>Wave Times</h4>
+                  <p class="text-s">Add multiple wave times to every ticket.</p>
                 </div>
             </div>            
             <div class="column four last centertxt">
               <div class="big-icon red"><i class="icon icon-money"></i></div>
                 <div class="big-icon-text clear-after">
                   <h4>Get Paid Fast</h4>
-                  <p class="text-s">Unlike Active, we don't hold your money hostage. Get paid on every ticket on a two day rolling basis.</p>
+                  <p class="text-s">Get paid for every sale on a 7-day rolling basis. No more waiting on Active.com payments.</p>
                 </div>
             </div>
           </div>
@@ -91,7 +99,7 @@
                       </div>
               </article>                    
            
-              <article class="test clearfix">
+          <!--     <article class="test clearfix">
                       <%= image_tag "img3.png", :class => "right" %>
                       <div class="left">
                         <h3 class="column">Sell More Merchandise</h3>
@@ -101,10 +109,10 @@
                           <li>Included automatically for all events</li>
                         </ul>
                       </div>
-              </article> 
+              </article>  -->
 
               <article class="test clearfix">
-                      <%= image_tag "img3.png", :class => "left" %>
+                      <%= image_tag "img3.png", :class => "right" %>
                       <div class="right">
                         <h3 class="column">Flexible Reporting</h3>
                         <ul>
@@ -125,15 +133,15 @@
           <h2 class="orange">We Charge Only When You Do</h2>
           <h4 class="orange">$2.95 per ticket if paid. Free tickets are free!</h2>
 
-          <div class="more-btn"><a class="button transparent white" href="<%= new_user_registration_path %>">Create Your Event For Free</a></div>                      
+          <div class="more-btn"><a class="button transparent white" href="<%= new_user_registration_path %>">Try Ticket Science</a></div>                      
         </section>                        
-
+<!-- 
         <section class="row section call-to-action">
           <div class="row-content buffer even">
             <p>What are you waiting for?</p>
             <a class="button red" href="<%= new_user_registration_path %>">Create an event for free</a>
           </div>
-        </section>             
+        </section>  -->            
 
       </div><!-- id-main -->
     </main><!-- main -->
@@ -146,19 +154,19 @@
               <h4>Menu</h4>
               <ul class="plain">
                 <li><a href="<%= root_url %>">Home</a></li>
-                <li><a href="#">FAQ</a></li>
+                <li><a href="<%= faq_path %>">FAQ</a></li>
                 <li><a href="#">Contact</a></li>
               </ul>
             </div>
                     
-            <div class="widget meta-social column three">
+           <!--  <div class="widget meta-social column three">
               <h4>Follow Us</h4>
               <ul class="inline">
                 <li><a href="#" class="twitter-share border-box"><i class="fa fa-twitter fa-lg"></i></a></li>
                 <li><a href="#" class="facebook-share border-box"><i class="fa fa-facebook fa-lg"></i></a></li>
                 <li><a href="#" class="pinterest-share border-box"><i class="fa fa-pinterest fa-lg"></i></a></li>
               </ul>
-            </div>                            
+            </div> -->                            
           </section><!-- top-footer -->
           <section id="bottom-footer">
             <p class="keep-left">&copy; 2014 Ticket Science</p>
@@ -166,10 +174,8 @@
         </div><!-- row-content -->  
       </div><!-- row -->  
     </footer>
-<%= javascript_include_tag "https://code.jquery.com/jquery.js" %>
-<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=false" %>
-<%= javascript_include_tag "beetle/plugins.js" %>
-<%= javascript_include_tag "beetle/beetle.js" %>
+
+<%= render 'layouts/pages/js_footer' %>
 
   </body>
 

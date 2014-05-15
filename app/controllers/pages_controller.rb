@@ -1,9 +1,12 @@
-class HomeController < ApplicationController
+class PagesController < ApplicationController
   skip_authorization_check
-  layout "home"
+  layout "pages"
 
-  def index
+  def home
     cookies[:_cookietest_session] = {domain: COOKIE_DOMAIN}
+  end
+
+  def faq
   end
   
 end
