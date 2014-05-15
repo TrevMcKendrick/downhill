@@ -81,7 +81,7 @@ Downhill::Application.routes.draw do
 
   get '/events/:id/:path(/:referral_code)' => 'events#show', :as => "public_event"
   
-  get '/faq' => "pages#faq"
+  # get '/faq' => "pages#faq"
   root 'pages#home'  
 
   # The priority is based upon order of creation: first created -> highest priority.

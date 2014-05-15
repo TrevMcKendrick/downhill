@@ -1,35 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
   <body class="page">
 
-    <header role="banner" class="transparent light">
-      <div class="row">
-        <div class="nav-inner row-content buffer-left buffer-right even clear-after">
-          <div id="brand">
-            <%= image_tag "logo_home.png" %>
-          </div><!-- brand -->
-          <a id="menu-toggle" href="#"><i class="fa fa-bars fa-lg"></i></a>
-          <nav>
-            <ul class="reset" role="navigation">
-              <% if user_signed_in? %>
-                <li class="menu-item">
-                  <a href="<%= dashboard_url %>">Dashboard</a>
-                </li>
-              <% else %>
-                <li class="menu-item">
-                  <a href="<%= new_user_registration_url %>">Create an Event</a>
-                </li>
-                <li class="menu-item">
-                  <a href="<%= new_user_session_url %>">Login</a>
-                </li>
-              <% end %>
-            </ul>
-          </nav>
-        </div><!-- row-content -->  
-      </div><!-- row -->  
-    </header>
+  <%= render 'header' %>
 
     <main role="main">
       <div id="intro-wrap">
@@ -154,8 +128,6 @@
               <h4>Menu</h4>
               <ul class="plain">
                 <li><a href="<%= root_url %>">Home</a></li>
-                <li><a href="<%= faq_path %>">FAQ</a></li>
-                <li><a href="#">Contact</a></li>
               </ul>
             </div>
                     
