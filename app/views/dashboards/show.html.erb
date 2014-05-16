@@ -1,22 +1,22 @@
 <% if @account.events.present? %>
-<h2>Sales Dashboard</h2>
-  <div class="form-group">
-    <div class="controls">
-      <div class="input-group">
-        <div id="sales_date_range" class="pull-left">
-          <i class="fa fa-calendar fa-lg"></i>
-          <span><%= "#{@start.days.ago.strftime("%m/%d/%Y")} - #{@end.days.ago.strftime("%m/%d/%Y")}" %></span> <b class="caret"></b>
+  <h2>Sales Dashboard</h2>
+    <div class="form-group">
+      <div class="controls">
+        <div class="input-group">
+          <div id="sales_date_range" class="pull-left">
+            <i class="fa fa-calendar fa-lg"></i>
+            <span><%= "#{@start.days.ago.strftime("%m/%d/%Y")} - #{@end.days.ago.strftime("%m/%d/%Y")}" %></span> <b class="caret"></b>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
 <%= content_tag :div, "", :style => "height: 250px; border: 1px orange solid;", id: "sales_chart", data: {sales: @account.sales_chart_data(@start.days.ago, @end.days.ago)} %>
 <%= javascript_include_tag "sales_chart" %>
 
 <% else %>
 
-<div style="margin:40px;">
-<h1 style="display:inline;">Click the </h1><h1 style="background-color: #428bca; color:white; display:inline; font-size:12px: padding: 5px;">Create an Event</h1><h1 style="display:inline;"> button above to get started!</h1>
+  <div style="margin:40px;">
+  <h1 style="display:inline;">Click the </h1><h1 style="background-color: #428bca; color:white; display:inline; font-size:12px: padding: 5px;">Create an Event</h1><h1 style="display:inline;"> button above to get started!</h1>
 </div>
 <% end %>
