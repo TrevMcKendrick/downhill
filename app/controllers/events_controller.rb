@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  layout "event"
+  layout "event", only: [:show, :waiver]
   authorize_resource
   
   before_action :check_subdomain, :except => [:show]
