@@ -1,0 +1,84 @@
+@charset "utf-8";
+
+
+@media (max-width:980px){
+.wrapper {width:100%;}
+body{min-width:inherit;}
+
+#header, #main{padding:0 15px;}
+#footer{padding-left:15px; padding-right:15px;}
+#main .event-descriptions .tab-content{width:55%;}
+#main .newsletter{width:auto;}
+
+.header-innerimg{width:auto; height:auto;}
+.order-confirm{margin-left:6%;}
+}
+
+
+@media(max-width:800px){
+#main .event-details ul li{margin-right:0px; padding:0 22px;}
+#main .event-tickets{width:53%;}
+
+#main .event-tickets .tickets ul li .name {margin: 3px 0 2px 18px; width:40%;}
+#main .event-tickets .tickets ul li .price { margin: 8px 5px 0 0; padding: 0 0 0 12px; width: auto;}
+#main .event-descriptions ul.tabs li.active:after, #main .event-descriptions ul.tabs li:hover:after{width:30%;}
+#main .event-descriptions .tab-content{width:48%;}
+.order-confirm{margin-left:2%;}
+.event-form .step{width:478px;}
+.event-form input[type="text"], .event-form input[type="password"]{width:312px;}
+.customSelect{width:312px;}
+}
+
+
+@media(max-width:670px){
+#main .event-details ul li {margin-right: 0; padding: 0 6px; }
+#main .event-photo:before{width:40%;}
+#main .event-photo img{width:100%; height:auto;}
+#main .event-photo{width:40%;}
+#main .event-tickets .tickets ul li{background:none;}
+#main .event-descriptions .tab-content {width: 37%;}
+#main .newsletter input[type="text"]{width:248px;}
+#main .event-descriptions ul.tabs li{width:auto;}
+.order-confirm .step{width:465px;}
+.event-form .step{width:auto;}
+.event-form label{float:none; margin:0 0 5px 0;}
+.event-form input[type="text"], .event-form input[type="password"]{width:100%;}
+.customSelect{width:100%;}
+.event-form .summary .field{width:auto;}
+.summary label{float:left; margin:0 0 5px 0; width:auto;}
+.event-form .icon-cc{margin-right:12px;}
+
+}
+
+@media(max-width:480px){
+#header .logo{float:none; background:none; margin:0 auto;}
+#header .utility.right{float:none;}
+#header .utility{margin:15px 0;}
+#header .utility ul li{margin-left:12%;}
+#header{background:#df5a49;}
+#main .event-title{line-height:26px; font-size:22px}
+#main .event-details ul li{float:none; display:block; background:none; padding:12px 0;}
+#main .event-photo{width:auto; float:none;}
+#main .event-tickets{width:auto; float:none;}
+#main .event-descriptions .tab-content{width:auto;}
+#main .newsletter input[type="text"]{margin-left:6px;}
+#footer .copy.left{float:none; text-align:center;}
+.powered{padding:12px 0;}
+.powered.right{float:none; text-align:center;}
+.powered .left{float:none;}
+.order-confirm .step{width:60%; padding:15px;}
+.order-confirm .affiliate-code{width:auto;}
+.order-confirm .affiliate-code span{font-size:22px;}
+.order-confirm .share-code .btn { font-size: 11px;  padding-top: 10px;width: 165px;}
+.event-form{border:0px;}
+.event-form .step i{position:relative; left:0;background:none; padding:0; top:-5px;}
+.event-form .step.event i, .event-form .step.payment i, .event-form .step.summary i{position:relative; left:0;background:none; padding:0; top:-5px;}
+
+.event-form .step{margin-left:0px;}
+.event-form .action{margin-left:0px;}
+.event-form .icon-cc li{margin-left:12px;}
+.icon-cc.left{float:none;}
+.icon-cc:after{clear:both; display:block; content:"";}
+.submit.left{float:none; margin:12px 0 0 12px;}
+
+}

@@ -1,21 +1,132 @@
 <% if @event.published %>
+<body>
+    <!--[if lt IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- <div id="header"> -->
+      <!-- <div class="wrapper clearfix"> -->
+       <!--  <div class="logo">
+          <h1><a href="#">Ticket Eden</a></h1>
+        </div><!-- /.logo -->
 
-  <h2><%= @event.title %></h2>
+       <!--  <div class="utility right">
+          <ul class="reset">
+            <li class="search"><a href="#">Search</a></li>
+            <li class="signup"><a href="#">Sign Up</a></li>
+          </ul>
+        </div><!-- /.utility -->
+      <!-- </div> -->
+    <!-- </div> -->
+    <div id="main" role="main">
+      <div class="wrapper">
+        <h1 class="event-title"><span>EVENT : </span><%= @event.title %></h1><!-- /.event-title -->
+        <div class="event-details">
+          <ul class="reset">
+            <li><i class="calendar"></i><%= @event.date %><span><%= @event.date.strftime('%A') %></span></li>
+            <li><i class="clock"></i><%= @event.time.strftime('%l:%M') %><span><%= @event.time.strftime('%p') %></span></li>
+            <li><i class="map-marker"></i><%= @event.street_address_one %><span><%= "#{@event.city}, #{@event.state} #{@event.zipcode}"%></span></li>
+          </ul>
+        </div><!-- /.event-details -->
+        <!-- <div class="share-icon right">
+          <ul class="reset">
+            <li class="facebook"><a href="#">Facebook</a></li>
+            <li class="twitter"><a href="#">Twitter</a></li>
+            <li class="email"><a href="#">Email</a></li>
+          </ul>
+        </div><!-- /.share-icon -->
+        <div class="clear"></div><!-- /.clear -->
+        <div class="event-photo">
+          <%= image_tag "psd_html/event-photo.png" %>
+        </div><!-- /.event-photo -->
+        <div class="event-tickets">
+          <div class="labels">
+            <div class="left">Ticket</div><!-- /.left -->
+            <div class="left">Price</div><!-- /.right -->
+          </div><!-- /.labels -->
+          <div class="clear"></div><!-- /.clear -->
+          <div class="tickets">
+            <ul class="reset">
+              <% @event.tickets.each do |ticket| %>
+                <li>
+                  <span class="name"><%= ticket.ticket_type %></span>
+                  <span class="price"><%= number_to_currency(stripe_to_display(ticket.price)) %></span>
+                  <%= link_to "Add to Cart", new_order_path(:event_id => @event, 'ticket' => ticket.ticket_type), :class => "btn-add" %>
+                </li>
+              <% end %>
+            </ul>
+          </div><!-- /.tickets -->
+          <div class="icon-cc left">
+            <ul class="reset">
+              <li><a href="#" class="visa">VISA</a></li>
+              <li><a href="#" class="amex">AMEX</a></li>
+              <li><a href="#" class="maestro">Maestro</a></li>
+              <li><a href="#" class="mastercard">Mastercard</a></li>
+            </ul>
+          </div><!-- /.icon-cc -->
+        </div><!-- /.tickets -->
+        <div class="clear"></div><!-- /.clear -->
+        <div class="event-descriptions clearfix">
+          <ul class="reset left tabs">
+            <li class="active"><a href="#tab-1">Getting rad one city at a time<span>Color Me Why?</span></a></li>
+            <li><a href="#tab-2">what's in it for me?<span>Packet Items, Race Day Activities</span></a></li>
+            <li><a href="#tab-3">Packet Pickup Info<span>Outsmart the lines. Here's how</span></a></li>
+            <li><a href="#tab-4">Race Day Info<span>What to expect on your big day</span></a></li>
+            <li><a href="#tab-5">Deadlines and Pricing<span>Early bird gets it</span></a></li>
+            <li><a href="#tab-6">Volunteer<span>Karma's a five letter word</span></a></li>
+            <li><a href="#tab-7">Charity<span>Run FOR Something</span></a></li>
+          </ul>
+          <div class="tab-content left">
+           <!--  <div class="share-icon right">
+              <ul class="reset">
+                <li class="facebook"><a href="#">Facebook</a></li>
+                <li class="twitter"><a href="#">Twitter</a></li>
+                <li class="email"><a href="#">Email</a></li>
+              </ul>
+            </div><!-- /.share-icon right -->
+            <div id="tab-1" class="tab">
+              <h1>Race Day Info</h1>
+              <%= @event.about %>
+            </div>
+            <div id="tab-2" class="tab">
+              <h1></h1>
+              <%= @event.packet_info %>
+            </div>
+            <div id="tab-3" class="tab">
+              <h1>Packet Pickup Info</h1>
+              <%= @event.packet_pickup_info_html %>
+            </div>
+            <div id="tab-4" class="tab">
+              <h1>Race Day Info</h1>
+              <%= @event.race_day_info_html %>
+            </div>
+            <div id="tab-5" class="tab">
+              <h1>Deadline and Pickup Info</h1>
+              <%= @event.deadline_pricing_info %>
+            </div>
+            <div id="tab-6" class="tab">
+              <h1>Volunteer</h1>
+              <%= @event.volunteer_info %>
+            </div>
+            <div id="tab-7" class="tab">
+              <h1>Charity Partner</h1>
+              <%= @event.charity_info %>
+            </div>
 
-  <%# if @event.on_sale %>
+          </div><!-- /.tab-content -->
+        </div><!-- /.tabs -->
+        <!-- <div class="newsletter right">
+          <label for="email">EVENT ANNOUNCMENT</label>
+          <input type="text" id="email" name="email" placeholder="Email Address" />
+          <button type="submit">SUBMIT</button>
+        </div> --><!-- /.newsletter -->
+      </div><!-- /.wrapper -->
+    </div>
+    <div class="clear"></div><!-- /.clear -->
 
-      <%= form_tag url_for(:controller => "orders", :action => "new", :event_id => @event), :method => "get" %>
-        <% @event.tickets.each do |ticket| %>
-          <%= label_tag ticket.ticket_type, nil %>
-          <%= radio_button_tag :ticket, ticket.ticket_type %>
-          <br>
-        <% end %>
-      <%= submit_tag "Start Order", :class => "btn btn-primary" %>
+    <%= render 'event_footer' %>
+    <%= render 'layouts/event/js_footer_event' %>
+  </body>
 
-    <%# else %>
-    <!-- <h3>Registration opening soon!</h3> -->
-  <%# end %>
-
-  <% else %>
-    <%= page_not_found %>
+<% else %>
+    <h1>This event isn't live yet! Click <%= link_to "right here", publish_path(@event), :style => "color:blue;" %> to go to the publish tab.</h1>
 <% end %>
