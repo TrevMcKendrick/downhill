@@ -105,7 +105,12 @@ class EventsController < ApplicationController
         :packet_pickup_info_html,
         :race_day_info_html,
         :published,
-        :on_sale
+        :on_sale,
+        :about,
+        :packet_info,
+        :deadline_pricing_info,
+        :volunteer_info,
+        :charity_info
         )
     end
 
