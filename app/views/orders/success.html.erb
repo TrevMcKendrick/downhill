@@ -6,7 +6,7 @@
     <![endif]-->
     <div id="header" class="no-bg">
       <div class="wrapper clearfix lifted drop-shadow">
-        <%= image_tag "success-header.png", :clsas => "header-innerimg" %>
+        <%= image_tag "success-header2.jpg", :clsas => "header-innerimg" %>
         <!-- <img src="img/header-image.png" class="header-innerimg" alt="" /> -->
       </div><!-- /.wrapper -->
     </div><!-- /#header.no-bg -->
@@ -28,19 +28,17 @@
         </div><!-- /.step -->
         <div class="step share-code">
           <i>2</i>
-          <h2>Share your code <span>with your friends on Facebook, Twitter and via email to save more.</span></h2>
-          <div class="fb-share-button" data-href="http://trevor.lvh.me:3000/1/success" data-width="187" data-type="button">what</div>
-          <div class="fb-share-button" data-href="http://trevor.lvh.me:3000/1/success" data-width="187" data-type="link">yes</div>
+          <h2>Share your code <span></span></h2>
           <div class="clearfix">
             <a href="https://www.facebook.com/dialog/share?app_id=<%= FACEBOOK_APP_ID %>&display=popup&href=<%= public_event_url(@event) %>&redirect_uri=<%= success_order_url(@event) %>" class="btn facebook"><span>Share on Facebook</span></a>
-            <a href="#twitter" class="btn twitter"><span>Share on Twitter</span></a>
-            <a href="#mail" class="btn mail"><span>Share Via Mail</span></a>
+            <a href="https://twitter.com/share?text=<%= "I just signed up for #{@event.title}! Buy with my link and we'll BOTH save #{number_to_currency(@event.affiliate_setting.amount)}" %>&url=<%=  "#{public_event_url(@event)}" + "/" + "#{@participant.affiliate_code.code}" %>" class="btn twitter twitter-share-button" data-lang="en"><span>Share on Twitter</span></a>
+            <a class="btn mail" href="mailto:?Subject=Come%20with%20me%20to%20<%= @event.title %>?&Body=Hey,<br><br>I%20just%20bought%20a%20ticket%20to%20<%= @event.title %>.<br><br>%20If%20you%20use%20this%20link%20<%= "#{public_event_url(@event)}/#{@participant.affiliate_code.code}" %>%20we'll%20both%20save%20<%= number_to_currency(@event.affiliate_setting.amount) %>!<br><br><%= @participant.first_name %>"><span>Share Via Mail</span></a>
           </div><!-- /.clearfix -->
         </div><!-- /.step -->
         <div class="step">
           <i>3</i>
           <h2>event details</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,</p>
+          <p>Go <%= link_to "here", public_event_url(@event) %> for all event details! We'll send your email updates as the big day gets closwer!</p>
         </div><!-- /.step -->
       </div><!-- /.wrapper.order-confirm -->
     </div>

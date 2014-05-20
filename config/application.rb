@@ -19,6 +19,8 @@ module Downhill
     config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "psd_html")
     config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "stripe")
     config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "jquery-validator")
+    config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "facebook")
+    config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "twitter")
 
     config.assets.paths << Rails.root.join("vendor", "assets", "fonts", "beetle")
 
@@ -53,6 +55,12 @@ module Downhill
     config.assets.precompile += %w(stripe/jquery.payment.js)
 
     config.assets.precompile += %w(jquery-validator/jquery.validate.js)
+
+    config.assets.precompile += %w(facebook/sdk.js.erb)
+
+    config.assets.precompile += %w(twitter/tweet.js)
+
+
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
