@@ -12,11 +12,16 @@ module Downhill
     
     config.assets.paths << Rails.root.join("vendor", "assets", "stylesheets", "beetle")
     config.assets.paths << Rails.root.join("vendor", "assets", "stylesheets", "olsonkart")
+    config.assets.paths << Rails.root.join("vendor", "assets", "stylesheets", "psd_html")
 
     config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "beetle")
     config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "olsonkart")
+    config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "psd_html")
+    config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "stripe")
+    config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "jquery-validator")
 
     config.assets.paths << Rails.root.join("vendor", "assets", "fonts", "beetle")
+
 
     config.assets.precompile += %w(beetle/style.css)
     config.assets.precompile += %w(beetle/layers.min.css)
@@ -34,7 +39,20 @@ module Downhill
     config.assets.precompile += %w(sales_chart.js)
     config.assets.precompile += %w(smart-admin/app.js)
 
+    config.assets.precompile += %w(psd_html/jquery-ui-1.10.4.custom.min.css)
+    config.assets.precompile += %w(psd_html/normalize.css)
+    config.assets.precompile += %w(psd_html/main.css)
+    config.assets.precompile += %w(psd_html/responsive.css)
+    config.assets.precompile += %w(psd_html/jquery-ui-1.10.4.custom.min.js)
+    config.assets.precompile += %w(psd_html/jquery.customSelect.min.js)
+    config.assets.precompile += %w(psd_html/plugins.js)
+    config.assets.precompile += %w(psd_html/main.js)
 
+    config.assets.precompile += %w(orders.js)
+
+    config.assets.precompile += %w(stripe/jquery.payment.js)
+
+    config.assets.precompile += %w(jquery-validator/jquery.validate.js)
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
