@@ -7,6 +7,7 @@ if Rails.env.development? or Rails.env.test?
   COOKIE_DOMAIN = ".lvh.me"
   TICKET_SCIENCE_FEE = 2.95000000000
   TICKET_SCIENCE_FEE_TO_CUSTOMER = TICKET_SCIENCE_FEE / 0.971
+  FACEBOOK_APP_ID = "253197411551827"
 elsif Rails.env.production?
   Stripe.api_key = "sk_live_EpiTQiYsFlvKQA3T1rs3EiHg"
   STRIPE_PUBLIC_KEY = "pk_live_Oc672B1KrZ4OWytLidJ1ro94"
@@ -16,4 +17,5 @@ elsif Rails.env.production?
   COOKIE_DOMAIN = ".#{DOMAIN_NAME}"
   TICKET_SCIENCE_FEE = 2.95000000000
   TICKET_SCIENCE_FEE_TO_CUSTOMER = TICKET_SCIENCE_FEE / 0.971
+  FACEBOOK_APP_ID = "253197411551827"
 end
