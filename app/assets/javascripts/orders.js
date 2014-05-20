@@ -41,13 +41,17 @@ $(document).ready(function() {
 
   var validator = $("#order_form").validate({
     errorPlacement: function(error, element) {
-    element.parent("div").append(error);
+    // element.parent("div").append(error);
+    $(error).css("width", "90%")
+    $(error).css("padding-left", "20%")
+    $(error).css("text-align", "left")
+    error.appendTo(element.parent("div"));
   },
     highlight: function(element, errorClass) {
-      $(element).removeClass("success").addClass("validation_error");
+      $(element).css("border", "2px solid #bf0004")
     },
     unhighlight: function(element, errorClass) {
-      $(element).removeClass("validation_error").addClass("success");
+      $(element).css("border", "2px solid #38bd0d")
     },
     onfocusout: function(element) {
       $(element).valid();
