@@ -2,8 +2,6 @@ source 'https://rubygems.org'
 
 ruby "1.9.3"
 
-# gem 'sqlite3'
-
 gem 'devise_marketable'
 
 gem 'newrelic_rpm'
