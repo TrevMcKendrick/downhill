@@ -20,38 +20,39 @@ $(document).ready(function() {
   $( "#promo-code" ).focusout(function() {
     var pathArray = window.location.pathname.split( '/' );
     var event_id = pathArray[1];
-    var url = "/validate_promo-code/" + $(this).val() + "/" + event_id
+    var url = "/validate_referral_code/" + $(this).val() + "/" + event_id
     $.ajax({
       url: url
     }).done(function( response ) {
       if (response == true) {
-        $("#promo-code").css({ "border-left": "2px solid green"})
-        $("#promo-code").css({ "border-top": "2px solid green"})
-        $("#promo-code").css({ "border-right": "2px solid green"})
-        $("#promo-code").css({ "border-bottom": "2px solid green"})
+        $("#promo_code_error").css({ "display":"none"});
+        $("#promo-code").css({ "border-left": "2px solid green"});
+        $("#promo-code").css({ "border-top": "2px solid green"});
+        $("#promo-code").css({ "border-right": "2px solid green"});
+        $("#promo-code").css({ "border-bottom": "2px solid green"});
       }
       else {
-        $("#promo-code").css({ "border-left": "2px solid red"})
-        $("#promo-code").css({ "border-top": "2px solid red"})
-        $("#promo-code").css({ "border-right": "2px solid red"})
-        $("#promo-code").css({ "border-bottom": "2px solid red"})
+        $("#promo-code").css({ "border-left": "2px solid red"});
+        $("#promo-code").css({ "border-top": "2px solid red"});
+        $("#promo-code").css({ "border-right": "2px solid red"});
+        $("#promo-code").css({ "border-bottom": "2px solid red"});
+        $("#promo_code_error").css({ "display": "block"});
       }
     });
   })  
 
   var validator = $("#order_form").validate({
     errorPlacement: function(error, element) {
-    // element.parent("div").append(error);
     $(error).css("width", "90%")
     $(error).css("padding-left", "20%")
     $(error).css("text-align", "left")
     error.appendTo(element.parent("div"));
   },
     highlight: function(element, errorClass) {
-      $(element).css("border", "2px solid #bf0004")
+      $(element).css("border", "2px solid red")
     },
     unhighlight: function(element, errorClass) {
-      $(element).css("border", "2px solid #38bd0d")
+      $(element).css("border", "2px solid green")
     },
     onfocusout: function(element) {
       $(element).valid();

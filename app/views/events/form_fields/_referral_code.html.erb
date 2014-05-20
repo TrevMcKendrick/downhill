@@ -1,4 +1,5 @@
 <div class="field">
   <%= label_tag :referral_code, "Promo code?" %>
   <%= text_field_tag "order[referral_code]", nil, :id => "promo-code", :value => @referral_code  %>
+  <label for="referral_code_error" id ="promo_code_error" class="error" style="display: none; width: 90%; padding-left: 20%; text-align: left;">That's not a valid code!</label>
 </div>
