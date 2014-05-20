@@ -13,13 +13,16 @@ module Downhill
     config.assets.paths << Rails.root.join("vendor", "assets", "stylesheets", "beetle")
     config.assets.paths << Rails.root.join("vendor", "assets", "stylesheets", "olsonkart")
 
-    # config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "beetle")
-    # config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "olsonkart")
+    config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "beetle")
+    config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "olsonkart")
 
-    # config.assets.paths << Rails.root.join("vendor", "assets", "fonts", "beetle")
+    config.assets.paths << Rails.root.join("vendor", "assets", "fonts", "beetle")
 
     config.assets.precompile += %w(beetle/style.css)
     config.assets.precompile += %w(beetle/layers.min.css)
+
+    config.assets.precompile += %w(beetle/plugins.js)
+    config.assets.precompile += %w(beetle/beetle.js)
 
     config.assets.precompile += %w(olsonkart/olsonkart_style.css)
 
