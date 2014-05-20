@@ -1,9 +1,48 @@
-<h3>Success!</h3>
+<body>
+  <%= javascript_include_tag "facebook/sdk.js" %>
 
-<h4>You're all signed up for <%= "#{@event.title}, #{@participant.first_name}" %></h4>
-<%= @participant.email %>
-
-<h3>Get $<%= @event.affiliate_setting.amount.to_s %> back for every friend you refer</h3>
-<h3>Friends that use your code will earn you referral credit. Share your referral link via Facebook, Twitter, or email.</h3>
-
-<h4><%= "#{public_event_url(@event, @event.path)}/#{@participant.affiliate_code.code}" %>
+    <!--[if lt IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div id="header" class="no-bg">
+      <div class="wrapper clearfix lifted drop-shadow">
+        <%= image_tag "success-header.png", :clsas => "header-innerimg" %>
+        <!-- <img src="img/header-image.png" class="header-innerimg" alt="" /> -->
+      </div><!-- /.wrapper -->
+    </div><!-- /#header.no-bg -->
+    <div id="main" role="main">
+      <div class="wrapper order-confirm">
+        <div class="step check text-center">
+          <i></i>
+          <h1><span>Success!</span> You're going to <%= @event.title %></h1>
+        </div><!-- /.step -->
+        <div class="step">
+          <i>1</i>
+          <div class="affiliate-code text-center">
+            Your affiliate code is:
+            <span><%= @participant.affiliate_code.code %></span>
+            <!-- <a href="#">Copy to clipboard</a> -->
+          </div><!-- /.affiliate-code text-center -->
+          <h2>Get a Discount:</h2>
+          <p>Every time a friend buys a ticket with your code, you BOTH save <span class="red"><%= number_to_currency(@event.affiliate_setting.amount) %></span>.</p>
+        </div><!-- /.step -->
+        <div class="step share-code">
+          <i>2</i>
+          <h2>Share your code <span>with your friends on Facebook, Twitter and via email to save more.</span></h2>
+          <div class="fb-share-button" data-href="http://trevor.lvh.me:3000/1/success" data-width="187" data-type="button">what</div>
+          <div class="fb-share-button" data-href="http://trevor.lvh.me:3000/1/success" data-width="187" data-type="link">yes</div>
+          <div class="clearfix">
+            <a href="https://www.facebook.com/dialog/share?app_id=<%= FACEBOOK_APP_ID %>&display=popup&href=<%= public_event_url(@event) %>&redirect_uri=<%= success_order_url(@event) %>" class="btn facebook"><span>Share on Facebook</span></a>
+            <a href="#twitter" class="btn twitter"><span>Share on Twitter</span></a>
+            <a href="#mail" class="btn mail"><span>Share Via Mail</span></a>
+          </div><!-- /.clearfix -->
+        </div><!-- /.step -->
+        <div class="step">
+          <i>3</i>
+          <h2>event details</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,</p>
+        </div><!-- /.step -->
+      </div><!-- /.wrapper.order-confirm -->
+    </div>
+    <div class="clear"></div><!-- /.clear -->
+  </body>
