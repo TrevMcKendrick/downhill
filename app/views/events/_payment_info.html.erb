@@ -1,22 +1,19 @@
-<h4>Payment details</h4>
-<div class="form-group">
-  <%= label_tag :card_number, nil, :class => "col-md-3 control-label" %>
-  <div class="col-md-4">
-    <%= card_number_field %>
-  </div>
+<%= render 'events/form_fields/referral_code' %>
+
+<div class="field">
+  <%= label_tag :card_number, nil %>
+  <%= card_number_field %>
 </div>
 
-<div class="form-group">
-  <%= label_tag :card_code, "CVC code", :class => "col-md-3 control-label" %>
-  <div class="col-md-4">
-    <%= card_code_field  %>
-  </div>
+<div class="field">
+  <%= label_tag :card_code, "CVC code" %>
+  <%= card_code_field  %>
 </div>
 
-<div class="form-group">
-  <%= label_tag "Expiration date", nil, :class => "col-md-3 control-label" %>
-  <div class="col-md-4">
-    <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", :class => "form-control", :data => {:stripe => 'exp-month' } } %>
-    <%= select_year nil, {start_year: card_expiration_year, end_year: Date.today.year+15}, {name: nil, id: "card_year", :class => "form-control", :data => {:stripe => 'exp-year' } } %>
-  </div>
+<div class="field">
+  <%= label_tag "Expiration date", nil %>
+  <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", :data => {:stripe => 'exp-month' } } %>
+  <br>
+  <%= label_tag "", nil %>
+  <%= select_year nil, {start_year: card_expiration_year, end_year: Date.today.year+15}, {name: nil, id: "card_year", :data => {:stripe => 'exp-year' } } %>
 </div>

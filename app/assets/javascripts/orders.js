@@ -17,31 +17,27 @@ $(document).ready(function() {
     });
 
     // referral code validation!
-  $( "#referral_code" ).focusout(function() {
+  $( "#promo-code" ).focusout(function() {
     var pathArray = window.location.pathname.split( '/' );
     var event_id = pathArray[1];
-    var url = "/validate_referral_code/" + $(this).val() + "/" + event_id
+    var url = "/validate_promo-code/" + $(this).val() + "/" + event_id
     $.ajax({
       url: url
     }).done(function( response ) {
       if (response == true) {
-        $("#referral_code").css({ "border-left": "2px solid green"})
-        $("#referral_code").css({ "border-top": "2px solid green"})
-        $("#referral_code").css({ "border-right": "2px solid green"})
-        $("#referral_code").css({ "border-bottom": "2px solid green"})
+        $("#promo-code").css({ "border-left": "2px solid green"})
+        $("#promo-code").css({ "border-top": "2px solid green"})
+        $("#promo-code").css({ "border-right": "2px solid green"})
+        $("#promo-code").css({ "border-bottom": "2px solid green"})
       }
       else {
-        $("#referral_code").css({ "border-left": "2px solid red"})
-        $("#referral_code").css({ "border-top": "2px solid red"})
-        $("#referral_code").css({ "border-right": "2px solid red"})
-        $("#referral_code").css({ "border-bottom": "2px solid red"})
+        $("#promo-code").css({ "border-left": "2px solid red"})
+        $("#promo-code").css({ "border-top": "2px solid red"})
+        $("#promo-code").css({ "border-right": "2px solid red"})
+        $("#promo-code").css({ "border-bottom": "2px solid red"})
       }
     });
   })  
-
-  jQuery.validator.setDefaults({
-    debug: true
-  });
 
   var validator = $("#order_form").validate({
     errorPlacement: function(error, element) {
@@ -102,8 +98,8 @@ $(document).ready(function() {
   });
 
   $('#order_form').submit(function(e) {
-
       var $form = $(this);
+
 
       // Disable the submit button to prevent repeated clicks
       $form.find('button').prop('disabled', true);

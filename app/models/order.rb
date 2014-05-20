@@ -63,14 +63,14 @@ class Order < ActiveRecord::Base
        self.event.user.stripe_access_token
       )
 
-    rescue Stripe::CardError => e
-      self.update_attributes(error: e.message)
-      self.fail!
-    end
     logger.info "Stripe charge is = #{charge.amount}"
     self.stripe_charge_id = charge.id
     self.stripe_balance_transaction_id = charge.balance_transaction
     self.save
+    rescue Stripe::CardError => e
+      self.update_attributes(error: e.message)
+      self.fail!
+    end    
   end
 
   def add_buyer(participant)

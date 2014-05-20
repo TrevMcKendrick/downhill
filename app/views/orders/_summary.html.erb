@@ -1,4 +1,17 @@
-<h4>Order Summary</h4>
-  <%= label_tag :summary, "$#{@ticket.price}" %><br>
-  <%= hidden_field_tag "order[amount]", "#{@ticket.price}" %><br>
-  <%= render 'fees', :ticket => @ticket %>
+<div class="field">
+  <%= label_tag :price %><span class="value"><%= "#{number_to_currency(stripe_to_display(@ticket.price))}" %></span>
+</div>
+
+<%= render 'fees' %>
+
+<div class="field">
+  <label>Code Discount</label>
+  <span class="value" style="color:green;">$ 50.00</span>
+</div>
+
+<div class="field">
+  <label>Total</label>
+  <span class="value total">$ 50.00</span>
+</div>
+
+<%#= hidden_field_tag "order[amount]", "#{@ticket.price}" %>

@@ -1,39 +1,85 @@
-<%= render 'events/stripe_publishable_key' %>
+<div id="header">
+      <div class="wrapper clearfix">
+        <div class="logo">
+          <h1><a href="#"><%= "#{@ticket.ticket_type}" %></a></h1>
+        </div><!-- /.logo -->
 
-<div class="checkout">
-  <div class="container">
-    <p id="error"><%= flash[:error] %></p>
+        <div class="utility right">
+          <ul class="reset">
+          </ul>
+        </div><!-- /.utility -->
+      </div><!-- /.wrapper -->
+    </div>
+
+
+<%= render 'events/stripe_publishable_key' %>
+<p id="error"><%= flash[:error] %></p>
     <%= render 'orders/header', :user => @user %>
     <% if @event.published %>
-      <%= form_tag url_for(:controller => "orders", :action => "create", :event_id => @event), :method => "post", :id => "order_form", :class => "form-horizontal" %>
-
-      <h4><%= "#{@ticket.ticket_type}" %></h4>
+    <%= form_tag url_for(:controller => "orders", :action => "create", :event_id => @event), :method => "post", :id => "order_form", :class => "form-horizontal" %>
        <div id="error_field">
        </div>
-      <%= render 'events/form_fields/participant' %>
-      <%= render 'events/form_fields/ticket', :ticket => @ticket %>
-      <%= render 'events/form_fields/name' %>
-      <%= render 'events/form_fields/email' %>
-      <%= render 'events/form_fields/shirt_size' %>
-      <%= render 'events/form_fields/phone' %>
-      <%= render 'events/form_fields/gender' %>
-      <%= render 'events/form_fields/password' %>
-      <br>
-      <%= render 'events/form_fields/waiver' %>
-      <%= render 'events/form_fields/select_team_option' %>
-      <%= render 'events/form_fields/select_wave' if @event.waves %>
-      <br>
-      <%= render 'events/payment_info' %>
-      <%= render 'events/form_fields/referral_code' %>
-      <%= render 'summary' %>
 
-      <%= submit_tag "Place order", :class => "btn btn-warning" %>
+
+    <div id="main" role="main">
+      <div class="wrapper event-form">
+        <form>
+          <div class="step">
+            <i>About You</i>
+            <%= render 'events/form_fields/name' %>
+            <%= render 'events/form_fields/email' %>
+            <%= render 'events/form_fields/phone' %>
+            <%= render 'events/form_fields/gender' %>
+            <br>
+            <%= render 'events/form_fields/shirt_size' %>
+            <%= render 'events/form_fields/password' %>
+            <%= render 'events/form_fields/participant' %>
+            <%= render 'events/form_fields/ticket' %>
+            <%= render 'events/form_fields/waiver' %>
+          </div><!-- /.step -->
+
+          <div class="step event">
+            <i>Event Info</i>
+            <div class="field clearfix">
+              <%= render 'events/form_fields/select_team_option' %>
+            </div>
+            <div class="field">
+              <%= render 'events/form_fields/join_team' %>
+              <%= render 'events/form_fields/create_team' %>
+            </div>
+              <%= render 'events/form_fields/select_wave' if @event.waves %>
+          </div>
+
+          <div class="step payment">
+            <i>Payment Info</i>
+            <%= render 'events/payment_info' %>
+          </div>
+
+          <div class="step summary">
+            <i>Order Summary</i>
+            <%= render 'summary' %>
+          </div>
+
+          <div class="action clearfix">
+            <div class="icon-cc left">
+              <ul class="reset">
+                <li><a href="#" class="visa">VISA</a></li>
+                <li><a href="#" class="amex">AMEX</a></li>
+                <li><a href="#" class="maestro">Maestro</a></li>
+                <li><a href="#" class="mastercard">Mastercard</a></li>
+                <li><a href="#" class="secured">Lock</a></li>
+              </ul>
+            </div>
+            <div class="submit left">
+              <button>Place order</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="clear"></div>
     <% else %>
       <%= page_not_found %>
     <% end %>
-
-    <%= render 'orders/footer', :user => @user %>
-    <%= render 'events/event_footer' %>
-  </div>
-
-</div>
+  </body>
+</html>

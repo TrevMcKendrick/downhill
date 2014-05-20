@@ -1,18 +1,11 @@
-<h4>Race info</h4>
-<div class="control-group">
-  <%= label_tag "Please select a team option", nil, :class => "col-md-3 control-label" %>
-  <div class="control-group">
-    <%= radio_button_tag(:team, "No Team", true) %>
-    <%= label_tag(:team, "No Team") %>
-  </div>
-  <div class="control-group">
-    <%= radio_button_tag(:team, "Join Team") %>
-    <%= label_tag(:team, "Join Team") %>
-    <%= render 'events/form_fields/join_team' %>  
-  </div>
-  <div class="control-group">
-    <%= radio_button_tag(:team, "Create Team") %>
-    <%= label_tag(:team, "Create Team") %>
-    <%= render 'events/form_fields/create_team' %>  
-  </div>
+<label>Teams?</label>
+<div class="radio">
+  <input type="radio" name="team" id="no-team" value="0" checked="checked" /> 
+  <label for="no-team" class="radio">No team</label>
+  
+  <input type="radio" name="team" id="join-team" value="1" /> 
+  <label for="join-team" class="radio">Join team</label>
+
+  <input type="radio" name="team" id="create-team" value="2" /> 
+  <label for="create-team" class="radio">Create team</label>
 </div>

@@ -1,6 +1,4 @@
-<div class="form-group">
-  <%= label_tag "Please Select a Wave Time", nil, :class => "col-md-3 control-label" %>
-  <div class="col-md-4">
-    <%= select_tag "wave[id]", options_from_collection_for_select(@event.waves, "id", :select_name), :class => "form-control" %>
-  </div>
+<div class="field">
+  <%= label_tag "Please Select a Wave Time", nil %>
+  <%= select_tag "wave[id]", options_from_collection_for_select(@event.waves, "id", :select_name), :class => "form-control" %>
 </div>

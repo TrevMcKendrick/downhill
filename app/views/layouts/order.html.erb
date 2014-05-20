@@ -1,5 +1,7 @@
-<%= render "layouts/order/head" %>
+<%= render 'layouts/order/head_order' %>
+<%= render 'layouts/order/css_event' %>
+<%= render 'layouts/order/js_header_order' %>
   <%= yield %>
-<%= render 'layouts/order/javascript' %>
-<%= javascript_include_tag "stripe/jquery.payment.js" %>
-<%= javascript_include_tag "jquery-validator/jquery.validate.js" %>
+<%= render 'orders/footer', :user => @user %>
+<%= render 'layouts/powered_by_footer.html' %>
+<%= render 'layouts/order/js_footer_order' %>

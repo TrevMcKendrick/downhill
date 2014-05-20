@@ -5,7 +5,8 @@ class OrdersController < ApplicationController
 
   def success
     @participant = session[:participant]
-    @user = @event.users.where type: "User"
+    users = @event.users.where type: "User"
+    @user = users.first
   end
 
   def new
@@ -24,6 +25,8 @@ class OrdersController < ApplicationController
       @order.save
       @team = @event.teams.find_or_create_by(name: params[:join_team]) if join_or_create_team == "join"
       @team = @event.teams.find_or_create_by(name: params[:create_team_name]) if join_or_create_team == "create"
+      binding.pry
+      # binding.pry
 
       @wave = @event.waves.find_by id: wave_params[:id] if wave_params[:id]
       @ticket = @event.tickets.find_by ticket_type: params[:ticket][:ticket_type]
@@ -78,12 +81,12 @@ class OrdersController < ApplicationController
   end
 
   def join_or_create_team
-    if params[:team] == "Join Team"
-      return "join"
+    if params[:create_team_name].present?
+      return "create"
     end
 
-    if params[:team] == "Create Team" 
-      return "create"
+    if params[:join_team].present?
+      return "join"
     end
   end
 
