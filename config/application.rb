@@ -49,6 +49,11 @@ module Downhill
     config.assets.precompile += %w(psd_html/plugins.js)
     config.assets.precompile += %w(psd_html/main.js)
     config.assets.precompile += %w(psd_html/modernizr-2.8.0.min.js)
+    config.assets.precompile += %w(psd_html/sansation-regular-webfont.eot)
+    config.assets.precompile += %w(psd_html/sansation-regular-webfont.svg)
+    config.assets.precompile += %w(psd_html/sansation-regular-webfont.ttf)
+    config.assets.precompile += %w(psd_html/sansation-regular-webfont.woff)
+    
 
     config.assets.precompile += %w(orders.js)
 
