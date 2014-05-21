@@ -172,10 +172,14 @@ $(document).ready(function() {
         discount = discount / 100
         price = gon.price - discount
         document.getElementById('order_total').innerHTML = "$" + " " + price;
-        $("#discount_amount").val() = "hi";
+        $("#discount_amount").text(discount);
+        $("#discount_amount").currency();
         $("#discount_div" ).css("display","block");
-      } else {
+      } 
+      else 
+      {
         document.getElementById('order_total').innerHTML = "$" + " " + gon.price;
+        $("#discount_div" ).css("display","none");
       }
         
     }

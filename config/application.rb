@@ -21,6 +21,7 @@ module Downhill
     config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "jquery-validator")
     config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "facebook")
     config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "twitter")
+    config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "jquery_currency")
 
     config.assets.paths << Rails.root.join("vendor", "assets", "fonts", "beetle")
 
@@ -54,7 +55,6 @@ module Downhill
     config.assets.precompile += %w(psd_html/sansation-regular-webfont.ttf)
     config.assets.precompile += %w(psd_html/sansation-regular-webfont.woff)
     
-
     config.assets.precompile += %w(orders.js)
 
     config.assets.precompile += %w(stripe/jquery.payment.js)
@@ -64,6 +64,8 @@ module Downhill
     config.assets.precompile += %w(facebook/sdk.js.erb)
 
     config.assets.precompile += %w(twitter/tweet.js)
+
+    config.assets.precompile += %w(jquery_currency/jquery_currency.js)
 
 
 
