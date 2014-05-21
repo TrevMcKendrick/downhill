@@ -20,7 +20,7 @@ module ApplicationHelper
   end
 
   def stripe_to_display(amount)
-    amount / 100
+    (amount / 100.000).to_s
   end
 
 end
