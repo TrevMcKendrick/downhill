@@ -1,6 +1,17 @@
-<% @event.fees.each do |fee| %>
-  <div class="field">
-  <label class="fee_item"><%= fee.name %></label>
-    <span class="value"><%= number_to_currency(stripe_to_display(fee.amount)) %></span>
-  </div> 
+<% if @event.fees.present? %>
+  <% @event.fees.each do |fee| %>
+    <div class="field">
+      <label class="fee_item"><%= fee.name %></label>
+      <span class="value"><%= number_to_currency(stripe_to_display(fee.amount)) %></span>
+    </div> 
+  <% end %>
+    <div class="field">
+      <label class="fee_item">Processing Fee</label>
+      <span class="value"><%= number_to_currency(TICKET_SCIENCE_FEE_TO_CUSTOMER) %></span>
+    </div> 
+<% else %>
+    <div class="field">
+      <label class="fee_item">Processing Fee</label>
+      <span class="value"><%= number_to_currency(TICKET_SCIENCE_FEE_TO_CUSTOMER) %></span>
+    </div> 
 <% end %>
