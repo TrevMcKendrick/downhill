@@ -19,11 +19,11 @@ class OrdersController < ApplicationController
     @participant = @event.users.build(participant_params)
     @order = @event.orders.build(order_params)
     @order.referral_code = ReferralCode.find_by code: (params[:order][:referral_code]) if @event.code_is_valid?(params[:order][:referral_code])
+    @order.affiliate_fee = @order.referral_code.amount if @order.referral_code.present?
     @order.stripe_token = params[:stripeToken]
     @order.add_buyer(@participant)
 
     if @order.buyer_added?
-      @order.save
       @team = @event.teams.find_or_create_by(name: params[:join_team]) if join_or_create_team == "join"
       @team = @event.teams.find_or_create_by(name: params[:create_team_name]) if join_or_create_team == "create"
       @wave = @event.waves.find_by id: wave_params[:id] if wave_params[:id]

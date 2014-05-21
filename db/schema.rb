@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140519062903) do
+ActiveRecord::Schema.define(version: 20140521101821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 20140519062903) do
     t.string   "state"
     t.string   "stripe_token"
     t.integer  "participant_id"
+    t.integer  "affiliate_fee"
   end
 
   create_table "referral_codes", force: true do |t|
