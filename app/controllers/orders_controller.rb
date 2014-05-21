@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
   def new
     @ticket = @event.tickets.find_by ticket_type: params[:ticket]
     @referral_code = session[:referral_code]
-    gon.price = ((@ticket.price + @event.fee_total + (TICKET_SCIENCE_FEE_TO_CUSTOMER * 100).ceil) / 100.000).to_s
+    gon.price = ((@ticket.price + @event.fee_total + TICKET_SCIENCE_FEE_TO_CUSTOMER * 100) / 100.000).to_s
   end
 
   def create
