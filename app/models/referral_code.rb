@@ -20,4 +20,8 @@ class ReferralCode < ActiveRecord::Base
     return self.event.affiliate_setting.amount if self.affiliate_code?
   end
 
+  def amount=(val)
+    write_attribute :amount, (val.to_i * 100)
+  end
+
 end

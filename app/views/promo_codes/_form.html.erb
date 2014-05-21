@@ -18,7 +18,7 @@
 
   <div class="form-group">
      <%= f.label :amount, :class => "wlabel" %>
-     <%= f.text_field :amount, :name => "promo_code[amount]", :class => "form-control" %>
+     <%= f.text_field :amount, :name => "promo_code[amount]", :class => "form-control", :value => (@promo_code.amount / 100) %>
   </div>
 
   <div class="form-group">
