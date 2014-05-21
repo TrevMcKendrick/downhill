@@ -32,6 +32,7 @@ $(document).ready(function() {
         $("#promo-code").css({ "border-right": "2px solid red"});
         $("#promo-code").css({ "border-bottom": "2px solid red"});
         $("#promo_code_error").css({ "display": "block"}); 
+        updateOrderForm(response);
       }
       else {
         $("#promo_code_error").css({ "display":"none"});
@@ -175,8 +176,6 @@ $(document).ready(function() {
         $("#discount_div" ).css("display","block");
       } else {
         document.getElementById('order_total').innerHTML = "$" + " " + gon.price;
-        // $("#discount_div" ).css("display","block");
-        // $("#discount_amount").text() = "hi";
       }
         
     }
