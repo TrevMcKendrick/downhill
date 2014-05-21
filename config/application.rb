@@ -41,7 +41,6 @@ module Downhill
     config.assets.precompile += %w(sales_chart.js)
     config.assets.precompile += %w(smart-admin/app.js)
 
-    config.assets.precompile += %w(psd_html/jquery-ui-1.10.4.custom.min.css)
     config.assets.precompile += %w(psd_html/normalize.css)
     config.assets.precompile += %w(psd_html/main.css)
     config.assets.precompile += %w(psd_html/responsive.css)
@@ -49,6 +48,7 @@ module Downhill
     config.assets.precompile += %w(psd_html/jquery.customSelect.min.js)
     config.assets.precompile += %w(psd_html/plugins.js)
     config.assets.precompile += %w(psd_html/main.js)
+    config.assets.precompile += %w(psd_html/modernizr-2.8.0.min.js)
 
     config.assets.precompile += %w(orders.js)
 
