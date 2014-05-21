@@ -2,9 +2,9 @@ module OrdersHelper
 
   def name_field
     if Rails.env.development?
-      field = text_field_tag "participant[first_name]", nil, :value => "Mike"
+      field = text_field_tag "participant[first_name]", nil, :tabindex => 1, :autofocus => true
     else
-      field = text_field_tag "participant[first_name]", nil
+      field = text_field_tag "participant[first_name]", nil, :tabindex => 1, :autofocus => true
     end
      field.html_safe
   end
@@ -38,18 +38,18 @@ module OrdersHelper
 
   def card_number_field
     if Rails.env.development?
-      field = text_field_tag :card_number, nil, :class => "valid payment-form", :name => "card_number_stripe", :placeholder => "Card Number", :data => {:stripe => 'number' }, :tabindex => 1, :autofocus => true, :value => "4242424242424242"
+      field = text_field_tag :card_number, nil, :class => "valid payment-form", :name => "card_number_stripe", :placeholder => "Card Number", :data => {:stripe => 'number' }, :value => "4242424242424242"
     else
-      field = text_field_tag :card_number, nil, :class => "valid payment-form", :name => "card_number_stripe", :placeholder => "Card Number", :data => {:stripe => 'number' }, :tabindex => 1, :autofocus => true
+      field = text_field_tag :card_number, nil, :class => "valid payment-form", :name => "card_number_stripe", :placeholder => "Card Number", :data => {:stripe => 'number' }
     end
       field.html_safe
   end
 
   def card_code_field
     if Rails.env.development?
-      field = text_field_tag :card_code, nil,:class => "valid payment-form", :name => "card_code_stripe", :placeholder => "3 or 4 digits", :data => {:stripe => 'cvc' }, :tabindex => 2, :value => "4242"
+      field = text_field_tag :card_code, nil,:class => "valid payment-form", :name => "card_code_stripe", :placeholder => "3 or 4 digits", :data => {:stripe => 'cvc' }, :value => "4242"
     else
-      field = text_field_tag :card_code, nil,:class => "valid payment-form", :name => "card_code_stripe", :placeholder => "3 or 4 digits", :data => {:stripe => 'cvc' }, :tabindex => 2
+      field = text_field_tag :card_code, nil,:class => "valid payment-form", :name => "card_code_stripe", :placeholder => "3 or 4 digits", :data => {:stripe => 'cvc' }
     end
       field.html_safe
   end
