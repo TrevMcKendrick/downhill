@@ -21,7 +21,7 @@ class ReferralCode < ActiveRecord::Base
   end
 
   def amount=(val)
-    write_attribute :amount, (val.to_i * 100)
+    write_attribute :amount, (val.to_d * 100).to_i
   end
 
 end
