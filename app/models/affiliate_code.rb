@@ -12,4 +12,8 @@ class AffiliateCode < ReferralCode
     self.code = SecureRandom.hex(3)
   end
 
+  def amount
+    self.event.affiliate_setting.amount
+  end
+
 end
