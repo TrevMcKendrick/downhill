@@ -171,7 +171,9 @@ $(document).ready(function() {
       if (discount > 0) {
         discount = discount / 100
         price = gon.price - discount
-        document.getElementById('order_total').innerHTML = "$" + " " + price;
+        $("#order_total").text(price);
+        $("#order_total").currency();
+
         $("#discount_amount").text(discount);
         $("#discount_amount").currency();
         $("#discount_div" ).css("display","block");
@@ -180,6 +182,5 @@ $(document).ready(function() {
       {
         document.getElementById('order_total').innerHTML = "$" + " " + gon.price;
         $("#discount_div" ).css("display","none");
-      }
-        
+      }  
     }
