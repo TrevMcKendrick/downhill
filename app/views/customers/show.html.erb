@@ -1,5 +1,16 @@
 <h1><%= "#{@customer.first_name}  #{@customer.last_name}" %></h1>
 
-<h2>Shirt size: <%= @customer.shirtsize %></h2>
-<h2>Email: <%= @customer.email %></h2>
-<h2><%= link_to "Go to Stripe Account", "https://manage.stripe.com/customers/#{@customer.stripe_participant_id}" %></h2>
+<h4>Shirt size: <%= @customer.shirtsize %></h4>
+<h4>Email: <%= @customer.email %></h4>
+<h4>Phone: <%= @customer.phone %></h4>
+<h4>Affiliate code: <%= @customer.affiliate_code.code %></h4>
+<h4>Affiliate Earnings: <%= number_to_currency(@customer.affiliate_earnings(@account) / 100.000) %></h4>
+
+
+<br>
+<h2>Events They've Attended</h2>
+<% @customer.events.each do |event| %>
+<h5><%= event.title %></h5>
+<% end %>
+
+<h3><%= link_to "Go to their Stripe Account", "https://manage.stripe.com/customers/#{@customer.stripe_participant_id}" %></h3>
