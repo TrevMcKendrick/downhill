@@ -22,6 +22,7 @@ class CustomersController < ApplicationController
 
   def show
     @customer = current_user.account.participants.find { |participant| participant.id == params[:id].to_i }
+    @account = current_user.account
   end
 
 end
