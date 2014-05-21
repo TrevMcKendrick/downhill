@@ -4,14 +4,14 @@
 
 <%= render 'fees' %>
 
-<div class="field">
+<div id="discount_div" class="field" style="display:none;">
   <label>Code Discount</label>
-  <span class="value" style="color:green;">$ 50.00</span>
+  <span id="discount_amount" class="value" style="color:green;"></span>
 </div>
 
 <div class="field">
   <label>Total</label>
-  <span class="value total">$ 50.00</span>
+  <span id="order_total" class="value total"></span>
 </div>
 
 <%#= hidden_field_tag "order[amount]", "#{@ticket.price}" %>

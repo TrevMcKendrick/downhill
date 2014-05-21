@@ -1,5 +1,7 @@
 $(document).ready(function() { 
+  updateOrderForm(0)
   // $("#join_team").select2();
+
     $("input[name='team']").change(function(){
       if ($("#team_Join_Team").is(':checked')) 
       {
@@ -13,7 +15,7 @@ $(document).ready(function() {
       else {
         $('#s2id_join_team').hide();
         $('#create_team').show();
-      }  
+      }
     });
 
     // referral code validation!
@@ -24,19 +26,20 @@ $(document).ready(function() {
     $.ajax({
       url: url
     }).done(function( response ) {
-      if (response == true) {
+      if (response == null) {
+        $("#promo-code").css({ "border-left": "2px solid red"});
+        $("#promo-code").css({ "border-top": "2px solid red"});
+        $("#promo-code").css({ "border-right": "2px solid red"});
+        $("#promo-code").css({ "border-bottom": "2px solid red"});
+        $("#promo_code_error").css({ "display": "block"}); 
+      }
+      else {
         $("#promo_code_error").css({ "display":"none"});
         $("#promo-code").css({ "border-left": "2px solid green"});
         $("#promo-code").css({ "border-top": "2px solid green"});
         $("#promo-code").css({ "border-right": "2px solid green"});
         $("#promo-code").css({ "border-bottom": "2px solid green"});
-      }
-      else {
-        $("#promo-code").css({ "border-left": "2px solid red"});
-        $("#promo-code").css({ "border-top": "2px solid red"});
-        $("#promo-code").css({ "border-right": "2px solid red"});
-        $("#promo-code").css({ "border-bottom": "2px solid red"});
-        $("#promo_code_error").css({ "display": "block"});
+        updateOrderForm(response);
       }
     });
   })  
@@ -160,3 +163,20 @@ $(document).ready(function() {
         $form.get(0).submit();
       }
     };
+
+
+    function updateOrderForm(discount)
+    {
+      if (discount > 0) {
+        discount = discount / 100
+        price = gon.price - discount
+        document.getElementById('order_total').innerHTML = "$" + " " + price;
+        $("#discount_amount").val() = "hi";
+        $("#discount_div" ).css("display","block");
+      } else {
+        document.getElementById('order_total').innerHTML = "$" + " " + gon.price;
+        // $("#discount_div" ).css("display","block");
+        // $("#discount_amount").text() = "hi";
+      }
+        
+    }

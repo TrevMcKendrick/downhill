@@ -12,6 +12,7 @@ class OrdersController < ApplicationController
   def new
     @ticket = @event.tickets.find_by ticket_type: params[:ticket]
     @referral_code = session[:referral_code]
+    gon.price = ((@ticket.price + @event.fee_total + (TICKET_SCIENCE_FEE_TO_CUSTOMER * 100).ceil) / 100.000).to_s
   end
 
   def create
@@ -46,10 +47,23 @@ class OrdersController < ApplicationController
 
   def validate_referral_code
     test_code = params[:code]
-    response = @event.valid_codes.any? { |code| code.code == test_code }
-    respond_to do |format|
-      format.json { render :json => response }
+    is_valid = @event.valid_codes.any? { |code| code.code == test_code }
+    send_referral_code_to_client(is_valid)
+  end
+
+  def get_code_amount(string)
+    @event.valid_codes.select { |code| code.code == string }.first.amount
+  end
+
+  def send_referral_code_to_client(is_valid)
+    if is_valid
+      response = get_code_amount(params[:code])
+    else 
+      response = nil
     end
+      respond_to do |format|
+        format.json { render :json => response }
+      end
   end
 
   def validate_email_uniqueness

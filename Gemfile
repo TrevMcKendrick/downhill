@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 ruby "1.9.3"
 
+gem 'gon'
+
 gem 'devise_marketable'
 
 gem 'newrelic_rpm'

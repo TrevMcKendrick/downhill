@@ -76,6 +76,9 @@ GEM
     execjs (2.0.2)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
+    gon (4.1.1)
+      actionpack (>= 2.3.0)
+      json
     hashie (2.0.5)
     highline (1.6.20)
     hike (1.2.3)
@@ -213,6 +216,7 @@ DEPENDENCIES
   devise
   devise_marketable
   domainatrix
+  gon
   jbuilder (~> 1.2)
   jquery-rails (~> 2.1)
   newrelic_rpm
