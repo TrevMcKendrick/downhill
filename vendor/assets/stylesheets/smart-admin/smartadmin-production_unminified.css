@@ -15431,7 +15431,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden;
+  /*overflow: hidden;*/
   /*- disabled for widget chrome bug */
   /*background: url(<%= image_url 'mybg.png' %>) #ffffff;*/
   direction: ltr;
