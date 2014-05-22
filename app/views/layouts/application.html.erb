@@ -1,15 +1,17 @@
 <%= render "layouts/header" %>
 <body class="">
 <%= render "layouts/navbar" %>
-<%= render "layouts/left_panel" %>
+    <% unless controller_name == "events" || controller_name == "ticket" || controller_name == "fee" || controller_name == "waves" || controller_name == "promo_codes" || controller_name == "affiliate_settings"  %>
+      <div id="content">
+    <% end %>
+      
+<%= yield %>
 
-  <div id="main" role="main">
-    <div id="content">
-      <%= yield %>
-    </div>
-  </div>
+    <% unless controller_name == "events" || controller_name == "ticket" || controller_name == "fee" || controller_name == "waves" || controller_name == "promo_codes"  %> 
+      </div>
+    <% end %>
   
-  
+<%= javascript_include_tag "google/google_analytics" %> 
 
 </body>
 </html>

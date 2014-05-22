@@ -1,78 +1,67 @@
-
-<!-- Left panel : Navigation area -->
-    <!-- Note: This width of the aside area can be adjusted through LESS variables -->
-    <aside id="left-panel" style="top: 70px;">
-
-      <!-- User info -->
-      <div class="login-info">
-        <span> <!-- User image size is adjusted inside CSS, it should stay as it --> 
-
-          <a href="#" id="show-shortcut">
-            <!-- <img src="img/avatars/sunny.png" alt="me" class="online" />  -->
-            <span>
-              <%= current_user.email if current_user %>
-            </span>
-            <!-- <i class="fa fa-angle-down"></i> -->
-          </a> 
-
-        </span>
-      </div>
-      <!-- end user info -->
-
-      <!-- NAVIGATION : This navigation is also responsive
-
-      To make this navigation dynamic please make sure to link the node
-      (the reference to the nav > ul) after page load. Or the navigation
-      will not initialize.
-      -->
-
+    <aside id="left-panel" style="top: 70px; width: 200px;">
 
       <nav>
         <ul>
           <% if can? :edit, @event %>
-          <li>
-            <%= link_to dashboard_path do %>
-               <i class="fa fa-lg fa-fw fa-home"></i>
-               <span class="menu-item-parent">Dashboard</span>
-            <% end %>
-          </li>
-          <% end %>
-
-          <li>
-            <%= link_to events_path do %>
-                <i class="fa fa-lg fa-fw fa-calendar"></i>
-                <span class="menu-item-parent">Events</span>
+          <li id="location">
+            <%= link_to edit_event_path(@event), :onclick => "selectTab('location')" do %>
+               <i class="fa fa-lg fa-fw fa-clock-o"></i>
+               <span class="menu-item-parent">Location and time</span>
             <% end %>
           </li>
 
-          <% if can? :edit, @event %>
-          <li>
-           <%= link_to customers_path do %>
-               <i class="fa fa-lg fa-fw fa-users"></i>
-               <span class="menu-item-parent">Customers</span>
+          <li id="tickets">
+            <%= link_to tickets_path(@event), :onclick => "selectTab('tickets')" do %>
+               <i class="fa fa-lg fa-fw fa-ticket"></i>
+               <span class="menu-item-parent">Tickets</span>
+            <% end %>
+          </li>
+
+          <li id="fees">
+            <%= link_to fees_path(@event), :onclick => "selectTab('fees')" do %>
+                <i class="fa fa-lg fa-fw fa-credit-card"></i>
+                <span class="menu-item-parent">Fees</span>
+            <% end %>
+          </li>
+
+          <li id="waves">
+           <%= link_to waves_path(@event), :onclick => "selectTab('waves')" do %>
+               <i class="fa fa-lg fa-fw fa-rocket"></i>
+               <span class="menu-item-parent">Waves</span>
            <% end %>
           </li>
 
-        <!--   <li>
-           <%= link_to "#" do %>
-               <i class="fa fa-lg fa-fw fa-bar-chart-o"></i>
-               <span class="menu-item-parent">Reports</span>
+          <li id="registration">
+           <%= link_to registration_path(@event), :onclick => "selectTab('registration')" do %>
+               <i class="fa fa-lg fa-fw fa-barcode"></i>
+               <span class="menu-item-parent">Registration Page</span>
            <% end %>
-          </li> -->
+          </li>
 
-          <li>
-             <%= link_to settings_path do %>
-               <i class="fa fa-lg fa-fw fa-cog"></i>
-               <span class="menu-item-parent">Settings</span>
+          <li id="promos">
+             <%= link_to promo_codes_path(@event), :onclick => "selectTab('promos')" do %>
+               <i class="fa fa-lg fa-fw fa-flag-checkered"></i>
+               <span class="menu-item-parent">Promo Codes</span>
              <% end %>
           </li>
+
+          <li id="affiliates">
+             <%= link_to affiliate_settings_path(@event), :onclick => "selectTab('affiliates')" do %>
+               <i class="fa fa-lg fa-fw fa-gears"></i>
+               <span class="menu-item-parent">Affiliate Settings</span>
+             <% end %>
+          </li>
+
+          <li id="publish">
+             <%= link_to publish_path(@event), :onclick => "selectTab('publish')" do %>
+               <i class="fa fa-lg fa-fw fa-play"></i>
+               <span class="menu-item-parent">Publish</span>
+             <% end %>
+          </li>
+
           <% end %>
 
-
-
-   
         </ul>
       </nav>
-      <!-- <span class="minifyme"> <i class="fa fa-arrow-circle-left hit"></i> </span> -->
 
     </aside>

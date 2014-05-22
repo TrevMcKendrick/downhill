@@ -12,7 +12,6 @@
 
  *= require_self
 
-
  *= require bootstrap.min
  *= require bootstrap-wysihtml5
 
@@ -28,7 +27,7 @@
 
  *= require smart-admin/invoice
  *= require smart-admin/lockscreen
- *= require smart-admin/smartadmin-production_unminified 
+ *= require smart-admin/smartadmin-production_unminified
  *= require smart-admin/smartadmin-rtl
  *= require smart-admin/smartadmin-skins
 
@@ -40,5 +39,7 @@
  *= require timepicker/jquery.timepicker
 
  *= require morris/morris
+
+ 
   
  */

@@ -1,3 +1,4 @@
+<div id="content">
 <h1><strong>Settings</strong></h1><br>
 <h3>Payments</h3>
 <%= render "payment_settings" %>
@@ -6,4 +7,5 @@
 
 <div id="logout" class="btn-header transparent pull-left">
   <%= button_to "Log out", destroy_user_session_path, :method => :delete, :class => "btn btn-danger", :style => "margin-top:8px;" %>
+</div>
 </div>

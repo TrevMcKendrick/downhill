@@ -1,4 +1,6 @@
-<%= render "layouts/event_header"  %>
+<%= render "layouts/left_panel" %>
+<div id="main" role="main">
+<div id="content">
 
 <%= form_for(@event) do |f| %>
 
@@ -6,7 +8,8 @@
   <%= render 'event_details', :f => f if last_path(request.path) == "edit" %>
   <%= render 'registration', :f => f if last_path(request.path) == "registration" %>
   <%= render 'publish', :f => f if last_path(request.path) == "publish" %>
-  <%= render 'other_info', :f => f if last_path(request.path) == "other_info" %>
 
 <% end %>
+</div>
+</div>
 <%= javascript_include_tag "smart-admin/app" %>

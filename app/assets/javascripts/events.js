@@ -2,7 +2,6 @@
 // # All this logic will automatically be available in application.js.
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready(function() {
-
   $('.editor').wysihtml5({
     "font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
     "emphasis": true, //Italics, bold, etc. Default true
@@ -10,9 +9,8 @@ $(document).ready(function() {
     "html": false, //Button which allows you to edit the generated HTML. Default false
     "link": true, //Button to insert a link. Default true
     "image": true, //Button to insert an image. Default true,
-    "color": true //Button to change color of font  
+    "color": true //Button to change color of font    
   });
-
  
  // date and time pickers
 $('.timepicker').timepicker({ 'timeFormat': 'h:i A' });
@@ -42,5 +40,3 @@ var checkout = $('#dpd2').datepicker({
 }).data('datepicker');
 
 });
-
- 

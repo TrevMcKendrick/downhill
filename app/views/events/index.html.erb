@@ -1,3 +1,4 @@
+<div id="content">
 <section id="widget-grid" class="">
         
           <!-- row -->
@@ -25,38 +26,6 @@
                     <h4 style="font-size:15px; margin-left: 10px;">Make your first by clicking the "Create an Event" button below!</h4>
                     <br>
                   <% else %>
-
-                    <!-- <div class="widget-body-toolbar"></div> -->
-                    
-                    <!-- drop down filter -->
-                    <!-- <div id="dt_basic_wrapper" class="dataTables_wrapper form-inline" role="grid"> -->
-                      <!-- <div class="dt-top-row"> -->
-                    <!--   <div id="dt_basic_length" class="dataTables_length">
-                        <span class="smart-form">
-                          <label class="select" style="width:60px">
-                            <select size="1" name="dt_basic_length" aria-controls="dt_basic">
-                              <option value="10" selected="selected">10</option>
-                              <option value="25">25</option>
-                              <option value="50">50</option>
-                              <option value="100">100</option>
-                            </select>
-                            <i></i>
-                          </label>
-                        </span>
-                      </div> -->
-                      <!-- end drop down filter -->
-
-                      <!-- search filter box -->
-                     <!--  <div class="dataTables_filter" id="dt_basic_filter">
-                        <div class="input-group">
-                          <span class="input-group-addon">
-                            <i class="fa fa-search"></i>
-                          </span>
-                        <input class="form-control" placeholder="Filter" type="text" aria-controls="dt_basic">
-                      </div>
-                    </div> -->
-                  <!-- </div> -->
-                      <!-- end search filter box -->
 
                      
                     <div class="dt-wrapper">
@@ -90,7 +59,7 @@
                 
               
                   <% end %>
-                      <!-- <div class="dt-row dt-bottom-row"><div class="row"><div class="col-sm-6"><divclass="dataTables_info" id="dt_basic_info">Showing 1 to 10 of 100 entries</div></div><div class="col-sm-6 text-right"><div class="dataTables_paginate paging_bootstrap_full"><ul class="pagination"><li class="first disabled"><a href="#">First</a></li><li class="prev disabled"><a href="#">Previous</a></li><li class="active"><a href="#">1</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li><li><a href="#">4</a></li><li><a href="#">5</a></li><li class="next"><a href="#">Next</a></li><li class="last"><a href="#">Last</a></li></ul></div></div></div> -->
+
                     </div></div>
 
                     <%= button_to "Create an Event", new_event_url, :method => "get", :class => "btn btn-success btn-lg pull-left header-btn hidden-mobile" %>
@@ -110,3 +79,5 @@
           <!-- end row -->
         
         </section>
+
+      </div>  
