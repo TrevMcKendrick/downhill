@@ -22,6 +22,7 @@ module Downhill
     config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "facebook")
     config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "twitter")
     config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "jquery_currency")
+    config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "jquery_cookie")
 
     config.assets.paths << Rails.root.join("vendor", "assets", "fonts", "beetle")
 
@@ -66,6 +67,8 @@ module Downhill
     config.assets.precompile += %w(twitter/tweet.js)
 
     config.assets.precompile += %w(jquery_currency/jquery_currency.js)
+
+    config.assets.precompile += %w(jquery_cookie/jquery_cookie.js)
 
 
 
