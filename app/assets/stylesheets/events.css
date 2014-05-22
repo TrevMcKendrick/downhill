@@ -27,11 +27,11 @@
 
 .tabs li a:hover {
   background-color: #d9974b !important;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: .2s;
+  transition: .2s;
   padding-left: 14px !important;
 }
 
 .tabs li a {
-  -webkit-transition: .4s;
+  -webkit-transition: .2s;
 }
