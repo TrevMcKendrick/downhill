@@ -19,7 +19,6 @@ class OrdersController < ApplicationController
     @participant = @event.users.build(participant_params)
     @order = @event.orders.build(order_params)
     @order.referral_code = ReferralCode.find_by code: (params[:order][:referral_code]) if @event.code_is_valid?(params[:order][:referral_code])
-    @order.affiliate_fee = @order.referral_code.amount if @order.referral_code.present?
     @order.stripe_token = params[:stripeToken]
     @order.add_buyer(@participant)
 
@@ -34,13 +33,14 @@ class OrdersController < ApplicationController
     end
 
     if @order.charged?
-      # sign_in(@order.participant)
+      @order.affiliate_fee = @order.referral_code.amount if @order.referral_code.present?
+      @order.save
       session[:participant] = @order.participant
       redirect_to success_order_path(@event)
       return false
     else
-      redirect_to :back, {:flash => { :error => "Insufficient rights!" }}
-      # redirect_to :back, alert: @order.error
+      @order.fail!
+      redirect_to :back, {:flash => { :error => "Order didn't go through!" }}
       return false
     end
   end
