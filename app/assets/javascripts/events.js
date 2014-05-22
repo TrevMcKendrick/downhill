@@ -39,4 +39,16 @@ var checkout = $('#dpd2').datepicker({
   checkout.hide();
 }).data('datepicker');
 
+
+activateTab()
+
 });
+
+function selectTab(tab_id) {
+  localStorage.setItem('tab', tab_id);
+}
+
+function activateTab() {
+  var tab = localStorage.getItem('tab')
+  $("#" + tab).addClass("active");
+}

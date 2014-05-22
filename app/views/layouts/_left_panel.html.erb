@@ -1,7 +1,7 @@
     <aside id="left-panel" style="top: 70px; width: 200px;">
 
       <nav>
-        <ul>
+        <ul class="tabs">
           <% if can? :edit, @event %>
           <li id="location">
             <%= link_to edit_event_path(@event), :onclick => "selectTab('location')" do %>

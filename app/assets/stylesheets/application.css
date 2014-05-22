@@ -15,7 +15,7 @@
  *= require bootstrap.min
  *= require bootstrap-wysihtml5
 
- *= require events
+ 
  *= require users
  *= require home
  *= require ticket
@@ -40,6 +40,6 @@
 
  *= require morris/morris
 
- 
+ *= require events
   
  */
