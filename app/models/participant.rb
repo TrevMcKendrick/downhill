@@ -43,8 +43,12 @@ class Participant < User
     account.orders.where(referral_code_id: self.affiliate_code)
   end
 
+  def affiliate_orders_revenue(account)
+    self.affiliate_orders(account).map(&:amount).compact.inject(0, &:+)
+  end
+
   def affiliate_earnings(account)
-    self.affiliate_orders(account).map(&:affiliate_fee).inject(0, &:+)
+    self.affiliate_orders(account).map(&:affiliate_fee).compact.inject(0, &:+)
   end
 
 end
