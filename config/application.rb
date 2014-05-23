@@ -21,6 +21,7 @@ module Downhill
     config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "jquery-validator")
     config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "facebook")
     config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "twitter")
+    config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "google")
     config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "jquery_currency")
     config.assets.paths << Rails.root.join("vendor", "assets", "javascripts", "zeroclipboard")
 
@@ -70,10 +71,13 @@ module Downhill
 
     config.assets.precompile += %w(twitter/tweet.js)
 
+    config.assets.precompile += %w(google/google_analytics.js)
+
     config.assets.precompile += %w(jquery_currency/jquery_currency.js)
 
     config.assets.precompile += %w(zeroclipboard.swf)
     config.assets.precompile += %w(zeroclipboard/zeroclipboard.js)
+    config.assets.precompile += %w(zeroclipboard/main.js)
 
 
 
