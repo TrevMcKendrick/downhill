@@ -71,7 +71,7 @@ module Downhill
 
     config.assets.precompile += %w(jquery_currency/jquery_currency.js)
 
-    config.assets.precompile += %w(zeroclipboard.swf)
+    config.assets.precompile += %w(flash/zeroclipboard.swf)
 
 
 
