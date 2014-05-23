@@ -78,7 +78,7 @@ module Downhill
     config.assets.precompile += %w(zeroclipboard.swf)
     config.assets.precompile += %w(zeroclipboard/zeroclipboard.js)
 
-    # config.assets.precompile += %w(zeroclipboard/main.js)
+    config.assets.precompile += %w(zeroclipboard/main.js)
 
 
 
