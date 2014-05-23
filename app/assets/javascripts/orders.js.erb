@@ -1,9 +1,9 @@
-$(document).ready(function() { 
+$(document).ready(function() {
   updateOrderForm(0)
   // $("#join_team").select2();
 
     $("input[name='team']").change(function(){
-      if ($("#team_Join_Team").is(':checked')) 
+      if ($("#team_Join_Team").is(':checked'))
       {
         $('#s2id_join_team').show();
         $('#create_team').hide();
@@ -31,7 +31,7 @@ $(document).ready(function() {
         $("#promo-code").css({ "border-top": "2px solid red"});
         $("#promo-code").css({ "border-right": "2px solid red"});
         $("#promo-code").css({ "border-bottom": "2px solid red"});
-        $("#promo_code_error").css({ "display": "block"}); 
+        $("#promo_code_error").css({ "display": "block"});
         updateOrderForm(response);
       }
       else {
@@ -43,7 +43,7 @@ $(document).ready(function() {
         updateOrderForm(response);
       }
     });
-  })  
+  })
 
   var validator = $("#order_form").validate({
     errorPlacement: function(error, element) {
@@ -146,6 +146,7 @@ $(document).ready(function() {
     $('#card_code').payment('formatCardCVC');
   });
 
+
 });
 
 
@@ -177,10 +178,10 @@ $(document).ready(function() {
         $("#discount_amount").text(discount);
         $("#discount_amount").currency();
         $("#discount_div" ).css("display","block");
-      } 
-      else 
+      }
+      else
       {
         document.getElementById('order_total').innerHTML = "$" + " " + gon.price;
         $("#discount_div" ).css("display","none");
-      }  
+      }
     }

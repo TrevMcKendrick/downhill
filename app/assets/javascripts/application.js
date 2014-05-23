@@ -30,3 +30,4 @@
 //= require datepicker/bootstrap-datepicker
 //= require timepicker/jquery.timepicker.min
 //= require morris/morris.min
+//= require zeroclipboard

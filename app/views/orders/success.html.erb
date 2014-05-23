@@ -21,7 +21,9 @@
           <div class="affiliate-code text-center">
             Your affiliate code is:
             <span><%= @participant.affiliate_code.code %></span>
-            <!-- <a href="#">Copy to clipboard</a> -->
+<!--             <a href="#">Copy to clipboard</a> -->
+            <a id="copy_button" data-clipboard-text='<%= @participant.affiliate_code.code %>'>Copy to Clipboard</a>
+
           </div><!-- /.affiliate-code text-center -->
           <h2>Get a Discount:</h2>
           <p>Every time a friend buys a ticket with your code, you BOTH save <span class="red"><%= number_to_currency(@event.affiliate_setting.amount) %></span>.</p>

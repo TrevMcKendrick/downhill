@@ -1,0 +1,13 @@
+// main.js
+var client = new ZeroClipboard( document.getElementById("copy_button"), {
+  moviePath: '<%= asset_url "zeroclipboard.swf" %>'
+} );
+
+client.on( "load", function(client) {
+
+  client.on( "complete", function(client, args) {
+    // `this` is the element that was clicked
+    // this.style.display = "none";
+    alert("Copied!" );
+  } );
+} );
