@@ -8,10 +8,10 @@
 
         <!-- Note: The activity badge color changes when clicked and resets the number to 0
         Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->
-        
+
 
         <!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
-        
+
         <!-- END AJAX-DROPDOWN -->
       </div>
 
@@ -25,19 +25,25 @@
 
 
       <!-- projects dropdown -->
-   
+
       <!-- end projects dropdown -->
 
       <!-- pulled right: nav area -->
       <div class="pull-left">
 
-         <ul class="header-dropdown-list hidden-xs">
+        <ul class="header-dropdown-list hidden-xs">
+          <li>
+            <%= link_to "Email Marketing", campaign_monitors_path, :class => "dropdown-toggle", :style => "margin: 25px 0; color: #0036ff" %>
+          </li>
+        </ul>
+
+        <ul class="header-dropdown-list hidden-xs">
           <li>
             <%= link_to "Settings", settings_path, :class => "dropdown-toggle", :style => "margin: 25px 0; color: #0036ff" %>
           </li>
         </ul>
 
-         <ul class="header-dropdown-list hidden-xs">
+        <ul class="header-dropdown-list hidden-xs">
           <li>
             <%= link_to "Customers", customers_path, :class => "dropdown-toggle", :style => "margin: 25px 0; color: #0036ff" %>
           </li>
@@ -49,7 +55,7 @@
           </li>
         </ul>
 
-         <ul class="header-dropdown-list hidden-xs">
+        <ul class="header-dropdown-list hidden-xs">
           <li>
             <%= link_to "Dashboard", dashboard_path, :class => "dropdown-toggle", :style => "margin: 25px 0; color: #0036ff" %>
           </li>

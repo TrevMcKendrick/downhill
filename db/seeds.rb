@@ -8,7 +8,7 @@
 
 
 events = Event.create([
-  { 
+  {
     title: "Tough Mudder Colorado",
     waiver: "You agree not to sue us for any reason.",
     description: "An amazing race! If you think you've seen crazy, you ain't seen nothing.",
@@ -32,7 +32,7 @@ events = Event.create([
     on_sale: true,
     account_id: 1
   },
-  { 
+  {
     title: "Color Me Rad Salt Lake City 2014",
     waiver: "If you hurt yourself, I'm sorry",
     description: "Hare Chrishna",
@@ -148,7 +148,8 @@ user5 = User.new(
     password: "test",
     subdomain: "trevor",
     type: "User",
-    account_id: 1
+    account_id: 1,
+    is_god: true
     )
 
 user6 = User.new(

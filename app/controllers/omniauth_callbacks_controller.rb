@@ -10,6 +10,23 @@ class OmniauthCallbacksController < ApplicationController
     logger.debug "redirected to #{subdomain_with_https_or_http(DOMAIN_NAME, current_user.subdomain, settings_path)}"
   end
 
+  def authorize_campaign_monitor
+    @god = User.find_by is_god: true
+
+    access_token, expires_in, refresh_token = CreateSend::CreateSend.exchange_token(
+      CAMPAIGN_MONITOR_CLIENT_ID,
+      CAMPAIGN_MONITOR_CLIENT_SECRET,
+      "http://localhost:3000/users/auth/email/callback",
+      params[:code] # Get the code parameter from the query string
+      )
+
+      @god.campain_monitor_access_token = access_token
+      @god.campaign_monitor_refresh_token = refresh_token
+      @god.save!
+
+      redirect_to subdomain_with_https_or_http(DOMAIN_NAME, current_user.subdomain, settings_path)
+  end
+
   private
 
   def set_user_stripe_attributes(user_attributes_hash)

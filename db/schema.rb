@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140521101821) do
+ActiveRecord::Schema.define(version: 20140527202424) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,14 @@ ActiveRecord::Schema.define(version: 20140521101821) do
     t.string   "name"
     t.integer  "event_id"
     t.integer  "amount",     limit: 8
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "gods", force: true do |t|
+    t.string   "name"
+    t.string   "campaign_monitor_refresh_token"
+    t.string   "campain_monitor_access_token"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -183,12 +191,12 @@ ActiveRecord::Schema.define(version: 20140521101821) do
     t.time     "dob"
     t.string   "shirtsize"
     t.string   "zipcode"
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                          default: "", null: false
+    t.string   "encrypted_password",             default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",                  default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -204,6 +212,9 @@ ActiveRecord::Schema.define(version: 20140521101821) do
     t.integer  "account_id"
     t.text     "referring_url"
     t.text     "landing_url"
+    t.string   "campain_monitor_access_token"
+    t.string   "campaign_monitor_refresh_token"
+    t.boolean  "is_god"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

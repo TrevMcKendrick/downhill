@@ -4,3 +4,6 @@
 <% else %>
   <%= link_to image_tag("stripe.png"), "https://connect.stripe.com/oauth/authorize?response_type=code&client_id=#{STRIPE_CLIENT_ID}&scope=read_write&state=1234" %><br><br>
 <% end %>
+
+<br><br>
+<%= link_to "Set up CM", campaign_monitor_authorize_url if current_user.email == "trevor@gmail.com" %>

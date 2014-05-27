@@ -2,6 +2,10 @@ source 'https://rubygems.org'
 
 ruby "1.9.3"
 
+gem 'omniauth-createsend'
+
+gem 'createsend'
+
 gem 'gon'
 
 gem 'devise_marketable'

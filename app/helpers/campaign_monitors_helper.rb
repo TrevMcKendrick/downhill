@@ -1,0 +1,2 @@
+module CampaignMonitorsHelper
+end

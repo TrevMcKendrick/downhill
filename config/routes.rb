@@ -2,7 +2,8 @@ Downhill::Application.routes.draw do
 
   # require 'sidekiq/web'
   # mount Sidekiq::Web => '/sidekiq'
-  
+
+  match '/users/auth/email/callback' => 'omniauth_callbacks#authorize_campaign_monitor', via: [:get, :post]
   match '/users/auth/:action/callback' => 'omniauth_callbacks#authorize_stripe', via: [:get, :post]
 
   get '/validate_referral_code/:code/:event_id' => "orders#validate_referral_code", :path => "/validate_referral_code/:code/:event_id"
@@ -19,6 +20,7 @@ Downhill::Application.routes.draw do
   resources :participants
   resources :teams
   resources :customers
+  resources :campaign_monitors
 
 
   get '/:event_id/fee' => "fee#index", :as => "fees"
@@ -71,7 +73,7 @@ Downhill::Application.routes.draw do
   get '/:event_id/success' => "orders#success", :as => "success_order"
 
   get '/dashboard' => 'dashboards#show'
-  
+
   get '/events/:id/registration' => "events#edit", :as => "registration"
   get '/events/:id/publish' => "events#edit", :as => "publish"
   get '/events/:id/other_info' => "events#edit", :as => "other_info"
@@ -80,8 +82,8 @@ Downhill::Application.routes.draw do
   resources :events
 
   get '/events/:id/(/:referral_code)' => 'events#show', :as => "public_event"
-  
+
   # get '/faq' => "pages#faq"
-  root 'pages#home'  
+  root 'pages#home'
 
 end
