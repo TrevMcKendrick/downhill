@@ -72,6 +72,7 @@ module Downhill
     config.assets.precompile += %w(twitter/tweet.js)
 
     config.assets.precompile += %w(google/google_analytics.js)
+    config.assets.precompile += %w(google/google_analytics_ecommerce.js.erb)
 
     config.assets.precompile += %w(jquery_currency/jquery_currency.js)
 
