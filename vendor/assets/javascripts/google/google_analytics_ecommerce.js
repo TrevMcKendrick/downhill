@@ -19,3 +19,5 @@ ga('ecommerce:addItem', {
 });
 
 ga('ecommerce:send');
+
+ga('send', 'event', 'Party Toys', 'purchase', 'order_page', 4);
