@@ -11,3 +11,4 @@
 <%= javascript_include_tag "google/google_analytics" %>
 <%= javascript_include_tag "zeroclipboard/zeroclipboard.js" %>
 <%= javascript_include_tag "zeroclipboard/main.js" %>
+<%= javascript_include_tag "google/google_analytics_ecommerce.js" if controller.action_name == "success" %>
